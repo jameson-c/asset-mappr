@@ -29,7 +29,7 @@ import pandas as pd
 
 google_apikey = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
 
-path = 'MainFrame.csv'
+path = 'C:/Users/jacar/OneDrive/Documents/asset-mappr/AssetMappr/database/MainFrame.csv'
 
 df = pd.read_csv(path, index_col=0)
 

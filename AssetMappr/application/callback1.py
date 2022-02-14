@@ -17,14 +17,13 @@ Output:
 # =============================================================================
 
 # Libraries
-import os
-import dash
 from dash.dependencies import Input, Output, State
 import pandas as pd
+import os, sys
 
 google_apikey = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
 
-path = 'MainFrame.csv'
+path = 'C:/Users/jacar/OneDrive/Documents/asset-mappr/AssetMappr/database/MainFrame.csv'
 
 df = pd.read_csv(path, index_col=0)
 # This gets the time of the most recent content modification -> when the data is first loaded into the app

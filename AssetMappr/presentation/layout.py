@@ -41,8 +41,6 @@ def description_card():
         id="description-card",
         children=[
             html.H5("Steel City Services"),
-            html.H4('Test header'),
-            html.h4('Another test header'),
             html.H3("Find and contribute support options near you"),
             html.Div(
                 id="intro",
