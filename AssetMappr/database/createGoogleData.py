@@ -63,7 +63,7 @@ def getLocationWebsite(key, ID, fields):
     df = pd.json_normalize(result['result'])
     return df
 
-def createGoogleDF(apiKey):
+def createGoogleDF(apiKey, lat, long):
     with open('Keywords.csv', 'r') as f:
         keywords = []
         categories = []
@@ -74,10 +74,11 @@ def createGoogleDF(apiKey):
 
     MainFrame = pd.DataFrame()
     catIndex = 1
+    latlong = ','.join([lat, long])
     for keyword in keywords[1:]:
     
         results = getMapData(apiKey,
-                               '40.440600,-79.995900', keyword, '50000')
+                               latlong, keyword, '6000')
         data = results[0]
         data['category'] = categories[catIndex]
         nextToken = results[1]
@@ -88,7 +89,7 @@ def createGoogleDF(apiKey):
         if nextToken is not None:
             time.sleep(2) # Need to introduce this so that API call ready for token
             results2 = getMapData(apiKey,
-                               '40.440600,-79.995900', keyword, '50000', 
+                               latlong, keyword, '6000', 
                                nextToken)
             data2 = results2[0]
             data2['category'] = categories[catIndex]
@@ -97,7 +98,7 @@ def createGoogleDF(apiKey):
             if nextToken is not None:
                 time.sleep(2)
                 results3 = getMapData(apiKey,
-                               '40.440600,-79.995900', keyword, '50000', 
+                               latlong, keyword, '6000', 
                                nextToken)
                 data3 = results3[0]
                 data3['category'] = categories[catIndex]
@@ -118,24 +119,15 @@ def createGoogleDF(apiKey):
         catIndex += 1
 
    
-    # Retain Pittsburgh addresses
-    MainFrame = MainFrame[MainFrame['vicinity'].str.contains('Pittsburgh')]
+    # Retain addresses
+    # MainFrame = MainFrame[MainFrame['vicinity'].str.contains('Pittsburgh')]
     # Drop results with a price level listed (Gets rid of most of the restaurants)
-    MainFrame = MainFrame.drop(MainFrame.loc[MainFrame['price_level']>=1].index)
+    # MainFrame = MainFrame.drop(MainFrame.loc[MainFrame['price_level']>=1].index)
+    
     # Drop price level, if it exists
     MainFrame = MainFrame.loc[:,MainFrame.columns.isin(['latitude','longitude',
             'vicinity','name','place_id','category',])]
-    # Add a dummy column for use in pivot table
-    MainFrame['Value'] = int(1)
-    # Reshape the mainframe
-    MainFrame = MainFrame.pivot_table(
-        index=['name', 'place_id', 'latitude', 'longitude', 'vicinity'], 
-         columns='category', 
-         values='Value').reset_index()
-    MainFrame.index.name = MainFrame.columns.name = None
-    # Add 'Notes' to make compatible with other data.
-    MainFrame['Notes']=''
-
+    
     # 'URL' column will be added using Google Maps API "Place Details"
     websites = {'place_id':[], 'website':[]}
     for i in MainFrame['place_id']:
@@ -149,15 +141,17 @@ def createGoogleDF(apiKey):
 
     MainFrame = MainFrame.join(websitedf.set_index('place_id'), on='place_id')
     MainFrame.drop(columns = 'place_id', inplace = True)
+    
+    # Drop duplicates
+    MainFrame = MainFrame.drop_duplicates()
 
     # Write to CSV
     MainFrame.to_csv('MainFrame.csv')
 
 if __name__ == '__main__':
     apikey = input('Enter your Google Places API Key: ')
-    try:
-        createGoogleDF(apikey)
-    except:
-        print('Try again! Error.')
-        apikey = input('Enter your Google Places API Key: ')
+    lat = input('Enter Latitude: ')
+    long = input('Enter Longitude: ')
+    createGoogleDF(apikey, lat, long)
+
         
