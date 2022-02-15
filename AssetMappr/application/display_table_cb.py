@@ -25,7 +25,7 @@ def display_table_cb(app, db):
     @app.callback(Output('main-table', 'children'),
               [Input('interval_pg', 'n_intervals')])
     def populate_datatable(n_intervals):
-        df = pd.read_sql_table('savepandas_mainframe', con=db.engine)
+        df = pd.read_sql_table('assets_preloaded', con=db.engine)
     
         return dash_table.DataTable(id='main_table',
                                     columns=[{'name':str(x), 'id':str(x)} for x in df.columns],

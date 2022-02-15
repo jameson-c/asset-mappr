@@ -33,7 +33,7 @@ app = dash.Dash(__name__)
 server = app.server
 
 # Connect to the Heroku postgreSQL database
-server.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://acuyptgxqdqvjv:d34c46c553c1416005aceb276945d98e1902b112946add6a0dd76e040dd5b1de@ec2-54-208-139-247.compute-1.amazonaws.com:5432/d1prugfners9d"
+server.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ilohghqbmiloiv:f4fbd28e91d021bada72701576d41107b78bc515ad0b1e94d934939fbce7b2e6@ec2-54-235-98-1.compute-1.amazonaws.com:5432/dmt6i1v8bv5l1'
 server.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(server)    
 
