@@ -1,437 +1,184 @@
-,name,latitude,longitude,vicinity,Clothing,Food,Household Goods,Housing,Training and other services,Notes,website
-0,412 Food Rescue,40.462826,-79.92193739999999,"6140 Station St, Pittsburgh",,1.0,,,,,http://www.412foodrescue.org/
-1,5480 Black St,40.4694647,-79.93004789999999,"Black St #5480, Pittsburgh",,1.0,,,,,https://www.jamesstsensory.org/
-2,A Childs Wardrobe and adults too!,40.4322063,-79.9232648,"2200 Murray Ave, Pittsburgh",1.0,,,,,,
-3,A Giving Heart,40.4199218,-79.99291219999999,"816 Climax St, Pittsburgh",,,,1.0,,,http://www.agivingheart.org/
-4,A-Line Staffing Solutions,40.4286737,-79.8113226,"201 Penn Center Blvd Suite 306, Pittsburgh",,,,,1.0,,https://www.alinestaffing.com/
-5,ABC Staffing LLC,40.4383265,-79.99907689999999,"One Oxford Centre, 301 Grant St Suite 270, Pittsburgh",,,,,1.0,,https://www.abcstaffingpgh.com/
-6,ACT 1 Personnel Services,40.4287384,-80.12365319999999,"2 Penn Center Blvd # 225, Pittsburgh",,,,,1.0,,https://www.act-1.com/
-7,ADAPT Career Coaching,40.424521,-79.92942409999999,"4122 Windsor St, Pittsburgh",,,,,1.0,,http://www.adaptcareercoach.com/
-8,Abiding Missions,40.422965,-79.99463,"731 Excelsior St, Pittsburgh",,,,1.0,,,http://abidingmissions.org/
-9,Academy Pittsburgh,40.42167329999999,-79.9940954,"744 E Warrington Ave, Pittsburgh",,,,,1.0,,http://academypgh.com/
-10,Accessibility Matters,40.42415740000001,-79.94867359999999,"49 Bigelow St, Pittsburgh",,,,,1.0,,
-11,Action Housing Inc,40.441444,-79.996498,"611 William Penn Pl #800, Pittsburgh",,,,1.0,,,http://www.actionhousing.org/
-12,Aerotek,40.4279305,-79.81128230000002,"400 Penn Center Blvd Suite 211, Pittsburgh",,,,,1.0,,https://www.aerotek.com/en/locations/united-states/pennsylvania/pittsburgh-east?ecid=ls_aero_mozbizlist_160802_123614
-13,Aerotek,40.431076,-80.12655629999999,"8 Penn Center Blvd Suite 101, Pittsburgh",,,,,1.0,,https://www.aerotek.com/en/locations/united-states/pennsylvania/pittsburgh?ecid=ls_aero_mozbizlist_160802_123613
-14,African Healing Garden,40.4637597,-79.9130181,Pittsburgh,,1.0,,,,,https://www.africanhealinggarden.org/
-15,Aldama's Closet,40.4978303,-80.0535446,"481 Dawson Ave, Pittsburgh",1.0,,,,,,
-16,Allegheny Abused Animal Relief Fund,40.4424701,-80.0009554,"625 Liberty Ave, Pittsburgh",,,,1.0,,,
-17,Allegheny Commons Community Gardens,40.450938,-80.0021118,"300 Stockton Ave, Pittsburgh",,1.0,,,,,https://www.ioby.org/project/allegheny-commons-community-garden
-18,Allegheny County Assistance Office - Greater Pittsburgh East,40.4618572,-79.9252604,"5947 Penn Ave, Pittsburgh",,1.0,,,,,http://www.dhs.pa.gov/
-19,Allegheny County Assistance Office - Three Rivers District,40.4397934,-79.9997585,"342 Fifth Ave, Pittsburgh",,1.0,,,,,http://www.dhs.pa.gov/
-20,Allegheny County Assistance Office Liberty District,40.4401692,-79.99947089999999,"332 Fifth Ave #300, Pittsburgh",,1.0,,,,,http://www.dhs.pa.gov/
-21,"Allegheny County Children, Youth and Families: North Regional Office",40.4552688,-80.01822659999999,"901 Pennsylvania Ave, Pittsburgh",,1.0,,,,,http://alleghenycounty.us/Human-Services/Programs-Services/Children-Families/Child-Protection.aspx
-22,Allegheny County Human Services,40.4389085,-80.00123599999999,"304 Wood St, Pittsburgh",,1.0,,,,,https://www.alleghenycounty.us/human-services/index.aspx
-23,Allendale Acres Community Garden,40.4554151,-80.0607557,Pittsburgh,,1.0,,,,,http://pittsburghurbangardens.com/allendale-acres-community-garden
-24,Ammon Community Recreation Center,40.4486657,-79.9779648,"2217 Bedford Ave, Pittsburgh",,,,,1.0,,http://pittsburghpa.gov/citiparks/ammon
-25,Amvets,40.429784,-80.0537772,"2226 Noblestown Rd, Pittsburgh",1.0,,,,,,https://amvets.org/
-26,Anderson Shelter,40.4354818,-79.947908,Pittsburgh,,,,1.0,,,http://www.pittsburghparks.org/schenley
-27,Animal Advocates,40.440583,-80.034447,"35 Wabash St, Pittsburgh",,,,1.0,,,http://animaladvocates.net/
-28,Animal Friends,40.5218665,-80.0796451,"562 Camp Horne Rd, Pittsburgh",,,,1.0,,,http://www.thinkingoutsidethecage.org/
-29,Animal Full Life Rescue,40.4369019,-79.88370689999999,"906 Ramsey St, Pittsburgh",,,,1.0,,,https://www.aflr.org/contact-us
-30,AppleOne Employment Services,40.4287384,-80.12365319999999,"2 Penn Center Blvd #210, Pittsburgh",,,,,1.0,,http://www.appleone.com/
-31,Arbor Career Center,40.4414408,-79.99667389999999,"425 Sixth Ave #2000, Pittsburgh",,,,,1.0,,
-32,Auberle 412 Youth Zone,40.4389815,-80.0014103,"304 Wood St, Pittsburgh",,,,1.0,,,https://www.auberle.org/the-412-youth-zone
-33,BGC Activity Center,40.465224,-79.940089,"113 N Pacific Ave, Pittsburgh",,,,,1.0,,https://bloomfield-garfield.org/other-projects/activity-center/
-34,Ballfield Farm,40.4690014,-80.0165495,"Crispen St, Pittsburgh",,1.0,,,,,http://www.ballfieldfarm.com/
-35,Bandi Schaum Community Garden,40.4227835,-79.975396,Pittsburgh,,1.0,,,,,
-36,Bartlett Shelter,40.4334705,-79.93591719999999,"Bartlett St, Pittsburgh",,,,1.0,,,
-37,Baum Grove,40.4589723,-79.93533359999999,"400 Roup Ave, Pittsburgh",,1.0,,,,,https://www.friendship-pgh.org/
-38,Bay Foods distribution center,40.4420518,-80.0213624,"1600 W Carson St, Pittsburgh",,1.0,,,,,
-39,Bedford Hope Center,40.4496577,-79.9754452,"2305 Bedford Ave, Pittsburgh",,,,,1.0,,http://www.justharvest.org/venue/bedford-hope-center/
-40,"Belcan, LLC",40.4160741,-80.0453941,"1016 Greentree Rd Suite 200, Pittsburgh",,,,,1.0,,https://belcan.com/
-41,Beltzhoover Community Center 407,40.4181161,-80.0051192,"407 Gearing Ave, Pittsburgh",,,,,1.0,,
-42,Bethlehem Haven,40.4384625,-79.99149059999999,"905 Watson St, Pittsburgh",,,,1.0,,,https://www.bethlehemhaven.org/
-43,Bethlehem Haven,40.43849,-79.98595499999999,"1410 Fifth Ave, Pittsburgh",,,,1.0,,,https://bethlehemhaven.org/
-44,Bethlehem Haven - Food Distribution Center,40.43865419999999,-79.9907791,Pittsburgh,,1.0,,,,,http://www.bethlehemhaven.org/
-45,Bethlehem Haven Medical Respite,40.4386459,-79.9914316,"905 Watson St, Pittsburgh",,,,1.0,,,https://bethlehemhaven.org/housing-programs/
-46,Better Living Community Center - Food Distribution Center,40.4444421,-79.8843899,"105 Wood St, Pittsburgh",,1.0,,,,,
-47,Bidwell Training Center,40.45709919999999,-80.0319344,"1815 Metropolitan St, Pittsburgh",,,,,1.0,,https://www.bidwelltraining.edu/
-48,Birthright of Pittsburgh Inc,40.4495245,-79.9501241,"160 N Craig St STE 209, Pittsburgh",,,,1.0,,,http://birthrightpittsburgh.org/
-49,Blair-Lippincott Library,40.4417882,-79.95970710000002,"200 Lothrop St, Pittsburgh",,,,,1.0,,
-50,Bloomcraft,40.4556599,-79.9529802,"460 Melwood Ave, Pittsburgh",,,,,1.0,,
-51,Bloomfield Garfield Corporation Youth Development Center,40.4648326,-79.9377797,"5321 Penn Ave, Pittsburgh",,,,,1.0,,http://bloomfield-garfield.org/
-52,Boilmaker Apprenticeship School,40.4174169,-80.0296965,"1231 Banksville Rd, Pittsburgh",,,,,1.0,,
-53,Borland Garden,40.4672336,-79.9238719,"5806 Black St, Pittsburgh",,1.0,,,,,https://www.growpittsburgh.org/directory/garden/borland-green-cooperative-2
-54,Braddock Hills Department of Public Works,40.4241002,-79.8686649,"2794 Columbia Ave, Pittsburgh",,,,,1.0,,
-55,Brashear Association Inc,40.4139063,-79.9885224,"320 Brownsville Rd, Pittsburgh",,1.0,,,,,https://www.brashearassociation.org/
-56,Brashear Association Inc Neighborhood Employment Center,40.4216183,-79.99454879999999,"730 E Warrington Ave #1565, Pittsburgh",,,,,1.0,,http://www.brashearassociation.org/
-57,"Brashear Association, Inc - Food Distribution Center",40.4192698,-79.9753614,"2201 Salisbury St, Pittsburgh",,1.0,,,,,https://www.brashearassociation.org/
-58,Brentwood Library,40.3750746,-79.9749076,"3501 Brownsville Rd, Pittsburgh",,,,,1.0,,http://www.brentwoodlibrarychanginglives.org/
-59,Bridge Outreach,40.4626973,-79.9907325,"1526 Rhine St, Pittsburgh",,,,1.0,,,http://bridgepgh.org/
-60,Brighton Heights Garden,40.4751722,-80.0375944,"1601 Antrim St, Pittsburgh",,1.0,,,,,https://www.growpittsburgh.org/directory/garden/riverview-community-garden-of-brighton-heights
-61,Brookline Community Center,40.3912355,-80.0083815,"1400 Brookline Blvd, Pittsburgh",,,,,1.0,,
-62,Buffalo Exchange,40.428591,-79.985722,"1214 E Carson St #1a, Pittsburgh",1.0,,,,,,https://www.buffaloexchange.com/locations/pittsburgh/pittsburgh/
-63,Buhl Library of Social Work,40.4426031,-79.9541564,Pittsburgh,,,,,1.0,,
-64,Burlington,40.4416433,-79.9977976,"339 Sixth Ave, Pittsburgh",1.0,,,,,,https://www.burlington.com/store-details/pittsburgh-pa-191?utm_source=google&utm_medium=organic&utm_campaign=maps
-65,C.C. Mellor Memorial Library,40.4322898,-79.88521589999999,"1 Pennwood Ave #2, Pittsburgh",,,,,1.0,,http://www.ccmellorlibrary.org/
-66,CCAC Allegheny Campus Library,40.4497266,-80.0132981,"Ridge Ave, Pittsburgh",,,,,1.0,,http://www.ccac.edu/library
-67,CHALFANT COMMUNITY CENTER,40.4084692,-79.84050669999999,"218 North Ave, East Pittsburgh",,,,,1.0,,
-68,CHS,40.454241,-79.97815,"2525 Liberty Ave, Pittsburgh",,,,1.0,,,
-69,CHS Food Pantry,40.4336242,-79.961441,"370 Lawn St, Pittsburgh",,1.0,,,,,
-70,CHS Wood Street Commons,40.4389431,-80.00143489999999,"301 Third Avenue, Pittsburgh",,,,1.0,,,https://chscorp.org/service-area/program/shelter-program-wood-street-commons
-71,CMU Career and Professional Development Center (CPDC),40.4427215,-79.941043,"5000 Forbes Ave, Pittsburgh",,,,,1.0,,https://www.cmu.edu/career/
-72,Career & Workforce Development,40.4565449,-79.898268,"7140 Bennett St, Pittsburgh",,,,,1.0,,
-73,Career Services Unlimited,40.4695358,-79.91825399999999,"816 Sheridan Ave, Pittsburgh",,,,,1.0,,
-74,Carlow University - Grace Library,40.4391233,-79.96333709999999,"3333 Fifth Ave, Pittsburgh",,,,,1.0,,https://www.carlow.edu/grace-library/
-75,Carnegie Free Library of Swissvale,40.42255309999999,-79.8911655,"1800 Monongahela Ave, Pittsburgh",,,,,1.0,,http://www.swissvalelibrary.org/
-76,Carnegie Library of Pittsburgh - Allegheny,40.4563575,-80.0065961,"1230 Federal St, Pittsburgh",,,,,1.0,,http://carnegielibrary.org/
-77,Carnegie Library of Pittsburgh - Beechview,40.4070437,-80.0277222,"1910 Broadway Ave, Pittsburgh",,,,,1.0,,https://carnegielibrary.org/
-78,Carnegie Library of Pittsburgh - Carrick,40.397019,-79.98754699999999,"1811 Brownsville Rd, Pittsburgh",,,,,1.0,,https://carnegielibrary.org/
-79,Carnegie Library of Pittsburgh - Downtown,40.4417769,-79.99737379999999,"612 Smithfield St, Pittsburgh",,,,,1.0,,https://carnegielibrary.org/
-80,Carnegie Library of Pittsburgh - East Liberty,40.4608869,-79.9265435,"130 S Whitfield St, Pittsburgh",,,,,1.0,,https://www.carnegielibrary.org/clp_location/east-liberty/
-81,Carnegie Library of Pittsburgh - Hazelwood,40.4083096,-79.9437464,"5006 Second Avenue, Pittsburgh",,,,,1.0,,https://carnegielibrary.org/
-82,Carnegie Library of Pittsburgh - Hill District,40.4455017,-79.9765364,"2177 Centre Ave, Pittsburgh",,,,,1.0,,https://www.carnegielibrary.org/
-83,Carnegie Library of Pittsburgh - Homewood,40.455284,-79.899213,"7101 Hamilton Ave, Pittsburgh",,,,,1.0,,https://carnegielibrary.org/
-84,Carnegie Library of Pittsburgh - Knoxville,40.4132232,-79.9891718,"400 Brownsville Rd, Pittsburgh",,,,,1.0,,https://www.carnegielibrary.org/clp_location/knoxville/
-85,Carnegie Library of Pittsburgh - Lawrenceville,40.4676128,-79.9590515,"279 Fisk St, Pittsburgh",,,,,1.0,,https://www.carnegielibrary.org/
-86,Carnegie Library of Pittsburgh - Main (Oakland),40.4427033,-79.9507696,"4400 Forbes Ave Carnegie Lecture Hall, Pittsburgh",,,,,1.0,,https://carnegielibrary.org/
-87,Carnegie Library of Pittsburgh - Mt. Washington,40.4335616,-80.0104346,"315 Grandview Ave, Pittsburgh",,,,,1.0,,https://www.carnegielibrary.org/
-88,Carnegie Library of Pittsburgh - Sheraden,40.455194,-80.05652649999999,"720 Sherwood Ave, Pittsburgh",,,,,1.0,,https://www.carnegielibrary.org/
-89,Carnegie Library of Pittsburgh - South Side,40.4286799,-79.97426949999999,"2205 E Carson St, Pittsburgh",,,,,1.0,,https://carnegielibrary.org/
-90,Carnegie Library of Pittsburgh - Squirrel Hill,40.4381637,-79.9227914,"5801 Forbes Ave, Pittsburgh",,,,,1.0,,https://carnegielibrary.org/
-91,Carnegie Library of Pittsburgh - West End,40.4400573,-80.0340451,"47 Wabash St, Pittsburgh",,,,,1.0,,https://carnegielibrary.org/
-92,Carnegie Library of Pittsburgh - Woods Run,40.476254,-80.0302044,"1201 Woods Run Ave, Pittsburgh",,,,,1.0,,https://www.carnegielibrary.org/
-93,Carnegie Library of Pittsburgh Brookline,40.3944049,-80.021441,"708 Brookline Blvd, Pittsburgh",,,,,1.0,,https://carnegielibrary.org/
-94,Carnegie Mellon University - Sorrells Engineering and Science Library,40.442647,-79.945784,"4400 Wean Hall #4, Pittsburgh",,,,,1.0,,http://search.library.cmu.edu/
-95,Castle Shannon Library,40.3677461,-80.0222785,"3677 Myrtle Ave, Pittsburgh",,,,,1.0,,https://castleshannonlibrary.org/
-96,Catalyst RTW,40.4316696,-79.86560039999999,"1500 Ardmore Blvd, Pittsburgh",,,,,1.0,,http://www.catalystrtw.com/
-97,Catholic Charities,40.4431552,-79.99822449999999,"212 9th St, Pittsburgh",,,,1.0,,,http://www.ccpgh.org/
-98,Catholic Community Of Bloomfield Food Pantry - Food Distribution Center,40.4617406,-79.9498665,"4712 Liberty Ave, Pittsburgh",,1.0,,,,,
-99,Center for Victims,40.421085,-79.958044,"3433 E Carson St, Pittsburgh",,,,1.0,,,http://www.centerforvictims.org/
-100,Centex Brysco Food Services Co,40.4334689,-80.1314218,"809 Parkway View Dr, Pittsburgh",,1.0,,,,,
-101,Chain of Hope Food Pantry - Food Distribution Center,40.4425237,-79.8861833,"611 South Ave, Pittsburgh",,1.0,,,,,
-102,Chain of hope,40.442523,-79.88621300000001,"611 South Ave, Pittsburgh",,,,1.0,,,
-103,Clayton's Fashion House,40.4427586,-79.88224989999999,"792 Penn Ave, Pittsburgh",1.0,,,,,,
-104,Closet Rehab,40.4713622,-79.9594426,"4400 Butler St, Pittsburgh",1.0,,,,,,https://getclosetrehab.com/
-105,Clothes Line,40.4603653,-79.94690059999999,"4804 Liberty Ave, Pittsburgh",1.0,,,,,,http://www.clotheslineresale.org/
-106,Clothes Minded,40.4612565,-79.9486541,"4740 Liberty Ave, Pittsburgh",1.0,,,,,,http://www.clothesmindedpgh.com/
-107,Cloverleaf Area Ecumenical Assistance Program - Food Distribution Center,40.3447609,-79.9709945,"1 Grove Pl, Pittsburgh",,1.0,,,,,
-108,Community Alliance of Spring Garden East Deutschtown,40.4571275,-79.9915474,"800 Vinial St, Pittsburgh",,1.0,,,,,https://www.ca-sged.org/
-109,Community Forge,40.4376775,-79.8744657,"1256 Franklin Ave, Pittsburgh",,,,,1.0,,http://www.forge.community/
-110,Community Human Services Corporation - Food Distribution Center,40.4333495,-79.9612866,"374 Lawn St, Pittsburgh",,1.0,,,,,
-111,Community Kitchen Pittsburgh,40.4101526,-79.943843,"107 Flowers Ave, Pittsburgh",,1.0,,,,,http://ckpgh.org/
-112,Community Technical Assistance Center - Food Distribution Center,40.4517037,-80.0166021,"Allegheny Court Building, 901 Western Ave, Pittsburgh",,1.0,,,,,
-113,Community Thrift Center,40.4293467,-80.0538924,"2226 Noblestown Rd, Pittsburgh",1.0,,,,,,http://communitythriftcenter.com/
-114,Cooper-Siegel Community Library,40.515335,-79.879894,"403 Fox Chapel Rd, Pittsburgh",,,,,1.0,,http://www.coopersiegelcommunitylibrary.org/
-115,Corps Community Center,40.429209,-79.990427,"44 S 9th St, Pittsburgh",,,,,1.0,,
-116,County Assistance Office,40.4401149,-79.99942589999999,"342 Fifth Ave, Pittsburgh",,1.0,,,,,https://www.dhs.pa.gov/Services/Assistance/Pages/CAO-Contact.aspx
-117,County Assistance Office — Greater Pittsburgh East District,40.461939,-79.9247295,"5947 Penn Ave, Pittsburgh",,1.0,,,,,http://www.dhs.pa.gov/citizens/findfacilsandlocs/countyassistanceofficecontactinformation/
-118,Crafton Community Center,40.4344498,-80.06682889999999,"140 Bradford Ave, Pittsburgh",,,,,1.0,,
-119,Crafton Community Farm,40.4382353,-80.0730054,"117 W Steuben St, Pittsburgh",,1.0,,,,,
-120,Crafton Heights Up Church - Food Distribution Center,40.43876909999999,-80.0554213,"50 Stratmore St, Pittsburgh",,1.0,,,,,
-121,Craftwork Kitchen,40.4413747,-79.9950284,"600 Grant St Concourse Level, Pittsburgh",,1.0,,,,,
-122,DILWORTH SHELTER HOUSE,40.42480339999999,-80.01419229999999,"529 Norton St, Pittsburgh",,,,1.0,,,
-123,Da' Kitch'N LLC,40.4650543,-80.05892759999999,"506 Chartiers Ave, Pittsburgh",,1.0,,,,,https://da-kitchn-llc.business.site/?utm_source=gmb&utm_medium=referral
-124,Davis Consulting Solutions,40.463135,-79.925259,"211 N Whitfield St Suite 550, Pittsburgh",,,,,1.0,,https://www.davisconsultingsolutionspa.com/
-125,Department-Human Services,40.4371166,-80.00099589999999,"1 Smithfield St, Pittsburgh",,1.0,,,,,
-126,Dinner's Ready!: Bible Center Church And Homewood Children's Village - Food Distribution Center,40.456261,-79.897055,"717 N Homewood Ave, Pittsburgh",,1.0,,,,,
-127,Dormont Public Library,40.394167,-80.035958,"2950 W Liberty Ave, Pittsburgh",,,,,1.0,,http://dormontlibrary.org/
-128,Dress For Success Pittsburgh,40.4620932,-79.9662663,"305 34th St #1311, Pittsburgh",1.0,,,1.0,,,https://pittsburgh.dressforsuccess.org/
-129,Duquesne University - Gumberg Library,40.437349,-79.991503,"600 Forbes Ave, Pittsburgh",,,,,1.0,,http://www.duq.edu/academics/gumberg-library
-130,EAST PITTSBURGH COMMUNITY CENTER,40.3944714,-79.84109190000001,"506 Bessemer Ave E, East Pittsburgh",,,,,1.0,,
-131,EDMC Safety and Health,40.3320653,-79.97215229999999,"77 Terence Dr, Pittsburgh",,,,,1.0,,http://edmcsafety.com/
-132,Earl Brooks Community Garden - GrowPittsburgh,40.4411875,-79.9655164,"222 Robinson St, Pittsburgh",,1.0,,,,,https://www.growpittsburgh.org/directory/garden/earl-brooks-community-garden
-133,Earthen Vessels Outreach - Food Distribution Center,40.4672057,-79.9444795,"250 S Pacific Ave, Pittsburgh",,1.0,,,,,http://www.evo-pgh.org/
-134,East End Co-Op Ministry,40.4648557,-79.9253923,"319 N Beatty St, Pittsburgh",,,,1.0,,,http://eecm.org/
-135,East End Community Thrift,40.465036,-79.94185790000002,"5123 Penn Ave, Pittsburgh",1.0,,,,,,http://www.thomasmertoncenter.org/thrifty/
-136,East End Cooperative Ministry,40.4628401,-79.9218645,"6140 Station St, Pittsburgh",,1.0,,1.0,,,http://www.eecm.org/
-137,East End Cooperative Ministry: Men's Emergency Shelter,40.446334,-79.89153619999999,"277 Penn Ave, Pittsburgh",,,,1.0,,,https://www.eecm.org/
-138,East Hills Community Center,40.4542292,-79.86989,"2291 Wilner Dr, Pittsburgh",,,,,1.0,,https://www.neighborhoodassociates.org/east-hills-1
-139,Eastfield Cooperative Garden,40.4694016,-79.9284302,"5543 Black St, Pittsburgh",,1.0,,,,,https://www.growpittsburgh.org/directory/garden/east-field-cooperative-garden
-140,Eastfield Library,40.4692088,-79.9285225,"5543 Black St, Pittsburgh",,,,,1.0,,
-141,Eastridge Branch,40.4565812,-79.8565861,"1900 Graham Blvd, Pittsburgh",,,,,1.0,,http://wilkinsburglibrary.org/
-142,Eastside Neighborhood Employment Center,40.4652237,-79.9400892,"113 N Pacific Ave, Pittsburgh",,,,,1.0,,http://www.enecpittsburgh.org/
-143,Educational Data Systems Inc,40.4401692,-79.99947089999999,"332 Fifth Ave #610, Pittsburgh",,,,,1.0,,
-144,Einetwork,40.4432834,-79.9502225,"Carnegie Museum & Library, 4400 Forbes Ave Carnegie Lecture Hall, Pittsburgh",,,,,1.0,,https://www.einetwork.net/
-145,Emergency Food Assistance,40.442385,-79.998893,"610 Wood St # 2, Pittsburgh",,1.0,,,,,
-146,Eons Fashion Antique,40.4569217,-79.929437,"5850 Ellsworth Ave, Pittsburgh",1.0,,,,,,https://www.facebook.com/pages/category/Vintage-Store/Eons-Fashion-Antique-91920114235/
-147,Every Child Inc.,40.4378396,-79.98545659999999,"1425 Forbes Ave #300, Pittsburgh",,,,1.0,,,http://www.everychildinc.org/
-148,Excela Health Employment Center,40.3011399,-79.5527994,"443 W Pittsburgh St, Greensburg",,,,,1.0,,https://www.excelahealth.org/locations/excela-health-employment-center/
-149,Express Employment Professionals,40.446049,-80.1510496,"6200 Steubenville Pike 60 Suite 201, Pittsburgh",,,,,1.0,,https://www.expresspros.com/wpittsburghpa/?utm_source=gmb&utm_medium=organic&utm_campaign=Qiigo
-150,Express Employment Professionals,40.4137065,-79.8463826,"21 Yost Blvd Ste 156, Pittsburgh",,,,,1.0,,https://www.expresspros.com/pittsburgheastpa/?utm_source=gmb&utm_medium=organic&utm_campaign=Qiigo
-151,Express Employment Professionals,40.3653497,-79.9823969,"4141 Brownsville Rd Ste 6, Pittsburgh",,,,,1.0,,https://www.expresspros.com/spittsburghpa/?utm_source=gmb&utm_medium=organic&utm_campaign=Qiigo
-152,Express Employment Professionals,40.5161628,-80.037966,"1006 W View Park Dr, Pittsburgh",,,,,1.0,,https://www.expresspros.com/npittsburghpa/?utm_source=gmb&utm_medium=organic&utm_campaign=Qiigo
-153,Family Care Connection Lawrenceville - Food Distribution Center,40.4812553,-79.9540091,"5235 Butler St, Pittsburgh",,1.0,,,,,
-154,Family House Inc.,40.4553914,-79.9451826,"5001 Baum Blvd #545, Pittsburgh",,,,1.0,,,http://www.familyhouse.org/
-155,Family House Shadyside,40.4557409,-79.94002100000002,"5245 Centre Ave, Pittsburgh",,,,1.0,,,http://www.familyhouse.org/
-156,Family House University Place,40.4440025,-79.9568269,"116 Thackeray Ave, Pittsburgh",,,,1.0,,,http://www.familyhouse.org/
-157,Family Promise of Southwestern PA,40.4386239,-80.06447030000001,"7 Oregon Ave, Pittsburgh",,,,1.0,,,http://www.familypromiseswpa.org/
-158,"Familylinks, Inc",40.4581244,-79.9224814,"250 Shady Ave, Pittsburgh",,,,1.0,,,http://www.familylinks.org/
-159,"Familylinks, Inc.",40.4650764,-79.9237823,"401 N Highland Ave, Pittsburgh",,,,1.0,,,https://familylinks.org/
-160,"Familylinks, Inc.",40.4385874,-79.9838299,"1601 Fifth Ave, Pittsburgh",,,,1.0,,,http://www.familylinks.org/
-161,First Source Center,40.4436588,-79.980494,"1835 Centre Ave, Pittsburgh",,,,,1.0,,https://www.lowerhillredevelopment.com/first-source-center.html
-162,"Fishes and Loaves Cooperative Ministries,",40.407554,-79.942005,"131 E Elizabeth St, Pittsburgh",,1.0,,,,,https://fishes-and-loaves-hazelwood.org/
-163,Food Distribution Center - Penn Hills Service Association,40.4709461,-79.78888239999999,"2519 Main St, Pittsburgh",,1.0,,,,,
-164,Food Pantry,40.4580489,-80.01639689999999,"1601 Brighton Rd, Pittsburgh",,1.0,,,,,http://www.ncmin.org/
-165,Foster Love Project,40.4417263,-79.8920686,"463 S Trenton Ave, Pittsburgh",,,,1.0,,,http://fosterloveproject.org/
-166,Fred C Brady Memorial Library,40.4361368,-79.9852854,"1400 Locust St, Pittsburgh",,,,,1.0,,
-167,Free People,40.4572086,-79.9164697,"6425 Penn Ave, Pittsburgh",,,1.0,,,,https://www.freepeople.com/stores/bakery-square-pittsburgh/
-168,Free People,40.5436329,-80.007846,"Ross Park Mall, 1000 Ross Park Mall Dr, Pittsburgh",,,1.0,,,,https://www.freepeople.com/stores/ross-park-pittsburgh/
-169,Free Store Wilkinsburg,40.4439682,-79.8850798,"619 Penn Ave, Pittsburgh",1.0,,1.0,,,,https://www.freestorewilkinsburg.org/
-170,Fulton Commons,40.4560928,-80.0249786,"1546 Fulton St, Pittsburgh",,1.0,,,,,http://fultonpgh.com/
-171,Garden Dreams Urban Farm & Nursery,40.4384167,-79.8836305,"806 Holland Ave, Pittsburgh",,1.0,,,,,http://growpittsburgh.org/gardendreams
-172,Garden Resource Center - Grow Pittsburgh,40.4596865,-79.9126374,"147 Putnam St, Pittsburgh",,1.0,,,,,http://www.growpittsburgh.org/garden-and-farm-resources/garden-resource-center/
-173,Garden of Etna,40.496077,-79.945871,"9 Short Alley, Pittsburgh",,1.0,,,,,
-174,Garfield Community Farm,40.4690683,-79.9351849,"509 Wicklow St, Pittsburgh",,1.0,,,,,http://garfieldfarm.com/
-175,Genesis House,40.50021599999999,-80.051208,"185 Dakota Ave, Pittsburgh",,,,1.0,,,https://www.genesispgh.org/genesis-house
-176,Ginger Snap Hair Studio,40.45412839999999,-79.9818402,"2343 Smallman St STE 6, Pittsburgh",,1.0,,,,,http://www.gingersnaphairstudio.com/
-177,Goodwill,40.46212939999999,-79.8253835,"11660 Keleket Dr, Pittsburgh",1.0,,,,,,https://www.goodwillswpa.org/
-178,Goodwill,40.4574277,-80.16545789999999,"3 Urbano Way, Pittsburgh",1.0,,,,,,https://www.goodwillswpa.org/
-179,Goodwill,40.53707259999999,-80.01274819999999,"7221 McKnight Rd Suite 1, Pittsburgh",1.0,,,,,,https://www.goodwillswpa.org/
-180,Goodwill,40.4600602,-79.9256994,"5993 Centre Ave, Pittsburgh",1.0,,,,,,https://www.goodwillswpa.org/
-181,Goodwill,40.426694,-79.96691799999999,"2700 E Carson St, Pittsburgh",1.0,,,,,,https://www.goodwillswpa.org/
-182,Goodwill,40.404258,-80.040356,"2866 Banksville Rd, Pittsburgh",1.0,,,,,,https://www.goodwillswpa.org/
-183,Goodwill,40.5402738,-79.8018903,"1306 Pittsburgh St, Cheswick",1.0,,,,,,https://www.goodwillswpa.org/
-184,Goodwill Adult Education Site,40.4512729,-79.9519272,"249 N Craig St, Pittsburgh",,,,,1.0,,https://www.goodwillswpa.org/ged
-185,Goodwill Commercial Services,40.4435483,-79.9944514,"1000 Liberty Ave, Pittsburgh",,,,,1.0,,
-186,Green Tree Public Library,40.4186033,-80.04682749999999,"10 W Manilla Ave, Pittsburgh",,,,,1.0,,http://www.greentreelibrary.org/
-187,Grow Pittsburgh,40.4583377,-79.9114172,"6587 Hamilton Ave #2W, Pittsburgh",,1.0,,,,,http://www.growpittsburgh.org/
-188,Grow Pittsburgh - Food Distribution Center,40.464994,-79.93520680000002,"5429 Penn Ave, Pittsburgh",,1.0,,,,,http://www.growpittsburgh.org/
-189,Habitat for Humanity of Greater Pittsburgh ReStore,40.4214934,-79.8896191,"7402 Church St, Pittsburgh",1.0,,,,,,http://www.pittsburghhabitat.org/restore
-190,Hamilton House,40.4556123,-79.9013023,"7045 Hamilton Ave, Pittsburgh",,,,,1.0,,
-191,Hamilton-larimer Liberty Park Bjwl Children's Program - Food Distribution Center,40.4632924,-79.9209992,"326 Collins St, Pittsburgh",,1.0,,,,,
-192,Hamnett Place Community Garden,40.43853,-79.8848513,"502 Jeanette St, Pittsburgh",,1.0,,,,,https://hamnettgarden.wordpress.com/
-193,Harmar Street Community Garden,40.4572409,-79.96792339999999,"332 Harmar St, Pittsburgh",,1.0,,,,,https://www.growpittsburgh.org/directory/garden/harmar-street-community-garden
-194,Hazelwood Glenwood Glen Hazel - Food Distribution Center,40.4036469,-79.9425685,"5344 Second Avenue, Pittsburgh",,1.0,,,,,
-195,Hazelwood Healthy Active Living Community Center,40.4036469,-79.9425686,"5344 Second Avenue, Pittsburgh",,,,,1.0,,
-196,Hearts of The Homeless,40.46186609999999,-79.9170974,"478 Enright Ct, Pittsburgh",,,,1.0,,,http://heartsofthehomeless.org/
-197,Henry Kaufmann Center - Food Distribution Center,40.4191632,-79.9754482,"2201 Salisbury St, Pittsburgh",,1.0,,,,,
-198,Henry Kaufmann Neighborhood House,40.4192698,-79.9753614,"2201 Salisbury St, Pittsburgh",,,,1.0,,,
-199,Hey Betty,40.4579595,-79.92770349999999,"5890 Ellsworth Ave, Pittsburgh",1.0,,,,,,http://www.heybettyvintageclothing.com/
-200,Highland Park,40.474507,-79.92094929999999,"5801 Hampton St, Pittsburgh",,,,,1.0,,https://hpccpgh.org/contact/
-201,Highland Park Entry Garden,40.4793209,-79.9155971,"1467 N Highland Ave, Pittsburgh",,1.0,,,,,https://www.pittsburghparks.org/highland-park
-202,Hill Community Development Corporation,40.444108,-79.979978,"2015 Centre Ave # 2, Pittsburgh",,,,,1.0,,https://www.hilldistrict.org/
-203,Hillman Library at University of Pittsburgh,40.4426031,-79.9541564,"3960 Forbes Ave, Pittsburgh",,,,,1.0,,http://www.library.pitt.edu/
-204,Hilltop Urban Farm,40.4093458,-79.97741529999999,"700 Cresswell St, Pittsburgh",,1.0,,,,,http://hilltopurbanfarm.org/
-205,Holy Family Institute,40.4580513,-80.01634849999999,"1601 Brighton Rd, Pittsburgh",,,,1.0,,,http://www.hfi-pgh.org/
-206,Homeless Children's Education Fund,40.44345,-79.980988,"One Hope Square, 1901 Centre Ave, Ste 301, Pittsburgh",,,,1.0,,,http://www.homelessfund.org/
-207,Homeless Family Services,40.40065329999999,-79.8350497,"817 E Pittsburgh Mall, East Pittsburgh",,,,1.0,,,
-208,Homewood/salvation Army - Food Distribution Center,40.4553726,-79.88358439999999,"8020 Frankstown Ave, Pittsburgh",,1.0,,,,,
-209,"Hosanna House, Inc.",40.4436111,-79.8805556,"807 Wallace Ave, Pittsburgh",,,,,1.0,,http://www.hosannahouse.org/
-210,Howard Anderson-Power Memorial,40.4368286,-79.96068799999999,"300 Halket St, Pittsburgh",,,,,1.0,,
-211,Humane Animal Rescue Pittsburgh,40.4510525,-80.02001419999999,"1101 Western Ave, Pittsburgh",,,,1.0,,,http://www.humaneanimalrescue.org/
-212,Humane Animal Rescue of Pittsburgh,40.4557913,-79.9040929,"6926 Hamilton Ave, Pittsburgh",,,,1.0,,,http://www.humaneanimalrescue.org/
-213,Hunger Services Network - Food Distribution Center,40.4659896,-79.96459999999999,"204 37th St, Pittsburgh",,1.0,,,,,
-214,Hunt Library,40.4411268,-79.9437538,"4909 Frew St, Pittsburgh",,,,,1.0,,https://library.cmu.edu/
-215,Insight Global,40.439998,-80.00379500000001,"PPG Place, 1, #3030, Pittsburgh",,,,,1.0,,https://insightglobal.com/locations?utm_source=gmb&utm_medium=Yext
-216,JEWISH COMMUNITY CENTER - ROBINSON BLDG,40.4367972,-79.9236779,"5738 Darlington Rd, Pittsburgh",,,,,1.0,,
-217,JFCS Career Development Center,40.43631,-79.9239769,"5743 Bartlett St, Pittsburgh",,,,,1.0,,https://www.jfcspgh.org/services/career-development-center/
-218,JFCS Pittsburgh,40.43612479999999,-79.9238642,"5743 Bartlett St, Pittsburgh",,1.0,,1.0,,,https://www.jfcspgh.org/
-219,JFCS Squirrel Hill Food Pantry,40.41956769999999,-79.9279997,"828 Hazelwood Ave, Pittsburgh",,1.0,,,,,https://www.jfcspgh.org/services/squirrel-hill-food-pantry/
-220,James Frazer Hillman Library,40.4548817,-79.9397796,"Upmc Shadyside-East Wing, 5230 Centre Ave, Pittsburgh",,,,,1.0,,
-221,Jennie King Mellon Library,40.4485215,-79.9261641,"Chatham University, Woodland Rd, Pittsburgh",,,,,1.0,,https://library.chatham.edu/home
-222,Jeremiah's Place,40.461502,-79.9151687,"6435 Frankstown Ave, Pittsburgh",,,,1.0,,,http://jeremiahsplace.org/
-223,Jeron X. Grayson Community Center,40.4442894,-79.9833307,"1852 Enoch St, Pittsburgh",,,,,1.0,,https://centerthatcares.org/event-space/overview/
-224,Jewish Community Center of Greater Pittsburgh,40.4374275,-79.92371370000001,"5738 Forbes Ave, Pittsburgh",,,,,1.0,,http://www.jccpgh.org/
-225,Job Corps Placement & Admissions Center,40.4388646,-79.9995988,"355 Fourth Ave, Pittsburgh",,,,,1.0,,
-226,Jubilee Association - Food Distribution Center,40.4384459,-79.9773254,"2005 Wyandotte St, Pittsburgh",,1.0,,1.0,,,
-227,Jubilee Food Pantry,40.4567672,-79.96710379999999,"3103 Brereton St, Pittsburgh",,1.0,,,,,https://pittsburghfoodbank.org/agency/jubilee-association-inc-food-pantry/
-228,Jubilee Kitchen,40.4384783,-79.9772969,"2005 Wyandotte St, Pittsburgh",,1.0,,,,,https://www.jubileesoupkitchen.com/
-229,Just Harvest,40.4303471,-79.9972585,"317 E Carson St, Pittsburgh",,1.0,,,,,https://www.justharvest.org/
-230,Just Life Inc,40.5184833,-80.0055859,"4725 McKnight Rd # 120, Pittsburgh",,,,,1.0,,http://www.justlife-inc.com/
-231,K Maxin & Associates,40.4518432,-80.0067586,"10 Allegheny Ctr # 421, Pittsburgh",,,,,1.0,,
-232,KORE Resource,40.4276484,-80.12387509999999,"1 Penn Center Blvd, Pittsburgh",,,,,1.0,,http://koreresource.com/
-233,Keep it Simple Training & Development,40.4383265,-79.99907689999999,"301 Grant St Suite 270, Pittsburgh",,,,,1.0,,http://www.kiswfd.com/
-234,Kenny's,40.4532491,-79.8944463,"7401 Tioga St, Pittsburgh",,1.0,,,,,http://www.kennyshomewood.com/
-235,"Keystone Staffing Solutions, LLC",40.4418471,-80.0055357,"Three Gateway Center, 401 Liberty Ave #2400, Pittsburgh",,,,,1.0,,http://www.keystonestaffingllc.com/
-236,Kforce,40.424627,-80.040686,"Greentree Road, 875 Parkway Center Dr S suite 760, Pittsburgh",,,,,1.0,,https://www.kforce.com/
-237,Kingsley Association,40.4612731,-79.91519919999999,"6435 Frankstown Ave, Pittsburgh",,,,,1.0,,http://kingsleyassociation.org/
-238,Krown Employment Services Llc,40.4568674,-79.9919489,"801 Vinial St #102, Pittsburgh",,,,,1.0,,https://www.krownempsvc.com/
-239,LIHEAP Allegheney County,40.4618572,-79.9252604,"5947 Penn Ave, Pittsburgh",,1.0,,,,,http://www.dhs.pa.gov/
-240,Labyrinth/Community Garden,40.4427783,-79.8913939,"322 Franklin Ave, Pittsburgh",,1.0,,,,,
-241,Lake Point Shelter,40.4802097,-79.90980309999999,"Lake Dr, Pittsburgh",,,,1.0,,,https://pittsburghpa.gov/park-shelter/reserve
-242,Langley Library,40.4460138,-79.9532194,"4249 Fifth Ave, Pittsburgh",,,,,1.0,,http://library.pitt.edu/
-243,Larimer Community Garden and Urban Farm,40.4644279,-79.9155097,"413 Larimer Ave, Pittsburgh",,1.0,,,,,http://cargocollective.com/akshay/Larimer-Community-Garden
-244,Larimer Consensus Group,40.4608656,-79.9154182,"200 Larimer Ave, Pittsburgh",,,,,1.0,,http://www.thelarimerconsensusgroup.org/
-245,Latino Community Center,40.4431552,-79.99822449999999,"212 9th St, Pittsburgh",,,,,1.0,,http://www.latinocommunitycenter.org/
-246,Lauri Ann West Community Center,40.5137579,-79.8573179,"1220 Powers Run Rd, Pittsburgh",,,,,1.0,,http://www.lauriannwestcc.org/
-247,Liberty Hall,40.4239527,-79.969768,"2604 Josephine St, Pittsburgh",,,,,1.0,,
-248,Library of Accessible Media for Pennsylvanians (LAMP),40.453817,-79.94918299999999,"4724 Baum Blvd, Pittsburgh",,,,,1.0,,https://www.carnegielibrary.org/
-249,Life's Work of Western PA,40.42954599999999,-79.9697503,"2403 Sidney St, Pittsburgh",,,,,1.0,,https://www.lifesworkwpa.org/
-250,Light Of Life Rescue Mission - Food Distribution Center,40.4516366,-80.0169993,"913 Western Ave, Pittsburgh",,1.0,,,,,http://www.lightoflife.org/
-251,Light of Life Donation Center,40.4507331,-80.0108032,"635 Ridge Ave, Pittsburgh",1.0,1.0,,1.0,,,https://www.lightoflife.org/waystogive/needs/
-252,Light of Life Rescue Mission,40.4508014,-79.996034,"234 Voeghtly St, Pittsburgh",,,,1.0,,,https://www.lightoflife.org/
-253,Light of Life Rescue Mission,40.4558077,-80.0061168,"10 E North Ave, Pittsburgh",,1.0,,1.0,,,http://www.lightoflife.org/
-254,Light of Life Rescue Mission,40.45167,-80.0170299,"913 Western Ave, Pittsburgh",,,,1.0,,,https://www.lightoflife.org/
-255,Limbach Community Center,40.4568629,-79.9968902,"820 Tripoli St, Pittsburgh",,,,,1.0,,
-256,Lincoln Park Community Center Food Pantry - Food Distribution Center,40.4676338,-79.88584519999999,"7300 Ridgeview Ave, Pittsburgh",,1.0,,,,,http://www.lincolnparkcommunitycenter.com
-257,LinkedIn Profile & Resume Writing Services,40.4590674,-79.9172588,"6401 Penn Ave Third Floor, Pittsburgh",,,,,1.0,,https://klaxos.com/linkedin-profile-writer/pittsburgh-office/?utm_source=Google&utm_medium=Organic&utm_campaign=GMB%20Pittsburgh
-258,Lippman Library,40.4479598,-79.9435565,"4905 Fifth Ave, Pittsburgh",,,,,1.0,,https://www.rodefshalom.org/lippman-library
-259,Literacy Pittsburgh,40.4428627,-79.99641199999999,"411 Seventh Ave Ste. 525, Pittsburgh",,,,,1.0,,http://www.literacypittsburgh.org/
-260,Literacy Pittsburgh,40.4502791,-79.929554,"5701 Fifth Ave, Pittsburgh",,,,,1.0,,http://www.literacypittsburgh.org/
-261,Little Bird House Library,40.4634296,-79.94527599999999,"241 S Millvale Ave, Pittsburgh",,,,,1.0,,
-262,Little Free Library #129992,40.42786030000001,-79.8462069,"3929 Greensburg Pike, Pittsburgh",,,,,1.0,,
-263,Locust Grove Shelter,40.4852353,-80.0221755,Pittsburgh,,,,1.0,,,http://www.pittsburghparks.org/riverview-park
-264,Magee Recreation Center,40.4243888,-79.93682489999999,"745 Greenfield Ave, Pittsburgh",,,,,1.0,,http://pittsburghpa.gov/citiparks/parks.html
-265,McCandless Organic Community Garden,40.4806017,-79.9523109,"McCandless Ave &, Natrona Way, Pittsburgh",,1.0,,,,,
-266,McKinley Park Shelter House,40.4141082,-80.0040969,"900 Delmont Ave, Pittsburgh",,,,1.0,1.0,,
-267,Mellon Institute Library,40.446138,-79.951044,"4400 Fifth Ave, Pittsburgh",,,,,1.0,,http://search.library.cmu.edu/
-268,Michael's Place - Food Distribution Center,40.4397692,-79.99126679999999,"109 Washington Pl, Pittsburgh",,1.0,,,,,
-269,Mikvah-Jewish Women's League,40.4302319,-79.92045,"2336 Shady Ave, Pittsburgh",,,,1.0,,,https://pittsburghmikvah.org/
-270,Mrs. Wright's Closet,40.388898,-79.985434,"2306 Brownsville Rd, Pittsburgh",1.0,,,,,,
-271,Mt Lebanon Public Library,40.3770922,-80.0451774,"16 Castle Shannon Blvd, Pittsburgh",,,,,1.0,,
-272,Muslim Women's Association of Pittsburgh,40.4521439,-79.9523806,"1/2 N Craig St, Pittsburgh",,,,1.0,,,http://www.mwaofpittsburgh.org/make-a-difference.html
-273,Naomi Place Transitional,40.467645,-79.92383,"601 N Beatty St, Pittsburgh",,,,1.0,,,https://www.naomisplaceinc.com/
-274,National Council-Jewish Women,40.4218923,-79.88853019999999,"1913 Monongahela Ave, Pittsburgh",,,,1.0,,,http://www.ncjwpgh.org/
-275,National Cyber-Forensics and Training Alliance,40.43416,-79.970298,"2000 Technology Dr # 450, Pittsburgh",,,,,1.0,,
-276,National Fatherhood Initiative,40.4414744,-79.99676149999999,"425 Sixth Ave, Pittsburgh",,1.0,,,,,
-277,National Personal Training Institute,40.46177,-79.9262749,"5916 Penn Ave, Pittsburgh",,,,,1.0,,http://www.nationalpti.org/
-278,Nazareth Housing Services,40.4139063,-79.9885224,"320 Brownsville Rd, Pittsburgh",,,,1.0,,,
-279,Neighborhood Centers Association,40.4568675,-79.9970007,"816 Tripoli St, Pittsburgh",,,,1.0,,,
-280,Nesco Resource,40.4276484,-80.12387509999999,"1 Penn Center Blvd #103, Pittsburgh",,,,,1.0,,http://www.nescoresource.com/
-281,Network Of Hope - Food Distribution Center,40.4769714,-80.01254759999999,"3035 Perrysville Ave, Pittsburgh",,1.0,,,,,http://networkofhope.org/
-282,New Century Careers,40.4296931,-79.997359,"305 E Carson St, Pittsburgh",,,,,1.0,,http://www.ncsquared.com/
-283,New Horizons Computer Learning Center of Pittsburgh PA,40.4251221,-80.03843739999999,"3 Parkway Center Dr S #103, Pittsburgh",,,,,1.0,,http://www.nhpittsburgh.com/
-284,New Life Fellowship - Food Distribution Center,40.443036,-80.042416,"920 Lorenz Ave, Pittsburgh",,1.0,,,,,
-285,Noblestown WIC,40.4298133,-80.0525665,"2121 Noblestown Rd #202, Pittsburgh",,1.0,,,,,http://www.achd.net/wic/
-286,North Boroughs Food Pantry,40.499119,-80.062276,"939 California Ave, Pittsburgh",,1.0,,,,,https://www.nhco.org/events/millvale-food-pantry-lxy8s-b3rsr-8bw26-lr994
-287,North Hills Community Outreach - Food Distribution Center,40.499119,-80.062276,"939 California Ave, Pittsburgh",,1.0,,,,,http://www.nhco.org/
-288,North Hills Food Bank,40.546734,-80.02081199999999,"99 Corbett Ct, Pittsburgh",,1.0,,,,,
-289,North Hills Food Bank,40.5310622,-80.0366809,"845 Perry Hwy, Pittsburgh",,1.0,,,,,http://northhillsfoodbank.org/
-290,Northside Common Ministries,40.458054,-80.016323,"1601 Brighton Rd, Pittsburgh",,1.0,,1.0,,,http://www.ncmin.org/
-291,Northside Common Ministries - Food Distribution Center,40.4543466,-80.0283415,Pittsburgh,,1.0,,,,,http://www.trfn.clpgh.org/ncm/index.shtml
-292,Northwestern Human Services,40.4537002,-79.8027695,"600 MacBeth Dr, Pittsburgh",,1.0,,,,,
-293,Oakland Avenue Farm,40.4403486,-79.955861,"246 Oakland Ave, Pittsburgh",,1.0,,,,,
-294,Oasis Community Kitchen,40.4561534,-79.89709839999999,"717 N Homewood Ave, Pittsburgh",,1.0,,,,,http://www.oasiscommunitykitchen.org/
-295,Oh Snap Studio,40.8344701,-79.9218625,"184 Pittsburgh Rd, Butler",,1.0,,,,,
-296,Olde Allegheny Community Gardens,40.4567761,-80.0099546,"1314 Sherman Ave, Pittsburgh",,1.0,,,,,
-297,Ormsby Community Recreation Center,40.4290834,-79.9743854,"79 S 22nd St, Pittsburgh",,,,,1.0,,http://pittsburghpa.gov/citiparks/ormsby
-298,Orr Compassionate Care Center,40.462942,-79.92306099999999,"6023 Harvard St # 2, Pittsburgh",,,,1.0,,,
-299,Oval Shelter,40.4312029,-79.9441739,Pittsburgh,,,,1.0,,,https://registerparks.pittsburghpa.gov/Facilities.aspx?id=14
-300,PA CareerLink Allegheny East,40.4204862,-79.8520735,"2040 Ardmore Blvd, Pittsburgh",,,,,1.0,,http://www.careerlinkpittsburgh.com/
-301,PADCO Project Care,40.4442344,-79.9887455,"1435 Bedford Ave, Pittsburgh",,,,,1.0,,https://padcoprojectcare.com/
-302,PCSI,40.4513675,-79.95182659999999,"249 N Craig St, Pittsburgh",,1.0,,,1.0,,https://www.pghcsi.org/
-303,PGH Equality Center,40.4566385,-79.9380702,"5401 Centre Ave Room 103, Pittsburgh",,,,1.0,,,http://www.pghequalitycenter.org/
-304,Pancoast Staffing Services Inc,40.4415335,-80.00281799999999,"Two Gateway Center, 603 Stanwix St, Pittsburgh",,,,,1.0,,http://www.pancoast.com/
-305,Partner4Work,40.442483,-79.996695,"650 Smithfield St # 2600, Pittsburgh",,,,,1.0,,http://www.partner4work.org/
-306,Pennsylvania CareerLink Pittsburgh/Allegheny County,40.4389465,-80.0012185,"304 Wood St, Pittsburgh",,,,,1.0,,http://www.careerlinkpittsburgh.com/
-307,Pennsylvania Women Work,40.442483,-79.996695,"650 Smithfield St #520, Pittsburgh",,,,1.0,1.0,,http://www.pawomenwork.org/
-308,PeopleReady,40.4659911,-79.970692,"19 35th St, Pittsburgh",,,,,1.0,,https://www.peopleready.com/location/pittsburgh-pa-1740?utm_campaign=gmb&utm_medium=organic&utm_source=google
-309,PeopleShare,40.424673,-80.03764869999999,"11 Parkway Center Dr S Suite 105, Pittsburgh",,,,,1.0,,http://www.peopleshareworks.com/
-310,Physics Geology Planetary Library,40.445006,-79.958114,"208 Engineering Dept. Dr, Pittsburgh",,,,,1.0,,
-311,Pittsbugh Community Center Inc,40.442537,-79.983015,"1801 Centre Ave, Pittsburgh",,,,,1.0,,
-312,Pittsburgh Adult Rehabilitation Center,40.4292633,-79.9899714,"44 S 9th St, Pittsburgh",1.0,,,,,,https://satruck.org/
-313,Pittsburgh Blindness & Visual Services,40.4426507,-80.00286659999999,"531 Penn Ave, Pittsburgh",,,,,1.0,,
-314,Pittsburgh Career Institute,40.4426737,-79.995898,"421 Seventh Ave, Pittsburgh",,,,,1.0,,https://pci.edu/?utm_source=google&utm_medium=gmb
-315,Pittsburgh Cares,40.4642142,-79.96640889999999,"3505 Butler St, Pittsburgh",,1.0,,1.0,,,http://www.pittsburghcares.org/
-316,Pittsburgh Donation Center,40.377679,-79.9887751,"2790 Saw Mill Run Blvd, Pittsburgh",1.0,,,,,,https://www.zicknacks.com/donation-drop-off
-317,Pittsburgh Job Corps Center,40.4769859,-79.9026794,"7175 Highland Dr, Pittsburgh",,,,,1.0,,http://pjceducation.org/
-318,Pittsburgh Mercy,40.4484536,-80.01997589999999,"1200 Reedsdale St, Pittsburgh",,,,1.0,,,http://www.pittsburghmercy.org/
-319,Pittsburgh Mercy Alternative Training & Employment Center,40.4543769,-79.9483211,"4749 Baum Blvd, Pittsburgh",,,,,1.0,,https://www.pittsburghmercy.org/intellectual-disabilities/employment-services/
-320,Plato's Closet Pittsburgh,40.5382201,-80.0133084,"7219 McKnight Rd, Pittsburgh",1.0,,,,,,http://www.platosclosetmcknight.com/
-321,Pleasant Valley Men's Shelter,40.458054,-80.016323,"1601 Brighton Rd, Pittsburgh",,,,1.0,,,http://www.ncmin.org/pleasant-valley-mens-shelter
-322,Plum Food Pantry,40.4638944,-79.703709,"81 Sandune Dr, Pittsburgh",,1.0,,,,,http://www.plumfoodpantry.org/
-323,Pnc Community Development Corporation,40.4468383,-79.94866569999999,"4600 Fifth Ave, Pittsburgh",,,,,1.0,,https://www.pnc.com/en/about-pnc/corporate-responsibility/community-dev-banking.html
-324,Positivity Garden,40.41598870000001,-79.9918223,"223 Zara St, Pittsburgh",,1.0,,,,,
-325,ProLink Staffing,40.4200927,-80.0528375,"381 Mansfield Ave Suite 301, Pittsburgh",,,,,1.0,,https://staffing-agency-pittsburgh.business.site/?utm_source=gmb&utm_medium=referral
-326,Project Star At Children's,40.4413721,-79.891435,"467 S Trenton Ave, Pittsburgh",,,,1.0,,,https://www.amazingkids.org/
-327,Prospect Shelter,40.4312432,-79.9351002,"Prospect Dr, Pittsburgh",,,,1.0,,,https://pittsburghpa.gov/park-shelter/reserve
-328,Prospect Terrace Knowledge,40.4036087,-79.8345968,"99 Prospect St, East Pittsburgh",,,,,1.0,,
-329,Proud Haven,40.453506,-79.99999369999999,"517 E Ohio St, Pittsburgh",,,,1.0,,,https://www.proudhaven.org/
-330,Public Welfare Department,40.44252700000001,-79.9966305,"610 Wood St, Pittsburgh",,1.0,,,,,
-331,QNS Recruiting,40.4931109,-79.86898029999999,"260 Alpha Dr, Pittsburgh",,,,,1.0,,http://www.qnsrecruiting.com/
-332,Quick Train for Jobs,40.4204862,-79.8520735,"2040 Ardmore Blvd, Pittsburgh",,,,,1.0,,http://www.quicktrainforjobs.com/pagecontent/index/6
-333,Reemployment Transition Center,40.4398883,-80.0000136,"332 Fifth Ave #610, Pittsburgh",,,,,1.0,,
-334,Regional Industrial Development Corporation,40.4414298,-79.996201,"210 Sixth Ave, Pittsburgh",,,,,1.0,,http://ridc.org/
-335,Rescue and Relax,40.4323271,-79.8844357,"117 Edgewood Ave, Pittsburgh",,,,1.0,,,http://rescueandrelax.com/
-336,Riverview Park Chapel Shelter,40.4786286,-80.01978749999999,"366 Riverview Ave, Pittsburgh",,,,1.0,,,https://www.pittsburghparks.org/projects/riverview-park-chapel-shelter
-337,Riverview Presbyterian - Food Distribution Center,40.5319999,-79.99396,"134 Sunset Dr, Pittsburgh",,1.0,,,,,
-338,Riverview United Presbyterian- Food Distribution Center,40.484128,-80.014404,"3505 Perrysville Ave, Pittsburgh",,1.0,,,,,https://www.riverviewpresbyterian.org/
-339,Robert Half Recruiters & Employment Agency,40.4443579,-79.9945772,"1001 Liberty Ave Suite 400, Pittsburgh",,,,,1.0,,https://www.roberthalf.com/locations/pa-pittsburgh/1001-liberty-avenue?utm_source=gmb_listing&utm_medium=organic&utm_campaign=local_listing&y_source=1_MTI5MDM1NzktNzE1LWxvY2F0aW9uLmdvb2dsZV93ZWJzaXRlX292ZXJyaWRl
-340,SHAPE Training,40.46154,-79.9261349,"5916 Penn Ave, Pittsburgh",,,,,1.0,,https://freetrial.shapetrain.com/
-341,SWISSHELM PARK COMMUNITY CENTER,40.4244434,-79.9013163,"1050 Windermere Dr, Pittsburgh",,,,,1.0,,https://pittsburghcontra.org/2017/12/06/announcement-on-dance-location/
-342,Saint Mary Assumption - Sharpsburg Site - Food Distribution Center,40.4955377,-79.93604619999999,"Altmayer St, Pittsburgh",,1.0,,,,,
-343,Saint Paul Cathedral Food Pantry - Food Distribution Center,40.4471608,-79.9505097,"108 N Dithridge St, Pittsburgh",,1.0,,,,,
-344,Sankofa Village Community Garden,40.4505795,-79.8909491,"Susquehanna St and N, Brushton Ave, Pittsburgh",,1.0,,,,,https://www.svcgpgh.com/
-345,Second Harvest Community Thrift Store,40.4951852,-79.9346934,"624 Clay St, Pittsburgh",1.0,,,,,,http://www.secondharvestthrift.com/
-346,Self Sufficiency,40.4091203,-79.9731402,"930 Cresswell St, Pittsburgh",,1.0,,,,,
-347,Shadyside Counseling Services,40.4495604,-79.9337674,"5425 Kentucky Ave, Pittsburgh",,,,,1.0,,
-348,Sharpsburg Community Garden,40.4947075,-79.930171,"203 Benson Way, Pittsburgh",,1.0,,,,,https://www.growpittsburgh.org/directory/garden/sharpsburg-community-garden
-349,Sharpsburg Community Library,40.4943603,-79.9302293,"1212 Main St, Pittsburgh",,,,,1.0,,http://www.coopersiegelcommunitylibrary.org/sharpsburg/
-350,Sharpsburg Market Garden,40.495118,-79.9293921,"124 13th St, Pittsburgh",,1.0,,,,,
-351,Sharpsburg Recreation Center,40.49523,-79.9312461,"205 N Canal St, Pittsburgh",,,,,1.0,,
-352,Shepherd’s Heart,40.4380143,-79.9849898,"13 Pride St, Pittsburgh",,,,1.0,,,https://shepheart.org/
-353,Sheridan Avenue Orchard and Garden,40.4637472,-79.92173,"316-332 Sheridan Ave, Pittsburgh",,1.0,,,,,https://werepair.org/pittsburgh/
-354,Shiloh Center,40.4636915,-79.9599343,"3832 Mintwood St, Pittsburgh",,,,,1.0,,https://shiloh-center.business.site/
-355,Smithfield United Church of Christ,40.4418667,-79.9973002,"Smithfield Building, 620 Smithfield St, Pittsburgh",,,,1.0,,,http://smithfieldchurch.org/
-356,Snap Fitness Etna,40.5003804,-79.943214,"550 Butler St, Pittsburgh",,1.0,,,,,https://www.snapfitness.com/us/gyms/etna-pa/?utm_source=google&utm_medium=organic&utm_campaign=business-listing
-357,Snap Fitness Pittsburgh (McKnight Rd),40.517797,-80.00569399999999,"4721 McKnight Rd, Pittsburgh",,1.0,,,,,https://www.snapfitness.com/us/gyms/pittsburgh-mcknight-rd-pa/?utm_source=google&utm_medium=organic&utm_campaign=business-listing
-358,SnapRetail,40.45080069999999,-80.00369669999999,"100 S Commons #102, Pittsburgh",,1.0,,,,,http://snapretail.com/
-359,Sojourner House,40.4641819,-79.9333922,"5460 Penn Ave, Pittsburgh",,,,1.0,,,https://www.sojournerhousepa.org/
-360,South Park Community House,40.3158957,-79.9988741,"Maple Springs Dr, Pittsburgh",,1.0,,,,,http://alleghenycounty.us/parks/south-park/index.aspx
-361,Southwest Pittsburgh CDC,40.453936,-80.00869039999999,"1004 Arch St, Pittsburgh",,,,,1.0,,
-362,Spartan Community Center of Hazelwood,40.4071807,-79.9419097,"134 E Elizabeth St, Pittsburgh",,,,,1.0,,http://www.spartancenter.org/
-363,Springdale WIC,40.5410926,-79.7786431,"830 Pittsburgh St, Springdale",,1.0,,,,,http://www.achd.net/wic/
-364,St Joseph's House-Hospitality,40.4447822,-79.9867782,"1635 Bedford Ave, Pittsburgh",,,,1.0,,,
-365,St. Vincent de Paul Society - Main Office,40.449239,-80.02721799999999,"1501 Reedsdale St #3003, Pittsburgh",1.0,,,,,,http://www.svdppitt.org/
-366,St. Vincent de Paul Society - Thrift Store,40.366735,-80.013733,"3423 Library Rd, Pittsburgh",1.0,,,,,,http://www.svdppitt.org/
-367,Style Encore North Hills,40.5697392,-80.0209329,"750 Providence Blvd, Pittsburgh",1.0,,,,,,http://www.style-encorenorthhills.com/
-368,Swissvale Community Food Pantry,40.4209148,-79.88602130000001,"2028 Noble St, Pittsburgh",,1.0,,,,,https://swissvalefoodpantry.org/
-369,Swissvale Community Garden,40.4172977,-79.8905486,"7301 Denniston Ave, Pittsburgh",,1.0,,,,,https://swissvale.org/swissvale-community-garden
-370,Synerfac Technical Staffing,40.4286737,-79.8113226,"201 Penn Center Blvd, Pittsburgh",,,,,1.0,,https://www.synerfac.com/
-371,TEKsystems,40.4308846,-80.1267171,"8 Penn Center, West Drive Suite 200, Pittsburgh",,,,,1.0,,https://www.teksystems.com/
-372,Teacher Excellence Center,40.4425231,-79.9972639,"635 Smithfield St, Pittsburgh",,,,,1.0,,
-373,The Broom Closet,40.3815497,-79.99869149999999,"2544 Library Rd #106, Pittsburgh",1.0,,,,,,http://www.broomclosetpittsburgh.com/
-374,The Center for Women,40.43909,-79.923373,"1620 Murray Ave, Pittsburgh",,,,1.0,,,
-375,The Children's Home of Pittsburgh & Lemieux Family Center,40.4642045,-79.9374887,"5324 Penn Ave, Pittsburgh",,,,1.0,,,http://www.childrenshomepgh.org/
-376,The Closet,40.4939205,-80.0527501,"10 S Fremont Ave, Pittsburgh",1.0,,,,,,http://thecloset724.com/
-377,The Container Store,40.5526313,-80.0212657,"8033 McKnight Rd, Pittsburgh",1.0,,,,,,https://www.containerstore.com/locations/showStore.htm?store=PIT&cid=ns:maps:google:main-store:39-pittsburgh
-378,The Discount Closet,40.382972,-80.016561,"505 McNeilly Rd, Pittsburgh",1.0,,,,,,
-379,The Empress Closet,40.4369503,-79.8782131,"480 Ella St, Pittsburgh",1.0,,,,,,
-380,The F.M. Thomas And Jerome Thomas Community Center,40.46306080000001,-79.91298379999999,"401 Paulson Ave, Pittsburgh",,,,,1.0,,
-381,The Market on Lincoln Ave,40.4682098,-79.8968617,"1407 Lincoln Ave, Pittsburgh",,1.0,,,,,
-382,The Octopus Garden,40.4635711,-79.93683519999999,"135 S Aiken Ave, Pittsburgh",,1.0,,,,,https://www.facebook.com/octopusgardenpittsburgh/
-383,The Phlebotomy Training Center,40.446155,-79.954695,"100 Lytton Ave, Pittsburgh",,,,,1.0,,http://www.justphlebotomy.org/
-384,The Salvation Army Thrift Store & Donation Center,40.4288509,-79.9902163,"855 E Carson St, Pittsburgh",1.0,,,,,,https://satruck.org/
-385,Thornburg Community Center,40.4323089,-80.0831333,"545 Hamilton Rd, Pittsburgh",,,,,1.0,,http://thornburgborough.org/community/community-center/
-386,Three Rivers Vintage,40.4286875,-79.9814121,"1716 E Carson St, Pittsburgh",1.0,,,,,,https://www.facebook.com/ThreeRiversVintage
-387,Three Rivers Youth,40.4830907,-80.0467456,"2051 Termon Ave, Pittsburgh",,,,1.0,,,http://threeriversyouth.org/
-388,Three Rivers Youth,40.4620819,-79.9221572,"6117 Broad St, Pittsburgh",,,,1.0,,,http://www.threeriversyouth.org/
-389,Training Inc,40.4392206,-80.0017051,"305 Wood St # 3, Pittsburgh",,,,,1.0,,
-390,Treasure House Fashions,40.54449839999999,-80.0157699,"7607 McKnight Rd, Pittsburgh",1.0,,,,,,http://thfashions.org/
-391,Troy Hill Citizens Inc,40.46324509999999,-79.9837026,"1619 Lowrie St, Pittsburgh",,1.0,,,1.0,,http://www.troyhillpittsburgh.com/
-392,Trwib Inc,40.4414408,-79.99667389999999,"425 Sixth Ave #650, Pittsburgh",,,,,1.0,,https://www.partner4work.org/
-393,US Air Force and Space Force Recruiting,40.358985,-80.00093500000001,"M11, Caste Village Mall, Pittsburgh",,,,,1.0,,https://join1usafricpittsburgh.business.site/?utm_source=gmb&utm_medium=referral
-394,Unified Positive Effect Garden,40.4200552,-80.000342,"Climax St +, Estella Ave, Pittsburgh",,1.0,,,,,
-395,United Methodist Church Union,40.4520866,-80.0188776,"971 Beech Ave, Pittsburgh",,1.0,,,,,https://churchunion.org/
-396,United States Department of Health & Human Services,40.3050995,-79.97503619999999,"626 Cochran Mill Rd, Pittsburgh",,1.0,,,,,https://www.alleghenycounty.us/dhs
-397,Unity Food Pantry,40.408869,-80.050485,"1146 Greentree Rd, Pittsburgh",,1.0,,,,,http://unitypresbyterianchurch.org/foodpantry/
-398,University of Pittsburgh - Bevier Engineering Library,40.4440676,-79.9578544,"G33 Benedum Hall, 3700 O'Hara St, Pittsburgh",,,,,1.0,,https://www.library.pitt.edu/engineering
-399,University of Pittsburgh - Frick Fine Arts Library,40.4416574,-79.9512415,"650 Schenley Drive, Pittsburgh",,,,,1.0,,http://www.pitt.edu/
-400,University of Pittsburgh - Health Sciences Library,40.44286719999999,-79.9614028,"200 Scaife Hall, 3550 Terrace St, Pittsburgh",,,,,1.0,,https://www.hsls.pitt.edu/
-401,University of Pittsburgh - Theodore M Finney Music Library,40.4466255,-79.95230629999999,"Music Building, 28B, Pittsburgh",,,,,1.0,,https://www.library.pitt.edu/music
-402,Upmc Vocational Training Center,40.4294644,-79.9880135,"1029 Bingham St, Pittsburgh",,,,,1.0,,https://www.upmc.com/services/behavioral-health/autism/adult/vocational-training
-403,Upstream Coding,40.4636674,-79.926716,"224 N Euclid Ave fl 2, Pittsburgh",,,,,1.0,,https://www.upstreamcoding.com/
-404,Valley Presbyterian Church Food Pantry - Food Distribution Center,40.47062349999999,-79.9327936,"Black St, Pittsburgh",,1.0,,,,,
-405,Valley Refuge Shelter,40.4793269,-80.01533979999999,Pittsburgh,,,,1.0,,,
-406,Veterans Place of Washington Boulevard,40.4611197,-79.9065713,"945 Washington Blvd, Pittsburgh",,,,1.0,,,https://www.veteransplaceusa.org/
-407,Veterans Services,40.4450029,-79.95642459999999,"4141 Fifth Ave 3rd Floor, Pittsburgh",,1.0,,,,,https://www.alleghenycounty.us/veterans/index.aspx
-408,Vietnam Veterans of America,40.4107437,-80.0064056,"890 Saw Mill Run Blvd, Pittsburgh",1.0,,,,,,https://pickupplease.org/donate-in-pittsburgh/
-409,Vietnam Veterans of America – Free Donation Pickup in Pittsburgh (Ohio River Blvd),40.495483,-80.065652,"935 Ohio River Blvd, Pittsburgh",1.0,,,,,,https://pickupplease.org/donate-in-pleasant-hill
-410,Vietnam Veterans of America – Free Donation Pickup in Pittsburgh (Saw Mill Run),40.410744,-80.006406,"890 Saw Mill Run Blvd, Pittsburgh",1.0,,,,,,https://pickupplease.org/donate-in-pittsburgh
-411,Vincentian Schenley Gardens,40.454697,-79.954974,"3890 Bigelow Blvd, Pittsburgh",,1.0,,,,,https://vcs.org/vincentian-schenley-gardens/
-412,Wadsworth Hall Community Center,40.4427575,-79.9697218,"480 Oak Hill Dr, Pittsburgh",,,,,1.0,,
-413,Walk In Closet Clothing & Accessories,40.4217614,-79.99716819999999,"603 E Warrington Ave, Pittsburgh",1.0,,,,,,
-414,Wallace Ave. Soup Kitchen - Food Distribution Center,40.4438507,-79.8816887,"751 Wallace Ave, Pittsburgh",,1.0,,,,,
-415,Walled Garden,40.4519856,-79.9187017,Pittsburgh,,1.0,,,,,http://pittsburghpa.gov/
-416,Wellsprings,40.43847299999999,-79.99152699999999,"903 Watson St, Pittsburgh",,,,1.0,,,
-417,West End Works Neighborhood Employment Center,40.443254,-80.04133499999999,"825 Lorenz Ave, Pittsburgh",,,,,1.0,,https://www.facebook.com/westendworks.nec.3
-418,West Penn Community Parking Lot,40.45516509999999,-79.9703664,"Haran St, Pittsburgh",,1.0,,,,,
-419,West Penn Community Recreation Center,40.4557734,-79.96936219999999,"450 30th St, Pittsburgh",,,,,1.0,,https://pittsburghpa.gov/citiparks/rec-centers
-420,Western Pa Hospital Medical Library,40.4614529,-79.94636369999999,"4800 Friendship Ave, Pittsburgh",,,,,1.0,,
-421,Wfsc Pantry - Food Distribution Center,40.4433473,-79.8803719,"807 Wallace Ave, Pittsburgh",,1.0,,,,,
-422,Wilkins School Community Center,40.4301837,-79.8930053,"7604 Charleston Ave, Pittsburgh",,,,,1.0,,http://www.wsccpgh.org/
-423,Wilkinsburg Community Ministry,40.4414316,-79.8858182,"704 Wood St, Pittsburgh",,1.0,,,,,http://www.wcm15221.org/
-424,Wilkinsburg Family Support Center,40.4437117,-79.88054559999999,"807 Wallace Ave Suite 205, Pittsburgh",,,,1.0,,,http://wfsc1994.org/
-425,Wilkinsburg Public Library,40.4433702,-79.88583539999999,"605 Ross Ave, Pittsburgh",,,,,1.0,,http://www.wilkinsburglibrary.org/
-426,Wilkinsburg WIC Clinic,40.4437708,-79.8805204,"Hosanna House, 807 Wallace Ave #204a, Pittsburgh",,1.0,,,,,"https://www.alleghenycounty.us/Health-Department/Health-Services/Women,-Infants-and-Children/Women-Infants-and-Children-Program.aspx"
-427,Womanspace East,40.4380601,-79.9774564,"2000 Fifth Ave, Pittsburgh",,,,1.0,,,https://www.wseinc.org/
-428,Women & Girls Foundation-Swp,40.4662502,-79.9644501,"3700 Butler St Studio C, Pittsburgh",,,,1.0,,,http://wgfpa.org/
-429,YWCA,40.458441,-79.903288,"6907 Frankstown Ave, Pittsburgh",,,,1.0,,,https://www.ywcapgh.org/contact-us
-430,YWCA Greater Pittsburgh,40.4392206,-80.0017051,"305 Wood St, Pittsburgh",,,,1.0,,,http://www.ywcapgh.org/
-431,Youth Enrichment Services,40.4623731,-79.9227169,"6031 Broad St Suite 202, Pittsburgh",,,,1.0,,,http://youthenrichmentservices.org/
-432,YouthPlaces,40.4526763,-80.0080897,"711 W Commons, Pittsburgh",,,,1.0,,,http://youthplaces.org/
-433,Zicknacks Community Thrift Store,40.37824579999999,-79.9902455,"2780 Saw Mill Run Blvd, Pittsburgh",1.0,,,,,,http://www.zicknacks.com/
-434,crafton-Ingram Food Pantry - Food Distribution Center,40.433158,-80.06483399999999,"80 Bradford Ave, Pittsburgh",,1.0,,,,,http://www.craftonup.com/
-435,professional indexer,40.4491904,-79.90800449999999,"6941 Rosewood St, Pittsburgh",,,,,1.0,,http://www.scindexing.com/contact.html
+,name,vicinity,latitude,longitude,category,website
+0,Revere Community Center,"26 Penn St, Uniontown",39.8959299,-79.78558989999999,Community Centers,
+1,East End United Community Center,"150 Coolspring St, Uniontown",39.897878,-79.711248,Community Centers,https://www.eeucc.org/
+2,Penn State Fayette Community Center,"2201 University Dr, Uniontown",39.9458424,-79.6605064,Community Centers,
+3,South Union Recreation Center,"151 Township Dr, Uniontown",39.8805178,-79.7170082,Community Centers,https://www.southuniontwp.com/index.php/our-area/rec-center
+4,Uniontown Adult Recreation Center,"137 N Beeson Blvd, Uniontown",39.905677,-79.7257597,Community Centers,http://www.fccaa.org/
+5,"Fayette County Community Action Agency, Inc. - Food Distribution Center",Uniontown,39.904565,-79.72545199999999,Community Centers,http://www.fccaa.org/
+6,North Union Township Recreation Center,"120 Commonwealth Dr, Lemont Furnace",39.9217245,-79.6728814,Community Centers,http://www.northunionreccenter.com/
+7,Dress For Success Pittsburgh,"82 W South St, Uniontown",39.9004971,-79.7288102,Financial Assistance,https://pittsburgh.dressforsuccess.org/
+8,The Salvation Army Thrift Store & Donation Center,"54 N Mt Vernon Ave, Uniontown",39.9020625,-79.7301159,Financial Assistance,https://satruck.org/
+9,Target,"120 Matthew Dr, Uniontown",39.9078527,-79.7587381,Financial Assistance,https://www.target.com/sl/south-union-twp/2184
+10,Goodwill,"1003 Mall Run Rd, Uniontown",39.909825,-79.750984,Financial Assistance,https://www.goodwillswpa.org/
+11,Walmart Supercenter,"355 Walmart Dr, Uniontown",39.9141832,-79.7563911,Financial Assistance,https://www.walmart.com/store/2019-uniontown-pa?cn=Tracking_local_pack_1
+12,The Home Depot,"115 Matthew Dr, Uniontown",39.9082048,-79.7525156,Financial Assistance,https://www.homedepot.com/l/Uniontown/PA/Uniontown/15401/4172
+14,St Vincent De Paul Society,"70 N Mt Vernon Ave, Uniontown",39.9032036,-79.7289225,Financial Assistance,https://stvincentdepauluniontown.org/merchandise/
+16,Salvation Army,"32 W Fayette St, Uniontown",39.89914419999999,-79.7270104,Financial Assistance,https://easternusa.salvationarmy.org/western-pennsylvania/uniontown/
+18,Fayette County Community Action Agency Food Bank,"40 Legion St, Republic",39.906063,-79.72529999999999,Food Access,http://www.fccaa.org/
+19,Christian Life Ministries - Food Distribution Center,Uniontown,39.90209960000001,-79.7241821,Food Access,
+20,Jubilee Soup Kitchen - Food Distribution Center,"230 E Fayette St, Uniontown",39.8954999,-79.7175982,Food Access,
+21,"Fayette County Community Action Agency, Inc. - Food Distribution Center",Uniontown,39.904565,-79.72545199999999,Food Access,http://www.fccaa.org/
+22,Hopwood Free Methodist Church,"116 Hopwood Coolspring Rd, Hopwood",39.8749881,-79.6986625,Food Access,
+27,Berean Seventh Day Adventist,"110 Searight Ave, Uniontown",39.8971702,-79.7106391,Food Access,
+28,Salvation Army,"32 W Fayette St, Uniontown",39.89914419999999,-79.7270104,Food Access,https://easternusa.salvationarmy.org/western-pennsylvania/uniontown/
+29,Calvary United Methodist Church,"34 Clarke Ave, Uniontown",39.8996487,-79.708688,Food Access,https://uniontowncalvary.org/
+30,Liberty Baptist,"183 Oliver Rd, Uniontown",39.9218553,-79.7134324,Food Access,http://libertybaptistofuniontown.com/
+31,Jubille Soup Kitchen,"230 E Fayette St, Uniontown",39.8954581,-79.71763519999999,Food Access,
+32,Youghiogheny Western Baptist,Uniontown,39.9000824,-79.716399,Food Access,http://www.theywba.org/about-us/
+33,St Vincent De Paul Society,"70 N Mt Vernon Ave, Uniontown",39.9032036,-79.7289225,Food Access,https://stvincentdepauluniontown.org/merchandise/
+34,Fresh Fire Church,"171 Connellsville St, Uniontown",39.9002702,-79.7106708,Food Access,http://www.freshfirechurch.net/
+38,Uniontown Community Storehouse,"15 Bouquet St, Uniontown",39.9005374,-79.701543,Food Access,
+39,City Mission Mens Shelter,"226 E Fayette St, Uniontown",39.8955608,-79.71779269999999,Food Access,
+44,Wendy's,"125 Matthew Dr, Uniontown",39.9080313,-79.7552283,Food Access,https://locations.wendys.com/united-states/pa/uniontown/125-matthew-drive?utm_source=Yext&utm_medium=Google_My_Business&utm_campaign=Local_Search&utm_content=EN_US
+45,Sonic Drive-In,"705 Walmart Dr, Uniontown",39.9136511,-79.7537882,Food Access,https://locations.sonicdrivein.com/pa/uniontown/705-walmart-drive.html
+46,Arby's,"515 Synergy Drive, Uniontown",39.914698,-79.751639,Food Access,https://locations.arbys.com/pa/uniontown/515-synergy-dr.html
+47,NCH Hospitality Llc,"705 Walmart Dr, Uniontown",39.9136467,-79.7537882,Food Access,
+48,Vinny's Drive Inn,"1225 Connellsville Rd, Uniontown",39.9154044,-79.6828371,Food Access,
+53,Fayette County Assistance Office,"41 W Church St, Uniontown",39.8996676,-79.7270429,Food Access,http://www.dhs.pa.gov/
+54,Uniontown WIC Office,"140 N Beeson Blvd, Uniontown",39.9060631,-79.72529999999999,Food Access,https://fccaa.org/programs/women-infants-and-children/
+56,SRC Industries Inc,"164 Jr St, Hopwood",39.8787852,-79.6969435,Food Access,http://www.hawthornsyrup.com/
+57,The United Federal Credit Union,"585 Morgantown Rd, Uniontown",39.8825958,-79.7349514,Food Access,https://www.tufcu.org/
+58,Christ United Methodist Church,"6 W Fayette St, Uniontown",39.898749,-79.7259116,Food Access,
+66,City Mission Mens Shelter,"226 E Fayette St, Uniontown",39.8955608,-79.71779269999999,Housing,
+67,"City Mission-Living Stones, Inc.","155 N Gallatin Ave, Uniontown",39.90680649999999,-79.7225727,Housing,http://www.citymissionfayette.org/
+68,Jubille Soup Kitchen,"230 E Fayette St, Uniontown",39.8954581,-79.71763519999999,Housing,
+69,Savannah House Charities,"110 Delaware Ave, Uniontown",39.9013032,-79.743865,Housing,https://savannahhouse.info/about-us/
+70,Shelter Regina M,"119 N Beeson Blvd, Uniontown",39.9049161,-79.72598769999999,Housing,
+71,Salvation Army,"32 W Fayette St, Uniontown",39.89914419999999,-79.7270104,Housing,https://easternusa.salvationarmy.org/western-pennsylvania/uniontown/
+72,Western Pennsylvania National Wild Animal Orphanage,"169 Shepard Ln, Uniontown",39.9322486,-79.687901,Housing,
+73,Jubilee Soup Kitchen - Food Distribution Center,"230 E Fayette St, Uniontown",39.8954999,-79.7175982,Housing,
+74,Catholic Charities,"140 N Beeson Blvd, Uniontown",39.9060382,-79.72536459999999,Housing,http://www.ccharitiesgreensburg.org/
+83,Dress For Success Pittsburgh,"82 W South St, Uniontown",39.9004971,-79.7288102,Housing,https://pittsburgh.dressforsuccess.org/
+85,Fayette County Children Services,"130 Old New Salem Rd, Uniontown",39.9110516,-79.7511766,Housing,http://fayette-county-uniontown.keeq.io/
+91,Uniontown Public Library,"24 Jefferson St, Uniontown",39.8994623,-79.722642,Libraries,http://www.uniontownlib.org/
+92,Little Free Library #49891,Uniontown,39.9004424,-79.72457589999999,Libraries,
+93,Little Free Library #49896,"70 E Main St, Uniontown",39.9012006,-79.7229062,Libraries,
+94,Little Free Library #49895,"W Main St, Uniontown",39.9008623,-79.7305153,Libraries,
+95,Little Free Library #49894,Uniontown,39.8651328,-79.7156557,Libraries,
+96,Hospital Professional Library,"500 W Berkeley St, Uniontown",39.90179699999999,-79.738542,Libraries,
+97,"Fayette Campus Library, Penn State Fayette","2201 University Dr, Lemont Furnace",39.9463774,-79.6595002,Libraries,https://libraries.psu.edu/fayette
+98,Fayette County Law Library,"61 E Main St D, Uniontown",39.9017756,-79.7226353,Libraries,https://www.fayettecountypa.org/403/Law-Library
+99,South Union Township Sports Academy,"181 Stadium Dr, Uniontown",39.864876,-79.71351539999999,Cultural,
+100,State Theatre Center For the Arts,"37 E Main St, Uniontown",39.901564,-79.72450099999999,Cultural,http://www.statetheatre.info/
+101,GoldiRock Records / Entertainment,"39 W Main St, Uniontown",39.9010534,-79.726731,Cultural,http://www.goldirockrecords.com/
+102,Storey Square,"11 E Main St, Uniontown",39.9015398,-79.72486359999999,Cultural,
+103,Uniontown Church of the Brethren,"20 Robinson St, Uniontown",39.8970407,-79.7276073,Cultural,http://www.cobuniontown.net/
+104,Uniontown Larger Parish,"1264 W Penn Blvd, Uniontown",39.9171962,-79.69389029999999,Cultural,
+105,Cherry Tree Alliance Church,"640 Cherry Tree Ln, Uniontown",39.8994273,-79.7548769,Cultural,http://www.cherrytreealliance.org/
+106,Grace Brethren Church,"1 Grace Ln, Uniontown",39.8817444,-79.7267332,Cultural,https://www.uniontowngrace.org/
+107,City Chapel Church,"254 E Main St, Uniontown",39.8979036,-79.716798,Cultural,
+108,Central Christian Church,"23 S Gallatin Ave, Uniontown",39.9004248,-79.7239735,Cultural,http://www.cccuniontown.org/
+109,Uniontown Church of God-Christ,"55 Butler St, Uniontown",39.8969205,-79.7109354,Cultural,
+110,New Beginnings Covenant Church,"171 Connellsville St, Uniontown",39.900313,-79.710691,Cultural,
+111,Christ United Methodist Church,"6 W Fayette St, Uniontown",39.898749,-79.7259116,Cultural,
+112,Grace Community Church,"343 Pennsylvania Ave, Uniontown",39.8933657,-79.7230646,Cultural,
+113,Uniontown Church of Christ,"70 Roosevelt Dr, Uniontown",39.8888925,-79.71080099999999,Cultural,https://uniontowncofc.org/
+114,Abundant Life Church,"1239 Brownfield Rd, Uniontown",39.8675938,-79.721739,Cultural,https://www.myabundantlife.org/
+115,Sandy Hill Church,Uniontown,39.9103538,-79.77310059999999,Cultural,
+116,Connellsville Street Church of Christ,"519 Connellsville St, Uniontown",39.9036283,-79.6984791,Cultural,http://www.churchofchristuniontown.org/
+117,Faith Assembly of God,"690 Morgantown Rd, Uniontown",39.8754023,-79.741317,Cultural,http://www.myfaithassembly.org/
+118,FirSt Methodist churh,"337 Hopwood Coolspring Rd, Hopwood",39.8878337,-79.6858712,Cultural,
+119,The Church of Jesus Christ of Latter-day Saints,"Wendy Dr & Barbara St, Uniontown",39.92049069999999,-79.7295364,Cultural,https://www.churchofjesuschrist.org/?lang=eng
+120,Bible Baptist Church,"1 Evergreen Terrace, Uniontown",39.9000148,-79.73398019999999,Cultural,http://www.biblebaptistuniontown.com/
+121,Calvary Baptist Church,"308 McClellandtown Rd, Uniontown",39.9018744,-79.7631181,Cultural,http://cbcfamily.church/
+122,Great Bethel Baptist Church,"47 W Fayette St, Uniontown",39.898758,-79.72761899999999,Cultural,
+123,New Beginning Full Gospel Church,"93 Jefferson St, Uniontown",39.897881,-79.719545,Cultural,
+124,Covenant Baptist Church,"148 Union St, Uniontown",39.8948328,-79.73033439999999,Cultural,https://covenantbaptistpa.com/
+125,Uniontown Church of the Nazarene,"8 Jeffreys Ln, Uniontown",39.8508788,-79.7457033,Cultural,
+126,St Peters Lutheran Church,"121 Walnut Hill Rd, Uniontown",39.8840926,-79.7370206,Cultural,http://splcuniontown.org/
+127,Calvary Apostolic Church,"127 Rolling Hills Estate Rd, Uniontown",39.9270821,-79.7006822,Cultural,http://www.calvaryapostolicchurch.org/
+128,Fresh Fire Church,"171 Connellsville St, Uniontown",39.9002702,-79.7106708,Cultural,http://www.freshfirechurch.net/
+129,Trinity United Presbyterian,"79 W Fayette St, Uniontown",39.8991096,-79.72850849999999,Cultural,https://www.trinityupc.com/
+130,Community United Methodist Church,"1264 W Penn Blvd, Uniontown",39.91726,-79.69381709999999,Cultural,http://www.wpaumc.org/churchdetail/218251
+131,Calvary United Methodist Church,"34 Clarke Ave, Uniontown",39.8996487,-79.708688,Cultural,https://uniontowncalvary.org/
+132,Third Presbyterian Church,"425 Union St, Uniontown",39.8875363,-79.7318815,Cultural,http://3rdpres.com/
+133,Mt Rose Baptist Church,"9 S Grant St, Uniontown",39.8968519,-79.7165508,Cultural,
+134,Mt Olivet Baptist Church,"57 Stewart Ave, Uniontown",39.8970968,-79.718103,Cultural,
+135,Hopwood United Methodist Church,"122 Church St, Hopwood",39.8747591,-79.7012572,Cultural,
+136,Saint Peter's Anglican Church,"60 Morgantown St, Uniontown",39.89994799999999,-79.7281189,Cultural,http://www.churchstpeters.org/
+137,Liberty Baptist,"183 Oliver Rd, Uniontown",39.9218553,-79.7134324,Cultural,http://libertybaptistofuniontown.com/
+138,Love Outreach Church,"8 Ash Rd, Uniontown",39.9406901,-79.7294668,Cultural,
+139,John Wesley AME Zion Church,"349 E Main St, Uniontown",39.8957835,-79.715193,Cultural,
+140,Bethel Baptist Church,"998 N Gallatin Ave Ext, Uniontown",39.9285592,-79.6831421,Cultural,http://www.bethelbaptistuniontown.com/
+141,Trinity Fellowship Church of God,"126 Lincoln St, Uniontown",39.9025705,-79.7189774,Cultural,
+142,Uniontown Free Methodist Church,"300 Evans St, Uniontown",39.9008442,-79.7111808,Cultural,http://www.utownfreemc.com/
+143,St Paul’s A.M.E. Church,"187 Morgantown St, Uniontown",39.8957299,-79.7307125,Cultural,https://stpaulsame.church/
+144,Interfaith Assembly For Christ,"7 Butler St, Uniontown",39.8973909,-79.7111042,Cultural,
+145,Bread of Life Tabernacle,"15 Bouquet St, Uniontown",39.9010912,-79.701807,Cultural,http://www.boltc.org/
+146,Saint Mary Nativity R.C. Church,"65 N Mt Vernon Ave, Uniontown",39.9032329,-79.7295884,Cultural,
+147,Asbury United Methodist Church,"20 Dunbar St, Uniontown",39.89721369999999,-79.7258572,Cultural,http://www.asburyumcpa.org/
+148,Spirit & Fire Church,"306 Edison St, Uniontown",39.9130254,-79.6853751,Cultural,
+149,St John the Baptist Byzantine,"185 E Main St, Uniontown",39.8998916,-79.7187974,Cultural,http://www.stjohnbaptist-byzcath-uniontown.org/
+150,St. George Maronite Church,"6 Lebanon Terrace, Uniontown",39.9019947,-79.7191201,Cultural,http://www.stgeorgeuniontown.org/
+151,The Journey,"109 W Fayette St, Uniontown",39.8998182,-79.7300647,Cultural,http://www.uniontownjourney.com/
+152,St. Mary,"7 Gilmore St, Uniontown",39.9032928,-79.7296391,Cultural,https://www.stmaryuniontown.org/
+153,St Paul's Evangelical Lutheran,"71 N Gallatin Ave, Uniontown",39.9037932,-79.7240109,Cultural,http://stpaulslutheranuniontown.com/
+154,Walnut Hill United Methodist Church,"132 Collier Rd, Uniontown",39.871208,-79.778295,Cultural,http://www.umc.org/find-a-church/church/16698
+155,Little Brownfield Free Methodist Church,"429 Redstone Furnace Rd, Uniontown",39.8767251,-79.7163508,Cultural,
+156,St John the Evangelist Roman Catholic Church,"50 Jefferson St, Uniontown",39.89839569999999,-79.7211927,Cultural,
+157,Brownfield United Methodist,"1429 Brownfield Rd, Brownfield",39.857739,-79.7127527,Cultural,
+158,Uniontown Berean Seventh-Day Adventist Church,"95 Searight Ave, Uniontown",39.897091,-79.7110995,Cultural,http://bereanpa.adventistchurch.org/
+159,St. Joseph,"180 Old Walnut Hill Rd, Uniontown",39.8842698,-79.74350489999999,Cultural,http://www.stjosephuniontown.org/
+160,Methodist,"177 W Main St, Uniontown",39.9007552,-79.7319626,Cultural,
+161,St. Therese,"61 Mill St, Uniontown",39.8982788,-79.7302164,Cultural,http://www.stthereseuniontown.org/
+162,Hopwood Free Methodist Church,"116 Hopwood Coolspring Rd, Hopwood",39.8749881,-79.6986625,Cultural,
+245,Fairgrounds School,"250 Pittsburgh Rd, Uniontown",39.9100098,-79.7265135,Cultural,
+327,Walmart Home Theater Installation,"355 Walmart Dr, Uniontown",39.91435,-79.756686,Cultural,http://www.walmart.com/store/2019-uniontown-pa/home-theater-installation?cn=Tracking_local_pack_1
+368,Tails on the Trail (Dog Park),"50-198 Barton Row, Uniontown",39.8910365,-79.720784,Recreation,
+369,Hutchinson Park,"65 Reservoir Rd, Uniontown",39.8647284,-79.713397,Recreation,
+370,Eberly Park,"Uniontown Ballfield, 100-168 Oliver Blvd, Uniontown",39.9219788,-79.722509,Recreation,
+371,Lick Hollow State Forest Picnic Area,Hopwood,39.8590393,-79.6780548,Recreation,https://www.dcnr.pa.gov/StateForests/FindAForest/Forbes/Pages/Picnicking.aspx
+372,Areford Park,"20-30 Eggleston St, Uniontown",39.8946973,-79.7492429,Recreation,
+415,Bruhs Park,"335 Park St, Uniontown",39.9252549,-79.683578,Recreation,
+417,Grant Street Park,Uniontown,39.8932004,-79.7198571,Recreation,
+418,Lemon Street Park,"74 Lemon St, Uniontown",39.90666299999999,-79.718577,Recreation,
+419,Mill St Play Park,"102 Mill St, Uniontown",39.898572,-79.7306488,Recreation,
+420,Nemacolin Woodlands Courtyard,"corner of, E Main St & Moran Alley, Uniontown",39.9011715,-79.7230411,Recreation,
+421,War memorial,"57 E Main St, Uniontown",39.9014819,-79.7233143,Recreation,
+423,Storey Square,"11 E Main St, Uniontown",39.9015398,-79.72486359999999,Recreation,
+424,Fayette County fireman's memorial,"61 E Main St # 3G, Uniontown",39.90119079999999,-79.7225086,Recreation,
+425,Park & Ride,"Moonlight Dr, Hopwood",39.8691814,-79.6925534,Recreation,
+426,Brushwood Mobile Home Park,"52 Brushwood Rd, Uniontown",39.9057265,-79.7019438,Recreation,
+427,Eat'n Park,"519 W Main St, Uniontown",39.9086779,-79.7434488,Recreation,https://www.eatnpark.com/
+548,Phillips Ballfield,"104 Peach Ln, Uniontown",39.9399786,-79.7295863,Recreation,
+549,South Union Township Sports Academy,"181 Stadium Dr, Uniontown",39.864876,-79.71351539999999,Recreation,
+550,Miracle League Of PA's Laurel Highlands,"160 Oliver Rd, Uniontown",39.9216579,-79.72164599999999,Recreation,http://www.miracleleague.com/
+551,Fayette County Youth Soccer Club,"201 Township Dr Exd, Uniontown",39.878376,-79.71361180000001,Recreation,http://www.fcysc.com/
+672,Shutes Run,North Union Township,39.9045034,-79.6847275,Recreation,
+673,Rankin Run,"Rankin Run, Pennsylvania, USA",39.9543748,-79.7127019,Recreation,
+674,DICK'S Sporting Goods,"320 Walmart Dr, Uniontown",39.916947,-79.75538379999999,Recreation,https://stores.dickssportinggoods.com/pa/uniontown/1233/?seo=localpack
+715,Eberly Foundation,"5, S Mt Vernon Ave, Uniontown",39.9004938,-79.7315272,Service Organizations,http://www.eberlyfoundation.org/
+716,Fayette Resources Inc,"1 Millennium Dr Suite 2, Uniontown",39.9293598,-79.70801999999999,Service Organizations,https://fayetteresources.org/
+717,FAMILY FOSTER & FRIENDS,"1430 Mall Run Rd, Uniontown",39.9051498,-79.7459733,Service Organizations,http://familyfostersfrien.wixsite.com/
+718,Easter Seals,Uniontown,39.900076,-79.71643259999999,Service Organizations,http://www.easterseals.com/
+719,Uniontown Community Storehouse,"15 Bouquet St, Uniontown",39.9005374,-79.701543,Service Organizations,
+720,Fayette County NAACP,"137 N Beeson Blvd, Uniontown",39.9058761,-79.72564969999999,Service Organizations,
+721,Communities In Schools,"137 N Beeson Blvd, Uniontown",39.9061549,-79.7256342,Service Organizations,https://www.communitiesinschools.org/
+722,"Laurel House, Inc.","625 Cherry Tree Ln Suite 103, Uniontown",39.9007661,-79.7545765,Service Organizations,http://laurelhouseinc.org/
+723,Interfaith Volunteer Caregivers of Fayette County,"137 N Beeson Blvd # 106, Uniontown",39.9062629,-79.72562219999999,Service Organizations,https://www.interfaithvolunteercaregivers.org/
+724,The Arc of Fayette County,"80 Old New Salem Rd, Uniontown",39.9122848,-79.7495422,Service Organizations,http://www.arcfayette.org/
+725,Fayette County Association For Blind,"48 Bierer Ln, Uniontown",39.9018176,-79.7341493,Service Organizations,
+726,Faith Harvest Guatemala,"505 Royalty Dr, Uniontown",39.8925602,-79.7568326,Service Organizations,https://faithharvestguatemala.com/contact/
+727,Goodwill Workforce Development Center,"40 Connellsville St, Uniontown",39.8985818,-79.71572019999999,Service Organizations,
+728,Crime Victims Center of Fayette County,"6 Oliver Rd, Uniontown",39.9267938,-79.726021,Service Organizations,http://www.crimevictimscenter.com/contact.html
+729,"City Mission-Living Stones, Inc.","155 N Gallatin Ave, Uniontown",39.90680649999999,-79.7225727,Service Organizations,http://www.citymissionfayette.org/
+730,Dress For Success Pittsburgh,"82 W South St, Uniontown",39.9004971,-79.7288102,Service Organizations,https://pittsburgh.dressforsuccess.org/
+731,Uniontown Area YMCA,"1 YMCA Ln, Uniontown",39.8959837,-79.7412786,Service Organizations,http://www.uniontownymca.org/
+732,Crime Stoppers Fayette County,"65 W Main St #107, Uniontown",39.900898,-79.72749950000001,Service Organizations,http://crimestoppersfayettecopa.org/
+733,Uniontown Masonic Building,"15 Pittsburgh Rd, Uniontown",39.9015436,-79.7268696,Service Organizations,
+734,Life's Work of Western Pa,"137 N Beeson Blvd, Uniontown",39.9060618,-79.7258712,Service Organizations,
+785,Savannah House Charities,"110 Delaware Ave, Uniontown",39.9013032,-79.743865,Service Organizations,https://savannahhouse.info/about-us/
+789,Big Brothers Big Sisters,"65 W Main St #106, Uniontown",39.9008436,-79.72753639999999,Service Organizations,http://bbbs.cand.co/
+790,Uniontown Volunteer Firemen's,"58 Dunbar St, Uniontown",39.896455,-79.72414599999999,Service Organizations,
+793,Crime Stoppers-Fayette County,"22 E Main St, Uniontown",39.900987,-79.7247573,Service Organizations,
+794,Genesis House Ministry,"395 E Main St, Uniontown",39.894541,-79.71452099999999,Service Organizations,
+795,Salvation Army,"32 W Fayette St, Uniontown",39.89914419999999,-79.7270104,Service Organizations,https://easternusa.salvationarmy.org/western-pennsylvania/uniontown/
+837,Goodwill Workforce Development Center,"40 Connellsville St, Uniontown",39.8985818,-79.71572019999999,Workforce Development,
+838,"Private Industry Council of Westmoreland/Fayette, Inc.","112 Commonwealth Dr, Lemont Furnace",39.9203701,-79.6735443,Workforce Development,http://www.privateindustrycouncil.com/
+839,National Career School,"2 W Main St, Uniontown",39.9013663,-79.7257024,Workforce Development,
+840,United Career Institute - Fayette County,"1015 Mt Braddock Rd, Mt Braddock",39.950533,-79.65238,Workforce Development,https://unitedcareer.edu/
+841,PA CareerLink Fayette County,"112 Commonwealth Dr, Lemont Furnace",39.9203701,-79.6735443,Workforce Development,https://www.facebook.com/PaCareerlinkFayetteCounty
+842,Fayette County Career & Technical Institute,"175 Georges Fairchance Rd, Uniontown",39.86102109999999,-79.7417688,Workforce Development,http://www.fayettecti.org/
+843,Laurel Business Institute,"11 E Penn St, Uniontown",39.9024542,-79.7250534,Workforce Development,http://www.laurel.edu/
+844,Fayette County Community Action Agency,"108 N Beeson Blvd, Uniontown",39.905754,-79.72541799999999,Workforce Development,https://fccaa.org/
+866,Transitional Employment Consultants (TEC),"253 S Mt Vernon Ave, Uniontown",39.8950774,-79.7388921,Workforce Development,http://tecwg.org/
