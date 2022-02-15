@@ -44,5 +44,7 @@ app.layout = make_layout()
 # Call the display table callback
 display_table_cb(app, db)
 
-app.run_server(debug=True, dev_tools_hot_reload=False)
+# Run the app
+if __name__ == '__main__':
+    app.run_server(debug=True)
 
