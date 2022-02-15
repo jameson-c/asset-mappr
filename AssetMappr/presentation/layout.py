@@ -6,7 +6,6 @@ Desc: This file creates the main layout of the app
 Input: 
     - Draws on the individual layout components, defined in separate .py files
     in the 'presentation' folder
-    - Takes one argument which contains the category names or 'tags'
     
 Output:
     - A function called make_layout() that returns the layout section of the Dash app

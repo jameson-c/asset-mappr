@@ -39,9 +39,10 @@ db = SQLAlchemy(server)
 
 app.title = 'AssetMappr'
 
+# Create the app layout
 app.layout = make_layout()
 
-# Call the display table callback
+# Create the display table callback
 display_table_cb(app, db)
 
 # Run the app

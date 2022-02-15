@@ -5,7 +5,7 @@ Author: Mihir Bhaskar
 Desc: This file creates the callback which fetches the database from the server
       and returns a Dash Data Table displaying it.
       
-      This is linked to the display_table.py layout file.
+      This is linked to the display_table.py layout file, through the output id 'main-table'
 
 Input: 
     db: The database object

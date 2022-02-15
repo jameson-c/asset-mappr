@@ -4,11 +4,11 @@ Author: Mihir Bhaskar
 
 Desc: This file creates the main displayed data table
 Input: 
-   - The return from a callback that is a pandas dataframe
-   - The corresponding callback that gives this return is display_table_cb
+   - Is linked to a callback called display_table_cb that sits in the application folder
+   - The link is by the id 'main-table'
 
 Output: 
-    - A function that returns an HTML Div containing the user new asset upload
+    - A function that returns an HTML Div containing the main table output
     
 """
 import dash

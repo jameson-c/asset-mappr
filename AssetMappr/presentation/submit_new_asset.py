@@ -2,12 +2,12 @@
 File: submit_new_asset.py
 Author: Mihir Bhaskar
 
-Desc: This file creates the main title and description component of the app.
+Desc: This file creates the 'submitting new asset info' component of the app
 Input: 
    
 
 Output: 
-    - A function that returns an HTML Div containing the user new asset upload
+    - A function that returns an HTML Div containing the user new asset upload features
     
 """
 import dash
