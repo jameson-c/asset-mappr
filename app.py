@@ -9,6 +9,12 @@ Desc: This file initializes the Dash app, combining all the components
 # Importing functions, libraries and set-up
 # =============================================================================
 import dash
+import dash
+from dash.dependencies import Input, Output, State
+from dash import dash_table
+from dash import dcc
+from dash import html
+
 import sys, os
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
