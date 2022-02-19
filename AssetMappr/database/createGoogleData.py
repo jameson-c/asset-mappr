@@ -1,5 +1,5 @@
 """
-File: createDF.py
+File: createGoogleData.py
 Author: Michaela Marincic, Jameson Carter
 
 Desc: This file uses the getMapData function to call the google API and
@@ -11,15 +11,25 @@ website information to the places which have a website.
 
 Finally, the file outputs a .csv file that contains all of the Google API data
 that we need.
-
-Inputs: Google Places API key
-Output: pandas dataframe MainFrame, written to .csv
 """
 import pandas as pd
 import time
 import requests
 import json
 
+'''
+Func: getMapData
+Input: 
+    key: Google places API key- str
+    location: a location around which search is conducted- str
+    keyword: a keyword upon which search is conducted- str
+    radius: radius we are searching around locations- str
+    next_page_token: token provided by the API after the API has received 
+                     a call, allows you to search the next page of results- str 
+                     
+Output: A 2 item list containing a pandas datafame in the 0th position and 
+a token to capture the next results provided by the API, in the 1st position
+'''
 def getMapData(key, location, keyword, radius, next_page_token = None):
     params = {
         'key' : key,
@@ -51,7 +61,16 @@ def getMapData(key, location, keyword, radius, next_page_token = None):
     except:
         # Return the output data frame and the next page token in a list
         return [df,None]
-
+    
+'''
+Func: getLocationWebsite
+Input: 
+    key: Google places API key- str
+    ID: a place ID returned when nearby search finds matches in getMapData- str
+    fields: an input for the API, specified later as 'website' - str 
+                     
+Output: A pandas dataframe containing information about a partcular place
+'''
 
 def getLocationWebsite(key, ID, fields):
     params = {'key' : key,
@@ -63,6 +82,18 @@ def getLocationWebsite(key, ID, fields):
     df = pd.json_normalize(result['result'])
     return df
 
+'''
+Func: createGoogleDF
+Input: 
+    apiKey: Google places API key- str
+    lat: latitude around which you are searching- str
+    long: longitude around which you are searching - str 
+                     
+Output: A pandas dataframe containing google results, with place websites, in
+        our standard format: 
+        name	category	vicinity	latitude	longitude	website
+
+'''
 def createGoogleDF(apiKey, lat, long):
     with open('Keywords.csv', 'r') as f:
         keywords = []
