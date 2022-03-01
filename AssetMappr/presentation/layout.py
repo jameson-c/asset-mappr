@@ -48,12 +48,12 @@ def make_layout():
                 
                 ])
             
-            ])
+            ]),
         
         
         
         # Interval for data update
-        dcc.Interval(id='interval_pg', interval=1000, n_intervals=0),
+        dcc.Interval(id='interval_pg', interval=1000, n_intervals=0)
         
     
         ])
