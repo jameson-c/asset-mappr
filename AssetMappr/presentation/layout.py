@@ -27,15 +27,34 @@ from AssetMappr.presentation.display_table import display_table
 # =============================================================================
 def make_layout():
     return html.Div([
-    
-        title_desc(),
+        dcc.Tabs([
+            
+            # Tab 1: Home page/view assets
+            dcc.Tab(label='Community User View', children=[
+                
+                title_desc(),
+                
+                display_table(),
+                
+                submit_new_asset()
+
+                
+                ]),
+            
+            # Tab 2: Add asset
+            dcc.Tab(label='Planner View', children=[
+                
+                html.H5("Placeholder")
+                
+                ])
+            
+            ])
         
-        submit_new_asset(),
+        
         
         # Interval for data update
         dcc.Interval(id='interval_pg', interval=1000, n_intervals=0),
         
-        display_table()
     
         ])
 
