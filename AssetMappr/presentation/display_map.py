@@ -3,7 +3,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from dash.dependencies import Input, Output, State
 import dash_table
-from matplotlib import colors
 import plotly.express as px
 import dash_bootstrap_components as dbc
 import plotly.graph_objs as go
@@ -14,7 +13,6 @@ import dash_core_components as dcc
 import dash
 import numpy as np
 import pandas as pd
-from itertools import *
 
 mapbox_access_token = 'pk.eyJ1IjoicWl3YW5nYWFhIiwiYSI6ImNremtyNmxkNzR5aGwyb25mOWxocmxvOGoifQ.7ELp2wgswTdQZS_RsnW1PA'
 
