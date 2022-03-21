@@ -79,8 +79,7 @@ def make_layout():
                         dbc.Table(id="main_table", children=[display_table()]),
                         width={'size': 6, "offset": 0, 'order': 2}),
                 ]),
-                
-                html.Br(),
+               
                 dbc.Row([
                     dbc.Col(
                         selectMap(df),
