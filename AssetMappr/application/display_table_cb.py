@@ -13,10 +13,8 @@ Input:
 Output: 
     A callback that returns a Dash Data Table with the SQL data 
 """
-import dash
 from dash.dependencies import Input, Output, State
 from dash import dash_table
-from dash import dcc
 from dash import html
 from collections import OrderedDict
 import pandas as pd
@@ -27,7 +25,7 @@ def display_table_cb(app, db):
     @app.callback(Output('main-table', 'children'),
                   [Input('interval_pg', 'n_intervals')])
     def populate_datatable(n_intervals):
-        df = pd.read_sql_table('assets_preloaded', con=db.engine)
+        df = pd.read_sql_table('assets', con=db.engine)
 
         return dash_table.DataTable(id='main_table',
                                     columns=[{'name': str(x), 'id': str(x)}
@@ -47,5 +45,5 @@ def display_table_cb(app, db):
                                         'height': '700px', 'width': '1000px'},
                                     style_header={
                                         'backgroundColor': 'rgb(51, 102, 0)',
-                                        'font':'bold'}
+                                        'font': 'bold'}
                                     )

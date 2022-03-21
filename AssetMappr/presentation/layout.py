@@ -21,6 +21,11 @@ from dash import html
 from AssetMappr.presentation.H1title import H1title
 from AssetMappr.presentation.display_map import display_map
 import dash_bootstrap_components as dbc
+from AssetMappr.presentation.rowTwo import rowTwoLeft, rowTwoRight
+from AssetMappr.presentation.selectMap import selectMap
+from AssetMappr.presentation.showMap import showMap
+from AssetMappr.presentation.showRate import showRate
+from AssetMappr.presentation.showWebsite import showWebsite
 
 from AssetMappr.presentation.title_desc import title_desc
 from AssetMappr.presentation.submit_new_asset import submit_new_asset
@@ -43,7 +48,7 @@ db = SQLAlchemy(server)
 
 
 def make_layout():
-    df = pd.read_sql_table('assets_preloaded', con=db.engine)
+    df = pd.read_sql_table('assets', con=db.engine)
 
     return html.Div([
         dcc.Tabs([
@@ -51,78 +56,57 @@ def make_layout():
             # Tab 1: Home page/view assets
             dcc.Tab(label='Community User View', children=[
 
-                # title_desc(),
-                # title:
                 dbc.Row([
                     H1title(),
                 ]),
-                dbc.Row([
-                        dbc.Col(
-                            html.Div("Explore your community! Search the map for assets in your town.",
-                                     style={'font-family': 'Gill Sans', "border": "2px black solid", 'border-color':
-                                            'olivedrab', 'background': '#edede8', 'color': 'Black', 'font_size': '26px',
-                                            'text-align': 'center'}), width={'size': 6, "offset": 0, 'order': 1}
-                        ),
-                        dbc.Col(
-                            html.Div("CLICK HERE to add to the inverntory!",
-                                     style={'background': 'olivedrab', 'color': 'Black',
-                                            'font-family': 'Gill Sans', 'font_size': '20px',
-                                            'text-align': 'center'}), width={'size': 6, "offset": 0, 'order': 2}
-                        )
-                        ]),
-                html.Br(),
+
                 dbc.Row([
                     dbc.Col(
-                        dcc.Graph(id='graph', config={'displayModeBar': True, 'scrollZoom': True},
-                                  style={'background': '#00FC87', 'height': '60vh'}),
+                        rowTwoLeft(),
+                        width={'size': 6, "offset": 0, 'order': 1}
+                    ),
+                    dbc.Col(
+                        rowTwoRight(),
+                        width={'size': 6, "offset": 0, 'order': 2}
+                    )
+                ]),
+
+                html.Br(),
+
+                dbc.Row([
+                    dbc.Col(
+                        showMap(),
                         width={'size': 6, "offset": 0, 'order': 1}),
 
                     dbc.Col(
                         dbc.Table(id="main_table", children=[display_table()]),
                         width={'size': 6, "offset": 0, 'order': 2}),
                 ]),
+                
                 html.Br(),
+                
                 dbc.Row([
                     dbc.Col(
-                        html.Div([
-                        html.Label(children=['Select all assets the map should display:'], style={
-                            'textDecoration': 'underline', 'fontSize': 20}),
-                        dcc.Checklist(id="recycling_type", value=[x for x in sorted(df['category'].unique())],
-                                      options=[{'label': x, 'value': x}
-                                               for x in sorted(df['category'].unique())],
-                                      labelClassName='mr-3 text-secondary')
-                    ], style={'background': '#edede8', 'font-family': 'Gill Sans', 'textAlign': 'left', 'color': '#414744'}),
-                     width = 6
+                        selectMap(df),
+                        width=6,
                     )
                 ]),
+                
                 html.Br(),
+                
                 dbc.Row([
                     dbc.Col(
-                        html.Div([
-                            html.Label(['Website:'], style={
-                            'textDecoration': 'underline', 'fontSize': 20}),
-                            html.Pre(id='web_link')
-                            ], style={'background': '#edede8', 'font-family': 'Gill Sans', 'textAlign': 'left', 'color': '#414744'}),
-                        width = 6)
+                        showWebsite(),
+                        width=6)
                 ]),
+                
                 html.Br(),
                 #not finished
                 dbc.Row([
                     dbc.Col(
-                        html.Div([
-                            html.Label(['Rate:(not finished yet)'], style={
-                            'textDecoration': 'underline', 'fontSize': 20}),
-                            html.Pre(id='rate')
-                            ], style={'background': '#edede8', 'font-family': 'Gill Sans', 'textAlign': 'left', 'color': '#414744'}),
-                        width = 6)
-                    
+                        showRate(),
+                        width=6)
                 ])
-
-                # display_table(),
-
-                # submit_new_asset(),
-
-                # display_map()
 
 
             ]),

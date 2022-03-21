@@ -1,40 +1,35 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-import dash_table
-import plotly.express as px
-import dash_bootstrap_components as dbc
+from dash import dcc
 import plotly.graph_objs as go
-import plotly.offline as py
 from dash.dependencies import Input, Output
 import dash_html_components as html
-import dash_core_components as dcc
 import dash
-import numpy as np
 import pandas as pd
-mapbox_access_token = 'pk.eyJ1IjoicWl3YW5nYWFhIiwiYSI6ImNremtyNmxkNzR5aGwyb25mOWxocmxvOGoifQ.7ELp2wgswTdQZS_RsnW1PA'
 
 
-def display_map_cb(app):
-    df = pd.read_sql_table('assets_preloaded', con=db.engine)
+def display_map_cb(app, db):
+    mapbox_access_token = 'pk.eyJ1IjoicWl3YW5nYWFhIiwiYSI6ImNremtyNmxkNzR5aGwyb25mOWxocmxvOGoifQ.7ELp2wgswTdQZS_RsnW1PA'
+    df = pd.read_sql_table('assets', con=db.engine)
+# #---------------------------------------------------------------
+# # Output of Graph
 
     @app.callback(Output('graph', 'figure'),
                   [Input('recycling_type', 'value')])
     def update_figure(chosen_recycling):
-        df_sub = df[(df['category'].isin(chosen_recycling))]
-        # Create Figure
+        df_sub = df[(df['asset_type'].isin(chosen_recycling))]
+        # Create figure
         locations = [go.Scattermapbox(
-            lon=df_sub['LONGITUDE'],
-            lat=df_sub['LATITUDE'],
+            lon=df_sub['latlong'].y,
+            lat=df_sub['latlong'].x,
             mode='markers',
-            marker={'color': df_sub['color']},
+            marker={'color': 'blue'},  # ***
             unselected={'marker': {'opacity': 1}},
             selected={'marker': {'opacity': 0.5, 'size': 25}},
             hoverinfo='text',
-            hovertext=df_sub['NAME'],
-            customdata=df_sub['WEBSITE']
+            hovertext=df_sub['asset_name'],
+            customdata=df_sub['website'],
+            # rating=df_sub['ratings'] need to be added into table
         )]
-
-    # Return figure
+        # Return figure
         return {
             'data': locations,
             'layout': go.Layout(
@@ -61,8 +56,8 @@ def display_map_cb(app):
                 ),
             )
         }
-# ---------------------------------------------------------------
-# callback for Web_link
+    # ---------------------------------------------------------------
+    # callback for Web_link
 
     @app.callback(
         Output('web_link', 'children'),
@@ -78,8 +73,8 @@ def display_map_cb(app):
             else:
                 return html.A(the_link, href=the_link, target="_blank")
 
-# ------------------------------------------------------------------------
-# callback for rating， not finished
+    # ------------------------------------------------------------------------
+    # callback for rating
     @app.callback(
         Output('rate', 'children'),
         [Input('graph', 'clickData')])
@@ -92,4 +87,4 @@ def display_map_cb(app):
             if the_link is None:
                 return 'No Website Available'
             else:
-                return html.A(the_link, href=the_link, target="_blank")
+                return html.P(the_link, href=the_link, target="_blank")
