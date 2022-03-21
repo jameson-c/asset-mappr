@@ -11,11 +11,8 @@ Output:
     - A function called make_layout() that returns the layout section of the Dash app
     
 """
-from enum import auto
 import dash
 import pandas as pd
-from dash.dependencies import Input, Output, State
-from dash import dash_table
 from dash import dcc
 from dash import html
 from AssetMappr.presentation.H1title import H1title
@@ -84,7 +81,6 @@ def make_layout():
                 ]),
                 
                 html.Br(),
-                
                 dbc.Row([
                     dbc.Col(
                         selectMap(df),
@@ -100,7 +96,6 @@ def make_layout():
                         width=6)
                 ]),
                 
-                html.Br(),
                 #not finished
                 dbc.Row([
                     dbc.Col(
