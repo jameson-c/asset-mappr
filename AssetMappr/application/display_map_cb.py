@@ -18,8 +18,8 @@ def display_map_cb(app, db):
         df_sub = df[(df['asset_type'].isin(chosen_recycling))]
         # Create figure
         locations = [go.Scattermapbox(
-            lon=df_sub['latlong'].y,
-            lat=df_sub['latlong'].x,
+            lon=df_sub['latlong'], #Need to know the point data more information. should it be geometry? if so: lon=df_sub['latlong'].y
+            lat=df_sub['latlong'],
             mode='markers',
             marker={'color': 'blue'},  # ***
             unselected={'marker': {'opacity': 1}},
