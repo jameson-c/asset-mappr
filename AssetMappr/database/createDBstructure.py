@@ -12,11 +12,11 @@ import psycopg2
 
 # Establish connection with database (details found in Heroku dashboard after login)
 conn = psycopg2.connect(
-    database = 'dmt6i1v8bv5l1',
-    user = 'ilohghqbmiloiv',
-    password = 'f4fbd28e91d021bada72701576d41107b78bc515ad0b1e94d934939fbce7b2e6',
-    host = 'ec2-54-235-98-1.compute-1.amazonaws.com',
-    port = '5432'
+    database = #####,
+    user = #####,
+    password = #####,
+    host = #####,
+    port = ####
     )
 
 # Create cursor object
