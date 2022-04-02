@@ -1,5 +1,5 @@
 """
-File: createDF.py
+File: getGoogleData.py
 Author: Michaela Marincic, Jameson Carter
 
 Desc: This file uses the getMapData function to call the google API and
@@ -63,8 +63,8 @@ def getLocationWebsite(key, ID, fields):
     df = pd.json_normalize(result['result'])
     return df
 
-def createGoogleDF(apiKey, lat, long):
-    with open('Keywords.csv', 'r') as f:
+def createGoogleDF(apiKey, lat, long, radius):
+    with open('National/getGoogleKeywords.csv', 'r') as f:
         keywords = []
         categories = []
         for line in f:
@@ -78,7 +78,7 @@ def createGoogleDF(apiKey, lat, long):
     for keyword in keywords[1:]:
     
         results = getMapData(apiKey,
-                               latlong, keyword, '6000')
+                               latlong, keyword, radius)
         data = results[0]
         data['category'] = categories[catIndex]
         nextToken = results[1]
@@ -89,7 +89,7 @@ def createGoogleDF(apiKey, lat, long):
         if nextToken is not None:
             time.sleep(2) # Need to introduce this so that API call ready for token
             results2 = getMapData(apiKey,
-                               latlong, keyword, '6000', 
+                               latlong, keyword, radius, 
                                nextToken)
             data2 = results2[0]
             data2['category'] = categories[catIndex]
@@ -98,7 +98,7 @@ def createGoogleDF(apiKey, lat, long):
             if nextToken is not None:
                 time.sleep(2)
                 results3 = getMapData(apiKey,
-                               latlong, keyword, '6000', 
+                               latlong, keyword, radius, 
                                nextToken)
                 data3 = results3[0]
                 data3['category'] = categories[catIndex]
@@ -144,14 +144,7 @@ def createGoogleDF(apiKey, lat, long):
     
     # Drop duplicates
     MainFrame = MainFrame.drop_duplicates()
-
-    # Write to CSV
-    MainFrame.to_csv('MainFrame.csv')
-
-if __name__ == '__main__':
-    apikey = input('Enter your Google Places API Key: ')
-    lat = input('Enter Latitude: ')
-    long = input('Enter Longitude: ')
-    createGoogleDF(apikey, lat, long)
+    
+    return MainFrame
 
         
