@@ -165,10 +165,7 @@ def getPrivSchools(countyFIPS):
         return df
 
 def getAllSchools(countyFIPS,countyName,state):
-    #countyFIPS = input('Look at this site to find the county code you are searching for: https://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/home/?cid=nrcs143_013697\n\nEnter the 5-digit county FIPS code: ')
-    #state = input('Enter the 2-letter state abbreviation: ')
-    #countyName = input('Look at this site and find how the county name is spelled word for word (including the word county, sometimes), case sensitive: https://data-nces.opendata.arcgis.com/datasets/nces::public-school-characteristics-2019-20/explore?location=36.666724%2C-96.405824%2C16.00\n\nEnter County Name: ')
-    s
+    
     private = getPrivSchools(countyFIPS)
     public = getPubSchools(countyName,state)
     college = getPostSecSchools(countyFIPS)
