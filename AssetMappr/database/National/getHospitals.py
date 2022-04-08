@@ -18,16 +18,16 @@ import pandas as pd
 import time
 import requests
 import json
+from .database import getAddressCoords
 
 '''
 Func: getHospitals
 Input: 
-    countyFIPS: 5 digit county code we are interested in pulling schools for, which
-            can be found at the url below - str
-            https://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/home/?cid=nrcs143_013697
+    twoLetterState: The two-letter abbreviation for the state for which we would like to
+        pull hospital information.
             
                      
-Output: A pandas dataframe containing post secondary schools in
+Output: A pandas dataframe containing hospitals in
         our standard format: 
         name	category	vicinity	latitude	longitude	website
 '''
@@ -43,21 +43,17 @@ def getHospitals(twoLetterState):
     # Call the EDGE OpenData API
     response = requests.get(url)
     result = json.loads(response.text)
-    df = pd.json_normalize(result['features']) # normalize json file into pandas
+    df = pd.json_normalize(result) # normalize json file into pandas
     if not df.empty: # If there ARE results, continue
         # drop unnecessary files, add category column
         # df.drop(['geometry.x', 'geometry.y'],axis = 1)  
-        df['category'] = 'Postsecondary Schools'
+        df['category'] = 'Healthcare'
         df['website'] = ''
-        df.rename(columns={'attributes.NAME': 'name',
-                       'attributes.STREET': 'vicinity',
-                       'attributes.CITY': 'city',
-                       'attributes.LAT': 'latitude',
-                       'attributes.LON': 'longitude'}, inplace = True)
+        df.rename(columns={'street_address': 'vicinity')
     
         df['vicinity'] = df["vicinity"] + ', ' + df["city"]
     
-        df = df[['name','category','vicinity','latitude','longitude','website']]
+       # df = df[['name','category','vicinity','latitude','longitude','website']]
     
         return df
     
@@ -66,7 +62,7 @@ def getHospitals(twoLetterState):
         df = pd.DataFrame(columns = column_names)
         return df
         
-
+getHospitals('PA').columns
 
 def getAllSchools(countyFIPS,countyName,state):
     #countyFIPS = input('Look at this site to find the county code you are searching for: https://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/home/?cid=nrcs143_013697\n\nEnter the 5-digit county FIPS code: ')
