@@ -20,14 +20,16 @@ import os
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 import pandas as pd
-from AssetMappr.application.display_map_cb import display_map_cb
-from AssetMappr.presentation.display_map import display_map
+#from AssetMappr.application.display_map_cb import display_map_cb
+#from AssetMappr.presentation.display_map import display_map
 # app requires "pip install psycopg2" as well (ensure it is installed if running locally)
 
 
 # Import the layout and callback components
 from AssetMappr.presentation.layout import make_layout
 from AssetMappr.application.display_table_cb import display_table_cb
+
+from AssetMappr.application.submit_new_asset_cb import submit_new_asset_cb
 
 # =============================================================================
 # Initialize app
@@ -43,12 +45,17 @@ db = SQLAlchemy(server)
 
 app.title = 'AssetMappr'
 
+# Load category master values
+master_categories = pd.read_sql_table('categories_master', con=db.engine)
+master_categories = master_categories.values.tolist()
+
 # Create the app layout
 app.layout = make_layout()
 
 # Create the display table callback
-display_table_cb(app, db)
-display_map(app)
+submit_new_asset_cb(app, db)
+#display_table_cb(app, db)
+#display_map(app)
 
 
 # Run the app

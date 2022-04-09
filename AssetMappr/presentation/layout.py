@@ -19,7 +19,7 @@ from dash import dash_table
 from dash import dcc
 from dash import html
 from AssetMappr.presentation.H1title import H1title
-from AssetMappr.presentation.display_map import display_map
+#from AssetMappr.presentation.display_map import display_map
 import dash_bootstrap_components as dbc
 
 from AssetMappr.presentation.title_desc import title_desc
@@ -43,7 +43,7 @@ db = SQLAlchemy(server)
 
 
 def make_layout():
-    df = pd.read_sql_table('assets_preloaded', con=db.engine)
+    df = pd.read_sql_table('assets', con=db.engine)
 
     return html.Div([
         dcc.Tabs([
@@ -64,59 +64,56 @@ def make_layout():
                                             'text-align': 'center'}), width={'size': 6, "offset": 0, 'order': 1}
                         ),
                         dbc.Col(
-                            html.Div("CLICK HERE to add to the inverntory!",
-                                     style={'background': 'olivedrab', 'color': 'Black',
-                                            'font-family': 'Gill Sans', 'font_size': '20px',
-                                            'text-align': 'center'}), width={'size': 6, "offset": 0, 'order': 2}
+                            submit_new_asset()
                         )
                         ]),
                 html.Br(),
-                dbc.Row([
-                    dbc.Col(
-                        dcc.Graph(id='graph', config={'displayModeBar': True, 'scrollZoom': True},
-                                  style={'background': '#00FC87', 'height': '60vh'}),
-                        width={'size': 6, "offset": 0, 'order': 1}),
+                # dbc.Row([
+                #     dbc.Col(
+                #         dcc.Graph(id='graph', config={'displayModeBar': True, 'scrollZoom': True},
+                #                   style={'background': '#00FC87', 'height': '60vh'}),
+                #         width={'size': 6, "offset": 0, 'order': 1}),
 
-                    dbc.Col(
-                        dbc.Table(id="main_table", children=[display_table()]),
-                        width={'size': 6, "offset": 0, 'order': 2}),
-                ]),
-                html.Br(),
-                dbc.Row([
-                    dbc.Col(
-                        html.Div([
-                        html.Label(children=['Select all assets the map should display:'], style={
-                            'textDecoration': 'underline', 'fontSize': 20}),
-                        dcc.Checklist(id="recycling_type", value=[x for x in sorted(df['category'].unique())],
-                                      options=[{'label': x, 'value': x}
-                                               for x in sorted(df['category'].unique())],
-                                      labelClassName='mr-3 text-secondary')
-                    ], style={'background': '#edede8', 'font-family': 'Gill Sans', 'textAlign': 'left', 'color': '#414744'}),
-                     width = 6
-                    )
-                ]),
-                html.Br(),
-                dbc.Row([
-                    dbc.Col(
-                        html.Div([
-                            html.Label(['Website:'], style={
-                            'textDecoration': 'underline', 'fontSize': 20}),
-                            html.Pre(id='web_link')
-                            ], style={'background': '#edede8', 'font-family': 'Gill Sans', 'textAlign': 'left', 'color': '#414744'}),
-                        width = 6)
-                ]),
-                html.Br(),
-                #not finished
-                dbc.Row([
-                    dbc.Col(
-                        html.Div([
-                            html.Label(['Rate:(not finished yet)'], style={
-                            'textDecoration': 'underline', 'fontSize': 20}),
-                            html.Pre(id='rate')
-                            ], style={'background': '#edede8', 'font-family': 'Gill Sans', 'textAlign': 'left', 'color': '#414744'}),
-                        width = 6)
+                #     dbc.Col(
+                #         dbc.Table(id="main_table", children=[display_table()]),
+                #         width={'size': 6, "offset": 0, 'order': 2}),
+                # ]),
+                # html.Br(),
+                # dbc.Row([
+                #     dbc.Col(
+                #         html.Div([
+                #         html.Label(children=['Select all assets the map should display:'], style={
+                #             'textDecoration': 'underline', 'fontSize': 20}),
+                #         dcc.Checklist(id="recycling_type", value=[x for x in sorted(df['category'].unique())],
+                #                       options=[{'label': x, 'value': x}
+                #                                 for x in sorted(df['category'].unique())],
+                #                       labelClassName='mr-3 text-secondary')
+                #     ], style={'background': '#edede8', 'font-family': 'Gill Sans', 'textAlign': 'left', 'color': '#414744'}),
+                #       width = 6
+                #     )
+                # ]),
+                # html.Br(),
+                # dbc.Row([
+                #     dbc.Col(
+                #         html.Div([
+                #             html.Label(['Website:'], style={
+                #             'textDecoration': 'underline', 'fontSize': 20}),
+                #             html.Pre(id='web_link')
+                #             ], style={'background': '#edede8', 'font-family': 'Gill Sans', 'textAlign': 'left', 'color': '#414744'}),
+                #         width = 6)
+                # ]),
+                # html.Br(),
+                # #not finished
+                # dbc.Row([
+                #     dbc.Col(
+                #         html.Div([
+                #             html.Label(['Rate:(not finished yet)'], style={
+                #             'textDecoration': 'underline', 'fontSize': 20}),
+                #             html.Pre(id='rate')
+                #             ], style={'background': '#edede8', 'font-family': 'Gill Sans', 'textAlign': 'left', 'color': '#414744'}),
+                #         width = 6)
                     
-                ])
+                # ])
 
                 # display_table(),
 
