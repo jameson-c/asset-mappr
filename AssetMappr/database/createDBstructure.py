@@ -16,7 +16,7 @@ conn = psycopg2.connect(
     user = #####,
     password = #####,
     host = #####,
-    port = ####
+    port = #####
     )
 
 # Create cursor object
@@ -24,20 +24,22 @@ cursor = conn.cursor()
 
 # Dropping existing tables
 cursor.execute('''
-               DROP TABLE IF EXISTS assets_preloaded;
-               DROP TABLE IF EXISTS sources_master;
-               DROP TABLE IF EXISTS categories_master;
-               DROP TABLE IF EXISTS values_master;
-               DROP TABLE IF EXISTS assets;
-               DROP TABLE IF EXISTS asset_categories;
-               DROP TABLE IF EXISTS ratings;
-               DROP TABLE IF EXISTS values;
-               DROP TABLE IF EXISTS missing_assets;
+               DROP TABLE IF EXISTS assets_preloaded CASCADE;
+               DROP TABLE IF EXISTS sources_master CASCADE;
+               DROP TABLE IF EXISTS categories_master CASCADE;
+               DROP TABLE IF EXISTS values_master CASCADE;
+               DROP TABLE IF EXISTS communities_master CASCADE;
+
+               DROP TABLE IF EXISTS assets CASCADE;
+               DROP TABLE IF EXISTS asset_categories CASCADE;
+               DROP TABLE IF EXISTS ratings CASCADE;
+               DROP TABLE IF EXISTS values CASCADE;
+               DROP TABLE IF EXISTS missing_assets CASCADE;
                
-               DROP TABLE IF EXISTS staged_assets;
-               DROP TABLE IF EXISTS staged_asset_categories;
-               DROP TABLE IF EXISTS staged_ratings;
-               DROP TABLE IF EXISTS staged_values;
+               DROP TABLE IF EXISTS staged_assets CASCADE;
+               DROP TABLE IF EXISTS staged_asset_categories CASCADE;
+               DROP TABLE IF EXISTS staged_ratings CASCADE;
+               DROP TABLE IF EXISTS staged_values CASCADE;
                 ''')
 
 # Creating the database structure
@@ -75,14 +77,15 @@ CREATE TABLE VALUES_MASTER(
     );
 
 CREATE TABLE ASSETS(
-    asset_id INT GENERATED ALWAYS AS IDENTITY,
+    asset_id CHAR(36) NOT NULL,
     asset_name VARCHAR(250) NOT NULL,
     asset_type VARCHAR(12) CHECK(asset_type IN ('Tangible', 'Intangible')),
     community_geo_id INT NOT NULL,
     source_type VARCHAR(100) NOT NULL,
     description TEXT,
     website TEXT,
-    latlong POINT,
+    latitude DOUBLE PRECISION,
+    longitude DOUBLE PRECISION,
     user_upload_ip TEXT,
     generated_timestamp TIMESTAMP,
     
@@ -98,7 +101,7 @@ CREATE TABLE ASSETS(
     );
 
 CREATE TABLE ASSET_CATEGORIES(
-    asset_id INT NOT NULL,
+    asset_id CHAR(36) NOT NULL,
     category VARCHAR(200) NOT NULL,
     
     PRIMARY KEY (asset_id, category),
@@ -114,8 +117,8 @@ CREATE TABLE ASSET_CATEGORIES(
     );
 
 CREATE TABLE RATINGS(
-    rating_id INT GENERATED ALWAYS AS IDENTITY,
-    asset_id INT NOT NULL,
+    rating_id CHAR(36) NOT NULL,
+    asset_id CHAR(36) NOT NULL,
     user_community INT NOT NULL,
     user_upload_ip TEXT,
     generated_timestamp TIMESTAMP,
@@ -135,7 +138,7 @@ CREATE TABLE RATINGS(
     );
 
 CREATE TABLE VALUES(
-    rating_id INT NOT NULL,
+    rating_id CHAR(36) NOT NULL,
     value VARCHAR(200) NOT NULL,
     
     PRIMARY KEY(rating_id, value),
@@ -151,14 +154,17 @@ CREATE TABLE VALUES(
     );
 
 CREATE TABLE STAGED_ASSETS(
-    staged_asset_id INT GENERATED ALWAYS AS IDENTITY,
+    staged_asset_id CHAR(36) NOT NULL,
     asset_name VARCHAR(250) NOT NULL,
     asset_type VARCHAR(12) CHECK(asset_type IN ('Tangible', 'Intangible')),
     community_geo_id INT NOT NULL,
     source_type VARCHAR(100) NOT NULL,
     description TEXT,
     website TEXT,
-    latlong POINT,
+    latitude DOUBLE PRECISION,
+    longitude DOUBLE PRECISION,
+    user_name VARCHAR(200),
+    user_role VARCHAR(300),
     user_upload_ip TEXT,
     generated_timestamp TIMESTAMP,
     
@@ -174,7 +180,7 @@ CREATE TABLE STAGED_ASSETS(
     );
 
 CREATE TABLE STAGED_ASSET_CATEGORIES(
-    staged_asset_id INT NOT NULL,
+    staged_asset_id CHAR(36) NOT NULL,
     category VARCHAR(200) NOT NULL,
     
     PRIMARY KEY(staged_asset_id, category),
@@ -190,9 +196,11 @@ CREATE TABLE STAGED_ASSET_CATEGORIES(
     );
 
 CREATE TABLE STAGED_RATINGS(
-    staged_rating_id INT GENERATED ALWAYS AS IDENTITY,
-    staged_asset_id INT NOT NULL,
+    staged_rating_id CHAR(36) NOT NULL,
+    staged_asset_id CHAR(36) NOT NULL,
     user_community INT NOT NULL,
+    user_name VARCHAR(200),
+    user_role VARCHAR(300),
     user_upload_ip TEXT,
     generated_timestamp TIMESTAMP,
     rating_scale INT,
@@ -211,7 +219,7 @@ CREATE TABLE STAGED_RATINGS(
     );
 
 CREATE TABLE STAGED_VALUES(
-    staged_rating_id INT NOT NULL,
+    staged_rating_id CHAR(36) NOT NULL,
     value VARCHAR(200) NOT NULL,
     
     PRIMARY KEY(staged_rating_id, value),
@@ -227,12 +235,16 @@ CREATE TABLE STAGED_VALUES(
     );
 
 CREATE TABLE MISSING_ASSETS(
-    suggestion_id INT GENERATED ALWAYS AS IDENTITY,
+    suggestion_id CHAR(36) NOT NULL,
     user_community INT NOT NULL,
+    user_name VARCHAR(200),
+    user_role VARCHAR(300),
     user_upload_ip TEXT,
     generated_timestamp TIMESTAMP,
+    missing_asset_name VARCHAR(250),
     primary_category VARCHAR(200) NOT NULL,
-    latlong POINT,
+    latitude DOUBLE PRECISION,
+    longitude DOUBLE PRECISION,
     line LINE,
     polygon POLYGON,
     circle CIRCLE,
