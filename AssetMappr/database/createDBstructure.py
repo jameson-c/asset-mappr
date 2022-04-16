@@ -66,6 +66,10 @@ CREATE TABLE COMMUNITIES_MASTER(
     
     community_class_code CHAR(2),
     
+    latitude DOUBLE PRECISION,
+    
+    longitude DOUBLE PRECISION,
+    
     PRIMARY KEY(community_geo_id)
     
     );
