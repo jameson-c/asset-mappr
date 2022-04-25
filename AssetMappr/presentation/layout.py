@@ -21,6 +21,8 @@ from dash import html
 from AssetMappr.presentation.H1title import H1title
 #from AssetMappr.presentation.display_map import display_map
 import dash_bootstrap_components as dbc
+import dash_leaflet as dl
+
 
 from AssetMappr.presentation.title_desc import title_desc
 from AssetMappr.presentation.submit_new_asset import submit_new_asset
@@ -42,8 +44,7 @@ server.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(server)
 
 
-def make_layout():
-    df = pd.read_sql_table('assets', con=db.engine)
+def make_layout(df, master_categories):
 
     return html.Div([
         dcc.Tabs([
@@ -64,7 +65,7 @@ def make_layout():
                                             'text-align': 'center'}), width={'size': 6, "offset": 0, 'order': 1}
                         ),
                         dbc.Col(
-                            submit_new_asset()
+                            submit_new_asset(master_categories)
                         )
                         ]),
                 html.Br(),

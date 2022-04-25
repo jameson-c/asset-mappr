@@ -14,6 +14,8 @@ from dash import dash_table
 from dash import dcc
 import dash_bootstrap_components as dbc
 from dash import html
+import dash_leaflet as dl
+
 
 import sys
 import os
@@ -43,14 +45,23 @@ server.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ilohghqbmiloiv:f4fbd28e
 server.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(server)
 
+
+
 app.title = 'AssetMappr'
 
-# Load category master values
+# Load the relevant sql data stuff (to go into a sql data function later)
 master_categories = pd.read_sql_table('categories_master', con=db.engine)
 master_categories = master_categories.values.tolist()
+master_categories = [item for sublist in master_categories for item in sublist]
+
+df = pd.read_sql_table('assets', con=db.engine)
+
+community_lat = 39.8993885
+community_long = -79.7249338
+
 
 # Create the app layout
-app.layout = make_layout()
+app.layout = make_layout(df, master_categories)
 
 # Create the display table callback
 submit_new_asset_cb(app, db)

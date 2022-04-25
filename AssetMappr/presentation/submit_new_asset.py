@@ -16,10 +16,28 @@ from dash import dash_table
 from dash import dcc
 from dash import html
 import dash_bootstrap_components as dbc
+import plotly.graph_objects as go
+
 import dash_leaflet as dl
 
 
-def submit_new_asset():
+
+def submit_new_asset(master_categories):
+    
+    # # Old code fo creating map using Mapbox
+    # fig = go.Figure()
+    # fig.add_trace(go.Scattermapbox())
+    
+    # fig.update_layout(clickmode='event+select',
+    #     mapbox=dict(accesstoken='pk.eyJ1IjoicWl3YW5nYWFhIiwiYSI6ImNremtyNmxkNzR5aGwyb25mOWxocmxvOGoifQ.7ELp2wgswTdQZS_RsnW1PA',
+    #     style='mapbox://styles/mapbox/streets-v11',
+    #     zoom=12.5,
+    #     center= dict(
+    #                     lat=39.8993885,
+    #                     lon=-79.7249338
+    #                 )))
+    
+    
     
     return html.Div([
         
@@ -29,49 +47,43 @@ def submit_new_asset():
         # Pop-up object
         dbc.Modal([
             
-            dbc.ModalHeader(dbc.ModalTitle('Add an asset')),
+            dbc.ModalHeader(dbc.ModalTitle("Know about an asset we don't have? Tell us about it here!")),
             
             dbc.ModalBody([
                 
-                
                 dbc.Form([
                     
-                    dbc.FormGroup([
                         dbc.Label('Asset Name'),
                         dbc.Input(id='asset-name', type='text', placeholder='Enter Asset Name'),
-                        ]),
+                        
                     
-                    dbc.FormGroup([
-                        dbc.Label('Asset Categories'),
-                        dbc.Dropdown(id='asset-categories',
+                        dbc.Label('Categories'),
+                        dcc.Dropdown(id='asset-categories',
                                       options=[{'label': i, 'value': i} for i in master_categories],
-                                      value=[i for i in tags],
-                                      multi=True)
-                        ]),
+                                      value=None,
+                                      multi=True),
+                       
+                        dbc.Label('A short description'),
+                        dbc.Input(id='asset-desc', type='text', placeholder='Description'),
+                        
                     
-                    dbc.FormGroup([
-                        dbc.Label('Asset Description'),
-                        dbc.Input(id='asset-desc', type='text', placeholder='Description')
-                        ]),
-                    
-                    dbc.FormGroup([
-                        dbc.Label('Asset Website'),
-                        dbc.Input(id='asset-website', type='url', placeholder='Website')
-                        ]),
-                    
-                    dbc.Button('submit-asset-button'),
-                    
-                    html.Div(id='submit-asset-confirmation'),
+                        dbc.Label('Website'),
+                        dbc.Input(id='asset-website', type='url', placeholder='Website'),
                     
                     ]),
                 
+                html.Br(),
+                html.H6('Click on the map to mark the exact location of the asset'),
+                html.Div(id='coordinate_click_id'),
                 
-                # Map on which users can click a point to add an asset
-                dl.Map([dl.TileLayer(), dl.LayerGroup(id='layer')],
-                       id="submit-asset-map"),
+                # Map on which users can click a point to add an asse
+                html.Div(id='submit-asset-map'),
                 
-                html.P('Click on map to enter the exact coordinate of the asset:'),
-                html.Div(id='coordinate_click_id')
+                dbc.Button('Click here to submit your asset', id='submit-asset-button', n_clicks=0),
+                    
+                html.Div(id='submit-asset-confirmation'),
+                
+    
                 
                 ]),
             

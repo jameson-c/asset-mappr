@@ -35,6 +35,20 @@ def submit_new_asset_cb(app, db):
             return not is_open
         return is_open
     
+    # Callback to render the Leaflet map on which users will click
+    @app.callback(
+        Output('submit-asset-map', 'children'),
+        Input('submit-asset-modal', 'is_open')
+        )
+    def render_map_on_show(is_open):
+        if is_open:
+            return dl.Map([dl.TileLayer(), dl.LayerGroup(id='layer')],
+                      id='submit-asset-map', 
+                      zoom=13, center=(39.8993885, -79.7249338),
+                      style={'width': '100%', 'height': '50vh', 'margin': "auto", "display": "block"}
+                     )
+    
+    # Callback to display the marker point where the user has clicked on the map
     @app.callback(Output('layer', 'children'), [Input('submit-asset-map', 'click_lat_lng')])
     def map_click(click_lat_lng):
         return [dl.Marker(position=click_lat_lng, children=dl.Tooltip("({:.3f}, {:.3f})".format(*click_lat_lng)))]
@@ -47,15 +61,15 @@ def submit_new_asset_cb(app, db):
         [State('asset-name', 'value')],
         [State('asset-categories', 'value')],
         [State('asset-desc', 'value')],
-        [State('asset-website', 'value')]
+        [State('asset-website', 'value')],
+        [State('submit-asset-map', 'click_lat_lng')]
         )
-    def store_submitted_info(n_clicks, name, categories, desc, site):
+    def store_submitted_info(n_clicks, name, categories, desc, site, click_lat_lng):
         if n_clicks == 0:
             return ''
-        
         else:
+            # TODO: call the write SQL function here to actually write it to the staging table
+            # Append this to the data frame loaded at the app initialization
             
-            
-            
-            return 'Asset submited successfully'
+            return 'Asset {}, {}, {}, {} submited successfully'.format(name, desc, *click_lat_lng)
             
