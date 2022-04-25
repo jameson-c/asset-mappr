@@ -18,7 +18,7 @@ from AssetMappr.presentation.display_map import display_map
 # app requires "pip install psycopg2" as well (ensure it is installed if running locally)
 
 # Import the database functions
-from AssetMappr.database import readDB
+from AssetMappr.database.readDB import readDB
 
 # Import the layout and callback components
 from AssetMappr.presentation.layout import make_layout
@@ -34,7 +34,7 @@ server = app.server
 app.title = 'AssetMappr'
 
 # Load data from the postgreSQL database
-df, asset_categories, master_categories, master_value_tags = readDB()
+df, asset_categories, master_categories, master_value_tags = readDB(app)
 
 # Create the app layout
 app.layout = make_layout()
