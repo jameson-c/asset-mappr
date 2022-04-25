@@ -64,7 +64,7 @@ community_long = -79.7249338
 app.layout = make_layout(df, master_categories)
 
 # Create the display table callback
-submit_new_asset_cb(app, db)
+submit_new_asset_cb(app)
 #display_table_cb(app, db)
 #display_map(app)
 

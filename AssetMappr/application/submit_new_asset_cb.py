@@ -21,8 +21,10 @@ from dash import html
 import pandas as pd
 import dash_leaflet as dl
 
+from AssetMappr.database.submit_new_asset_db import submit_new_asset_db
 
-def submit_new_asset_cb(app, db):
+
+def submit_new_asset_cb(app):
     
     # Callback to interact with the open and close buttons of the modal
     @app.callback(
@@ -69,6 +71,8 @@ def submit_new_asset_cb(app, db):
             return ''
         else:
             # TODO: call the write SQL function here to actually write it to the staging table
+            submit_new_asset_db(name, categories, desc, site, click_lat_lng, community_geo_id=123)
+            
             # Append this to the data frame loaded at the app initialization
             
             return 'Asset {}, {}, {}, {} submited successfully'.format(name, desc, *click_lat_lng)
