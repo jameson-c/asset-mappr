@@ -2,15 +2,16 @@
 File: submit_new_asset_cb.py
 Author: Mihir Bhaskar
 
-Desc: This file creates the callbacks which interact with the submit new asset popup
+Desc: This file creates the callbacks which interact with the submit_new_asset popup
       
-      This is linked to the submit_new_asset.py layout file, through the ids 'open-asset-submit',
-      'submit-asset-map', 'close-asset-submit'
+      This is linked to the submit_new_asset.py layout file, as well as the submit_new_asset_db
+      file in the Database folder, which writes the new user-entered asset info to the database
 
 Input: 
-    db: The database object
     app: an initialized dash app
+    
 Output: 
+    Callbacks relating to the submit-new-asset feature
      
 """
 import dash
@@ -39,7 +40,7 @@ def submit_new_asset_cb(app):
             return not is_open
         return is_open
     
-    # Callback to render the Leaflet map on which users will click
+    # Callback to render the Leaflet map on which users will pin the location of the asset
     @app.callback(
         Output('submit-asset-map', 'children'),
         Input('submit-asset-modal', 'is_open')
@@ -58,7 +59,7 @@ def submit_new_asset_cb(app):
         return [dl.Marker(position=click_lat_lng, children=dl.Tooltip("({:.3f}, {:.3f})".format(*click_lat_lng)))]
         
 
-    # Callback to take data coming from the submit-new-asset 
+    # Callback to take all the user-submitted info on the new asset, and write it to the database
     @app.callback(
         Output(component_id='submit-asset-confirmation', component_property='children'),
         [Input('submit-asset-button', 'n_clicks')],
@@ -77,10 +78,9 @@ def submit_new_asset_cb(app):
             # Get the IP address from which this callback request was generated
             ip = request.remote_addr
             
-            # TODO: call the write SQL function here to actually write it to the staging table
             submit_new_asset_db(ip, user_name, user_role, name, categories, desc, site, click_lat_lng, community_geo_id=123)
             
-            # Append this to the data frame loaded at the app initialization
+            # TODO: Append this to the data frame loaded at the app initialization
             
             return 'Asset {} submited successfully! Thank you for helping out.'.format(name)
             

@@ -2,16 +2,25 @@
 File: submit_new_asset_db.py
 Author: Mihir Bhaskar
 
-Desc: Writes new asset to the staging assets database
+Desc: Interacts with the database to write user-submitted assets to the staging assets table
 
 TODOs:
-    - Return back a 'row' that can be appended onto the dataframe 
     - Generalise community_geo_id
     - Standardise the database connection so I don't keep starting new connections
 
 Input:
+    - (str) User's IP address
+    - (str) Name of the user submitting the asset
+    - (str) Role of the user in the community
+    - (str) Name of the asset 
+    - (list) Categories associated with that asset
+    - (str) Desc: description of the asset
+    - (str) Site: website associated with the asset
+    - (tuple) click_lat_lng: latitude and longitude of the asset
+    - (int) community_geo_id: geo_id of the relevant community
    
 Output: 
+    - None: this function only writes to the SQL database directly
     
 """
 import psycopg2
