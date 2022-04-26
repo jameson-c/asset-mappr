@@ -21,6 +21,8 @@ from dash import html
 import pandas as pd
 import dash_leaflet as dl
 
+from flask import request
+
 from AssetMappr.database.submit_new_asset_db import submit_new_asset_db
 
 
@@ -60,20 +62,25 @@ def submit_new_asset_cb(app):
     @app.callback(
         Output(component_id='submit-asset-confirmation', component_property='children'),
         [Input('submit-asset-button', 'n_clicks')],
+        [State('user-name', 'value')],
+        [State('user-role', 'value')],
         [State('asset-name', 'value')],
         [State('asset-categories', 'value')],
         [State('asset-desc', 'value')],
         [State('asset-website', 'value')],
         [State('submit-asset-map', 'click_lat_lng')]
         )
-    def store_submitted_info(n_clicks, name, categories, desc, site, click_lat_lng):
+    def store_submitted_info(n_clicks, user_name, user_role, name, categories, desc, site, click_lat_lng):
         if n_clicks == 0:
             return ''
         else:
+            # Get the IP address from which this callback request was generated
+            ip = request.remote_addr
+            
             # TODO: call the write SQL function here to actually write it to the staging table
-            submit_new_asset_db(name, categories, desc, site, click_lat_lng, community_geo_id=123)
+            submit_new_asset_db(ip, user_name, user_role, name, categories, desc, site, click_lat_lng, community_geo_id=123)
             
             # Append this to the data frame loaded at the app initialization
             
-            return 'Asset {}, {}, {}, {} submited successfully'.format(name, desc, *click_lat_lng)
+            return 'Asset {} submited successfully!'.format(name)
             

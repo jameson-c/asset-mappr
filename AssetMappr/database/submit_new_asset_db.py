@@ -20,7 +20,7 @@ from datetime import datetime
 
 
 
-def submit_new_asset_db(name, categories, desc, site, click_lat_lng, community_geo_id):
+def submit_new_asset_db(ip, user_name, user_role, name, categories, desc, site, click_lat_lng, community_geo_id):
 
     # Establish connection with database (details found in Heroku dashboard after login)
     conn = psycopg2.connect(
@@ -44,20 +44,17 @@ def submit_new_asset_db(name, categories, desc, site, click_lat_lng, community_g
     website = site
     latitude = click_lat_lng[0]
     longitude = click_lat_lng[1]
+    user_name = user_name
+    user_role = user_role
+    user_upload_ip = ip
     
     generated_timestamp = datetime.now()
-        
-    # TODO user info
-    # user_name VARCHAR(200),
-    # user_role VARCHAR(300),
-    # user_upload_ip TEXT,
-    # generated_timestamp TIMESTAMP,
     
     # Write the info into staged assets table
     cursor.execute('''INSERT INTO staged_assets (staged_asset_id, asset_name, asset_type, community_geo_id, source_type, 
-                               description, website, latitude, longitude, generated_timestamp)
-                      VALUES ('{}','{}','{}',{},'{}','{}','{}',{},{},TIMESTAMP '{}');'''.format(staged_asset_id, asset_name, asset_type, community_geo_id, source_type, 
-                               description, website, latitude, longitude, generated_timestamp))
+                               description, website, latitude, longitude, generated_timestamp, user_name, user_role, user_upload_ip)
+                      VALUES ('{}','{}','{}',{},'{}','{}','{}',{},{},TIMESTAMP '{}', '{}', '{}', '{}');'''.format(staged_asset_id, asset_name, asset_type, community_geo_id, source_type, 
+                               description, website, latitude, longitude, generated_timestamp, user_name, user_role, user_upload_ip))
        
     # Write information to the asset-categories table
     for cat in categories:

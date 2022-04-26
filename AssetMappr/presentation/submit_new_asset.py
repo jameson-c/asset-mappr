@@ -53,8 +53,14 @@ def submit_new_asset(master_categories):
                 
                 dbc.Form([
                     
+                        dbc.Label('Name of user (optional)'),
+                        dbc.Input(id='user-name', type='text', placeholder='Enter User Name'),
+                        
+                        dbc.Label('Role in the community (e.g. resident, teacher, business owner)'),
+                        dbc.Input(id='user-role', type='text', placeholder='Enter User Role'),
+                        
                         dbc.Label('Asset Name'),
-                        dbc.Input(id='asset-name', type='text', placeholder='Enter Asset Name'),
+                        dbc.Input(id='asset-name', required=True, type='text', placeholder='Enter Asset Name'),
                         
                     
                         dbc.Label('Categories'),
