@@ -48,7 +48,7 @@ def submit_new_asset_cb(app):
         if is_open:
             return dl.Map([dl.TileLayer(), dl.LayerGroup(id='layer')],
                       id='submit-asset-map', 
-                      zoom=13, center=(39.8993885, -79.7249338),
+                      zoom=14, center=(39.8993885, -79.7249338),
                       style={'width': '100%', 'height': '50vh', 'margin': "auto", "display": "block"}
                      )
     
@@ -82,5 +82,5 @@ def submit_new_asset_cb(app):
             
             # Append this to the data frame loaded at the app initialization
             
-            return 'Asset {} submited successfully!'.format(name)
+            return 'Asset {} submited successfully! Thank you for helping out.'.format(name)
             

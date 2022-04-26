@@ -24,21 +24,6 @@ import dash_leaflet as dl
 
 def submit_new_asset(master_categories):
     
-    # # Old code fo creating map using Mapbox
-    # fig = go.Figure()
-    # fig.add_trace(go.Scattermapbox())
-    
-    # fig.update_layout(clickmode='event+select',
-    #     mapbox=dict(accesstoken='pk.eyJ1IjoicWl3YW5nYWFhIiwiYSI6ImNremtyNmxkNzR5aGwyb25mOWxocmxvOGoifQ.7ELp2wgswTdQZS_RsnW1PA',
-    #     style='mapbox://styles/mapbox/streets-v11',
-    #     zoom=12.5,
-    #     center= dict(
-    #                     lat=39.8993885,
-    #                     lon=-79.7249338
-    #                 )))
-    
-    
-    
     return html.Div([
         
         # Button that opens the add asset popup
@@ -51,45 +36,91 @@ def submit_new_asset(master_categories):
             
             dbc.ModalBody([
                 
-                dbc.Form([
+                dbc.Row([
                     
-                        dbc.Label('Name of user (optional)'),
-                        dbc.Input(id='user-name', type='text', placeholder='Enter User Name'),
-                        
-                        dbc.Label('Role in the community (e.g. resident, teacher, business owner)'),
-                        dbc.Input(id='user-role', type='text', placeholder='Enter User Role'),
+                    dbc.Col([
                         
                         dbc.Label('Asset Name'),
                         dbc.Input(id='asset-name', required=True, type='text', placeholder='Enter Asset Name'),
                         
+                        ]),
                     
-                        dbc.Label('Categories'),
-                        dcc.Dropdown(id='asset-categories',
-                                      options=[{'label': i, 'value': i} for i in master_categories],
-                                      value=None,
-                                      multi=True),
-                       
-                        dbc.Label('A short description'),
-                        dbc.Input(id='asset-desc', type='text', placeholder='Description'),
+                    dbc.Col([
                         
+                        dbc.Label('Name of user (optional)'),
+                        dbc.Input(id='user-name', type='text', placeholder='Enter your name'),
+                        
+                        ]),
                     
+                    ]),
+                
+                dbc.Row([
+                    
+                    dbc.Col([
+                        
+                         dbc.Label('Categories (select at least one)'),
+                         dcc.Dropdown(id='asset-categories',
+                                          options=[{'label': i, 'value': i} for i in master_categories],
+                                          value=None,
+                                          multi=True),
+                        ]),
+                    
+                    dbc.Col([
+                        
+                        dbc.Label('Role in the community'),
+                        dbc.Input(id='user-role', type='text', placeholder='Enter your role (e.g. resident, teacher, business owner)'),
+                        
+                        ]),
+                    
+                    ]),
+                
+                dbc.Row([
+                    
+                    dbc.Col([
+                        
+                        dbc.Label('A short description'),
+                        dbc.Input(id='asset-desc', type='text', placeholder='Description of the asset'),
+                        
+                        ]),
+                    
+                    dbc.Col([
+                        
                         dbc.Label('Website'),
-                        dbc.Input(id='asset-website', type='url', placeholder='Website'),
+                        dbc.Input(id='asset-website', type='url', placeholder='Relevant website for the asset'),
+                    
+                        ]),
                     
                     ]),
                 
                 html.Br(),
-                html.H6('Click on the map to mark the exact location of the asset'),
-                html.Div(id='coordinate_click_id'),
                 
-                # Map on which users can click a point to add an asse
-                html.Div(id='submit-asset-map'),
-                
-                dbc.Button('Click here to submit your asset', id='submit-asset-button', n_clicks=0),
+                dbc.Row([
                     
-                html.Div(id='submit-asset-confirmation'),
+                    dbc.Col([
+                        
+                        html.H6('Click on the map to mark the exact location of the asset'),
+                        html.Div(id='coordinate_click_id'),
+                        
+                        # Map on which users can click a point to add an asse
+                        html.Div(id='submit-asset-map'),
+                        
+                        ], width=10),
+                    
+                    dbc.Col([
+                        
+                        html.Br(),
+                        
+                        dbc.Button('Click here to submit your asset', id='submit-asset-button', n_clicks=0),
+                        
+                        html.Br(),
+                        
+                        html.Div(id='submit-asset-confirmation'),
+                        
+                        ])
+                    
+                    
+                    ])
                 
-    
                 
                 ]),
             

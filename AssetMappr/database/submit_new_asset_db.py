@@ -18,8 +18,6 @@ import psycopg2
 import uuid
 from datetime import datetime
 
-
-
 def submit_new_asset_db(ip, user_name, user_role, name, categories, desc, site, click_lat_lng, community_geo_id):
 
     # Establish connection with database (details found in Heroku dashboard after login)
