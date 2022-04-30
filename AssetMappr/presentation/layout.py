@@ -11,11 +11,8 @@ Output:
     - A function called make_layout() that returns the layout section of the Dash app
     
 """
-from enum import auto
 import dash
 import pandas as pd
-from dash.dependencies import Input, Output, State
-from dash import dash_table
 from dash import dcc
 from dash import html
 from AssetMappr.presentation.H1title import H1title
@@ -23,6 +20,11 @@ from AssetMappr.presentation.H1title import H1title
 import dash_bootstrap_components as dbc
 import dash_leaflet as dl
 
+from AssetMappr.presentation.rowTwo import rowTwoLeft, rowTwoRight
+from AssetMappr.presentation.selectMap import selectMap
+from AssetMappr.presentation.showMap import showMap
+from AssetMappr.presentation.showRate import showRate
+from AssetMappr.presentation.showWebsite import showWebsite
 
 from AssetMappr.presentation.title_desc import title_desc
 from AssetMappr.presentation.submit_new_asset import submit_new_asset
@@ -43,7 +45,6 @@ server.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ilohghqbmiloiv:f4fbd28e
 server.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(server)
 
-
 def make_layout(df, master_categories):
 
     return html.Div([
@@ -52,76 +53,55 @@ def make_layout(df, master_categories):
             # Tab 1: Home page/view assets
             dcc.Tab(label='Community User View', children=[
 
-                # title_desc(),
-                # title:
                 dbc.Row([
                     H1title(),
                 ]),
+
                 dbc.Row([
-                        dbc.Col(
-                            html.Div("Explore your community! Search the map for assets in your town.",
-                                     style={'font-family': 'Gill Sans', "border": "2px black solid", 'border-color':
-                                            'olivedrab', 'background': '#edede8', 'color': 'Black', 'font_size': '26px',
-                                            'text-align': 'center'}), width={'size': 6, "offset": 0, 'order': 1}
-                        ),
-                        dbc.Col(
-                            submit_new_asset(master_categories)
-                        )
-                        ]),
+
+                  dbc.Col(
+                        rowTwoLeft(),
+                        width={'size': 6, "offset": 0, 'order': 1}
+                    ),
+                    dbc.Col(
+                        submit_new_asset(master_categories),
+                        width={'size': 6, "offset": 0, 'order': 2}
+                    )
+                ]),
+
                 html.Br(),
-                # dbc.Row([
-                #     dbc.Col(
-                #         dcc.Graph(id='graph', config={'displayModeBar': True, 'scrollZoom': True},
-                #                   style={'background': '#00FC87', 'height': '60vh'}),
-                #         width={'size': 6, "offset": 0, 'order': 1}),
 
-                #     dbc.Col(
-                #         dbc.Table(id="main_table", children=[display_table()]),
-                #         width={'size': 6, "offset": 0, 'order': 2}),
-                # ]),
-                # html.Br(),
-                # dbc.Row([
-                #     dbc.Col(
-                #         html.Div([
-                #         html.Label(children=['Select all assets the map should display:'], style={
-                #             'textDecoration': 'underline', 'fontSize': 20}),
-                #         dcc.Checklist(id="recycling_type", value=[x for x in sorted(df['category'].unique())],
-                #                       options=[{'label': x, 'value': x}
-                #                                 for x in sorted(df['category'].unique())],
-                #                       labelClassName='mr-3 text-secondary')
-                #     ], style={'background': '#edede8', 'font-family': 'Gill Sans', 'textAlign': 'left', 'color': '#414744'}),
-                #       width = 6
-                #     )
-                # ]),
-                # html.Br(),
-                # dbc.Row([
-                #     dbc.Col(
-                #         html.Div([
-                #             html.Label(['Website:'], style={
-                #             'textDecoration': 'underline', 'fontSize': 20}),
-                #             html.Pre(id='web_link')
-                #             ], style={'background': '#edede8', 'font-family': 'Gill Sans', 'textAlign': 'left', 'color': '#414744'}),
-                #         width = 6)
-                # ]),
-                # html.Br(),
-                # #not finished
-                # dbc.Row([
-                #     dbc.Col(
-                #         html.Div([
-                #             html.Label(['Rate:(not finished yet)'], style={
-                #             'textDecoration': 'underline', 'fontSize': 20}),
-                #             html.Pre(id='rate')
-                #             ], style={'background': '#edede8', 'font-family': 'Gill Sans', 'textAlign': 'left', 'color': '#414744'}),
-                #         width = 6)
-                    
-                # ])
+                dbc.Row([
+                    dbc.Col(
+                        showMap(),
+                        width={'size': 6, "offset": 0, 'order': 1}),
 
-                # display_table(),
-
-                # submit_new_asset(),
-
-                # display_map()
-
+                    dbc.Col(
+                        dbc.Table(id="main_table", children=[display_table()]),
+                        width={'size': 6, "offset": 0, 'order': 2}),
+                ]),
+               
+                dbc.Row([
+                    dbc.Col(
+                        selectMap(df),
+                        width=6,
+                    )
+                ]),
+                
+                html.Br(),
+                
+                dbc.Row([
+                    dbc.Col(
+                        showWebsite(),
+                        width=6)
+                ]),
+                
+                #not finished
+                dbc.Row([
+                    dbc.Col(
+                        showRate(),
+                        width=6)
+                ])
 
             ]),
 
@@ -133,11 +113,5 @@ def make_layout(df, master_categories):
             ])
 
         ]),
-
-
-
-        # Interval for data update
-        dcc.Interval(id='interval_pg', interval=1000, n_intervals=0)
-
 
     ])
