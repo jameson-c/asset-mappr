@@ -6,19 +6,17 @@ Desc: This file gets hospitals across the US from the Community Benefit API:
     - About: https://www.communitybenefitinsight.org/?page=info.data_api
     - API: http://www.communitybenefitinsight.org/api/get_hospitals.php
 
-Finally, the file outputs a .csv file that contains all of the hospital data
-
-THIS IS COPIED FROM JAMIE AS A TEMPLATE - STILL NEED TO UPDATE
+Finally, the file outputs a pandas dataframe that contains all of the hospital data.
 
 
-Inputs: Google Places API key
+Inputs: Google Places API key, state abbreviation
 Output: pandas dataframe Schools, written to .csv
 """
 import pandas as pd
 import time
 import requests
 import json
-from .database import getAddressCoords
+from getAddressCoords_National import getAddressCoords
 
 '''
 Func: getHospitals
@@ -32,7 +30,7 @@ Output: A pandas dataframe containing hospitals in
         name	category	vicinity	latitude	longitude	website
 '''
 
-def getHospitals(twoLetterState):
+def getHospitals(twoLetterState, APIkey):
     
     stateCode = str(twoLetterState)
     
@@ -40,7 +38,7 @@ def getHospitals(twoLetterState):
     '?state=' + stateCode)
     
     
-    # Call the EDGE OpenData API
+    # Call the Community Benefit Insights Hospital Data API
     response = requests.get(url)
     result = json.loads(response.text)
     df = pd.json_normalize(result) # normalize json file into pandas
@@ -49,11 +47,20 @@ def getHospitals(twoLetterState):
         # df.drop(['geometry.x', 'geometry.y'],axis = 1)  
         df['category'] = 'Healthcare'
         df['website'] = ''
-        df.rename(columns={'street_address': 'vicinity')
+        df.rename(columns={'street_address' : 'vicinity'})
+        df['vicinity'] = df['street_address'] + ', ' + df['city']
+        df['address'] = df['street_address'] + ', ' + df['city'] + ', ' + df['state']
+        lat = []
+        long = []
+        for i in df['address']:
+            coords = getAddressCoords(i, APIkey)[0]
+            lat.append(coords[0])
+            long.append(coords[1])
+            
+        df['latitude'] = lat
+        df['longitude'] = long
     
-        df['vicinity'] = df["vicinity"] + ', ' + df["city"]
-    
-       # df = df[['name','category','vicinity','latitude','longitude','website']]
+        df = df[['name','category','vicinity','latitude','longitude','website']]
     
         return df
     
@@ -62,26 +69,4 @@ def getHospitals(twoLetterState):
         df = pd.DataFrame(columns = column_names)
         return df
         
-getHospitals('PA').columns
-
-def getAllSchools(countyFIPS,countyName,state):
-    #countyFIPS = input('Look at this site to find the county code you are searching for: https://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/home/?cid=nrcs143_013697\n\nEnter the 5-digit county FIPS code: ')
-    #state = input('Enter the 2-letter state abbreviation: ')
-    #countyName = input('Look at this site and find how the county name is spelled word for word (including the word county, sometimes), case sensitive: https://data-nces.opendata.arcgis.com/datasets/nces::public-school-characteristics-2019-20/explore?location=36.666724%2C-96.405824%2C16.00\n\nEnter County Name: ')
-    s
-    private = getPrivSchools(countyFIPS)
-    public = getPubSchools(countyName,state)
-    college = getPostSecSchools(countyFIPS)
-    
-    print('\nIf any of these searches yield no results, make sure your county names, county codes, and state codes are correct')
-    print(f'We found {len(private)} private schools')
-    print(f'We found {len(public)} public schools')
-    print(f'We found {len(college)} postsecondary schools')
-    
-    return private, public, college
-    
-    #Schools = private.append(public, ignore_index = True).append(college, ignore_index = True)
-    
-    #Schools.to_csv('Schools.csv')
-
         
