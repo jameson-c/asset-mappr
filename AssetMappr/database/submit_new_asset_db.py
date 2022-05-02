@@ -42,9 +42,9 @@ def submit_new_asset_db(ip, user_name, user_role, name, categories, desc, site, 
     cursor = conn.cursor()
     
     # Process the info into a suitable format for the staging asset table
-    staged_asset_id = str(uuid.uuid4())
+    staged_asset_id = str(uuid.uuid4()) 
     asset_name = name
-    asset_type = 'Tangible'
+    asset_type = 'Tangible' 
     community_geo_id = community_geo_id
     source_type = 'User'
     description = desc
@@ -58,6 +58,7 @@ def submit_new_asset_db(ip, user_name, user_role, name, categories, desc, site, 
     generated_timestamp = datetime.now()
     
     # Write the info into staged assets table
+    # Refer to the createDBstructure.py script to see the variable types and DB structure
     cursor.execute('''INSERT INTO staged_assets (staged_asset_id, asset_name, asset_type, community_geo_id, source_type, 
                                description, website, latitude, longitude, generated_timestamp, user_name, user_role, user_upload_ip)
                       VALUES ('{}','{}','{}',{},'{}','{}','{}',{},{},TIMESTAMP '{}', '{}', '{}', '{}');'''.format(staged_asset_id, asset_name, asset_type, community_geo_id, source_type, 

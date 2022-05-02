@@ -46,9 +46,11 @@ def submit_new_asset_cb(app):
         Input('submit-asset-modal', 'is_open')
         )
     def render_map_on_show(is_open):
+        # This ensures that the map only renders if the modal is open, preventing screen resizing issues
         if is_open:
             return dl.Map([dl.TileLayer(), dl.LayerGroup(id='layer')],
                       id='submit-asset-map', 
+                      # TODO: automate the centering of the map based on user input on community
                       zoom=14, center=(39.8993885, -79.7249338),
                       style={'width': '100%', 'height': '50vh', 'margin': "auto", "display": "block"}
                      )
@@ -72,8 +74,10 @@ def submit_new_asset_cb(app):
         [State('submit-asset-map', 'click_lat_lng')]
         )
     def store_submitted_info(n_clicks, user_name, user_role, name, categories, desc, site, click_lat_lng):
+        # If the 'Submit' button has not been clicked yet, return or do nothing
         if n_clicks == 0:
             return ''
+        # If the submit button has been clicked, then write the info to the DB
         else:
             # Get the IP address from which this callback request was generated
             ip = request.remote_addr
