@@ -16,8 +16,10 @@ import pandas as pd
 from dash import dcc
 from dash import html
 from AssetMappr.presentation.H1title import H1title
-from AssetMappr.presentation.display_map import display_map
+#from AssetMappr.presentation.display_map import display_map
 import dash_bootstrap_components as dbc
+import dash_leaflet as dl
+
 from AssetMappr.presentation.rowTwo import rowTwoLeft, rowTwoRight
 from AssetMappr.presentation.selectMap import selectMap
 from AssetMappr.presentation.showMap import showMap
@@ -43,9 +45,7 @@ server.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ilohghqbmiloiv:f4fbd28e
 server.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(server)
 
-
-def make_layout():
-    df = pd.read_sql_table('assets', con=db.engine)
+def make_layout(df, master_categories):
 
     return html.Div([
         dcc.Tabs([
@@ -58,12 +58,13 @@ def make_layout():
                 ]),
 
                 dbc.Row([
-                    dbc.Col(
+
+                  dbc.Col(
                         rowTwoLeft(),
                         width={'size': 6, "offset": 0, 'order': 1}
                     ),
                     dbc.Col(
-                        rowTwoRight(),
+                        submit_new_asset(master_categories),
                         width={'size': 6, "offset": 0, 'order': 2}
                     )
                 ]),
@@ -102,7 +103,6 @@ def make_layout():
                         width=6)
                 ])
 
-
             ]),
 
             # Tab 2: Add asset
@@ -113,11 +113,5 @@ def make_layout():
             ])
 
         ]),
-
-
-
-        # Interval for data update
-        dcc.Interval(id='interval_pg', interval=1000, n_intervals=0)
-
 
     ])

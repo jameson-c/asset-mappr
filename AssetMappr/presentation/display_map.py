@@ -13,7 +13,6 @@ import dash
 import numpy as np
 import pandas as pd
 
-
 def display_map():
 
     return html.Div(id='graph')

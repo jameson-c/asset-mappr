@@ -6,3 +6,4 @@ psycopg2==2.8.5
 Flask-SQLAlchemy==2.4.3
 gunicorn==20.0.4
 dash-bootstrap-components>=0.10.1
+dash-leaflet==0.1.23
