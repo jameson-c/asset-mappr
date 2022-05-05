@@ -29,6 +29,8 @@ from AssetMappr.presentation.layout import make_layout
 from AssetMappr.application.display_table_cb import display_table_cb
 
 from AssetMappr.application.submit_new_asset_cb import submit_new_asset_cb
+from AssetMappr.application.suggest_missing_asset_cb import suggest_missing_asset_cb
+
 
 # =============================================================================
 # Initialize app
@@ -55,8 +57,9 @@ app.layout = make_layout(df, master_categories)
 
 # Create the display table callback
 submit_new_asset_cb(app)
-display_table_cb(app, db)
-display_map_cb(app, db)
+suggest_missing_asset_cb(app)
+#display_table_cb(app, db)
+#display_map_cb(app, db)
 
 # Run the app
 if __name__ == '__main__':
