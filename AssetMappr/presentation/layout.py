@@ -28,6 +28,8 @@ from AssetMappr.presentation.showWebsite import showWebsite
 
 from AssetMappr.presentation.title_desc import title_desc
 from AssetMappr.presentation.submit_new_asset import submit_new_asset
+from AssetMappr.presentation.suggest_missing_asset import suggest_missing_asset
+
 from AssetMappr.presentation.display_table import display_table
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -85,7 +87,11 @@ def make_layout(df, master_categories):
                     dbc.Col(
                         selectMap(df),
                         width=6,
-                    )
+                    ),
+                    dbc.Col(
+                        suggest_missing_asset(master_categories),
+                        width={'size': 6, "offset": 0, 'order': 2},
+                        ),
                 ]),
                 
                 html.Br(),
