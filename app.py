@@ -19,6 +19,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 import pandas as pd
 from AssetMappr.application.display_map_cb import display_map_cb
+import uuid
 #from AssetMappr.presentation.display_map import display_map
 
 # app requires "pip install psycopg2" as well (ensure it is installed if running locally)
@@ -33,6 +34,8 @@ from AssetMappr.presentation.layout import make_layout
 
 from AssetMappr.application.display_table_cb import display_table_cb
 from AssetMappr.application.display_asset_info_cb import display_asset_info_cb
+from AssetMappr.application.submit_rating_cb import submit_rating_cb
+
 from AssetMappr.application.submit_new_asset_cb import submit_new_asset_cb
 from AssetMappr.application.suggest_missing_asset_cb import suggest_missing_asset_cb
 
@@ -52,6 +55,7 @@ community_long = -79.7249338
 
 # Load data from the postgreSQL database (again, this will eventually depend on community input chosen)
 df, asset_categories, master_categories, master_value_tags = readDB(app)
+df['asset_status'] = 'Verified'
 
 # Create the app layout
 app.layout = html.Div([
@@ -86,6 +90,7 @@ suggest_missing_asset_cb(app)
 #display_table_cb(app, db)
 display_map_cb(app, df, asset_categories)
 display_asset_info_cb(app)
+submit_rating_cb(app)
 
 # Run the app
 if __name__ == '__main__':

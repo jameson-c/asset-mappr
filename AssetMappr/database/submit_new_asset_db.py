@@ -9,6 +9,7 @@ TODOs:
     - Standardise the database connection so I don't keep starting new connections
 
 Input:
+    - (str) Staged asset ID (generated as a UUID 36 character)
     - (str) User's IP address
     - (str) Name of the user submitting the asset
     - (str) Role of the user in the community
@@ -27,7 +28,7 @@ import psycopg2
 import uuid
 from datetime import datetime
 
-def submit_new_asset_db(ip, user_name, user_role, name, categories, desc, site, click_lat_lng, community_geo_id):
+def submit_new_asset_db(staged_asset_id, ip, user_name, user_role, name, categories, desc, site, click_lat_lng, community_geo_id):
 
     # Establish connection with database (details found in Heroku dashboard after login)
     conn = psycopg2.connect(
@@ -42,7 +43,6 @@ def submit_new_asset_db(ip, user_name, user_role, name, categories, desc, site, 
     cursor = conn.cursor()
     
     # Process the info into a suitable format for the staging asset table
-    staged_asset_id = str(uuid.uuid4()) 
     asset_name = name
     asset_type = 'Tangible' 
     community_geo_id = community_geo_id

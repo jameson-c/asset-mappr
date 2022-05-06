@@ -12,11 +12,11 @@ import psycopg2
 
 # Establish connection with database (details found in Heroku dashboard after login)
 conn = psycopg2.connect(
-    database = #####,
-    user = #####,
-    password = #####,
-    host = #####,
-    port = #####
+    database = ###,
+    user = ###,
+    password = ###,
+    host = ###,
+    port = ###
     )
 
 # Create cursor object
@@ -90,6 +90,7 @@ CREATE TABLE ASSETS(
     website TEXT,
     latitude DOUBLE PRECISION,
     longitude DOUBLE PRECISION,
+    address VARCHAR(250),
     user_upload_ip TEXT,
     generated_timestamp TIMESTAMP,
     
@@ -167,6 +168,7 @@ CREATE TABLE STAGED_ASSETS(
     website TEXT,
     latitude DOUBLE PRECISION,
     longitude DOUBLE PRECISION,
+    address VARCHAR(250),
     user_name VARCHAR(200),
     user_role VARCHAR(300),
     user_upload_ip TEXT,
@@ -201,7 +203,7 @@ CREATE TABLE STAGED_ASSET_CATEGORIES(
 
 CREATE TABLE STAGED_RATINGS(
     staged_rating_id CHAR(36) NOT NULL,
-    staged_asset_id CHAR(36) NOT NULL,
+    asset_id CHAR(36) NOT NULL,
     user_community INT NOT NULL,
     user_name VARCHAR(200),
     user_role VARCHAR(300),
@@ -209,12 +211,9 @@ CREATE TABLE STAGED_RATINGS(
     generated_timestamp TIMESTAMP,
     rating_scale INT,
     comments TEXT,
+    asset_status VARCHAR(12) CHECK(asset_status IN ('Staged', 'Verified')),
     
     PRIMARY KEY(staged_rating_id),
-    
-    CONSTRAINT fk_stagedratings_id
-        FOREIGN KEY(staged_asset_id)
-            REFERENCES staged_assets(staged_asset_id),
             
     CONSTRAINT fk_stagedratings_community
         FOREIGN KEY(user_community)
@@ -246,6 +245,7 @@ CREATE TABLE MISSING_ASSETS(
     user_upload_ip TEXT,
     generated_timestamp TIMESTAMP,
     missing_asset_name VARCHAR(250),
+    description TEXT,
     primary_category VARCHAR(200) NOT NULL,
     latitude DOUBLE PRECISION,
     longitude DOUBLE PRECISION,
@@ -271,3 +271,4 @@ CREATE TABLE MISSING_ASSETS(
 # Execute the query
 cursor.execute(createdb)
 conn.commit()
+conn.close()

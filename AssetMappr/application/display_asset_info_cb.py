@@ -19,7 +19,7 @@ def display_asset_info_cb(app):
         if clickData is None:
             return None
         else:
-            return clickData['points'][0]['customdata']
+            return clickData['points'][0]['customdata'][0]
         
     @app.callback(
     Output('display-asset-desc', 'children'),
@@ -28,7 +28,7 @@ def display_asset_info_cb(app):
         if clickData is None:
             return None
         else:
-            return clickData['points'][1]['customdata']
+            return clickData['points'][0]['customdata'][1]
     
     @app.callback(
     Output('web_link', 'children'),
@@ -38,7 +38,7 @@ def display_asset_info_cb(app):
             return None
         else:
             # print (clickData)
-            the_link = clickData['points'][2]['customdata']
+            the_link = clickData['points'][0]['customdata'][2]
             if the_link is None:
                 return 'No Website Available'
             else:

@@ -24,12 +24,11 @@ def display_map_cb(app, df, asset_categories):
             lon=df_sub['longitude'],
             lat=df_sub['latitude'],
             mode='markers',
-            # marker={'color': df_sub['Category']},
             unselected={'marker': {'opacity': 1}},
             selected={'marker': {'opacity': 0.5, 'size': 25}},
             hoverinfo='text',
             hovertext=df_sub['asset_name'],
-            customdata=df_sub[['asset_name', 'description', 'website']],
+            customdata= df_sub.loc[:,['asset_name', 'description', 'website', 'asset_id']],
         )]
     
         # Return figure

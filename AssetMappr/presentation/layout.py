@@ -65,7 +65,7 @@ def make_layout(df, master_categories):
                       html.H5('Information for selected asset:'),
                       showAssetInfo(),
                       html.Br(),
-                      html.H4('Placeholder for rating function'),
+                      showRate(),
                       
                       html.Br(),
                       html.Br(),

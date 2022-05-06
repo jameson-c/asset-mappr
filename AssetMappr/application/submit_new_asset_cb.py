@@ -21,6 +21,7 @@ from dash import dcc
 from dash import html
 import pandas as pd
 import dash_leaflet as dl
+import uuid
 
 from flask import request
 
@@ -28,6 +29,9 @@ from AssetMappr.database.submit_new_asset_db import submit_new_asset_db
 
 
 def submit_new_asset_cb(app):
+    
+    global df
+    global asset_categories
     
     # Callback to interact with the open and close buttons of the modal
     @app.callback(
@@ -74,6 +78,9 @@ def submit_new_asset_cb(app):
         [State('submit-asset-map', 'click_lat_lng')]
         )
     def store_submitted_info(n_clicks, user_name, user_role, name, categories, desc, site, click_lat_lng):
+        global df
+        global asset_categories
+        
         # If the 'Submit' button has not been clicked yet, return or do nothing
         if n_clicks == 0:
             return ''
@@ -81,10 +88,23 @@ def submit_new_asset_cb(app):
         else:
             # Get the IP address from which this callback request was generated
             ip = request.remote_addr
-            
-            submit_new_asset_db(ip, user_name, user_role, name, categories, desc, site, click_lat_lng, community_geo_id=123)
+
+            # Create a staged asset ID            
+            staged_asset_id = str(uuid.uuid4()) 
+
+            submit_new_asset_db(staged_asset_id, ip, user_name, user_role, name, categories, desc, site, click_lat_lng, community_geo_id=123)
             
             # TODO: Append this to the data frame loaded at the app initialization
+            new_df_row = {'asset_id': staged_asset_id, 'asset_name': name,
+                       'asset_status': 'Staged', 'community_geo_id': 123,
+                       'source_type': 'User', 'description': desc, 'website': site,
+                       'latitude': click_lat_lng[0], 'longitude': click_lat_lng[1]}
+            df = df.append(new_df_row, ignore_index=True)
             
-            return 'Asset {} submited successfully! Thank you for helping out.'.format(name)
+            for cat in categories:
+                new_cat_row = {'asset_id': staged_asset_id, 'category': cat}
+                asset_categories = asset_categories.append(new_cat_row)
+            
+            return '''Asset {} submited successfully! You should be able to see it on the main map after closing this screen. 
+                   Thank you for helping out.'''.format(name)
             
