@@ -85,7 +85,7 @@ def display_page(pathname):
         return make_layout(df, master_categories)
 
 # All the callbacks in the 'application' folder
-submit_new_asset_cb(app)
+submit_new_asset_cb(app, df, asset_categories)
 suggest_missing_asset_cb(app)
 #display_table_cb(app, db)
 display_map_cb(app, df, asset_categories)

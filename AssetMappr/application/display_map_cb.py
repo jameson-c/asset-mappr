@@ -14,6 +14,8 @@ def display_map_cb(app, df, asset_categories):
                   [Input('recycling_type', 'value')])
     def update_figure(chosen_recycling):
         
+        nonlocal map_df
+        
         mapbox_access_token = 'pk.eyJ1IjoicWl3YW5nYWFhIiwiYSI6ImNremtyNmxkNzR5aGwyb25mOWxocmxvOGoifQ.7ELp2wgswTdQZS_RsnW1PA'
         
         df_sub = map_df[(map_df['category'].isin(chosen_recycling))]
