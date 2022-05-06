@@ -78,8 +78,6 @@ def submit_new_asset_cb(app, df, asset_categories):
         [State('submit-asset-map', 'click_lat_lng')]
         )
     def store_submitted_info(n_clicks, user_name, user_role, name, categories, desc, site, click_lat_lng):
-        nonlocal df_copy
-        nonlocal asset_categories_copy
         
         # If the 'Submit' button has not been clicked yet, return or do nothing
         if n_clicks == 0:
@@ -95,21 +93,23 @@ def submit_new_asset_cb(app, df, asset_categories):
             submit_new_asset_db(staged_asset_id, ip, user_name, user_role, name, categories, desc, site, click_lat_lng, community_geo_id=123)
             
             # TODO: Append this to the data frame loaded at the app initialization
+            nonlocal df_copy
+            nonlocal asset_categories_copy
+            
             new_df_row = {'asset_id': staged_asset_id, 'asset_name': name,
                        'asset_status': 'Staged', 'community_geo_id': 123,
                        'source_type': 'User', 'description': desc, 'website': site,
                        'latitude': click_lat_lng[0], 'longitude': click_lat_lng[1]}
             df_copy = df_copy.append(new_df_row, ignore_index=True)
             
-            global df
-            df = df_copy
-            
             for cat in categories:
                 new_cat_row = {'asset_id': staged_asset_id, 'category': cat}
                 asset_categories_copy = asset_categories_copy.append(new_cat_row, ignore_index=True)
             
-            global asset_categories
-            asset_categories = asset_categories_copy
+            global df, asset_categories
+            df, asset_categories = df_copy, asset_categories_copy
+     
+            
             
             return '''Asset {} submited successfully! You should be able to see it on the main map after closing this screen. 
                    Thank you for helping out.'''.format(name)
