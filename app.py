@@ -10,7 +10,9 @@ Desc: This file initializes the Dash app, combining all the components
 # =============================================================================
 import dash
 import pandas as pd
+from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
+from dash import dcc
 from dash import html
 import dash_leaflet as dl
 from flask_sqlalchemy import SQLAlchemy
@@ -25,6 +27,8 @@ import pandas as pd
 from AssetMappr.database.readDB import readDB
 
 # Import the layout and callback components
+from AssetMappr.presentation.landing_page import landing_page
+
 from AssetMappr.presentation.layout import make_layout
 from AssetMappr.application.display_table_cb import display_table_cb
 
@@ -36,26 +40,46 @@ from AssetMappr.application.suggest_missing_asset_cb import suggest_missing_asse
 # Initialize app
 # =============================================================================
 app = dash.Dash(__name__, suppress_callback_exceptions=True,
-                external_stylesheets=[dbc.themes.SUPERHERO])
+                external_stylesheets=[dbc.themes.FLATLY])
 server = app.server
-
-# Connect to the Heroku postgreSQL database
-server.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ilohghqbmiloiv:f4fbd28e91d021bada72701576d41107b78bc515ad0b1e94d934939fbce7b2e6@ec2-54-235-98-1.compute-1.amazonaws.com:5432/dmt6i1v8bv5l1'
-server.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(server)
 
 app.title = 'AssetMappr'
 
+# Latlong for Uniontown - to be replaced later with generalised function for other communities
 community_lat = 39.8993885
 community_long = -79.7249338
 
-# Load data from the postgreSQL database
+# Load data from the postgreSQL database (again, this will eventually depend on community input chosen)
 df, asset_categories, master_categories, master_value_tags = readDB(app)
 
 # Create the app layout
-app.layout = make_layout(df, master_categories)
+app.layout = html.Div([
+    
+    # Represents the browser address (i.e. where you are in the page structure)
+    dcc.Location(id='url', refresh=False),
+    
+    # This will take the output from the callback below to display the appropriate layout
+    # E.g. the landing/welcome page, or the main home page of the app
+    html.Div(id='page-content')
+    
+    ])
 
-# Create the display table callback
+# Callback to provide the relevant content depending on the page in the app
+@app.callback(Output('page-content', 'children'),
+              Input('url', 'pathname'))
+def display_page(pathname):
+    # If we are on the landing page (first page users see)
+    if pathname == '/':
+        return landing_page()
+    
+    # If the user navigates to the main home page of the app
+    # Note: there is a link in the landing_page that takes users to the home page
+    if pathname == '/home':
+        
+        # Make layout creates the main layout for the app
+        return make_layout(df, master_categories)
+
+# All the callbacks in the 'application' folder
 submit_new_asset_cb(app)
 suggest_missing_asset_cb(app)
 #display_table_cb(app, db)
