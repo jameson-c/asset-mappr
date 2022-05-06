@@ -30,8 +30,9 @@ from AssetMappr.database.readDB import readDB
 from AssetMappr.presentation.landing_page import landing_page
 
 from AssetMappr.presentation.layout import make_layout
-from AssetMappr.application.display_table_cb import display_table_cb
 
+from AssetMappr.application.display_table_cb import display_table_cb
+from AssetMappr.application.display_asset_info_cb import display_asset_info_cb
 from AssetMappr.application.submit_new_asset_cb import submit_new_asset_cb
 from AssetMappr.application.suggest_missing_asset_cb import suggest_missing_asset_cb
 
@@ -84,6 +85,7 @@ submit_new_asset_cb(app)
 suggest_missing_asset_cb(app)
 #display_table_cb(app, db)
 display_map_cb(app, df, asset_categories)
+display_asset_info_cb(app)
 
 # Run the app
 if __name__ == '__main__':

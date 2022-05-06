@@ -29,7 +29,7 @@ def display_map_cb(app, df, asset_categories):
             selected={'marker': {'opacity': 0.5, 'size': 25}},
             hoverinfo='text',
             hovertext=df_sub['asset_name'],
-            customdata=df_sub['website'],
+            customdata=df_sub[['asset_name', 'description', 'website']],
         )]
     
         # Return figure

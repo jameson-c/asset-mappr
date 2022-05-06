@@ -23,7 +23,7 @@ from AssetMappr.presentation.rowTwo import rowTwoLeft, rowTwoRight
 from AssetMappr.presentation.selectMap import selectMap
 from AssetMappr.presentation.showMap import showMap
 from AssetMappr.presentation.showRate import showRate
-from AssetMappr.presentation.showWebsite import showWebsite
+from AssetMappr.presentation.showAssetInfo import showAssetInfo
 
 from AssetMappr.presentation.title_desc import title_desc
 from AssetMappr.presentation.submit_new_asset import submit_new_asset
@@ -62,8 +62,8 @@ def make_layout(df, master_categories):
                         ),
                     
                     dbc.Col([
-                      html.H4('Placeholder for selected asset information'),
-                      #showWebsite(),
+                      html.H5('Information for selected asset:'),
+                      showAssetInfo(),
                       html.Br(),
                       html.H4('Placeholder for rating function'),
                       
