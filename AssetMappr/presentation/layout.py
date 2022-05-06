@@ -58,7 +58,7 @@ def make_layout(df, master_categories):
 
                 dbc.Row([
                     dbc.Col(
-                        showMap(),
+                        showMap(master_categories),
                         ),
                     
                     dbc.Col([
@@ -66,24 +66,17 @@ def make_layout(df, master_categories):
                       #showWebsite(),
                       html.Br(),
                       html.H4('Placeholder for rating function'),
+                      
+                      html.Br(),
+                      html.Br(),
+                      html.Br(),
+                      
+                      submit_new_asset(master_categories),
+                      
                     ]),
 
                 ]),
                
-                dbc.Row([
-                    dbc.Col(
-                        selectMap(df),
-                        width=6,
-                    ),
-                
-                    dbc.Col(
-                        submit_new_asset(master_categories),
-                        width={'size': 6, "offset": 0, 'order': 2}
-                    ),
-                
-                ]),
-                
-                html.Br(),
                 
                 dbc.Row([
                     dbc.Col(

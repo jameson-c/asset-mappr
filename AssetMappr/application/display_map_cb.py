@@ -6,29 +6,32 @@ import dash
 import pandas as pd
 
 
-def display_map_cb(app, db):
-    mapbox_access_token = 'pk.eyJ1IjoicWl3YW5nYWFhIiwiYSI6ImNremtyNmxkNzR5aGwyb25mOWxocmxvOGoifQ.7ELp2wgswTdQZS_RsnW1PA'
-    df = pd.read_sql_table('assets', con=db.engine)
-# #---------------------------------------------------------------
-# # Output of Graph
-
+def display_map_cb(app, df, asset_categories):    
+    
+    map_df = pd.merge(df, asset_categories, on='asset_id')        
+    
     @app.callback(Output('graph', 'figure'),
                   [Input('recycling_type', 'value')])
     def update_figure(chosen_recycling):
-        df_sub = df[(df['asset_type'].isin(chosen_recycling))]
+        
+        mapbox_access_token = 'pk.eyJ1IjoicWl3YW5nYWFhIiwiYSI6ImNremtyNmxkNzR5aGwyb25mOWxocmxvOGoifQ.7ELp2wgswTdQZS_RsnW1PA'
+        
+        df_sub = map_df[(map_df['category'].isin(chosen_recycling))]
+
+        
         # Create figure
         locations = [go.Scattermapbox(
-            lon=df_sub['latlong'], #Need to know the point data more information. should it be geometry? if so: lon=df_sub['latlong'].y
-            lat=df_sub['latlong'],
+            lon=df_sub['longitude'],
+            lat=df_sub['latitude'],
             mode='markers',
-            marker={'color': 'blue'},  # ***
+            # marker={'color': df_sub['Category']},
             unselected={'marker': {'opacity': 1}},
             selected={'marker': {'opacity': 0.5, 'size': 25}},
             hoverinfo='text',
             hovertext=df_sub['asset_name'],
             customdata=df_sub['website'],
-            # rating=df_sub['ratings'] need to be added into table
         )]
+    
         # Return figure
         return {
             'data': locations,
@@ -41,14 +44,14 @@ def display_map_cb(app, db):
                 autosize=True,
                 # title=dict(text="Looking for a Community Asset",font=dict(size=50, color='green')),
                 margin=dict(l=0, r=0, t=0, b=0),
-
+    
                 mapbox=dict(
                     accesstoken=mapbox_access_token,
                     bearing=25,
                     style='light',
                     center=dict(
-                        lat=40.4406,
-                        lon=-79.9959
+                        lat=39.8993885,
+                        lon=-79.7249338
                     ),
                     # 40.4406° N, 79.9959° W
                     pitch=40,
@@ -56,35 +59,3 @@ def display_map_cb(app, db):
                 ),
             )
         }
-    # ---------------------------------------------------------------
-    # callback for Web_link
-
-    @app.callback(
-        Output('web_link', 'children'),
-        [Input('graph', 'clickData')])
-    def display_click_data(clickData):
-        if clickData is None:
-            return 'Click on any bubble to see the website or rate it.'
-        else:
-            # print (clickData)
-            the_link = clickData['points'][0]['customdata']
-            if the_link is None:
-                return 'No Website Available'
-            else:
-                return html.A(the_link, href=the_link, target="_blank")
-
-    # ------------------------------------------------------------------------
-    # callback for rating
-    @app.callback(
-        Output('rate', 'children'),
-        [Input('graph', 'clickData')])
-    def display_click_data(clickData):
-        if clickData is None:
-            return 'Click on any bubble to rate it.'
-        else:
-            # print (clickData)
-            the_link = clickData['points'][0]['customdata']
-            if the_link is None:
-                return 'No Website Available'
-            else:
-                return html.P(the_link, href=the_link, target="_blank")

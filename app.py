@@ -18,7 +18,7 @@ import dash_leaflet as dl
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 import pandas as pd
-#from AssetMappr.application.display_map_cb import display_map_cb
+from AssetMappr.application.display_map_cb import display_map_cb
 #from AssetMappr.presentation.display_map import display_map
 
 # app requires "pip install psycopg2" as well (ensure it is installed if running locally)
@@ -83,7 +83,7 @@ def display_page(pathname):
 submit_new_asset_cb(app)
 suggest_missing_asset_cb(app)
 #display_table_cb(app, db)
-#display_map_cb(app, db)
+display_map_cb(app, df, asset_categories)
 
 # Run the app
 if __name__ == '__main__':
