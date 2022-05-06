@@ -15,7 +15,6 @@ import dash
 import pandas as pd
 from dash import dcc
 from dash import html
-from AssetMappr.presentation.H1title import H1title
 #from AssetMappr.presentation.display_map import display_map
 import dash_bootstrap_components as dbc
 import dash_leaflet as dl
@@ -39,36 +38,20 @@ from flask_sqlalchemy import SQLAlchemy
 # =============================================================================
 mapbox_access_token = 'pk.eyJ1IjoicWl3YW5nYWFhIiwiYSI6ImNremtyNmxkNzR5aGwyb25mOWxocmxvOGoifQ.7ELp2wgswTdQZS_RsnW1PA'
 
-app = dash.Dash(__name__, suppress_callback_exceptions=True)
-server = app.server
-
-# Connect to the Heroku postgreSQL database
-server.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ilohghqbmiloiv:f4fbd28e91d021bada72701576d41107b78bc515ad0b1e94d934939fbce7b2e6@ec2-54-235-98-1.compute-1.amazonaws.com:5432/dmt6i1v8bv5l1'
-server.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(server)
-
 def make_layout(df, master_categories):
 
     return html.Div([
         dcc.Tabs([
 
-            # Tab 1: Home page/view assets
-            dcc.Tab(label='Community User View', children=[
-
-                dbc.Row([
-                    H1title(),
-                ]),
+            # Tab 1: Page to view, rate, and upload assets
+            dcc.Tab(label='Tell us about your community', children=[
 
                 dbc.Row([
 
                   dbc.Col(
-                        rowTwoLeft(),
-                        width={'size': 6, "offset": 0, 'order': 1}
+                      html.H4('Use the map below to view and select assets'),
                     ),
-                    dbc.Col(
-                        submit_new_asset(master_categories),
-                        width={'size': 6, "offset": 0, 'order': 2}
-                    )
+                  
                 ]),
 
                 html.Br(),
@@ -76,11 +59,15 @@ def make_layout(df, master_categories):
                 dbc.Row([
                     dbc.Col(
                         showMap(),
-                        width={'size': 6, "offset": 0, 'order': 1}),
+                        ),
+                    
+                    dbc.Col([
+                      html.H4('Placeholder for selected asset information'),
+                      #showWebsite(),
+                      html.Br(),
+                      html.H4('Placeholder for rating function'),
+                    ]),
 
-                    dbc.Col(
-                        dbc.Table(id="main_table", children=[display_table()]),
-                        width={'size': 6, "offset": 0, 'order': 2}),
                 ]),
                
                 dbc.Row([
@@ -88,34 +75,28 @@ def make_layout(df, master_categories):
                         selectMap(df),
                         width=6,
                     ),
+                
                     dbc.Col(
-                        suggest_missing_asset(master_categories),
-                        width={'size': 6, "offset": 0, 'order': 2},
-                        ),
+                        submit_new_asset(master_categories),
+                        width={'size': 6, "offset": 0, 'order': 2}
+                    ),
+                
                 ]),
                 
                 html.Br(),
                 
                 dbc.Row([
                     dbc.Col(
-                        showWebsite(),
-                        width=6)
+                        dbc.Table(id="main_table", children=[display_table()]),
+                        width={'size': 6, "offset": 0, 'order': 2})
+                        
                 ]),
-                
-                #not finished
-                dbc.Row([
-                    dbc.Col(
-                        showRate(),
-                        width=6)
-                ])
 
             ]),
 
-            # Tab 2: Add asset
-            dcc.Tab(label='Planner View', children=[
-
-                html.H5("Placeholder")
-
+            # Tab 2: Page to suggest 'missing' assets, share other thoughts about community dev
+            dcc.Tab(label='What are your hopes for the future?', children=[
+                suggest_missing_asset(master_categories),
             ])
 
         ]),
