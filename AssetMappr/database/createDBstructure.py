@@ -2,7 +2,7 @@
 File: createDBstructure.py
 Author: Mihir Bhaskar
 
-Desc: This file creates the table structure of the Heroku postgreSQL database
+Desc: This file creates the table structure of the postgreSQL database
 
 Inputs: none
 Outputs: New tables committed to the postgreSQL database to which the app is linked
@@ -10,14 +10,8 @@ Outputs: New tables committed to the postgreSQL database to which the app is lin
 
 import psycopg2
 
-# Establish connection with database (details found in Heroku dashboard after login)
-conn = psycopg2.connect(
-    database = ###,
-    user = ###,
-    password = ###,
-    host = ###,
-    port = ###
-    )
+# Establish connection with database (connection link found in Render -> postgreSQL -> external connection string)
+conn = psycopg2.connect(#####)
 
 # Create cursor object
 cursor = conn.cursor()

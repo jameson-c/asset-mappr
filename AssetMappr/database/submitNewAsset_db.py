@@ -30,14 +30,14 @@ from datetime import datetime
 
 def submitNewAsset_db(staged_asset_id, ip, user_name, user_role, name, categories, desc, site, click_lat_lng, community_geo_id):
 
+    # When deploying on Render, use this string
+    con_string = 'postgresql://assetmappr_db_user:hyx8dhtgdq6mvyIfe3ANC2O7ceRheEr5@dpg-c9rao5j97ej5m8i836r0-a/assetmappr_db'
+    
+    # If running the app externally (e.g. outside render/locally), use this connection string instead:
+    # con_string = 'postgresql://assetmappr_db_user:hyx8dhtgdq6mvyIfe3ANC2O7ceRheEr5@dpg-c9rao5j97ej5m8i836r0-a.ohio-postgres.render.com/assetmappr_db'
+
     # Establish connection with database (details found in Heroku dashboard after login)
-    conn = psycopg2.connect(
-        database = 'dmt6i1v8bv5l1',
-        user = 'ilohghqbmiloiv',
-        password = 'f4fbd28e91d021bada72701576d41107b78bc515ad0b1e94d934939fbce7b2e6',
-        host = 'ec2-54-235-98-1.compute-1.amazonaws.com',
-        port = '5432'
-        )
+    conn = psycopg2.connect(con_string)
 
     # Create cursor object
     cursor = conn.cursor()
