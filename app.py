@@ -104,4 +104,4 @@ suggestMissingAsset_cb(app)
 # Run the app
 # =============================================================================
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    server.run(host="0.0.0.0")
