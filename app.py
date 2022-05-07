@@ -3,42 +3,45 @@ File: app.py
 Author: Mihir Bhaskar, Anna Wang, Jameson Carter
 
 Desc: This file initializes the Dash app, combining all the components
+
+Note: features will typically have three functions. One function in the presentationg folder
+for the layout, a corresponding function with _cb in the application folder for the relevant
+callback(s), and a corresponding function with _db in the database folder for writing to the DB 
 """
 
 # =============================================================================
 # Importing functions, libraries and set-up
 # =============================================================================
 import dash
-import pandas as pd
 from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
 from dash import dcc
 from dash import html
 import dash_leaflet as dl
+import pandas as pd
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
-import pandas as pd
-#from AssetMappr.application.display_map_cb import display_map_cb
-#from AssetMappr.presentation.display_map import display_map
+import uuid
 
-# app requires "pip install psycopg2" as well (ensure it is installed if running locally)
-
-# Import the database functions
+# Import the function that reads data from the DB
 from AssetMappr.database.readDB import readDB
 
-# Import the layout and callback components
-from AssetMappr.presentation.landing_page import landing_page
+# Import the layout functions
+from AssetMappr.presentation.landingPage import makeLandingPage
+from AssetMappr.presentation.layout import makeLayout
 
-from AssetMappr.presentation.layout import make_layout
-from AssetMappr.application.display_table_cb import display_table_cb
-
-from AssetMappr.application.submit_new_asset_cb import submit_new_asset_cb
-from AssetMappr.application.suggest_missing_asset_cb import suggest_missing_asset_cb
-
+# Import the callbacks from the application folder
+from AssetMappr.application.showAssetInfo_cb import showAssetInfo_cb
+from AssetMappr.application.showMap_cb import showMap_cb
+from AssetMappr.application.submitRating_cb import submitRating_cb
+from AssetMappr.application.submitNewAsset_cb import submitNewAsset_cb
+from AssetMappr.application.suggestMissingAsset_cb import suggestMissingAsset_cb
 
 # =============================================================================
 # Initialize app
 # =============================================================================
+
+# Note: the stylesheet set here determines the theme for the app - see DBC themes
 app = dash.Dash(__name__, suppress_callback_exceptions=True,
                 external_stylesheets=[dbc.themes.FLATLY])
 server = app.server
@@ -49,8 +52,17 @@ app.title = 'AssetMappr'
 community_lat = 39.8993885
 community_long = -79.7249338
 
-# Load data from the postgreSQL database (again, this will eventually depend on community input chosen)
+# Load data from the postgreSQL database (this will eventually depend on community input chosen)
 df, asset_categories, master_categories, master_value_tags = readDB(app)
+
+# This column demarcates between assets read in from the DB and staged assets added by the user
+# in the current session, so they can be displayed on the map in different colors and ratings for
+# verified vs. staged assets can be distinguished
+df['asset_status'] = 'Verified'
+
+# =============================================================================
+# Layout
+# =============================================================================
 
 # Create the app layout
 app.layout = html.Div([
@@ -59,7 +71,7 @@ app.layout = html.Div([
     dcc.Location(id='url', refresh=False),
     
     # This will take the output from the callback below to display the appropriate layout
-    # E.g. the landing/welcome page, or the main home page of the app
+    # I.e. the landing/welcome page, or the main home page of the app
     html.Div(id='page-content')
     
     ])
@@ -70,21 +82,26 @@ app.layout = html.Div([
 def display_page(pathname):
     # If we are on the landing page (first page users see)
     if pathname == '/':
-        return landing_page()
+        return makeLandingPage()
     
     # If the user navigates to the main home page of the app
     # Note: there is a link in the landing_page that takes users to the home page
     if pathname == '/home':
-        
-        # Make layout creates the main layout for the app
-        return make_layout(df, master_categories)
+        return makeLayout(df, master_categories)
 
-# All the callbacks in the 'application' folder
-submit_new_asset_cb(app)
-suggest_missing_asset_cb(app)
-#display_table_cb(app, db)
-#display_map_cb(app, db)
+# =============================================================================
+# Callbacks
+# =============================================================================
 
+# Applying all the callbacks, passing relevant inputs so they can be used in the callbacks
+showMap_cb(app, df, asset_categories)
+showAssetInfo_cb(app)
+submitRating_cb(app)
+submitNewAsset_cb(app, df, asset_categories)
+suggestMissingAsset_cb(app)
+
+# =============================================================================
 # Run the app
+# =============================================================================
 if __name__ == '__main__':
     server.run(host="0.0.0.0")

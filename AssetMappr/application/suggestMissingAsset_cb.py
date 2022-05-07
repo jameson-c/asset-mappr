@@ -1,10 +1,10 @@
 """
-File: suggest_missing_asset_cb.py
+File: suggestMissingAsset_cb.py
 Author: Mihir Bhaskar
 
 Desc: This file creates the callbacks which interact with the suggest_missing_asset popup
       
-      This is linked to the suggest_missing_asset.py layout file, as well as the suggest_missing_asset_db
+      This is linked to the suggestMissingAsset.py layout file, as well as the suggestMissingAsset_db
       file in the Database folder, which writes the new user-entered info to the database
 
 Input: 
@@ -24,10 +24,9 @@ import dash_leaflet as dl
 
 from flask import request
 
-from AssetMappr.database.suggest_missing_asset_db import suggest_missing_asset_db
+from AssetMappr.database.suggestMissingAsset_db import suggestMissingAsset_db
 
-
-def suggest_missing_asset_cb(app):
+def suggestMissingAsset_cb(app):
     
     # Callback to interact with the open and close buttons of the modal
     @app.callback(
@@ -81,9 +80,8 @@ def suggest_missing_asset_cb(app):
             # Get the IP address from which this callback request was generated
             ip = request.remote_addr
             
-            suggest_missing_asset_db(ip, user_name, user_role, name, categories, desc, click_lat_lng, community_geo_id=123)
-            
-            # TODO: Append this to the data frame loaded at the app initialization
-            
+            # Write to the database
+            suggestMissingAsset_db(ip, user_name, user_role, name, categories, desc, click_lat_lng, community_geo_id=123)
+                        
             return 'Suggestion for asset {} submited successfully! Thank you for helping out.'.format(name)
             

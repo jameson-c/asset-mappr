@@ -3,19 +3,25 @@ File: readDB.py
 Author: Mihir Bhaskar
 
 Desc: This file interacts with the postgreSQL database to read in the initial datasets when we initialise the app session
-Input: TODO: make the sql params an input into this
-
-Other TODOs:
-    - Make the input dependent on the community geo id
+    
+TODOs:
+    - Connect to SQL centrally once, instead of starting many different connections
+    - Make the input dependent on community_geo_id
+    
+Inputs:
+    - app: an initialized Dash app
+    - community_geo_id (pending implementation)
    
+Outputs: (see the database documentation for more info on these tables)
+    - df: data frame of the main assets table
+    - asset_categories: data frame of the asset-categories table
+    - master_categories: a list of the unique master category values
+    - master_value_tags: a list of the unique master value tags (for use in the ratings function)
 
-Output: 
-    - A function that returns th
 """
 import dash
 import pandas as pd
 from flask_sqlalchemy import SQLAlchemy
-
 
 def readDB(app, community_geo_id=False):
     
