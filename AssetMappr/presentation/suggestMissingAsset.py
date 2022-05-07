@@ -1,5 +1,5 @@
 """
-File: suggest_missing_asset.py
+File: suggestMissingAsset.py
 Author: Mihir Bhaskar
 
 Desc: This file creates the layout of the 'suggest_missing_asset' feature of the app
@@ -8,10 +8,9 @@ Output:
     - A function that returns an HTML Div containing the suggest missing asset upload popup feature
 
 Other notes:
-    - This interacts with the suggest_new_asset_cb in 'application'
+    - This interacts with the suggestMissingAsset_cb in 'application'
 
 """
-
 import dash
 from dash.dependencies import Input, Output, State
 from dash import dash_table
@@ -20,7 +19,7 @@ from dash import html
 import dash_bootstrap_components as dbc
 import dash_leaflet as dl
 
-def suggest_missing_asset(master_categories):
+def suggestMissingAsset(master_categories):
     
     return html.Div([
         

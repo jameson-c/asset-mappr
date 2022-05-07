@@ -2,96 +2,80 @@
 File: layout.py
 Author: Mihir Bhaskar, Anna Wang, Jameson Carter
 
-Desc: This file creates the main layout of the app
+Desc: This file creates the main home page layout of the app
 Input: 
     - Draws on the individual layout components, defined in separate .py files
     in the 'presentation' folder
+    - df: the main assets data frame loaded in
+    - master_categories: the unique list of possible category values
     
 Output:
-    - A function called make_layout() that returns the layout section of the Dash app
-    
+    - A function called makeLayout() that returns the layout section of the Dash app,
+    which is called in the app.py file
 """
+# =============================================================================
+# Imports
+# =============================================================================
 import dash
 import pandas as pd
 from dash import dcc
 from dash import html
-#from AssetMappr.presentation.display_map import display_map
 import dash_bootstrap_components as dbc
 import dash_leaflet as dl
-
-from AssetMappr.presentation.rowTwo import rowTwoLeft, rowTwoRight
-from AssetMappr.presentation.selectMap import selectMap
-from AssetMappr.presentation.showMap import showMap
-from AssetMappr.presentation.showRate import showRate
-from AssetMappr.presentation.showAssetInfo import showAssetInfo
-
-from AssetMappr.presentation.title_desc import title_desc
-from AssetMappr.presentation.submit_new_asset import submit_new_asset
-from AssetMappr.presentation.suggest_missing_asset import suggest_missing_asset
-
-from AssetMappr.presentation.display_table import display_table
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-# =============================================================================
-# Function that makes the layout of the app
-# =============================================================================
-mapbox_access_token = 'pk.eyJ1IjoicWl3YW5nYWFhIiwiYSI6ImNremtyNmxkNzR5aGwyb25mOWxocmxvOGoifQ.7ELp2wgswTdQZS_RsnW1PA'
+# Importing all the layout components 
+from AssetMappr.presentation.showMap import showMap
+from AssetMappr.presentation.showAssetInfo import showAssetInfo
+from AssetMappr.presentation.submitRating import submitRating
+from AssetMappr.presentation.submitNewAsset import submitNewAsset
+from AssetMappr.presentation.suggestMissingAsset import suggestMissingAsset
 
-def make_layout(df, master_categories):
+# =============================================================================
+# Function
+# =============================================================================
+def makeLayout(df, master_categories):
 
     return html.Div([
+        
+        # Layout is split into two overall tabs
         dcc.Tabs([
 
             # Tab 1: Page to view, rate, and upload assets
             dcc.Tab(label='Tell us about your community', children=[
-
-                dbc.Row([
-
-                  dbc.Col(
-                      html.H4('Use the map below to view and select assets'),
-                    ),
-                  
-                ]),
-
-                html.Br(),
-
-                dbc.Row([
-                    dbc.Col(
-                        showMap(master_categories),
-                        ),
-                    
-                    dbc.Col([
-                      html.H5('Information for selected asset:'),
-                      showAssetInfo(),
-                      html.Br(),
-                      showRate(),
-                      
-                      html.Br(),
-                      html.Br(),
-                      html.Br(),
-                      
-                      submit_new_asset(master_categories),
-                      
-                    ]),
-
-                ]),
-               
                 
+                # This tab uses a grid structure of rows and columns
+                
+                # Row 1
                 dbc.Row([
                     dbc.Col(
-                        dbc.Table(id="main_table", children=[display_table()]),
-                        width={'size': 6, "offset": 0, 'order': 2})
-                        
+                        html.H4('Use the map below to view and select assets'),
+                    ),
                 ]),
 
+                # Row 2
+                dbc.Row([
+                    dbc.Col(
+                        # Outputs the map displaying assets and an option to select categories
+                        showMap(master_categories),
+                    ),
+                    dbc.Col([
+                        # Displays information on the asset selected using the map click    
+                        html.H5('Information for selected asset:'),
+                        showAssetInfo(),
+                        # Displays the functionality to rate the selected asset
+                        submitRating(),
+                        html.Br(),
+                        # Displays the function to submit new assets
+                        submitNewAsset(master_categories),
+                    ]),
+                ]),
             ]),
 
             # Tab 2: Page to suggest 'missing' assets, share other thoughts about community dev
             dcc.Tab(label='What are your hopes for the future?', children=[
-                suggest_missing_asset(master_categories),
+                suggestMissingAsset(master_categories),
             ])
-
         ]),
-
     ])

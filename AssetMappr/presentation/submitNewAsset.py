@@ -1,5 +1,5 @@
 """
-File: submit_new_asset.py
+File: submitNewAsset.py
 Author: Mihir Bhaskar
 
 Desc: This file creates the layout of the 'submit new asset' feature of the app
@@ -8,7 +8,7 @@ Output:
     - A function that returns an HTML Div containing the new asset upload popup feature
 
 Other notes:
-    - This interacts with the submit_new_asset_cb in 'application'
+    - This interacts with the submitNewAsset_cb in 'application'
 
 """
 import dash
@@ -19,7 +19,7 @@ from dash import html
 import dash_bootstrap_components as dbc
 import dash_leaflet as dl
 
-def submit_new_asset(master_categories):
+def submitNewAsset(master_categories):
     
     return html.Div([
         

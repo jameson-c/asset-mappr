@@ -1,5 +1,5 @@
 """
-File: submit_new_asset_db.py
+File: submitNewAsset_db.py
 Author: Mihir Bhaskar
 
 Desc: Interacts with the database to write user-submitted assets to the staging assets table
@@ -28,7 +28,7 @@ import psycopg2
 import uuid
 from datetime import datetime
 
-def submit_new_asset_db(staged_asset_id, ip, user_name, user_role, name, categories, desc, site, click_lat_lng, community_geo_id):
+def submitNewAsset_db(staged_asset_id, ip, user_name, user_role, name, categories, desc, site, click_lat_lng, community_geo_id):
 
     # Establish connection with database (details found in Heroku dashboard after login)
     conn = psycopg2.connect(

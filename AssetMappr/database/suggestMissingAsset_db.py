@@ -1,5 +1,5 @@
 """
-File: suggest_missing_asset_db.py
+File: suggestMissingAsset_db.py
 Author: Mihir Bhaskar
 
 Desc: Interacts with the database to write user-submitted missing asset suggestions to the missing assets table
@@ -26,7 +26,7 @@ import psycopg2
 import uuid
 from datetime import datetime
 
-def suggest_missing_asset_db(ip, user_name, user_role, name, categories, desc, click_lat_lng, community_geo_id):
+def suggestMissingAsset_db(ip, user_name, user_role, name, categories, desc, click_lat_lng, community_geo_id):
 
     # Establish connection with database (details found in Heroku dashboard after login)
     conn = psycopg2.connect(
@@ -57,12 +57,10 @@ def suggest_missing_asset_db(ip, user_name, user_role, name, categories, desc, c
     # Write the info into missing assets table
     # Refer to the createDBstructure.py script to see the variable types and DB structure
     cursor.execute('''INSERT INTO missing_assets (suggestion_id, missing_asset_name, primary_category, user_community, 
-                               latitude, longitude, generated_timestamp, user_name, user_role, user_upload_ip)
-                      VALUES ('{}','{}','{}', {},{},{},TIMESTAMP '{}', '{}', '{}', '{}');'''.format(suggestion_id, asset_name, 
+                               latitude, longitude, generated_timestamp, user_name, user_role, user_upload_ip, description)
+                      VALUES ('{}','{}','{}', {},{},{},TIMESTAMP '{}', '{}', '{}', '{}', '{}');'''.format(suggestion_id, asset_name, 
                       primary_category,community_geo_id, latitude, longitude, generated_timestamp, user_name, 
-                      user_role, user_upload_ip))
-       
-    
+                      user_role, user_upload_ip, description))
     
     conn.commit()
     conn.close()
