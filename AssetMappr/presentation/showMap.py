@@ -11,7 +11,7 @@ Input: master_categories: a list of the unique categories of assets
 Output: 
     - HTML Div, called in makeLayout()
 """
-import dash_core_components as dcc
+from dash import dcc
 from dash import html
 import pandas as pd
 

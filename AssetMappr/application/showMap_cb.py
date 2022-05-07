@@ -18,7 +18,7 @@ Output:
 from dash import dcc
 import plotly.graph_objs as go
 from dash.dependencies import Input, Output
-import dash_html_components as html
+from dash import html
 import dash
 import pandas as pd
 
