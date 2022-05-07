@@ -39,9 +39,9 @@ from AssetMappr.application.suggest_missing_asset_cb import suggest_missing_asse
 # =============================================================================
 # Initialize app
 # =============================================================================
-app = dash.Dash(__name__, suppress_callback_exceptions=True,
+application = app = dash.Dash(__name__, suppress_callback_exceptions=True,
                 external_stylesheets=[dbc.themes.FLATLY])
-application = app.server
+server = app.server
 
 app.title = 'AssetMappr'
 
@@ -87,4 +87,4 @@ suggest_missing_asset_cb(app)
 
 # Run the app
 if __name__ == '__main__':
-    application.run(debug=True)
+    server.run(debug=True, port=8050)
