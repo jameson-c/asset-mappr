@@ -87,4 +87,4 @@ suggest_missing_asset_cb(app)
 
 # Run the app
 if __name__ == '__main__':
-    server.run(debug=True, port=8050)
+    server.run(host="0.0.0.0")
