@@ -24,10 +24,10 @@ from datetime import datetime
 def submitRating_db(asset_id, rating_score, rating_comments):
     
     # When deploying on Render, use this string
-    # con_string = 'postgresql://assetmappr_db_user:hyx8dhtgdq6mvyIfe3ANC2O7ceRheEr5@dpg-c9rao5j97ej5m8i836r0-a/assetmappr_db'
+    # con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a/assetmappr_database'
     
     # If running the app externally (e.g. outside render/locally), use this connection string instead:
-    con_string = 'postgresql://assetmappr_db_user:hyx8dhtgdq6mvyIfe3ANC2O7ceRheEr5@dpg-c9rao5j97ej5m8i836r0-a.ohio-postgres.render.com/assetmappr_db'
+    con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a.ohio-postgres.render.com/assetmappr_database'
 
     # Establish connection with database (details found in Heroku dashboard after login)
     conn = psycopg2.connect(con_string)
