@@ -28,7 +28,7 @@ def readDB(app, community_geo_id=False):
     # con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a/assetmappr_database'
     
     # If running the app externally (e.g. outside render/locally), use this connection string instead:
-    con_string = 'postgres://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a.ohio-postgres.render.com/assetmappr_database'
+    con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a.ohio-postgres.render.com/assetmappr_database'
     
     # Load the categories master list
     master_categories = pd.read_sql_table('categories_master', con=con_string)
