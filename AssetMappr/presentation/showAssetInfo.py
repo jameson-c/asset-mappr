@@ -17,6 +17,5 @@ def showAssetInfo():
                 
                 html.H6(id='display-asset-desc'),
                 
-                html.H6('Website:'),                
                 html.Pre(id='web_link'),
             ])
