@@ -25,6 +25,5 @@ def makeLandingPage():
 
         # Link to take users to the main home page of the app
         dbc.Button('Enter the APP',
-                   href='/home', style={'font-size': '25px'}, id="enterButton")
-
-    ], style={"margin-left": "15px", 'margin-top': '15px', 'margin-right': '40px'})
+                   href='/home', id="enterButton")
+    ])

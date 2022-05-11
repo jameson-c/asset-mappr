@@ -72,7 +72,7 @@ def makeLayout(df, master_categories):
                         html.Br(),
                         # Displays the function to submit new assets
                         html.H6(
-                            'Know about an asset we don\'t have? Tell us about it!', style={'fontSize': 25}),
+                            'Know about an asset we don\'t have? Tell us about it!', style={'fontSize': 21}),
                         submitNewAsset(master_categories),
                     ]),
                 ]),
