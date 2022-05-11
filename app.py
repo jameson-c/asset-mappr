@@ -66,26 +66,24 @@ df['asset_status'] = 'Verified'
 
 # Create the app layout
 app.layout = html.Div([
-
+    
     # Represents the browser address (i.e. where you are in the page structure)
     dcc.Location(id='url', refresh=False),
-
+    
     # This will take the output from the callback below to display the appropriate layout
     # I.e. the landing/welcome page, or the main home page of the app
     html.Div(id='page-content')
-
-])
+    
+    ])
 
 # Callback to provide the relevant content depending on the page in the app
-
-
 @app.callback(Output('page-content', 'children'),
               Input('url', 'pathname'))
 def display_page(pathname):
     # If we are on the landing page (first page users see)
     if pathname == '/':
         return makeLandingPage()
-
+    
     # If the user navigates to the main home page of the app
     # Note: there is a link in the landing_page that takes users to the home page
     if pathname == '/home':
@@ -94,7 +92,6 @@ def display_page(pathname):
 # =============================================================================
 # Callbacks
 # =============================================================================
-
 
 # Applying all the callbacks, passing relevant inputs so they can be used in the callbacks
 showMap_cb(app, df, asset_categories)
@@ -107,9 +104,9 @@ suggestMissingAsset_cb(app)
 # Run the app
 # =============================================================================
 if __name__ == '__main__':
-
+    
     # If running locally for test, use this code
-    app.run_server(debug=True)
-
+    # app.run_server(debug=True)
+    
     # If running on render, use code below
-    # server.run(host="0.0.0.0")
+    server.run(host="0.0.0.0")
