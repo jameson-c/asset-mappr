@@ -109,7 +109,7 @@ suggestMissingAsset_cb(app)
 if __name__ == '__main__':
 
     # If running locally for test, use this code
-    app.run_server(debug=True)
+    # app.run_server(debug=True)
 
     # If running on render, use code below
-    # server.run(host="0.0.0.0")
+    server.run(host="0.0.0.0")
