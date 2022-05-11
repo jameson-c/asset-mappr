@@ -17,24 +17,45 @@ from dash import dash_table
 from dash import dcc
 from dash import html
 import pandas as pd
+from matplotlib import style
+import dash_daq as daq
+
 
 def submitRating():
     return html.Div([
-                html.Label(['How do you feel about this asset?'], 
-                           style={'textDecoration': 'underline', 'fontSize': 20}),
-                # Slider bar to score the asset
-                html.H5('Use the slider below to indicate a rating (right is better)'),
-                dcc.Slider(value=2.5, min=0, max=5,
-                           step=0.5, id='rating-score'),
-                # Text box to provide comments
-                html.H5('User the box below to share any comments or thoughts about the asset'),
-                dcc.Textarea(
-                    id='rating-comments',
-                    value='',
-                    style={'width': '100%', 'height': 30},
-                ),
-                # Button to confirm submission of the rating
-                html.Button(
-                    'Submit', id='submit-rating-button', n_clicks=0),
-                html.Div(id='submit-rating-confirmation')
-            ])
+        html.Label(['How do you feel about this asset?'],
+                   style={'fontSize': 25}),
+        html.Br(),
+        # Slider bar to score the asset
+        html.H5(
+            'Use the slider below to indicate a rating (0-5):', style={'color': 'dimgray'}),
+        # dcc.Slider(value=2.5, min=0, max=5,
+        #            step=0.5, id='rating-score'),
+        daq.Slider(
+            min=0,
+            max=5,
+            value=2.5,
+            handleLabel={"showCurrentValue": True,
+                         "label": "Rate:"},
+            step=0.5,
+            id='rating-score',
+            size=300
+        ),
+
+        # Text box to provide comments
+        html.H5(
+            'Use the box below to share any comments or thoughts about the asset:', style={'color': 'dimgray'}),
+        dcc.Textarea(
+            placeholder='Share your thoughts...',
+            id='rating-comments',
+            value='',
+            style={'width': '80%', 'height': 30},
+
+        ),
+        html.Br(),
+        # Button to confirm submission of the rating
+        html.Button(
+            'Submit', id='submit-rating-button', n_clicks=0),
+        html.Div(id='submit-rating-confirmation'
+                 )
+    ])
