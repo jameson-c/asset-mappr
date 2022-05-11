@@ -48,7 +48,7 @@ def showMap_cb(app, df, asset_categories):
             lat=df_sub['latitude'],
             mode='markers',
             unselected={'marker': {'opacity': 1}},
-            selected={'marker': {'opacity': 0.5, 'size': 25}},
+            selected={'marker': {'opacity': 0.5, 'size': 35}},
             # Displays the name of the asset when you hover over it
             hoverinfo='text',
             hovertext=df_sub['asset_name'],
@@ -72,7 +72,7 @@ def showMap_cb(app, df, asset_categories):
                 mapbox=dict(
                     accesstoken=mapbox_access_token,
                     bearing=25,
-                    style='light',
+                    style='streets',
                     center=dict(
                         lat=39.8993885,
                         lon=-79.7249338

@@ -1,0 +1,136 @@
+/*
+File: style.css
+Author: Anna Wang
+
+Desc: This is css file, to change the web layout.
+*/
+
+/*This is for the whole landing page*/
+.landing {
+    margin: 0;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    right: 30%;
+}
+
+/*Enter The App button in the landing page*/
+#enterButton {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+}
+
+/*Set the word style for "Use the map..."*/
+#useTheMap {
+    margin-left: 18px;
+    font-size: 25px;
+    color: darkslategray;
+}
+
+/*adjusting "Select all assets the map should display" panel*/
+.s {
+    margin-left: 18px;
+    top: 10%;
+    left: 2%;
+    color: dimgray;
+    font-family: Arial;
+}
+
+#select {
+    font-size: 20px;
+}
+
+/*checkbox for categories*/
+.box_container {
+    display: flex;
+}
+
+.box_input {
+    cursor: pointer;
+}
+
+.box_label {
+    padding: 0.4rem 0.4rem;
+    border-radius: 0.5rem;
+}
+
+/*Set the map's position*/
+#graph {
+    margin-right: 80px;
+    position: relative;
+    left: 2%;
+    top: 18%;
+}
+
+/*setting "Information for ...."*/
+#info {
+    margin-top: px;
+    font-size: 23px;
+}
+
+/*Selected assests information*/
+#display-asset-name,
+#display-asset-desc,
+#web_link {
+    font-size: 19px;
+    color: slategray;
+}
+
+/*Text area setting*/
+#rating-comments {
+    display: inline-block;
+    width: 80px;
+    min-height: 10em;
+    cursor: text;
+    background-color: #eee;
+    overflow: auto;
+    resize: vertical;
+}
+
+/*Submit rating button*/
+#submit-rating-button {
+    background-color: #4CAF50;
+    border: #4CAF50;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+}
+
+/*Submit new asset button*/
+#open-asset-submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+}
+
+/*Tab's label setting*/
+#tab1,
+#tab2 {
+    font-size: 23px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/*Slider setting*/
+#useSlider {
+    margin-bottom: 30px;
+    color: slategray;
+}
+
+/*Slider setting*/
+#rating-score {
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
