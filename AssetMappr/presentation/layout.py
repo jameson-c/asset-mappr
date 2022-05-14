@@ -67,12 +67,14 @@ def makeLayout(df, master_categories):
                         # Displays information on the asset selected using the map click
                         html.H5('Information for selected asset:', id='info'),
                         showAssetInfo(),
+                        html.Hr(),
                         # Displays the functionality to rate the selected asset
                         submitRating(),
                         html.Br(),
+                        html.Hr(),
                         # Displays the function to submit new assets
                         html.H6(
-                            'Know about an asset we don\'t have? Tell us about it!', style={'fontSize': 21}),
+                            'Know about an asset we don\'t have? Tell us about it! \U0001f447', id='know'),
                         submitNewAsset(master_categories),
                     ]),
                 ]),

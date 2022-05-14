@@ -43,7 +43,7 @@ from AssetMappr.application.suggestMissingAsset_cb import suggestMissingAsset_cb
 
 # Note: the stylesheet set here determines the theme for the app - see DBC themes
 app = dash.Dash(__name__, suppress_callback_exceptions=True,
-                external_stylesheets=[dbc.themes.FLATLY])
+                external_stylesheets=[dbc.themes.SANDSTONE])
 server = app.server
 
 app.title = 'AssetMappr'

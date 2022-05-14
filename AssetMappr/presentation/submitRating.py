@@ -25,7 +25,6 @@ def submitRating():
     return html.Div([
         html.Label(['How do you feel about this asset?'],
                    style={'fontSize': 20}),
-        html.Br(),
         # Slider bar to score the asset
         html.H5(
             'Use the slider below to indicate a rating (0-5):', style={'color': 'dimgray', 'font-size': '18px'}),
@@ -48,12 +47,11 @@ def submitRating():
             id='rating-comments',
             value='',
             style={'width': '80%', 'height': 30},
-
         ),
         html.Br(),
         # Button to confirm submission of the rating
         html.Button(
             'Submit', id='submit-rating-button', n_clicks=0),
-        html.Div(id='submit-rating-confirmation'
-                 )
+        html.Br(),
+        html.Div(id='submit-rating-confirmation')
     ])

@@ -25,9 +25,7 @@ def showMap(master_categories):
             dcc.Checklist(id="recycling_type",
                           value=[x for x in master_categories],
                           options=[
-                              {'label': str(x), 'value': x} for x in master_categories], className="box_container", inputClassName='box_input',
-                          labelClassName='box_label',
-                          )
+                              {'label': str(x), 'value': x} for x in master_categories])
         ]),
 
         html.Br(),
