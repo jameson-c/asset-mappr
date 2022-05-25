@@ -39,10 +39,10 @@ def getHealthcare(APIkey):
     schema = client.get("https://healthsites.io/api/docs/")
 
     # Interact with the API endpoint
-    action = ["api", "v2/facilities/?"]
+    action = ["api", "v2", "facilities", "list"]
     params = {
         "api-key": '5b589dc4bee38a9389e67eb883a695ad1eab0828',
-        "page": 1,
+        "page": 1
         #"country": ...,
         #"extent": ...,
         #"output": ...,
@@ -51,15 +51,8 @@ def getHealthcare(APIkey):
         #"flat-properties": ...,
         #"tag-format": ...,
         }
+        
     result = client.action(schema, action, params=params)
-    
-    #url = ('https://healthsites.io/api/docs/#api-v2-facilities/?api-key=' + 
-     #      '5b589dc4bee38a9389e67eb883a695ad1eab0828' + '&page=1')
-    
-    
-    # Call the Community Benefit Insights Hospital Data API
-    #response = requests.get(url)
-    #result = json.loads(response.text)
     df = pd.json_normalize(result) # normalize json file into pandas
     if not df.empty: # If there ARE results, continue
         # drop unnecessary files, add category column
