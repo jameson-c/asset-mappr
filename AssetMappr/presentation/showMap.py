@@ -21,6 +21,12 @@ def showMap(master_categories):
         # Checklist to select categories of assets to display on the map
         html.Div(className='s', children=[
             html.H5('Select all assets the map should display:', id="select"),
+            dcc.Checklist(
+                id="all-or-none",
+                options=[{"label": "Select All", "value": "All"}],
+                value=["All"],
+                labelStyle={"display": "inline-block"},
+            ),
             # Checklist with options drawing from master_categories list
             dcc.Checklist(id="recycling_type",
                           value=[x for x in master_categories],

@@ -17,7 +17,7 @@ Output:
 """
 from dash import dcc
 import plotly.graph_objs as go
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 from dash import html
 import dash
 import pandas as pd
@@ -30,6 +30,16 @@ def showMap_cb(app, df, asset_categories):
 
     # This callback receives input on which categories the user has selected (recycling_type)
     # And outputs the map object
+    @app.callback(
+        Output("recycling_type", "value"),
+        [Input("all-or-none", "value")],
+        [State("recycling_type", "options")],
+    )
+    def select_all_none(all_selected, options):
+        all_or_none = []
+        all_or_none = [option["value"] for option in options if all_selected]
+        return all_or_none
+
     @app.callback(Output('graph', 'figure'),
                   [Input('recycling_type', 'value')])
     def update_figure(chosen_recycling):
