@@ -21,6 +21,8 @@ from dash import dcc
 from dash import html
 import pandas as pd
 import dash_leaflet as dl
+import dash_bootstrap_components as dbc
+
 
 from flask import request
 
@@ -60,9 +62,18 @@ def suggestMissingAsset_cb(app):
         return [dl.Marker(position=click_lat_lng, children=dl.Tooltip("({:.3f}, {:.3f})".format(*click_lat_lng)))]
         
 
-    # Callback to take all the user-submitted info on the missing asset, and write it to the database
+    # Callback to take all the user-submitted info on the missing asset, write it to the database, and reset the form
     @app.callback(
+        
+        # The output displays a confirmation message, and resets the values of all the input fields to blank/None
         Output(component_id='submit-suggestion-confirmation', component_property='children'),
+        Output('missing-user-name', 'value'),
+        Output('missing-user-role', 'value'),
+        Output('missing-asset-name', 'value'),
+        Output('missing-asset-categories', 'value'),
+        Output('missing-asset-desc', 'value'),
+        
+        # The inputs of the text boxes and the lat long are all state-dependent on clicking the submit button
         [Input('submit-suggestion-button', 'n_clicks')],
         [State('missing-user-name', 'value')],
         [State('missing-user-role', 'value')],
@@ -83,5 +94,11 @@ def suggestMissingAsset_cb(app):
             # Write to the database
             suggestMissingAsset_db(ip, user_name, user_role, name, categories, desc, click_lat_lng, community_geo_id=123)
                         
-            return 'Suggestion for asset {} submited successfully! Thank you for helping out.'.format(name)
+            # Returns user confirmation, and empty strings/None types to the corresponding Input boxes
+            return (dbc.Alert('''Suggestion for asset {} submited successfully! Thank you for helping out.'''.format(name), 
+                              dismissable=True, color='success'),
+                       
+                       '', '', '', None, ''
+                       
+                       )
             
