@@ -38,19 +38,49 @@ def submitNewAsset_cb(app, df, asset_categories):
     
     # Callback to interact with the open and close buttons of the modal
     @app.callback(
-        Output('submit-asset-modal', 'is_open'),
-        [Input('open-asset-submit', 'n_clicks'), Input('close-asset-submit', 'n_clicks')],
-        [State('submit-asset-modal', 'is_open')],
+        Output('modal-1', 'is_open'),
+        [Input('open-asset-submit', 'n_clicks'),
+         Input('back-modal-1', 'n_clicks'),
+         Input('open-modal-2', 'n_clicks')            
+        ],
+        [State('modal-1', 'is_open')]
         )
-    def toggle_modal(n1, n2, is_open):
-        if n1 or n2:
+    def toggle_modal_1(n0, n1, n2, is_open):
+        if n0 or n1 or n2:
             return not is_open
         return is_open
+    
+    @app.callback(
+        Output('modal-2', 'is_open'),
+        [Input('open-modal-2', 'n_clicks'),
+         Input('back-modal-1', 'n_clicks'),
+         Input('back-modal-2', 'n_clicks'),
+         Input('open-modal-3', 'n_clicks')
+        ],
+        [State('modal-2', 'is_open')]
+        )
+    def toggle_modal_2(n0, n1, n2, n3, is_open):
+        if n0 or n1 or n2:
+            return not is_open
+        return is_open
+    
+    @app.callback(
+        Output('modal-3', 'is_open'),
+        [Input('open-modal-3', 'n_clicks'),
+         Input('back-modal-2', 'n_clicks'),
+        ],
+        [State('modal-3', 'is_open')]
+        )
+    def toggle_modal_3(n0, n1, is_open):
+        if n0 or n1:
+            return not is_open
+        return is_open
+    
     
     # Callback to render the Leaflet map on which users will pin the location of the asset
     @app.callback(
         Output('submit-asset-map', 'children'),
-        Input('submit-asset-modal', 'is_open')
+        Input('modal-2', 'is_open')
         )
     def render_map_on_show(is_open):
         # This ensures that the map only renders if the modal is open, preventing screen resizing issues
