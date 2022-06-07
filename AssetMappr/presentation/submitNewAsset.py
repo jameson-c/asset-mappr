@@ -6,6 +6,9 @@ Desc: This file creates the layout of the 'submit new asset' feature of the app
 Input: A list with the master categories, initialised in app.py
 Output: 
     - A function that returns an HTML Div containing the new asset upload popup feature
+    Note that this is structured into 4 different 'modals', or 'pop-up' windows, linked
+    to each other with next and back buttons. This is to split up the data entry and have 
+    enough space to add sufficient explainers.
 
 Other notes:
     - This interacts with the submitNewAsset_cb in 'application'
@@ -23,87 +26,163 @@ def submitNewAsset(master_categories):
     
     return html.Div([
         
-        # Button that opens the 'add new asset' popup
+        # Button that opens the 'add new asset' popup groups
         dbc.Button("Click here to submit asset", id="open-asset-submit", n_clicks=0),
         
-        # Pop-up object (called a 'Modal')
+        # First pop-up (Modal 1): basic information about the asset
         dbc.Modal([
             
-            dbc.ModalHeader(dbc.ModalTitle("Know about an asset we don't have? Tell us about it here!")),
+            dbc.ModalHeader(dbc.ModalTitle("Know about an asset we don't have on the map? Tell us about it here!")),
             
             dbc.ModalBody([
-                # Using a grid layout to split input boxes between rows and columns
                 
-                # E.g. this is Row 1, with column 1 containing a mandatory text input for asset name, and column 2
-                # containing an optional text input box for the name of the user
-                dbc.Row([
-                    dbc.Col([
-                        dbc.Label('Asset Name'),
-                        dbc.Input(id='asset-name', required=True, type='text', placeholder='Enter Asset Name'),
-                        ]),
-                    dbc.Col([
-                        dbc.Label('Name of user (optional)'),
-                        dbc.Input(id='user-name', type='text', placeholder='Enter your name'),
-                        ]),
+                html.Div([
+                    dbc.Label('Asset Name'),
+                    dbc.Input(id='asset-name', required=True, type='text', placeholder='Enter Asset Name'),
+                    dbc.FormText('Please be specific where possible. For example, instead of just "church", enter "Mt Rose Baptist Church"', color='secondary'),
                     ]),
                 
-                # Row 2
-                dbc.Row([
-                    # Multiple-select dropdown for asset categories, with the category values populated from
-                    # the master_categories list that is loaded on app initialisation from readDB()
-                    dbc.Col([
-                         dbc.Label('Categories (select at least one)'),
-                         dcc.Dropdown(id='asset-categories',
-                                          options=[{'label': i, 'value': i} for i in master_categories],
-                                          value=None,
-                                          multi=True),
-                        ]),
-                    dbc.Col([
-                        dbc.Label('Role in the community'),
-                        dbc.Input(id='user-role', type='text', placeholder='Enter your role (e.g. resident, teacher, business owner)'),
-                        ]),
+                html.Br(),
+                
+                html.Div([
+                    dbc.Label('Description'),
+                    dbc.Input(id='asset-desc', type='text', placeholder='Enter Description'),
+                    dbc.FormText('''A short description of the asset. For example, if you entered a school, is it a primary or post-secondary school?''',
+                                 color='secondary'),
                     ]),
-                dbc.Row([
-                    dbc.Col([
-                        dbc.Label('A short description'),
-                        dbc.Input(id='asset-desc', type='text', placeholder='Description of the asset'),
-                        ]),
-                    dbc.Col([
-                        dbc.Label('Website'),
-                        dbc.Input(id='asset-website', type='url', placeholder='Relevant website for the asset'),
-                        ]),
+                
+                html.Br(),
+                
+                html.Div([
+                     dbc.Label('Categories (select at least one)'),
+                     dcc.Dropdown(id='asset-categories',
+                                     options=[{'label': i, 'value': i} for i in master_categories],
+                                     value=None,
+                                     multi=True),
+                     dbc.FormText('''Select all the categories relating to this asset. For example, a school can come under "Education",
+                                  but also "Cultural" if cultural events are held there.''', color='secondary'),
                     ]),
-                # html.Br() adds a line break for some blank space
-                html.Br(), 
-                dbc.Row([
-                    dbc.Col([
-                        # Instruction for the user
-                        html.H6('Click on the map to mark the exact location of the asset'),
-                        html.Div(id='coordinate_click_id'),
-                        
-                        # Map on which users can click a point to add an asset
-                        # This is just a placeholder for a callback which returns the actual map object, found in submit_new_asset_cb
-                        html.Div(id='submit-asset-map'),
-                        
-                        ], width=10), 
-                    
-                    dbc.Col([
-                        html.Br(),
-                        # This is the button for users to click to confirm they are submitting the asset
-                        dbc.Button('Click here to submit your asset', id='submit-asset-button', n_clicks=0),
-                        html.Br(),
-                        # Container to capture the confirmation message upon submitting asset
-                        html.Div(id='submit-asset-confirmation'),
-                        ])
-                    ])
+                
+                html.Br(),
+                
+                html.Div([
+                    dbc.Label('Website'),
+                    dbc.Input(id='asset-website', type='url', placeholder='Enter website (leave blank if None)'),
+                    dbc.FormText('This could also be a relevant Facebook/social media page'), 
+                    ]),
+                
                 ]),
-            # The button below, which is the footer of the modal, closes the pop-up window
-            dbc.ModalFooter(
-                dbc.Button("Close", id='close-asset-submit', n_clicks=0)
-                )
-            ],
-            id='submit-asset-modal',
-            is_open=False, # The pop-up isn't open by default
-            fullscreen=True, # The pop-up takes up the full screen 
-            )
+            
+            dbc.ModalFooter([
+                dbc.Button("Next", id='open-modal-2', n_clicks=0)
+                ])
+             
+            ], 
+            id='modal-1', 
+            is_open=False, 
+            size='xl'
+            ),
+      
+        # Modal 2 - location of the asset on a map
+        dbc.Modal([
+            
+            dbc.ModalHeader(dbc.ModalTitle("Show us where the asset is located")),
+            
+            dbc.ModalBody([
+                html.P('''Click on the map to mark the exact location of the asset. You can keep clicking
+                       on different spots to change the marker location.'''),
+                       
+                html.Small('Tip: You can click the + and - buttons on the side to zoom in and out, and click/hold/drag the map to move it around.'),
+
+                html.Div(id='coordinate_click_id'),
+                        
+                # Map on which users can click a point to add an asset
+                # This is just a placeholder for a callback which returns the actual map object, found in submit_new_asset_cb
+                html.Div(id='submit-asset-map'),                
+
+                ]),
+            
+            dbc.ModalFooter([
+                dbc.Button("Back", id='back-modal-1', n_clicks=0),
+                dbc.Button("Next", id='open-modal-3', n_clicks=0)
+                ]),
+             
+            ], 
+            id='modal-2', 
+            is_open=False, 
+            size='xl'
+            ),
+
+        # Modal 3: information about the user
+        dbc.Modal([
+            
+            dbc.ModalHeader(dbc.ModalTitle("A bit about yourself")),
+            
+            dbc.ModalBody([
+                
+                html.P('''We'd love to know a little bit about you to help us understand who is using the site.
+                        We do not share this information with anyone, and only use it to improve the site.'''),
+                        
+                html.B('Please feel free to skip this section and click next if you are not comfortable sharing this information.'),
+                
+                html.Br(),
+                
+                html.Div([
+                    dbc.Label('Your name'),
+                    dbc.Input(id='user-name', type='text', placeholder='Enter your name'),
+                    ]),
+                
+                html.Br(),
+                
+                html.Div([
+                     dbc.Label('Role in the community'),
+                     dbc.Input(id='user-role', type='text', placeholder='Enter your role'),
+                     dbc.FormText('''How are you involved with the community? Are you a resident? A teacher? A business owner? A town planner?''',
+                                 color='secondary'),
+                    ]),
+                
+                ]),
+            
+            dbc.ModalFooter([
+                dbc.Button("Back", id='back-modal-2', n_clicks=0),
+                dbc.Button("Next", id='open-modal-4', n_clicks=0),
+                ])
+             
+            ], 
+            id='modal-3', 
+            is_open=False, 
+            size='lg'
+            ),
+                  
+        # Modal 4: final submit button, to submit all the info
+        dbc.Modal([
+            
+            dbc.ModalHeader(dbc.ModalTitle("Final submission")),
+            
+            dbc.ModalBody([
+                
+                html.P('''Click the button below to submit the information entered in the previous screens. If you'd like to change anything,
+                       press the back buttons and edit before clicking submit.'''),
+                        
+                html.Br(),
+                # This is the button for users to click to confirm they are submitting the asset
+                dbc.Button('Click to submit your asset', id='submit-asset-button', n_clicks=0),
+                html.Br(),
+                # Container to capture the confirmation message upon submitting asset
+                html.Div(id='submit-asset-confirmation'),
+                
+                ]),
+            
+            dbc.ModalFooter([
+                dbc.Button("Back", id='back-modal-3', n_clicks=0)
+                ])
+             
+            ], 
+            id='modal-4', 
+            is_open=False, 
+            size='lg'
+            ),
+                   
         ])
+                       
+                     
