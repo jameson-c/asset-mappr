@@ -15,11 +15,9 @@ Output:
     Callbacks relating to the showMap feature
      
 """
-from dash import dcc
+from unicodedata import category
 import plotly.graph_objs as go
 from dash.dependencies import Input, Output, State
-from dash import html
-import dash
 import pandas as pd
 
 
@@ -46,6 +44,39 @@ def showMap_cb(app, df, asset_categories):
         # Nonlocal tells this nested function to access map_df from the outer function - otherwise throws an undefined error
         nonlocal map_df
 
+        categoryList = ["Community Centers", "Entertainment", "Financial Assistance", "Food Access",
+                        "Healthcare",
+                        "Housing",
+                        "Libraries",
+                        "Postsecondary Schools",
+                        "Private Schools",
+                        "Public Schools",
+                        "Recreation",
+                        "Religious",
+                        "Service Organizations"]
+        colorList = ['#000000', '#003786', '#0e58a8', '#30a4ca', '#54c8df', '#9be4ef',
+                     '#e1e9d1', '#f3d573', '#e7b000', '#da8200', '#c65400',  '#498534',  '#217eb8']
+        # backup: '#ac2301','#001f4d','#4c0000','#217eb8',
+        # from: https://labs.mapbox.com/maki-icons
+        symbolList = ['town', 'amusement-park', 'bank', 'restaurant-pizza',
+                      'hospital-JP',
+                      'lodging',
+                      'library',
+                      'school',
+                      'school',
+                      'school',
+                      'baseball',
+                      'place-of-worship',
+                      'town-hall']
+
+        for item in zip(categoryList, colorList):
+            map_df.loc[map_df['category'] == item[0],
+                       'colorBasedCategory'] = item[1]
+
+        for item in zip(categoryList, symbolList):
+            map_df.loc[map_df['category'] == item[0],
+                       'symbolBasedCategory'] = item[1]
+
         # Filtering the dataset to only keep assets in the selected categories
         df_sub = map_df[(map_df['category'].isin(chosen_recycling))]
 
@@ -57,9 +88,8 @@ def showMap_cb(app, df, asset_categories):
             lon=df_sub['longitude'],
             lat=df_sub['latitude'],
             mode='markers',
-            marker=go.scattermapbox.Marker(
-                size=14
-            ),
+            marker=dict(
+                size=13, color=df_sub['colorBasedCategory'], symbol=df_sub['symbolBasedCategory']),
             unselected={'marker': {'opacity': 1}},
             selected={'marker': {'opacity': 0.5, 'size': 40}},
             # Displays the name of the asset when you hover over it

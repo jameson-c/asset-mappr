@@ -24,7 +24,7 @@ import dash_daq as daq
 def submitRating():
     return html.Div([
         html.Label(['How do you feel about this asset?'],
-                   style={'fontSize': 20}),
+                   style={'fontSize': 20, 'margin-left': 18}),
         # Slider bar to score the asset
         html.H5(
             'Use the slider below to indicate a rating (0-5):', style={'color': 'dimgray', 'font-size': '18px'}),
@@ -41,12 +41,11 @@ def submitRating():
 
         # Text box to provide comments
         html.H5(
-            'Use the box below to share any comments or thoughts about the asset:', style={'color': 'dimgray', 'font-size': '18px'}),
+            'Use the box below to share any comments or thoughts about this asset:', style={'color': 'dimgray', 'font-size': '18px'}),
         dcc.Textarea(
             placeholder='Share your thoughts...',
             id='rating-comments',
             value='',
-            style={'width': '80%', 'height': 30},
         ),
         html.Br(),
         # Button to confirm submission of the rating
