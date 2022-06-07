@@ -36,7 +36,10 @@ def submitNewAsset_cb(app, df, asset_categories):
     df_copy = df
     asset_categories_copy = asset_categories
     
-    # Callback to interact with the open and close buttons of the modal
+    # Callbacks for each of the sub-modals, to control when it opens/closes
+    # The modals are connected with back/next buttons, which determine when each one is open/close
+    
+    # Modal 1 callback (the first thing that opens when the user clicks submit new asset)
     @app.callback(
         Output('modal-1', 'is_open'),
         [Input('open-asset-submit', 'n_clicks'),
@@ -50,6 +53,7 @@ def submitNewAsset_cb(app, df, asset_categories):
             return not is_open
         return is_open
     
+    # Modal 2 callback (opens when the user clicks next from modal 1 or back from modal 3)
     @app.callback(
         Output('modal-2', 'is_open'),
         [Input('open-modal-2', 'n_clicks'),
@@ -64,6 +68,7 @@ def submitNewAsset_cb(app, df, asset_categories):
             return not is_open
         return is_open
     
+    # Modal 3 callback (opens when the user clicks next from modal 2 or back from modal 4)
     @app.callback(
         Output('modal-3', 'is_open'),
         [Input('open-modal-3', 'n_clicks'),
@@ -78,6 +83,7 @@ def submitNewAsset_cb(app, df, asset_categories):
             return not is_open
         return is_open
 
+    # Modal 4 callback (opens when the user clicks next from modal 3)
     @app.callback(
         Output('modal-4', 'is_open'),
         [Input('open-modal-4', 'n_clicks'),
@@ -96,7 +102,7 @@ def submitNewAsset_cb(app, df, asset_categories):
         Input('modal-2', 'is_open')
         )
     def render_map_on_show(is_open):
-        # This ensures that the map only renders if the modal is open, preventing screen resizing issues
+        # This ensures that the map only renders if modal 2 is open, preventing screen resizing issues
         if is_open:
             return dl.Map([dl.TileLayer(), dl.LayerGroup(id='layer')],
                       id='submit-asset-map', 

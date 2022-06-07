@@ -6,6 +6,9 @@ Desc: This file creates the layout of the 'submit new asset' feature of the app
 Input: A list with the master categories, initialised in app.py
 Output: 
     - A function that returns an HTML Div containing the new asset upload popup feature
+    Note that this is structured into 4 different 'modals', or 'pop-up' windows, linked
+    to each other with next and back buttons. This is to split up the data entry and have 
+    enough space to add sufficient explainers.
 
 Other notes:
     - This interacts with the submitNewAsset_cb in 'application'
@@ -23,10 +26,10 @@ def submitNewAsset(master_categories):
     
     return html.Div([
         
-        # Button that opens the 'add new asset' popup
+        # Button that opens the 'add new asset' popup groups
         dbc.Button("Click here to submit asset", id="open-asset-submit", n_clicks=0),
         
-        # First section of the Modal
+        # First pop-up (Modal 1): basic information about the asset
         dbc.Modal([
             
             dbc.ModalHeader(dbc.ModalTitle("Know about an asset we don't have on the map? Tell us about it here!")),
@@ -36,7 +39,7 @@ def submitNewAsset(master_categories):
                 html.Div([
                     dbc.Label('Asset Name'),
                     dbc.Input(id='asset-name', required=True, type='text', placeholder='Enter Asset Name'),
-                    dbc.FormText('Please be specific. For example, instead of just "church", enter "Mt Rose Baptist Church"', color='secondary'),
+                    dbc.FormText('Please be specific where possible. For example, instead of just "church", enter "Mt Rose Baptist Church"', color='secondary'),
                     ]),
                 
                 html.Br(),
@@ -80,7 +83,7 @@ def submitNewAsset(master_categories):
             size='xl'
             ),
       
-        # Second section of the Modal
+        # Modal 2 - location of the asset on a map
         dbc.Modal([
             
             dbc.ModalHeader(dbc.ModalTitle("Show us where the asset is located")),
@@ -110,18 +113,17 @@ def submitNewAsset(master_categories):
             size='xl'
             ),
 
-        # Third section of the Modal
+        # Modal 3: information about the user
         dbc.Modal([
             
             dbc.ModalHeader(dbc.ModalTitle("A bit about yourself")),
             
             dbc.ModalBody([
                 
-                html.P('''To help us understand who is using this tool, we'd love to know a little bit about you.
-                        We do not share this information with anyone, and only use it to better understand
-                        how our site is being used.'''),
+                html.P('''We'd love to know a little bit about you to help us understand who is using the site.
+                        We do not share this information with anyone, and only use it to improve the site.'''),
                         
-                html.B('Feel free to skip this section and click next if you are not comfortable sharing this information.'),
+                html.B('Please feel free to skip this section and click next if you are not comfortable sharing this information.'),
                 
                 html.Br(),
                 
@@ -151,7 +153,8 @@ def submitNewAsset(master_categories):
             is_open=False, 
             size='lg'
             ),
-                       
+                  
+        # Modal 4: final submit button, to submit all the info
         dbc.Modal([
             
             dbc.ModalHeader(dbc.ModalTitle("Final submission")),
@@ -159,7 +162,7 @@ def submitNewAsset(master_categories):
             dbc.ModalBody([
                 
                 html.P('''Click the button below to submit the information entered in the previous screens. If you'd like to change anything,
-                       press the back buttons and edit before pressing the button below.'''),
+                       press the back buttons and edit before clicking submit.'''),
                         
                 html.Br(),
                 # This is the button for users to click to confirm they are submitting the asset
