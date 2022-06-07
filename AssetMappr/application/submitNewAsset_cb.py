@@ -25,6 +25,8 @@ import pandas as pd
 import dash_leaflet as dl
 import uuid
 from flask import request
+import dash_bootstrap_components as dbc
+
 
 from AssetMappr.database.submitNewAsset_db import submitNewAsset_db
 
@@ -66,9 +68,19 @@ def submitNewAsset_cb(app, df, asset_categories):
         return [dl.Marker(position=click_lat_lng, children=dl.Tooltip("({:.3f}, {:.3f})".format(*click_lat_lng)))]
         
 
-    # Callback to take all the user-submitted info on the new asset, and write it to the database
+    # Callback to take all the user-submitted info on the new asset, write it to the database, and reset the form
     @app.callback(
+        
+        # The output displays a confirmation message, and resets the values of all the input fields to blank/None
         Output(component_id='submit-asset-confirmation', component_property='children'),
+        Output('user-name', 'value'),
+        Output('user-role', 'value'),
+        Output('asset-name', 'value'),
+        Output('asset-categories', 'value'),
+        Output('asset-desc', 'value'),
+        Output('asset-website', 'value'),
+        
+        # The inputs of the text boxes and the lat long are all state-dependent on clicking the submit button
         [Input('submit-asset-button', 'n_clicks')],
         [State('user-name', 'value')],
         [State('user-role', 'value')],
@@ -119,7 +131,11 @@ def submitNewAsset_cb(app, df, asset_categories):
             global df, asset_categories
             df, asset_categories = df_copy, asset_categories_copy
      
-            # Returns user confirmation
-            return '''Asset {} submited successfully! You should be able to see it on the main map after closing this screen. 
-                   Thank you for helping out.'''.format(name)
+            # Returns user confirmation, and empty strings/None types to the corresponding Input boxes
+            return (dbc.Alert('''Asset {} submited successfully! You should be able to see it on the main map after closing this screen. 
+                   Thank you for helping out.'''.format(name), dismissable=True, color='success'),
+                   
+                   '', '', '', None, '', ''
+                   
+                   )
             
