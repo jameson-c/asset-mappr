@@ -68,14 +68,27 @@ def submitNewAsset_cb(app, df, asset_categories):
         Output('modal-3', 'is_open'),
         [Input('open-modal-3', 'n_clicks'),
          Input('back-modal-2', 'n_clicks'),
+         Input('back-modal-3', 'n_clicks'),
+         Input('open-modal-4', 'n_clicks')
         ],
         [State('modal-3', 'is_open')]
         )
-    def toggle_modal_3(n0, n1, is_open):
+    def toggle_modal_3(n0, n1, n2, n3, is_open):
+        if n0 or n1 or n2 or n3:
+            return not is_open
+        return is_open
+
+    @app.callback(
+        Output('modal-4', 'is_open'),
+        [Input('open-modal-4', 'n_clicks'),
+         Input('back-modal-3', 'n_clicks'),
+        ],
+        [State('modal-4', 'is_open')]
+        )
+    def toggle_modal_4(n0, n1, is_open):
         if n0 or n1:
             return not is_open
         return is_open
-    
     
     # Callback to render the Leaflet map on which users will pin the location of the asset
     @app.callback(
@@ -89,7 +102,7 @@ def submitNewAsset_cb(app, df, asset_categories):
                       id='submit-asset-map', 
                       # TODO: automate the centering of the map based on user input on community
                       zoom=14, center=(39.8993885, -79.7249338),
-                      style={'width': '100%', 'height': '50vh', 'margin': "auto", "display": "block"}
+                      style={'width': '100%', 'height': '65vh', 'margin': "auto", "display": "block"}
                      )
     
     # Callback to display the marker point where the user has clicked on the map
@@ -162,7 +175,7 @@ def submitNewAsset_cb(app, df, asset_categories):
             df, asset_categories = df_copy, asset_categories_copy
      
             # Returns user confirmation, and empty strings/None types to the corresponding Input boxes
-            return (dbc.Alert('''Asset {} submited successfully! You should be able to see it on the main map after closing this screen. 
+            return (dbc.Alert('''Asset {} submited successfully!  
                    Thank you for helping out.'''.format(name), dismissable=True, color='success'),
                    
                    '', '', '', None, '', ''
