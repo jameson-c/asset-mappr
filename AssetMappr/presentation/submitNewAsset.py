@@ -111,7 +111,9 @@ def submitNewAsset(master_categories):
                         html.P('Search an address to zoom into on the map'),
                         dbc.Textarea(id='address-search', size='lg'),
                         html.Br(),
-                        dbc.Button('Find', id='search-address-button', n_clicks=0)
+                        dbc.Button('Find', id='search-address-button', n_clicks=0),
+                        html.Br(),
+                        html.Div(id='geocoded-latlng'),
                         ],
                         width=2
                         ),

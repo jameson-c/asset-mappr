@@ -115,6 +115,38 @@ def submitNewAsset_cb(app, df, asset_categories):
         return [dl.Marker(position=click_lat_lng, children=dl.Tooltip("({:.3f}, {:.3f})".format(*click_lat_lng)))]
     
     # Callback to zoom into the text inputted address, using geocoding
+    @app.callback(
+        Output('geocoded-latlng', 'children'),
+        [Input('search-address-button', 'n_clicks')],
+        [State('address-search', 'value')]
+        )
+    def zoom_to_address(n_clicks, address_search):
+        if n_clicks == 0:
+            return ''
+        else:
+            # Geocode the lat-lng using Google Maps API
+            google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
+            
+            # Adding Uniontown PA to make the search more accurate
+            address_search = address_search + ' Uniontown, PA'
+            
+            params = {'key': google_api_key,
+                      'address': address_search}
+            
+            url = 'https://maps.googleapis.com/maps/api/geocode/json?'
+            
+            response = requests.get(url, params)
+            result = json.loads(response.text)
+
+            # Check these error codes again - there may be more
+            if result['status'] not in ['INVALID_REQUEST', 'ZERO_RESULTS']:
+                
+                lat = result['results'][0]['geometry']['location']['lat']
+                long = result['results'][0]['geometry']['location']['lng']
+
+                return 'Lat: {}, Long: {}'.format(lat, long)
+            else:
+                return 'Invalid address'
     
     # Callback to display the geocoded address based on the clicked lat long
     @app.callback(
