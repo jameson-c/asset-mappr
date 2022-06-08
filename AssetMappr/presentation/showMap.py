@@ -39,6 +39,5 @@ def showMap(master_categories):
         # Container with the actual map, generated from a linked callback
         dcc.Graph(id='graph', config={'displayModeBar': True, 'scrollZoom': True}, style={
                   'background': '#00FC87', 'height': '70vh', 'width': '100vh'})
-        #   ,style={'background': '#00FC87', 'height': '70vh', 'width': '100vh'}),
 
     ])

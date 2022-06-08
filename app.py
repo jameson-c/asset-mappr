@@ -95,7 +95,6 @@ def display_page(pathname):
 # Callbacks
 # =============================================================================
 
-
 # Applying all the callbacks, passing relevant inputs so they can be used in the callbacks
 showMap_cb(app, df, asset_categories)
 showAssetInfo_cb(app)
