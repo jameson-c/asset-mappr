@@ -65,3 +65,14 @@ def showAssetInfo_cb(app):
             else:
                 # Returns the website as a clickable link
                 return 'Website: ', html.A(the_link, href=the_link, target="_blank")
+            
+    #Show the address. And clicking it will lead to google map direction page.
+    @app.callback(
+        Output('display-asset-address', 'children'),
+        [Input('graph', 'clickData')])
+    def display_asset_desc(clickData):
+        if clickData is None:
+            return None
+        else:
+            addressLink = clickData['points'][0]['customdata'][4]
+            return 'Address:',html.A(addressLink, href= 'https://www.google.com/maps/dir/?api=1&AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30&destination={}+PA'.format(addressLink),target="_blank")

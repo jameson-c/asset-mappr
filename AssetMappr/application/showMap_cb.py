@@ -101,7 +101,7 @@ def showMap_cb(app, df, asset_categories):
             hovertext=df_sub['asset_name'],
             # Defines the data for each point that will be drawn for other functions
             customdata=df_sub.loc[:, ['asset_name',
-                                      'description', 'website', 'asset_id']],
+                                      'description', 'website', 'asset_id','address']],
         )]
         
         layout = go.Layout(

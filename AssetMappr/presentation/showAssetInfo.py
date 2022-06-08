@@ -18,4 +18,6 @@ def showAssetInfo():
                 html.H6(id='display-asset-desc'),
                 
                 html.Pre(id='web_link'),
+                
+                html.H6(id='display-asset-address')
             ])
