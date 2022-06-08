@@ -19,6 +19,7 @@ Input:
     - (str) Site: website associated with the asset
     - (tuple) click_lat_lng: latitude and longitude of the asset
     - (int) community_geo_id: geo_id of the relevant community
+    - (str) Address: the geocoded address associated with the lat-long
    
 Output: 
     - None: this function only writes to the SQL database directly
@@ -28,7 +29,7 @@ import psycopg2
 import uuid
 from datetime import datetime
 
-def submitNewAsset_db(staged_asset_id, ip, user_name, user_role, name, categories, desc, site, click_lat_lng, community_geo_id):
+def submitNewAsset_db(staged_asset_id, ip, user_name, user_role, name, categories, desc, site, click_lat_lng, community_geo_id, address):
 
     # When deploying on Render, use this string
     # con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a/assetmappr_database'
@@ -54,15 +55,16 @@ def submitNewAsset_db(staged_asset_id, ip, user_name, user_role, name, categorie
     user_name = user_name
     user_role = user_role
     user_upload_ip = ip
+    address = address
     
     generated_timestamp = datetime.now()
     
     # Write the info into staged assets table
     # Refer to the createDBstructure.py script to see the variable types and DB structure
     cursor.execute('''INSERT INTO staged_assets (staged_asset_id, asset_name, asset_type, community_geo_id, source_type, 
-                               description, website, latitude, longitude, generated_timestamp, user_name, user_role, user_upload_ip)
-                      VALUES ('{}','{}','{}',{},'{}','{}','{}',{},{},TIMESTAMP '{}', '{}', '{}', '{}');'''.format(staged_asset_id, asset_name, asset_type, community_geo_id, source_type, 
-                               description, website, latitude, longitude, generated_timestamp, user_name, user_role, user_upload_ip))
+                               description, website, latitude, longitude, generated_timestamp, user_name, user_role, user_upload_ip, address)
+                      VALUES ('{}','{}','{}',{},'{}','{}','{}',{},{},TIMESTAMP '{}', '{}', '{}', '{}', '{}');'''.format(staged_asset_id, asset_name, asset_type, community_geo_id, source_type, 
+                               description, website, latitude, longitude, generated_timestamp, user_name, user_role, user_upload_ip, address))
        
     # Write information to the asset-categories table
     for cat in categories:

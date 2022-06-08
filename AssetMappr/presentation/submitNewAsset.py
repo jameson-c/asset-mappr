@@ -92,13 +92,31 @@ def submitNewAsset(master_categories):
                 html.P('''Click on the map to mark the exact location of the asset. You can keep clicking
                        on different spots to change the marker location.'''),
                        
+                html.P(id='clicked-address'),
+
+                       
                 html.Small('Tip: You can click the + and - buttons on the side to zoom in and out, and click/hold/drag the map to move it around.'),
 
+                # This takes an output from the CB which is the geocoded address based on the current clicked lat-long on the map
+                
                 html.Div(id='coordinate_click_id'),
                         
                 # Map on which users can click a point to add an asset
                 # This is just a placeholder for a callback which returns the actual map object, found in submit_new_asset_cb
-                html.Div(id='submit-asset-map'),                
+                dbc.Row([
+                    
+                    dbc.Col(html.Div(id='submit-asset-map'), width=10),
+                    
+                    dbc.Col([
+                        html.P('Search an address to zoom into on the map'),
+                        dbc.Textarea(id='address-search', size='lg'),
+                        html.Br(),
+                        dbc.Button('Find', id='search-address-button', n_clicks=0)
+                        ],
+                        width=2
+                        ),
+                    
+                    ])
 
                 ]),
             

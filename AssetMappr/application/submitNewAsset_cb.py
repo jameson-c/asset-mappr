@@ -22,6 +22,8 @@ import dash_leaflet as dl
 import uuid
 from flask import request
 import dash_bootstrap_components as dbc
+import requests
+import json
 
 
 from AssetMappr.database.submitNewAsset_db import submitNewAsset_db
@@ -111,7 +113,32 @@ def submitNewAsset_cb(app, df, asset_categories):
     @app.callback(Output('layer', 'children'), [Input('submit-asset-map', 'click_lat_lng')])
     def map_click(click_lat_lng):
         return [dl.Marker(position=click_lat_lng, children=dl.Tooltip("({:.3f}, {:.3f})".format(*click_lat_lng)))]
+    
+    # Callback to zoom into the text inputted address, using geocoding
+    
+    # Callback to display the geocoded address based on the clicked lat long
+    @app.callback(
+        Output('clicked-address', 'children'),
+        Input('submit-asset-map', 'click_lat_lng')
+        )
+    def geocoded_clicked_ltlng(click_lat_lng):
         
+        # Geocode the lat-lng using Google Maps API
+        google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
+        
+        params = {'key': google_api_key,
+                  'latlng': '{},{}'.format(click_lat_lng[0], click_lat_lng[1])}
+        
+        url = 'https://maps.googleapis.com/maps/api/geocode/json?'
+        
+        response = requests.get(url, params)
+        result = json.loads(response.text)
+        
+        # Getting the formatted address from the JSON return
+        global address
+        address = result['results'][0]['formatted_address']
+        
+        return 'Selected address: {}'.format(address)
 
     # Callback to take all the user-submitted info on the new asset, write it to the database, and reset the form
     @app.callback(
@@ -149,7 +176,8 @@ def submitNewAsset_cb(app, df, asset_categories):
             staged_asset_id = str(uuid.uuid4()) 
 
             # Feed the info into the database-write function, which writes to SQL (found in database folder)
-            submitNewAsset_db(staged_asset_id, ip, user_name, user_role, name, categories, desc, site, click_lat_lng, community_geo_id=123)
+            submitNewAsset_db(staged_asset_id, ip, user_name, user_role, name, categories, desc, 
+                              site, click_lat_lng, community_geo_id=123, address=address)
             
             # Writing the asset to the temporary data frame used by the app, so the user can see this uploaded asset
             # in their current session. Note: this is over and above writing it to the actual postgreSQL DB, which happens
@@ -177,7 +205,7 @@ def submitNewAsset_cb(app, df, asset_categories):
             df, asset_categories = df_copy, asset_categories_copy
      
             # Returns user confirmation, and empty strings/None types to the corresponding Input boxes
-            return (dbc.Alert('''Asset {} submited successfully!  
+            return (dbc.Alert('''{} submited successfully!  
                    Thank you for helping out.'''.format(name), dismissable=True, color='success'),
                    
                    '', '', '', None, '', ''
