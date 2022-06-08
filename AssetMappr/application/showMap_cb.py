@@ -15,11 +15,9 @@ Output:
     Callbacks relating to the showMap feature
      
 """
-from dash import dcc
+from unicodedata import category
 import plotly.graph_objs as go
 from dash.dependencies import Input, Output, State
-from dash import html
-import dash
 import pandas as pd
 
 
@@ -45,6 +43,43 @@ def showMap_cb(app, df, asset_categories):
     def update_figure(chosen_recycling):
         # Nonlocal tells this nested function to access map_df from the outer function - otherwise throws an undefined error
         nonlocal map_df
+        #We should change this part when the categories are changed. Becuase each category has one symbol, it is a one on one thing, we have to manually choose the symbol for each category.
+        categoryList = ["Community Centers", "Entertainment", "Financial Assistance", "Food Access",
+                        "Healthcare",
+                        "Housing",
+                        "Libraries",
+                        "Postsecondary Schools",
+                        "Private Schools",
+                        "Public Schools",
+                        "Recreation",
+                        "Religious",
+                        "Service Organizations"]
+        #keep it as a backup choice: You can change the color only for the circle, by now, we aren't be able to change the symbols' colors
+        # colorList = ['#000000', '#003786', '#0e58a8', '#30a4ca', '#54c8df', '#9be4ef',
+        #              '#e1e9d1', '#f3d573', '#e7b000', '#da8200', '#c65400',  '#498534',  '#217eb8']
+        # backup color choices: '#ac2301','#001f4d','#4c0000','#217eb8',
+        
+        # for item in zip(categoryList, colorList):
+        #     map_df.loc[map_df['category'] == item[0],
+        #                'colorBasedCategory'] = item[1]
+        
+        
+        #These symbols are from: https://labs.mapbox.com/maki-icons
+        symbolList = ['town', 'amusement-park', 'bank', 'restaurant-pizza',
+                      'hospital-JP',
+                      'lodging',
+                      'library',
+                      'school',
+                      'school',
+                      'school',
+                      'baseball',
+                      'place-of-worship',
+                      'town-hall']
+
+        # Zip the categoryList and symbolList. Each category has their different symbol.
+        for item in zip(categoryList, symbolList):
+            map_df.loc[map_df['category'] == item[0],
+                       'symbolBasedCategory'] = item[1]
 
         # Filtering the dataset to only keep assets in the selected categories
         df_sub = map_df[(map_df['category'].isin(chosen_recycling))]
@@ -57,9 +92,8 @@ def showMap_cb(app, df, asset_categories):
             lon=df_sub['longitude'],
             lat=df_sub['latitude'],
             mode='markers',
-            marker=go.scattermapbox.Marker(
-                size=14
-            ),
+            marker=dict(
+                size=13, symbol=df_sub['symbolBasedCategory']),
             unselected={'marker': {'opacity': 1}},
             selected={'marker': {'opacity': 0.5, 'size': 40}},
             # Displays the name of the asset when you hover over it
@@ -69,11 +103,8 @@ def showMap_cb(app, df, asset_categories):
             customdata=df_sub.loc[:, ['asset_name',
                                       'description', 'website', 'asset_id']],
         )]
-
-        # Return figure
-        return {
-            'data': locations,
-            'layout': go.Layout(
+        
+        layout = go.Layout(
                 uirevision='foo',  # preserves state of figure/map after callback activated
                 clickmode='event+select',
                 hovermode='closest',
@@ -90,9 +121,13 @@ def showMap_cb(app, df, asset_categories):
                         lat=39.8993885,
                         lon=-79.7249338
                     ),
-                    # 40.4406° N, 79.9959° W
                     pitch=40,
                     zoom=11.5
                 ),
             )
+
+        # Return figure
+        return {
+            'data': locations,
+            'layout': layout
         }
