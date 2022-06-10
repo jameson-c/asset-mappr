@@ -112,7 +112,7 @@ def suggestMissingAsset_cb(app):
     def map_click(click_lat_lng):
         return [dl.Marker(position=click_lat_lng, children=dl.Tooltip("({:.3f}, {:.3f})".format(*click_lat_lng)))]
         
-    # Callback to zoom into the text inputted address, using geocoding
+    # Callback to zoom into the text-inputted search address, using geocoding
     @app.callback(
         
         # Outputs the new centering/zoom location directly on the map
