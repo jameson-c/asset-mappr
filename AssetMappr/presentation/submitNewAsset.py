@@ -113,7 +113,7 @@ def submitNewAsset(master_categories):
                     # Address search box + button
                     dbc.Col([
                         html.P('Search an address to zoom into on the map', style={'font-weight': 'bold'}),
-                        dbc.Textarea(id='address-search', size='lg'),
+                        dbc.Textarea(id='address-search', placeholder='Enter street or area', size='lg'),
                         dbc.Button('Find', id='search-address-button', n_clicks=0),
                         html.Br(),
                         html.Div(id='zoom-address-confirmation'),
