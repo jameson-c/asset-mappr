@@ -213,6 +213,33 @@ a:active {
     color: white;
 }
 
+/* Hopes for the future page */
+
+#missing-asset-intro {
+    margin-top: 25px;
+    margin-left: 25px;
+    font-size: 25px;
+    color: darkslategray;
+}
+
+#click-missing-asset-button{
+    margin-left: 25px;
+    top: 10%;
+    left: 2%;
+    color: dimgray;
+}
+
+#open-suggest-missing-submit {
+    background-color: #4CAF50;
+    color: white;
+    margin-left: 25px;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    width: 520px;
+}
 
 /* For devices larger than 400px */
 @media (min-width: 400px) {

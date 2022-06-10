@@ -243,6 +243,8 @@ CREATE TABLE MISSING_ASSETS(
     primary_category VARCHAR(200) NOT NULL,
     latitude DOUBLE PRECISION,
     longitude DOUBLE PRECISION,
+    address TEXT,
+    justification TEXT,
     line LINE,
     polygon POLYGON,
     circle CIRCLE,
