@@ -147,6 +147,8 @@ def suggestMissingAsset_cb(app):
         Output('missing-asset-name', 'value'),
         Output('missing-asset-categories', 'value'),
         Output('missing-asset-desc', 'value'),
+        Output('missing-asset-justification', 'value'),
+        Output('clicked-address-missing-asset', 'value'),
         
         # The inputs of the text boxes and the lat long are all state-dependent on clicking the submit button
         [Input('submit-suggestion-button', 'n_clicks')],
@@ -176,7 +178,7 @@ def suggestMissingAsset_cb(app):
             return (dbc.Alert('''Suggestion for {} submited successfully! Thank you for helping out.'''.format(name), 
                               dismissable=True, color='success'),
                        
-                       '', '', '', None, ''
+                       '', '', '', None, '', '', ''
                        
                        )
             

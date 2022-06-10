@@ -23,8 +23,8 @@ def suggestMissingAsset(master_categories):
     
     return html.Div([
         
-        html.H6('Is there something missing in your community, that you would like to see?'),
-        html.H6('Click the button below to tell us about your suggestion \U0001f447'),
+        html.H4('Is there something missing in your community, that you would like to see?', id='missing-asset-intro'),
+        html.H5('Click the button below \U0001f447 to tell us about your idea', id='click-missing-asset-button'),
         
         html.Br(),
         
@@ -34,7 +34,7 @@ def suggestMissingAsset(master_categories):
         # First pop-up (Modal 1): basic information about the asset
         dbc.Modal([
             
-            dbc.ModalHeader(dbc.ModalTitle("Basic details (boxes in red are required)")),
+            dbc.ModalHeader(dbc.ModalTitle("Basic details")),
 
             dbc.ModalBody([
                 
@@ -61,7 +61,7 @@ def suggestMissingAsset(master_categories):
                     dbc.Label('Main category' ),
                     dcc.Dropdown(id='missing-asset-categories',
                                     options=[{'label': i, 'value': i} for i in master_categories],
-                                    value=None,
+                                    value=None, 
                                     multi=False),
                     dbc.FormText('Select the main category your suggested asset belongs to',
                                  color='secondary'),                 
@@ -94,8 +94,9 @@ def suggestMissingAsset(master_categories):
             dbc.ModalHeader(dbc.ModalTitle("Show us where the asset should be located")),
             
             dbc.ModalBody([
-                html.P('''Click on the map to mark the where you think this asset should be, if there is
-                       an area or location you had in mind. It can be approximate. You can keep clicking
+                html.P('''If there is an area or location you had in mind, click on the map to mark the where you think this asset should be
+                          It can be approximate.'''),
+                html.P('''You can keep clicking
                        on different spots to change the marker location.'''),
                        
                 html.P(id='clicked-address-missing-asset'),
