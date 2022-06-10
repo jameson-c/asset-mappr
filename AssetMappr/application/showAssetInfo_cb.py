@@ -75,4 +75,4 @@ def showAssetInfo_cb(app):
             return None
         else:
             addressLink = clickData['points'][0]['customdata'][4]
-            return 'Address:',html.A(addressLink, href= 'https://www.google.com/maps/dir/?api=1&AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30&destination={}+PA'.format(addressLink),target="_blank")
+            return 'Address: ',html.A(addressLink, href= 'https://www.google.com/maps/dir/?api=1&AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30&destination={}+PA'.format(addressLink),target="_blank")
