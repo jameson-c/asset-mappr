@@ -116,7 +116,14 @@ def submitNewAsset_cb(app, df, asset_categories):
     
     # Callback to zoom into the text inputted address, using geocoding
     @app.callback(
-        Output('geocoded-latlng', 'children'),
+        
+        # Outputs the new centering/zoom location directly on the map
+        # The zoom-address-confirmation output is a box that will display nothing
+        # if the address geocoding worked, but an error message if it didn't work
+        Output('zoom-address-confirmation', 'children'),
+        Output('submit-asset-map', 'center'),
+        Output('submit-asset-map', 'zoom'),
+        Output('address-search', 'value'), # this is to clear the value in the search box once submitted
         [Input('search-address-button', 'n_clicks')],
         [State('address-search', 'value')]
         )
@@ -127,7 +134,7 @@ def submitNewAsset_cb(app, df, asset_categories):
             # Geocode the lat-lng using Google Maps API
             google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
             
-            # Adding Uniontown PA to make the search more accurate
+            # Adding Uniontown PA to make the search more accurate (to generalize)
             address_search = address_search + ' Uniontown, PA'
             
             params = {'key': google_api_key,
@@ -144,9 +151,11 @@ def submitNewAsset_cb(app, df, asset_categories):
                 lat = result['results'][0]['geometry']['location']['lat']
                 long = result['results'][0]['geometry']['location']['lng']
 
-                return 'Lat: {}, Long: {}'.format(lat, long)
+                # Return the error message, lat-long to center on, and amount of zoom
+                return ('', (lat, long), 20, '')
+                        
             else:
-                return 'Invalid address'
+                return ('Invalid address; try entering', (39.8993885, -79.7249338), 14, address_search)
     
     # Callback to display the geocoded address based on the clicked lat long
     @app.callback(
