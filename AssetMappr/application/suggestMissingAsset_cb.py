@@ -22,6 +22,8 @@ from dash import html
 import pandas as pd
 import dash_leaflet as dl
 import dash_bootstrap_components as dbc
+import json
+import requests
 
 
 from flask import request
@@ -30,21 +32,70 @@ from AssetMappr.database.suggestMissingAsset_db import suggestMissingAsset_db
 
 def suggestMissingAsset_cb(app):
     
-    # Callback to interact with the open and close buttons of the modal
+    # Callbacks for each of the sub-modals, to control when it opens/closes
+    # The modals are connected with back/next buttons, which determine when each one is open/close
+    
+    # Modal 1 callback (the first thing that opens when the user clicks submit new asset)
     @app.callback(
-        Output('suggest-missing-asset-modal', 'is_open'),
-        [Input("open-suggest-missing-submit", 'n_clicks'), Input('close-suggest-missing-submit', 'n_clicks')],
-        [State('suggest-missing-asset-modal', 'is_open')],
+        Output('modal-1-missing', 'is_open'),
+        [Input('open-suggest-missing-submit', 'n_clicks'),
+         Input('back-modal-1-missing', 'n_clicks'),
+         Input('open-modal-2-missing', 'n_clicks')            
+        ],
+        [State('modal-1-missing', 'is_open')]
         )
-    def toggle_modal(n1, n2, is_open):
-        if n1 or n2:
+    def toggle_modal_1_missing(n0, n1, n2, is_open):
+        if n0 or n1 or n2:
+            return not is_open
+        return is_open
+    
+    # Modal 2 callback (opens when the user clicks next from modal 1 or back from modal 3)
+    @app.callback(
+        Output('modal-2-missing', 'is_open'),
+        [Input('open-modal-2-missing', 'n_clicks'),
+         Input('back-modal-1-missing', 'n_clicks'),
+         Input('back-modal-2-missing', 'n_clicks'),
+         Input('open-modal-3-missing', 'n_clicks')
+        ],
+        [State('modal-2-missing', 'is_open')]
+        )
+    def toggle_modal_2_missing(n0, n1, n2, n3, is_open):
+        if n0 or n1 or n2:
+            return not is_open
+        return is_open
+    
+    # Modal 3 callback (opens when the user clicks next from modal 2 or back from modal 4)
+    @app.callback(
+        Output('modal-3-missing', 'is_open'),
+        [Input('open-modal-3-missing', 'n_clicks'),
+         Input('back-modal-2-missing', 'n_clicks'),
+         Input('back-modal-3-missing', 'n_clicks'),
+         Input('open-modal-4-missing', 'n_clicks')
+        ],
+        [State('modal-3-missing', 'is_open')]
+        )
+    def toggle_modal_3_missing(n0, n1, n2, n3, is_open):
+        if n0 or n1 or n2 or n3:
+            return not is_open
+        return is_open
+
+    # Modal 4 callback (opens when the user clicks next from modal 3)
+    @app.callback(
+        Output('modal-4-missing', 'is_open'),
+        [Input('open-modal-4-missing', 'n_clicks'),
+         Input('back-modal-3-missing', 'n_clicks'),
+        ],
+        [State('modal-4-missing', 'is_open')]
+        )
+    def toggle_modal_4_missing(n0, n1, is_open):
+        if n0 or n1:
             return not is_open
         return is_open
     
     # Callback to render the Leaflet map on which users will pin the location of the missing asset
     @app.callback(
-        Output('missing-asset-map', 'children'),
-        Input('suggest-missing-asset-modal', 'is_open')
+        Output('submit-missing-asset-map', 'children'),
+        Input('modal-2-missing', 'is_open')
         )
     def render_map_on_show(is_open):
         # This ensures that the map only renders if the modal is open, preventing screen resizing issues
@@ -61,6 +112,30 @@ def suggestMissingAsset_cb(app):
     def map_click(click_lat_lng):
         return [dl.Marker(position=click_lat_lng, children=dl.Tooltip("({:.3f}, {:.3f})".format(*click_lat_lng)))]
         
+    # Callback to display the geocoded address based on the clicked lat long
+    @app.callback(
+        Output('clicked-address-missing-asset', 'children'),
+        Input('submit-missing-asset-map', 'click_lat_lng')
+        )
+    def geocoded_clicked_ltlng_missing(click_lat_lng):
+        
+        # Geocode the lat-lng using Google Maps API
+        google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
+        
+        params = {'key': google_api_key,
+                  'latlng': '{},{}'.format(click_lat_lng[0], click_lat_lng[1])}
+        
+        url = 'https://maps.googleapis.com/maps/api/geocode/json?'
+        
+        response = requests.get(url, params)
+        result = json.loads(response.text)
+        
+        # Getting the formatted address from the JSON return
+        global address_missing
+        address_missing = result['results'][0]['formatted_address']
+        
+        return 'Selected address: {}'.format(address_missing)
+
 
     # Callback to take all the user-submitted info on the missing asset, write it to the database, and reset the form
     @app.callback(
@@ -72,6 +147,8 @@ def suggestMissingAsset_cb(app):
         Output('missing-asset-name', 'value'),
         Output('missing-asset-categories', 'value'),
         Output('missing-asset-desc', 'value'),
+        Output('missing-asset-justification', 'value'),
+        Output('clicked-address-missing-asset', 'value'),
         
         # The inputs of the text boxes and the lat long are all state-dependent on clicking the submit button
         [Input('submit-suggestion-button', 'n_clicks')],
@@ -80,9 +157,11 @@ def suggestMissingAsset_cb(app):
         [State('missing-asset-name', 'value')],
         [State('missing-asset-categories', 'value')],
         [State('missing-asset-desc', 'value')],
+        [State('missing-asset-justification', 'value')],
         [State('submit-missing-asset-map', 'click_lat_lng')]
+                
         )
-    def store_submitted_info(n_clicks, user_name, user_role, name, categories, desc, click_lat_lng):
+    def store_submitted_info(n_clicks, user_name, user_role, name, categories, desc, justification, click_lat_lng):
         # If the 'Submit' button has not been clicked yet, return or do nothing
         if n_clicks == 0:
             return ''
@@ -92,13 +171,14 @@ def suggestMissingAsset_cb(app):
             ip = request.remote_addr
             
             # Write to the database
-            suggestMissingAsset_db(ip, user_name, user_role, name, categories, desc, click_lat_lng, community_geo_id=123)
+            suggestMissingAsset_db(ip, user_name, user_role, name, categories, desc, click_lat_lng, 
+                                   justification, address_missing, community_geo_id=123)
                         
             # Returns user confirmation, and empty strings/None types to the corresponding Input boxes
-            return (dbc.Alert('''Suggestion for asset {} submited successfully! Thank you for helping out.'''.format(name), 
+            return (dbc.Alert('''Suggestion for {} submited successfully! Thank you for helping out.'''.format(name), 
                               dismissable=True, color='success'),
                        
-                       '', '', '', None, ''
+                       '', '', '', None, '', '', ''
                        
                        )
             

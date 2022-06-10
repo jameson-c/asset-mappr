@@ -68,7 +68,7 @@ def submitNewAsset(master_categories):
                 html.Div([
                     dbc.Label('Website'),
                     dbc.Input(id='asset-website', type='url', placeholder='Enter website (leave blank if None)'),
-                    dbc.FormText('This could also be a relevant Facebook/social media page'), 
+                    dbc.FormText('This could also be a relevant Facebook/social media page', color='secondary'), 
                     ]),
                 
                 ]),

@@ -26,7 +26,8 @@ import psycopg2
 import uuid
 from datetime import datetime
 
-def suggestMissingAsset_db(ip, user_name, user_role, name, categories, desc, click_lat_lng, community_geo_id):
+def suggestMissingAsset_db(ip, user_name, user_role, name, categories, desc, click_lat_lng, 
+                           justification, address, community_geo_id):
 
     # When deploying on Render, use this string
     # con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a/assetmappr_database'
@@ -50,16 +51,18 @@ def suggestMissingAsset_db(ip, user_name, user_role, name, categories, desc, cli
     user_name = user_name
     user_role = user_role
     user_upload_ip = ip
+    justification = justification
+    address = address
     
     generated_timestamp = datetime.now()
     
     # Write the info into missing assets table
     # Refer to the createDBstructure.py script to see the variable types and DB structure
     cursor.execute('''INSERT INTO missing_assets (suggestion_id, missing_asset_name, primary_category, user_community, 
-                               latitude, longitude, generated_timestamp, user_name, user_role, user_upload_ip, description)
-                      VALUES ('{}','{}','{}', {},{},{},TIMESTAMP '{}', '{}', '{}', '{}', '{}');'''.format(suggestion_id, asset_name, 
+                               latitude, longitude, generated_timestamp, user_name, user_role, user_upload_ip, description, address, justification)
+                      VALUES ('{}','{}','{}', {},{},{},TIMESTAMP '{}', '{}', '{}', '{}', '{}', '{}', '{}');'''.format(suggestion_id, asset_name, 
                       primary_category,community_geo_id, latitude, longitude, generated_timestamp, user_name, 
-                      user_role, user_upload_ip, description))
+                      user_role, user_upload_ip, description, address, justification))
     
     conn.commit()
     conn.close()
