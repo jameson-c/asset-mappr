@@ -104,11 +104,31 @@ def suggestMissingAsset(master_categories):
                 html.Small('Tip: You can click the + and - buttons on the side to zoom in and out, and click/hold/drag the map to move it around.'),
 
                 html.Div(id='missing_coordinate_click_id'),
+                
+                html.Br(),
+                
+                dbc.Row([
+                    
+                    # Map on which users can click a point to add an asset
+                    # This is just a placeholder for a callback which returns the actual map object, found in submit_new_asset_cb
+                    dbc.Col(html.Div(id='submit-missing-asset-map'), width=10),   
+                    
+                    # Address search box + button
+                    dbc.Col([
+                        html.P('Search an address to zoom into on the map', style={'font-weight': 'bold'}),
+                        dbc.Textarea(id='address-search-missing', placeholder='Enter street or area', size='lg'),
+                        dbc.Button('Find', id='search-address-button-missing', n_clicks=0),
+                        html.Br(),
+                        html.Div(id='zoom-address-confirmation-missing'),
+                        html.Br(),
+                        html.Small('''Note: you still have to click the map on the location so a marker
+                                   and selected address appear'''),
+                        ],
+                        width=2
+                        ),                        
                         
-                # Map on which users can click a point to add an asset
-                # This is just a placeholder for a callback which returns the actual map object, found in submit_new_asset_cb
-                html.Div(id='submit-missing-asset-map'),                
-
+                    ]) 
+                    
                 ]),
             
             dbc.ModalFooter([
