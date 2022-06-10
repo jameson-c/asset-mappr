@@ -91,14 +91,14 @@ def submitNewAsset(master_categories):
             dbc.ModalBody([
                 html.P('''Click on the map to mark the exact location of the asset. You can keep clicking
                        on different spots to change the marker location.'''),
-                       
+                  
+                # This takes an output from the CB which is the geocoded address based on the current clicked lat-long on the map
                 html.P(id='clicked-address'),
 
                        
                 html.Small('''Tip: You can click the + and - buttons on the side to zoom in and out, click/hold/drag the map to move it around,
                            or use the address search bar on the right to navigate to a spot'''),
 
-                # This takes an output from the CB which is the geocoded address based on the current clicked lat-long on the map
                 
                 html.Div(id='coordinate_click_id'),
                 
@@ -117,6 +117,9 @@ def submitNewAsset(master_categories):
                         dbc.Button('Find', id='search-address-button', n_clicks=0),
                         html.Br(),
                         html.Div(id='zoom-address-confirmation'),
+                        html.Br(),
+                        html.Small('''Note: you still have to click the map on the location so a marker
+                                   and selected address appear'''),
                         ],
                         width=2
                         ),
