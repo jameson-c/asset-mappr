@@ -125,7 +125,8 @@ Desc: This is css file, to change the web layout.
 /*Selected assests information*/
 #display-asset-name,
 #display-asset-desc,
-#web_link {
+#web_link,
+#display-asset-address {
     margin-left: 18px;
     font-size: 18px;
     color: slategray;
