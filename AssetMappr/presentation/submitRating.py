@@ -30,14 +30,14 @@ def submitRating(master_value_tags):
     return html.Div([
         # How do you feel about XXX(asset-name)?
         html.Div(id='HowDoYouFeel'),
-        
+
         # Slider bar to score the asset
         html.H5(
-            'Use the slider below to indicate a rating (0-5):', style={'color': 'dimgray', 'font-size': '18px'}),
-        
+            'Use the slider below to indicate a rating (1-5):', style={'color': 'dimgray', 'font-size': '18px'}),
+
         # Different responses based on different rate score
         html.Div(id='rating-remind'),
-        
+
         # Slider for rating
         daq.Slider(
             min=1,
@@ -48,16 +48,16 @@ def submitRating(master_value_tags):
             id='rating-score',
             size=300,
         ),
-        
+
         # Choose the value tags
         html.H5(
             'Would you describe this asset as...', style={'color': 'dimgray', 'font-size': '18px'}),
-        
-        #Value tag options
+
+        # Value tag options
         dcc.Dropdown(
             id='value-tag',
             options=[{'label': i, 'value': i} for i in master_value_tags],
-            value = master_value_tags,
+            value=master_value_tags,
             multi=True,
         ),
 

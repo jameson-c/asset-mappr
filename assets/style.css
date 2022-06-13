@@ -38,7 +38,8 @@ Desc: This is css file, to change the web layout.
 
 #value-tag {
     margin-left: 18px;
-    width: fit-content;
+    width: 60%;
+    height: auto;
     top: 14px;
     right: 10px;
 
