@@ -8,6 +8,7 @@ Input:
     in the 'presentation' folder
     - df: the main assets data frame loaded in
     - master_categories: the unique list of possible category values
+    - master_value_tags: the unique list of possible value tags
     
 Output:
     - A function called makeLayout() that returns the layout section of the Dash app,
@@ -37,7 +38,7 @@ from AssetMappr.presentation.suggestMissingAsset import suggestMissingAsset
 # =============================================================================
 
 
-def makeLayout(df, master_categories):
+def makeLayout(df, master_categories, master_value_tags):
 
     return html.Div([
 
@@ -65,11 +66,12 @@ def makeLayout(df, master_categories):
                     ),
                     dbc.Col([
                         # Displays information on the asset selected using the map click
-                        html.H5('Information for selected asset:', id='info'),
+                        html.H5(
+                            'Click any asset in the map to see the detailed information:', id='info'),
                         showAssetInfo(),
                         html.Hr(),
                         # Displays the functionality to rate the selected asset
-                        submitRating(),
+                        submitRating(master_value_tags),
                         html.Br(),
                         html.Hr(),
                         # Displays the function to submit new assets
