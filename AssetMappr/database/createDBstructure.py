@@ -70,6 +70,7 @@ CREATE TABLE COMMUNITIES_MASTER(
 
 CREATE TABLE VALUES_MASTER(
     value VARCHAR(200),
+    value_type TEXT,
     
     PRIMARY KEY(value)
     );
