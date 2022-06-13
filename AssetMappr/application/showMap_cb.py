@@ -21,10 +21,7 @@ from dash.dependencies import Input, Output, State
 import pandas as pd
 
 
-def showMap_cb(app, df, asset_categories):
-
-    # Merge the assets and asset-category mappings into a single df
-    map_df = pd.merge(df, asset_categories, on='asset_id')
+def showMap_cb(app):
 
     # This callback receives input on which categories the user has selected (recycling_type)
     # And outputs the map object
@@ -39,10 +36,21 @@ def showMap_cb(app, df, asset_categories):
         return all_or_none
 
     @app.callback(Output('graph', 'figure'),
-                  [Input('recycling_type', 'value')])
-    def update_figure(chosen_recycling):
-        # Nonlocal tells this nested function to access map_df from the outer function - otherwise throws an undefined error
-        nonlocal map_df
+                  [Input('recycling_type', 'value')],
+                  
+                  # Retrieves the relevant community's data from the dcc.Store object
+                  [Input('assets-df', 'data')],
+                  [Input('asset-categories', 'data')]
+                  )
+    def update_figure(chosen_recycling, df, asset_categories):
+        
+        # Return the JSON format data from the dcc.Store into data frames
+        df = pd.read_json(df, orient='split')
+        asset_categories = pd.read_json(asset_categories, orient='split')
+        
+        # Merge the assets and asset-category mappings into a single df
+        map_df = pd.merge(df, asset_categories, on='asset_id')        
+
         #We should change this part when the categories are changed. Becuase each category has one symbol, it is a one on one thing, we have to manually choose the symbol for each category.
         categoryList = ["Community Centers", "Entertainment", "Financial Assistance", "Food Access",
                         "Healthcare",

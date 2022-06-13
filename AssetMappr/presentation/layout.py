@@ -37,7 +37,7 @@ from AssetMappr.presentation.suggestMissingAsset import suggestMissingAsset
 # =============================================================================
 
 
-def makeLayout(df, master_categories):
+def makeLayout(master_categories):
 
     return html.Div([
 

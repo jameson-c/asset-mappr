@@ -1,0 +1,52 @@
+"""
+File: landingPage_cb
+Author: Mihir Bhaskar
+
+Desc: This file creates the callbacks that selects the user's community and loads the
+relevant data for that community, storing it in a dcc store object in the main app.py file
+for use by relevant components of the app.
+
+dcc.Store stores the data in the browser session of the user
+
+This is linked to the landingPage.py layout file, as well as the app.py because 
+the callbacks take inputs from the landingPage, and spits output into the output containers
+stored in app.py. The reason the outputs are in app.py and not landingPage is to make it clear 
+that it is a 'global' variable accessed by different callbacks.
+
+Input: 
+    app: an initialized dash app
+    
+Output: 
+    Callback that loads the relevant data for the community
+"""
+import dash
+from dash.dependencies import Input, Output, State
+from dash import dash_table
+from dash import dcc
+from dash import html
+import pandas as pd
+import json
+
+from AssetMappr.database.readDB import readDB
+
+def landingPage_cb(app):
+    
+    @app.callback(
+        Output('assets-df', 'data'),
+        Output('asset-categories', 'data'),
+        
+        [Input('enterButton', 'n_clicks')],
+        [State('community-select', 'value')]
+        )
+    def read_community_data(n_clicks, community_geo_id):
+        if n_clicks != 0:
+            
+            # Calling readDB function from database, feeding in community_geo_id as input
+            df, asset_categories = readDB(community_geo_id)
+            
+            # dcc.Store data has to be in JSON format, so returning it like this
+            # Two output containers, so two return outputs
+            return (df.to_json(orient='split'), asset_categories.to_json(orient='split'))
+        else:
+            return None
+

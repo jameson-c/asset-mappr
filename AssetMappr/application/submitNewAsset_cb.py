@@ -28,11 +28,7 @@ import json
 
 from AssetMappr.database.submitNewAsset_db import submitNewAsset_db
 
-def submitNewAsset_cb(app, df, asset_categories):
-    
-    # Creating copies of the data frame and asset categories to be used later
-    df_copy = df
-    asset_categories_copy = asset_categories
+def submitNewAsset_cb(app):
     
     # Callbacks for each of the sub-modals, to control when it opens/closes
     # The modals are connected with back/next buttons, which determine when each one is open/close
@@ -220,30 +216,29 @@ def submitNewAsset_cb(app, df, asset_categories):
             submitNewAsset_db(staged_asset_id, ip, user_name, user_role, name, categories, desc, 
                               site, click_lat_lng, community_geo_id=123, address=address)
             
+            # Note: all the code below is an attempt to append this staged asset to the DF temporarily. Need to explore
+            # A different solution later, for now commenting everything out
+            
             # Writing the asset to the temporary data frame used by the app, so the user can see this uploaded asset
             # in their current session. Note: this is over and above writing it to the actual postgreSQL DB, which happens
             # above
             
-            # Nonlocal tells this nested function to access these variables from the outer function - otherwise throws an undefined error
-            nonlocal df_copy
-            nonlocal asset_categories_copy
+            # # Appending the information to a new row in df_copy
+            # new_df_row = {'asset_id': staged_asset_id, 'asset_name': name,
+            #            'asset_status': 'Staged', 'community_geo_id': 123,
+            #            'source_type': 'User', 'description': desc, 'website': site,
+            #            'latitude': click_lat_lng[0], 'longitude': click_lat_lng[1]}
+            # df_copy = df_copy.append(new_df_row, ignore_index=True)
             
-            # Appending the information to a new row in df_copy
-            new_df_row = {'asset_id': staged_asset_id, 'asset_name': name,
-                       'asset_status': 'Staged', 'community_geo_id': 123,
-                       'source_type': 'User', 'description': desc, 'website': site,
-                       'latitude': click_lat_lng[0], 'longitude': click_lat_lng[1]}
-            df_copy = df_copy.append(new_df_row, ignore_index=True)
+            # # Appending the category information to new row(s) in asset_categories_copy
+            # for cat in categories:
+            #     new_cat_row = {'asset_id': staged_asset_id, 'category': cat}
+            #     asset_categories_copy = asset_categories_copy.append(new_cat_row, ignore_index=True)
             
-            # Appending the category information to new row(s) in asset_categories_copy
-            for cat in categories:
-                new_cat_row = {'asset_id': staged_asset_id, 'category': cat}
-                asset_categories_copy = asset_categories_copy.append(new_cat_row, ignore_index=True)
-            
-            # This global part ensures that we write these changes to the global versions of df and asset_categories,
-            # that can be accessed by the rest of the application (e.g. the showMap functions)
-            global df, asset_categories
-            df, asset_categories = df_copy, asset_categories_copy
+            # # This global part ensures that we write these changes to the global versions of df and asset_categories,
+            # # that can be accessed by the rest of the application (e.g. the showMap functions)
+            # global df, asset_categories
+            # df, asset_categories = df_copy, asset_categories_copy
      
             # Returns user confirmation, and empty strings/None types to the corresponding Input boxes
             return (dbc.Alert('''{} submited successfully!  
