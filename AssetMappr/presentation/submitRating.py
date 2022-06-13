@@ -4,6 +4,9 @@ Author: Anna Wang, Mihir Bhaskar
 
 Desc: This file creates the layout of the 'submit rating' feature of the app
 
+Input:
+    - master_value_tags: the unique list of possible value tags
+
 Output: 
     - A function that returns an HTML Div containing the rating feature
 
@@ -19,29 +22,48 @@ from dash import html
 import pandas as pd
 from matplotlib import style
 import dash_daq as daq
+from sqlalchemy import true
 
 
-def submitRating():
+def submitRating(master_value_tags):
+
     return html.Div([
-        html.Label(['How do you feel about this asset?'],
-                   style={'fontSize': 20, 'margin-left': 18}),
+        # How do you feel about XXX(asset-name)?
+        html.Div(id='HowDoYouFeel'),
+        
         # Slider bar to score the asset
         html.H5(
             'Use the slider below to indicate a rating (0-5):', style={'color': 'dimgray', 'font-size': '18px'}),
+        
+        # Different responses based on different rate score
+        html.Div(id='rating-remind'),
+        
+        # Slider for rating
         daq.Slider(
-            min=0,
+            min=1,
             max=5,
-            value=2.5,
             handleLabel={"showCurrentValue": True,
-                         "label": "Rate:"},
-            step=0.5,
+                         "label": "value"},
+            step=1,
             id='rating-score',
-            size=300
+            size=300,
+        ),
+        
+        # Choose the value tags
+        html.H5(
+            'Would you describe this asset as...', style={'color': 'dimgray', 'font-size': '18px'}),
+        
+        #Value tag options
+        dcc.Dropdown(
+            id='value-tag',
+            options=[{'label': i, 'value': i} for i in master_value_tags],
+            value = master_value_tags,
+            multi=True,
         ),
 
         # Text box to provide comments
         html.H5(
-            'Use the box below to share any comments or thoughts about this asset:', style={'color': 'dimgray', 'font-size': '18px'}),
+            'Anything to add?', style={'color': 'dimgray', 'font-size': '18px'}),
         dcc.Textarea(
             placeholder='Share your thoughts...',
             id='rating-comments',
