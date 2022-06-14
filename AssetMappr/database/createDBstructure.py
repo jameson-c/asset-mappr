@@ -70,6 +70,7 @@ CREATE TABLE COMMUNITIES_MASTER(
 
 CREATE TABLE VALUES_MASTER(
     value VARCHAR(200),
+    value_type TEXT,
     
     PRIMARY KEY(value)
     );
@@ -261,6 +262,31 @@ CREATE TABLE MISSING_ASSETS(
             
     );
 
+CREATE TABLE SUGGESTED_EDITS(
+    edit_id CHAR(36) NOT NULL,
+    asset_id CHAR(36) NOT NULL,
+    suggested_asset_name VARCHAR(250),
+    suggested_description TEXT,
+    suggested_address TEXT,
+    suggested_latitude DOUBLE PRECISION,
+    suggested_longitude DOUBLE PRECISION,
+    suggested_website TEXT,
+    current_status VARCHAR(300),
+    suggested_category VARCHAR(200),
+    user_upload_ip TEXT,
+    generated_timestamp TIMESTAMP,
+    
+    PRIMARY KEY(edit_id),
+    
+    CONSTRAINT fk_suggestededit_assetid
+        FOREIGN KEY(asset_id)
+            REFERENCES assets(asset_id),
+            
+    CONSTRAINT fk_suggestededit_cat
+        FOREIGN KEY(suggested_category)
+            REFERENCES categories_master(category)
+            
+    );
 
 '''
 

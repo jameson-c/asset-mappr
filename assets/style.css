@@ -61,6 +61,16 @@ Desc: This is css file, to change the web layout.
     box-sizing: border-box;
 }
 
+#value-tag {
+    margin-left: 18px;
+    width: 60%;
+    height: auto;
+    top: 14px;
+    right: 10px;
+
+}
+
+
 #submit-rating-button:hover {
     margin-left: 18px;
     color: #FFF;
@@ -117,7 +127,6 @@ Desc: This is css file, to change the web layout.
 /*Set the map's position*/
 #graph {
     float: left;
-    
     top: 18%;
 }
 
@@ -166,6 +175,8 @@ a:active {
     margin-bottom: 30px;
     color: slategray;
 }
+
+
 
 /*Slider setting*/
 #rating-score {
@@ -230,7 +241,7 @@ a:active {
     color: darkslategray;
 }
 
-#click-missing-asset-button{
+#click-missing-asset-button {
     margin-left: 25px;
     top: 10%;
     left: 2%;

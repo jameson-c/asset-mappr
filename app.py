@@ -88,11 +88,13 @@ def display_page(pathname):
     # If the user navigates to the main home page of the app
     # Note: there is a link in the landing_page that takes users to the home page
     if pathname == '/home':
-        return makeLayout(master_categories)
+        return makeLayout(master_categories, master_value_tags)
+
 
 # =============================================================================
 # Callbacks
 # =============================================================================
+
 
 # Applying all the callbacks, passing relevant inputs so they can be used in the callbacks
 landingPage_cb(app, master_communities)
@@ -111,4 +113,4 @@ if __name__ == '__main__':
     app.run_server(debug=True)
 
     # If running on render, use code below
-    #server.run(host="0.0.0.0")
+    # server.run(host="0.0.0.0")

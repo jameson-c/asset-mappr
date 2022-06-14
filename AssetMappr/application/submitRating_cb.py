@@ -23,6 +23,7 @@ from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
 import pandas as pd
 from flask import request
+from dash import html
 
 from AssetMappr.database.submitRating_db import submitRating_db
 
@@ -35,9 +36,10 @@ def submitRating_cb(app):
         [State('graph', 'clickData')],
         [State('rating-score', 'value')],
         [State('rating-comments', 'value')],
-        [State('selected-community-info', 'data')]
+        [State('selected-community-info', 'data')],
+        [State('value-tag', 'value')]
     )
-    def submit_rating(n_clicks, clickData, rating_score, rating_comments, selected_community):
+    def submit_rating(n_clicks, clickData, rating_score, rating_comments, selected_community, value_tag):
         # This callback is only triggered when someone clicks the submit button
         if n_clicks == 0:
             return ''
@@ -53,11 +55,47 @@ def submitRating_cb(app):
             community_geo_id = int(selected_community['community_geo_id'])
 
             # Write the rating information to the staged ratings table in the DB
-            submitRating_db(ip, asset_id, rating_score, rating_comments, community_geo_id)
-            return dbc.Alert('Your review \" \n{} \" has been submitted - Thanks for sharing! '.format(rating_comments), dismissable=True, color='success')
+            submitRating_db(ip, asset_id, rating_score, rating_comments, community_geo_id, value_tag)
+            return dbc.Alert('Your review has been submitted - Thanks for sharing! ', dismissable=True, color='success')
 
+    # Show the label: "How do you feel about XXXX(asset name)?"
+    @app.callback(Output('HowDoYouFeel', 'children'),
+                  Input('graph', 'clickData')
+                  )
+    def review_label(clickData):
+        if clickData == None:
+            return html.H5('After clicking the asset, you can rate it.')
+        else:
+            asset_name = clickData['points'][0]['customdata'][0]
+            return html.H5('How do you feel about {}?'.format(asset_name))
+
+    # clear after submitting
     @app.callback(Output('rating-comments', 'value'),
                   Input('submit-rating-button', 'n_clicks')
                   )
     def clear_persistence(n_clicks):
         return " " if n_clicks else dash.no_update
+
+    # Show the responding reminder based on the value the user chooses.
+    # (for the copyright) The follwings are from Ubereats:
+    # 1: Very disappointing. What went wrong?
+    # 2: Pretty bad. What went wrong?
+    # 3: Just Average. What went wrong?
+    # 4: Pretty good, but what could be better?
+    # 5: Excellent! What did you enjoy?
+    @app.callback(Output('rating-remind', 'children'),
+                  [Input('rating-score', 'value')]
+                  )
+    def showRatingRemind(rating_score):
+        if rating_score == 1:
+            return html.H6("Very disappointing. What went wrong?")
+        if rating_score == 2:
+            return html.H6("Pretty bad. What went wrong?")
+        if rating_score == 3:
+            return html.H6("Just Average. What went wrong?")
+        if rating_score == 4:
+            return html.H6("Pretty good, but what could be better?")
+        if rating_score == 5:
+            return html.H6("Excellent! What did you enjoy?")
+        else:
+            return html.H6("Please rate, it really helps.")
