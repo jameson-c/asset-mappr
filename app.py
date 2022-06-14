@@ -71,9 +71,9 @@ app.layout = html.Div([
     # on the community the user selects upon entering the app
     
     # Note: This info is accessed by several callbacks as an input
-    dcc.Store(id='assets-df', storage_type='local'), # main data frame of assets
-    dcc.Store(id='asset-categories', storage_type='local'), # mapping of assets to categories
-    dcc.Store(id='selected-community-info', storage_type='local') # base info about the selected community (name, geo_id, lat-long to center on)
+    dcc.Store(id='assets-df', storage_type='session'), # main data frame of assets
+    dcc.Store(id='asset-categories', storage_type='session'), # mapping of assets to categories
+    dcc.Store(id='selected-community-info', storage_type='session') # base info about the selected community (name, geo_id, lat-long to center on)
 
 ])
 

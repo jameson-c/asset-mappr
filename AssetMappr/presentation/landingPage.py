@@ -39,5 +39,5 @@ def makeLandingPage(master_communities):
 
         # Link to take users to the main home page of the app
         dbc.Button('Enter the app',
-                   href='/home', id="enterButton", n_clicks=0)
+                   href='/home', id="enterButton")
     ])

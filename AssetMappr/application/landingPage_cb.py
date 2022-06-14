@@ -41,7 +41,10 @@ def landingPage_cb(app, master_communities):
         [State('community-select', 'value')]
         )
     def read_community_data(n_clicks, community_geo_id):
-        if n_clicks != 0:
+        if n_clicks is None:
+            raise preventUpdate
+        
+        else:
             
             # Calling readDB function from database, feeding in community_geo_id as input
             df, asset_categories = readDB(community_geo_id)
@@ -55,6 +58,4 @@ def landingPage_cb(app, master_communities):
             # Three output containers, so three return outputs
             return (df.to_json(orient='split'), asset_categories.to_json(orient='split'),
                     selected_community.to_json(orient='split'))
-        else:
-            return None
 

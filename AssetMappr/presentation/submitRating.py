@@ -53,7 +53,7 @@ def submitRating(master_value_tags):
         html.H5(
             'Would you describe this asset as...', style={'color': 'dimgray', 'font-size': '18px'}),
 
-        # Value tag options
+        # Value tag options        
         dcc.Dropdown(
             id='value-tag',
             options=[{'label': i, 'value': i} for i in master_value_tags],
