@@ -29,12 +29,12 @@ import json
 
 from AssetMappr.database.readDB import readDB
 
-def landingPage_cb(app):
+def landingPage_cb(app, master_communities):
     
     @app.callback(
         Output('assets-df', 'data'),
         Output('asset-categories', 'data'),
-        
+        Output('selected-community-info', 'data'),
         [Input('enterButton', 'n_clicks')],
         [State('community-select', 'value')]
         )
@@ -44,9 +44,14 @@ def landingPage_cb(app):
             # Calling readDB function from database, feeding in community_geo_id as input
             df, asset_categories = readDB(community_geo_id)
             
+            # Subsetting master_communities to the correct row 
+            nonlocal master_communities
+            selected_community = master_communities[master_communities['community_geo_id'] == community_geo_id]
+            
             # dcc.Store data has to be in JSON format, so returning it like this
             # Two output containers, so two return outputs
-            return (df.to_json(orient='split'), asset_categories.to_json(orient='split'))
+            return (df.to_json(orient='split'), asset_categories.to_json(orient='split'),
+                    selected_community.to_json(orient='split'))
         else:
             return None
 

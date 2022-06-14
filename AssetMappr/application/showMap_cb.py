@@ -22,7 +22,7 @@ import pandas as pd
 
 
 def showMap_cb(app):
-
+    
     # This callback receives input on which categories the user has selected (recycling_type)
     # And outputs the map object
     @app.callback(
@@ -40,9 +40,10 @@ def showMap_cb(app):
                   
                   # Retrieves the relevant community's data from the dcc.Store object
                   [Input('assets-df', 'data')],
-                  [Input('asset-categories', 'data')]
+                  [Input('asset-categories', 'data')],
+                  [Input('selected-community-info', 'data')]
                   )
-    def update_figure(chosen_recycling, df, asset_categories):
+    def update_figure(chosen_recycling, df, asset_categories, selected_community):
         
         # Return the JSON format data from the dcc.Store into data frames
         df = pd.read_json(df, orient='split')
@@ -91,6 +92,11 @@ def showMap_cb(app):
 
         # Filtering the dataset to only keep assets in the selected categories
         df_sub = map_df[(map_df['category'].isin(chosen_recycling))]
+        
+        # Get the community lat-long to center on   
+        selected_community = pd.read_json(selected_community, orient='split')             
+        community_center_lat = float(selected_community['latitude'])
+        community_center_lon = float(selected_community['longitude'])
 
         # Setting mapbox access token (this is for accessing their base maps)
         mapbox_access_token = 'pk.eyJ1IjoicWl3YW5nYWFhIiwiYSI6ImNremtyNmxkNzR5aGwyb25mOWxocmxvOGoifQ.7ELp2wgswTdQZS_RsnW1PA'
@@ -126,8 +132,8 @@ def showMap_cb(app):
                     bearing=25,
                     style='streets',
                     center=dict(
-                        lat=39.8993885,
-                        lon=-79.7249338
+                        lat=community_center_lat, # this is the center lat-long for the selected community
+                        lon=community_center_lon
                     ),
                     pitch=40,
                     zoom=11.5

@@ -24,6 +24,8 @@ from flask import request
 import dash_bootstrap_components as dbc
 import requests
 import json
+import pandas as pd
+
 
 
 from AssetMappr.database.submitNewAsset_db import submitNewAsset_db
@@ -93,15 +95,23 @@ def submitNewAsset_cb(app):
     # Callback to render the Leaflet map on which users will pin the location of the asset
     @app.callback(
         Output('submit-asset-map', 'children'),
-        Input('modal-2', 'is_open')
+        Input('modal-2', 'is_open'),
+        Input('selected-community-info', 'data')
         )
-    def render_map_on_show(is_open):
+    def render_map_on_show(is_open, selected_community):
         # This ensures that the map only renders if modal 2 is open, preventing screen resizing issues
         if is_open:
+            
+            # Get the lat-long to center on when the map loads
+            selected_community = pd.read_json(selected_community, orient='split')
+            community_center_lat = float(selected_community['latitude'])
+            community_center_lon = float(selected_community['longitude'])
+
+            
             return dl.Map([dl.TileLayer(), dl.LayerGroup(id='layer')],
                       id='submit-asset-map', 
                       # TODO: automate the centering of the map based on user input on community
-                      zoom=14, center=(39.8993885, -79.7249338),
+                      zoom=14, center=(community_center_lat, community_center_lon),
                       style={'width': '100%', 'height': '65vh', 'margin': "auto", "display": "block"}
                      )
     
@@ -121,17 +131,26 @@ def submitNewAsset_cb(app):
         Output('submit-asset-map', 'zoom'),
         Output('address-search', 'value'), # this is to clear the value in the search box once submitted
         [Input('search-address-button', 'n_clicks')],
-        [State('address-search', 'value')]
+        [State('address-search', 'value')],
+        [State('selected-community-info', 'data')]
         )
-    def zoom_to_address(n_clicks, address_search):
+    def zoom_to_address(n_clicks, address_search, selected_community):
         if n_clicks == 0:
             return ''
         else:
             # Geocode the lat-lng using Google Maps API
             google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
             
-            # Adding Uniontown PA to make the search more accurate (to generalize)
-            address_search = address_search + ' Uniontown, PA'
+            # Retrieve the name of the community to add to the geocoding search to make it more accurate
+            selected_community = pd.read_json(selected_community, orient='split')
+            
+            community_name = selected_community['community_name'][1]
+                        
+            # Adding place name to make the search more accurate (to generalize)
+            address_search = address_search + ' ' + community_name + ', PA'
+            community_center_lat = float(selected_community['latitude'])
+            community_center_lon = float(selected_community['longitude'])
+
             
             params = {'key': google_api_key,
                       'address': address_search}
@@ -151,7 +170,7 @@ def submitNewAsset_cb(app):
                 return ('', (lat, long), 20, '')
                         
             else:
-                return ('Invalid address; try entering', (39.8993885, -79.7249338), 14, address_search)
+                return ('Invalid address; try entering', (community_center_lat, community_center_lon), 14, address_search)
     
     # Callback to display the geocoded address based on the clicked lat long
     @app.callback(
@@ -197,9 +216,11 @@ def submitNewAsset_cb(app):
         [State('asset-categories', 'value')],
         [State('asset-desc', 'value')],
         [State('asset-website', 'value')],
-        [State('submit-asset-map', 'click_lat_lng')]
+        [State('submit-asset-map', 'click_lat_lng')],
+        [State('selected-community-info', 'data')]
         )
-    def store_submitted_info(n_clicks, user_name, user_role, name, categories, desc, site, click_lat_lng):
+    def store_submitted_info(n_clicks, user_name, user_role, name, categories, 
+                             desc, site, click_lat_lng, selected_community):
         
         # If the 'Submit' button has not been clicked yet, return or do nothing
         if n_clicks == 0:
@@ -211,10 +232,14 @@ def submitNewAsset_cb(app):
 
             # Create a staged asset ID            
             staged_asset_id = str(uuid.uuid4()) 
+            
+            # Extract the selected commmunity_geo_id
+            selected_community = pd.read_json(selected_community, orient='split')
+            community_geo_id = int(selected_community['community_geo_id'])
 
             # Feed the info into the database-write function, which writes to SQL (found in database folder)
             submitNewAsset_db(staged_asset_id, ip, user_name, user_role, name, categories, desc, 
-                              site, click_lat_lng, community_geo_id=123, address=address)
+                              site, click_lat_lng, community_geo_id, address=address)
             
             # Note: all the code below is an attempt to append this staged asset to the DF temporarily. Need to explore
             # A different solution later, for now commenting everything out

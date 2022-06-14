@@ -69,8 +69,11 @@ app.layout = html.Div([
     # Storage containers to store the relevant community-filtered dataframes form the DB
     # This interacts with the community selection option in landingPage_cb.py, becuase it depends
     # on the community the user selects upon entering the app
+    
+    # This info is accessed by several callbacks
     dcc.Store(id='assets-df'),
-    dcc.Store(id='asset-categories')
+    dcc.Store(id='asset-categories'),
+    dcc.Store(id='selected-community-info')
 
 ])
 
@@ -92,7 +95,7 @@ def display_page(pathname):
 # =============================================================================
 
 # Applying all the callbacks, passing relevant inputs so they can be used in the callbacks
-landingPage_cb(app)
+landingPage_cb(app, master_communities)
 showMap_cb(app)
 showAssetInfo_cb(app)
 submitRating_cb(app)
