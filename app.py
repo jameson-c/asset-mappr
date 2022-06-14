@@ -49,7 +49,7 @@ server = app.server
 
 app.title = 'AssetMappr'
 
-# Load master data
+# Load master data (these are the unique possible values)
 master_categories, master_value_tags, master_communities = readMasters()
 
 # =============================================================================
@@ -66,14 +66,14 @@ app.layout = html.Div([
     # I.e. the landing/welcome page, or the main home page of the app
     html.Div(id='page-content'),
     
-    # Storage containers to store the relevant community-filtered dataframes form the DB
+    # Storage containers to store the relevant community-filtered dataframes from the DB
     # This interacts with the community selection option in landingPage_cb.py, becuase it depends
     # on the community the user selects upon entering the app
     
-    # This info is accessed by several callbacks
-    dcc.Store(id='assets-df'),
-    dcc.Store(id='asset-categories'),
-    dcc.Store(id='selected-community-info')
+    # Note: This info is accessed by several callbacks as an input
+    dcc.Store(id='assets-df'), # main data frame of assets
+    dcc.Store(id='asset-categories'), # mapping of assets to categories
+    dcc.Store(id='selected-community-info') # base info about the selected community (name, geo_id, lat-long to center on)
 
 ])
 

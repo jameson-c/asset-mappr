@@ -4,12 +4,11 @@ Author: Anna Wang, Mihir Bhaskar
 
 Desc: This file creates the callback that generates the main asset map display
       
-This is linked to the showMap.py feature in presentation
+This is linked to the showMap.py feature in presentation, as well as the community-specific data 
+containers in app.py (dcc.Stores), which act as inputs to some of these callbacks
 
 Input: 
     app: an initialized dash app
-    df: main data frame with assets to be displayed
-    asset_categories: data frame with assets and their catagories (in separate df because 1 asset can have many cats)
     
 Output: 
     Callbacks relating to the showMap feature
@@ -45,9 +44,10 @@ def showMap_cb(app):
                   )
     def update_figure(chosen_recycling, df, asset_categories, selected_community):
         
-        # Return the JSON format data from the dcc.Store into data frames
+        # Transform the JSON format data from the dcc.Store back into data frames
         df = pd.read_json(df, orient='split')
         asset_categories = pd.read_json(asset_categories, orient='split')
+        selected_community = pd.read_json(selected_community, orient='split')             
         
         # Merge the assets and asset-category mappings into a single df
         map_df = pd.merge(df, asset_categories, on='asset_id')        
@@ -93,8 +93,7 @@ def showMap_cb(app):
         # Filtering the dataset to only keep assets in the selected categories
         df_sub = map_df[(map_df['category'].isin(chosen_recycling))]
         
-        # Get the community lat-long to center on   
-        selected_community = pd.read_json(selected_community, orient='split')             
+        # Get the community lat-long to center on (from the selected community info)
         community_center_lat = float(selected_community['latitude'])
         community_center_lon = float(selected_community['longitude'])
 

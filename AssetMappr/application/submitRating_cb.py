@@ -9,6 +9,7 @@ Desc: This file creates the callbacks which interact with the submitRating funct
           - showMap_cb.py file, because it uses the map/graph to pull info about the clicked asset
             so that we know which asset the user is rating
           - submitRating.py in the database folder, which writes the rating to the SQL DB
+          - app.py, which tells us which community the user has selected (to get the community_geo_id)
          
 Input: 
     app: an initialized dash app

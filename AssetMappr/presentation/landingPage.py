@@ -2,7 +2,8 @@
 File: landingPage.py
 Author: Mihir Bhaskar
 
-Desc: This file returns an HTML Div with the content of the landing or welcome page
+Desc: This file returns an HTML Div with the content of the landing or welcome page. This is where the user selects their
+community and enters the app
 
 Output: 
     - HTML Div with the main welcome page content. This is called directly in the app.py file
@@ -23,6 +24,9 @@ def makeLandingPage(master_communities):
                     helping planners make better investments for the future.''', id="WelWords"),
         html.Br(),
         html.H5('Select your community from the dropdown below, and the click the button to enter the app'),
+        
+        # The label we want users to see when selecting should be the community name, but the associated value should be
+        # the numeric community_geo_id (that is then used to filter the appropriate data frames)
         dcc.Dropdown(id='community-select',
                         options=[{'label': master_communities.loc[master_communities.index[i], 'community_name'], 
                                   'value': master_communities.loc[master_communities.index[i], 'community_geo_id']} 

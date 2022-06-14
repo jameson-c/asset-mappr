@@ -5,12 +5,12 @@ Author: Mihir Bhaskar
 Desc: This file creates the callbacks which interact with the submitNewAsset popup
       
       This is linked to the submitNewAsset.py layout file, as well as the submitNewAsset_db
-      file in the Database folder, which writes the new user-entered asset info to the database
+      file in the Database folder, which writes the new user-entered asset info to the database.
+      
+      It also takes intputs from the dcc.Store containers in app.py, with relevant community-specific data
 
 Input: 
     app: an initialized dash app
-    df: data frame with loaded assets
-    asset_categories: data frame with asset-category mappings
     
 Output: 
     Callbacks relating to the submit-new-asset feature
@@ -25,8 +25,6 @@ import dash_bootstrap_components as dbc
 import requests
 import json
 import pandas as pd
-
-
 
 from AssetMappr.database.submitNewAsset_db import submitNewAsset_db
 
@@ -96,7 +94,7 @@ def submitNewAsset_cb(app):
     @app.callback(
         Output('submit-asset-map', 'children'),
         Input('modal-2', 'is_open'),
-        Input('selected-community-info', 'data')
+        Input('selected-community-info', 'data') # this is to get the selected community's centering lat-long when loading the map
         )
     def render_map_on_show(is_open, selected_community):
         # This ensures that the map only renders if modal 2 is open, preventing screen resizing issues
@@ -132,7 +130,7 @@ def submitNewAsset_cb(app):
         Output('address-search', 'value'), # this is to clear the value in the search box once submitted
         [Input('search-address-button', 'n_clicks')],
         [State('address-search', 'value')],
-        [State('selected-community-info', 'data')]
+        [State('selected-community-info', 'data')] # getting info on the selected community to extract the name and make the geocode search more accurate
         )
     def zoom_to_address(n_clicks, address_search, selected_community):
         if n_clicks == 0:

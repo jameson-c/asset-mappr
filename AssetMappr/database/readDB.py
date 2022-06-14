@@ -6,26 +6,19 @@ Desc: This file interacts with the postgreSQL database to read in the initial da
 
 It has two functions; one which reads the master tables (not dependent on the community the user selects),
 and one that reads in the community-specific datasets (assets, asset_categories for now)
-
-TODO:
-    -
-    
-Inputs:
-    - app: an initialized Dash app
-    - community_geo_id (pending implementation)
-   
-Outputs: (see the database documentation for more info on these tables)
-    - df: data frame of the main assets table
-    - asset_categories: data frame of the asset-categories table
-    - master_categories: a list of the unique master category values
-    - master_value_tags: a list of the unique master value tags (for use in the ratings function)
-
 """
 import dash
 import pandas as pd
 from flask_sqlalchemy import SQLAlchemy
 
 def readMasters():
+    '''
+    Inputs: none
+    Outputs: 
+        - master_categories: a list of the unique master category values
+        - master_value_tags: a list of the unique master value tags (for use in the ratings function)
+        - master_communities: a data frame of info about the unique possible communities
+    '''
     # con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a/assetmappr_database'
     
     # If running the app externally (e.g. outside render/locally), use this connection string instead:
@@ -47,6 +40,13 @@ def readMasters():
     return master_categories, master_value_tags, master_communities
 
 def readDB(community_geo_id):
+    '''
+    Inputs: (int) community_geo_id: the geo ID of the selected community for which to retrieve info for from the DB
+    Output:
+        - df: a data frame with the main assets table
+        - asset_categories: a data frame mapping the assets in df to the categories they belong to
+    
+    '''
     
     # con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a/assetmappr_database'
     
