@@ -9,9 +9,34 @@ Desc: This is css file, to change the web layout.
 .landing {
     margin: 0;
     position: absolute;
-    top: 20%;
+    top: 12%;
     left: 20%;
-    right: 30%;
+    right: 20%;
+}
+
+/* Dropdown box on landing page */
+#community-select {
+    margin-left: 15px;
+}
+
+/*Enter The App button in the landing page*/
+#enterButton {
+    display: inline-block;
+    margin-left: 15px;
+    height: 60px;
+    padding: auto;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 25px;
+    font-weight: 450;
+    line-height: 38px;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: #4CAF50;
+    border-radius: 4px;
+    border: 1px solid #f4f7f4;
+    cursor: pointer;
 }
 
 /*Buttons*/
@@ -43,24 +68,7 @@ Desc: This is css file, to change the web layout.
     border-color: #119445;
 }
 
-#enterButton {
-    display: inline-block;
-    height: 60px;
-    padding: auto;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    font-size: 25px;
-    font-weight: 600;
-    line-height: 38px;
-    letter-spacing: .1rem;
-    text-transform: uppercase;
-    text-decoration: none;
-    white-space: nowrap;
-    background-color: #4CAF50;
-    border-radius: 4px;
-    border: 1px solid #f4f7f4;
-    cursor: pointer;
-}
+
 
 #enterButton:hover {
     color: #f8f8f8;
@@ -76,7 +84,6 @@ Desc: This is css file, to change the web layout.
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-/*Enter The App button in the landing page*/
 
 /*Set the word style for "Use the map..."*/
 #useTheMap {

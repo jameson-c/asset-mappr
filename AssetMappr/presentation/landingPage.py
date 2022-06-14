@@ -18,12 +18,13 @@ def makeLandingPage(master_communities):
     return html.Div(className='landing', children=[
         html.H1('Welcome to AssetMappr!', style={
                 'color': '#2C3E50'}, id="Welcome"),
-        html.Br(),
         html.H4('''We are a group of students that believe in the power of community participation. 
-                    We hope that our app will make it easier for you to share your thoughts about the assets in your community,
+                    We hope that our app will make it easier for you to share your thoughts and ideas about assets in your community,
                     helping planners make better investments for the future.''', id="WelWords"),
         html.Br(),
-        html.H5('Select your community from the dropdown below, and the click the button to enter the app'),
+        html.H4('Select your community from the dropdown below, then click the button to enter:'),
+        
+        html.Br(),
         
         # The label we want users to see when selecting should be the community name, but the associated value should be
         # the numeric community_geo_id (that is then used to filter the appropriate data frames)
@@ -33,6 +34,8 @@ def makeLandingPage(master_communities):
                                   for i in range(len(master_communities))],
                         value=None,
                         multi=False),
+        
+        html.Br(),
 
         # Link to take users to the main home page of the app
         dbc.Button('Enter the app',
