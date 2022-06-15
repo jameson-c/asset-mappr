@@ -1,9 +1,9 @@
 """
-File: main.py
+File: getUniontown.py
 Author: Jameson Carter
 
 Desc: This file calls the state, local, and national scripts to populate the 
-      Heroku database with pre-populated assets. 
+      Render PostGres database with pre-populated assets. 
 
 Inputs: 
     School Data:
@@ -18,56 +18,21 @@ Inputs:
         lat: latitude
         long: longitude
         radius: radius around which to search for data
+    Hospital Data:
+        countyFIPS: 5 digit county code found at the url below 
+            https://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/home/?cid=nrcs143_013697
+        state: 2 digit state acronym. Example: PA
+        
 Output: pandas dataframe Schools, written to .csv
 """
-
+import uuid
+from datetime import datetime
 import pandas as pd
 import National.genNationalData as national
 # import getStateData
 # import getLocalData
 import psycopg2
-'''
-# Establish connection with database (details found in Heroku dashboard after login)
-conn = psycopg2.connect(
-    database = 'dmt6i1v8bv5l1',
-    user = 'ilohghqbmiloiv',
-    password = 'f4fbd28e91d021bada72701576d41107b78bc515ad0b1e94d934939fbce7b2e6',
-    host = 'ec2-54-235-98-1.compute-1.amazonaws.com',
-    port = '5432'
-    )
-
-
-Goal of this file is to:
-    1. Check to ensure assets are not duplicated. If they are:
-        a. check to see if duplication was intended. Is this an update?
-    2. Populate to the following tables:
-        a. Assets:
-            Asset_ID
-            Source_Type
-            Community_GEOID
-        b. Asset_Categories:
-            Asset_ID
-            Category_ID
-        c. Communities_Master
-            Community_GEOID
-        d. Sources_Master
-            Source_Type
-    3. Check to see if the values in master tables are already present. In 
-    case of community master, do nothing. In case of sources_master, check to 
-    see if the source, for this community, is already used. Ask if data is being 
-    updated. If not, then do not overwrite.
-    4. If a given source type and community ID has been assigned, that suggests
-       asset is new. 
-    6. Do not overwrite asset in Assets if you are updating, but the name differs.
-
-
-cursor = conn.cursor()
-cursor.execute(createdb)
-createdb = 
-SQL
-
-conn.commit()
-'''
+from populateDB import populateDB, checkMasterTables
 
 if __name__ == '__main__':
     
@@ -76,17 +41,53 @@ if __name__ == '__main__':
     '''
     # Google Data- Social Benefit
     apikey = input('Enter your Google Places API Key: ')
-    lat = '39.8993885'
-    long = '-79.7249338'
+    lat = '39.8993024' # obtained from center of incorporated place as sourced below
+    lon = '-79.7245287'
     radius = '6000'
     
-    # NCES Schools API
+    # NCES Schools API, Hospitals via Community Benefit Insights uses similar inputs
     countyFIPS = '42051'
     state = 'PA'
     countyName = 'Fayette County'
     
-    nationalData = national.genNatData(countyFIPS,countyName,state,# Colleges, HS, Elementary
-                                       apikey, lat, long, radius) # Google API
+    nationalData = national.genNatData(countyFIPS,countyName,state,# Colleges, HS, Elementary, Hospitals
+                                       apikey, lat, lon, radius) # Google API
+
+    # Incorporated Place GEOID
+    # Sourced from https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?form
+    nationalData['community_geo_id'] = 4278528
+
+    '''
+    STATE data input for the community
+    '''
+    '''
+    LOCAL data input for the community
+    '''
+    '''
+    Generating Asset Metadata
+    '''
+    # Set AssetIDs
+    nationalData['asset_id'] = [uuid.uuid4() for _ in range(len(nationalData.index))]
     
-    nationalData.to_csv('NationalData.csv') # Output file
+    # Add Asset Types
+    nationalData['asset_type'] = 'Tangible'
+    
+    # Add Timestamp
+    nationalData['generated_timestamp'] = datetime.now()
+    
+    '''
+    Populating the database
+    '''
+    # Accessing DB externally (e.g. outside render/locally), use this connection string:
+    # con_string = 'postgresql://assetmappr_db_user:hyx8dhtgdq6mvyIfe3ANC2O7ceRheEr5@dpg-c9rao5j97ej5m8i836r0-a.ohio-postgres.render.com/assetmappr_db'
+    con_string = 'postgres://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a.ohio-postgres.render.com/assetmappr_database'
+    # Establish connection with database
+    conn = psycopg2.connect(con_string)
+    
+    # Now check to see if master tables align with the incoming data. Do not populate if there are inconsistencies.
+    result = checkMasterTables(nationalData, conn)
+    dat = nationalData
+    if result == True:
+        populateDB(dat,conn)
+    
     

@@ -1,6 +1,6 @@
 """
 File: getGoogleData.py
-Author: Michaela Marincic, Jameson Carter
+Author: Jameson Carter, Michaela Marincic
 
 Desc: This file uses the getMapData function to call the google API and
 search our keywords within a 50000 meter radius of the center of Pittsburgh, 
@@ -43,7 +43,8 @@ def getMapData(key, location, keyword, radius, next_page_token = None):
 
     # Rename to make everything simpler
     df = df.rename(columns={"geometry.location.lat": "latitude", 
-                       "geometry.location.lng": "longitude"})
+                       "geometry.location.lng": "longitude", 
+                       "vicinity": "address"})
     # Finally, return the next page token for the next page, if there is one
     try:
         next_page_tk = result['next_page_token']
@@ -120,13 +121,14 @@ def createGoogleDF(apiKey, lat, long, radius):
 
    
     # Retain addresses
-    # MainFrame = MainFrame[MainFrame['vicinity'].str.contains('Pittsburgh')]
+    # MainFrame = MainFrame[MainFrame['address'].str.contains('Pittsburgh')]
     # Drop results with a price level listed (Gets rid of most of the restaurants)
-    # MainFrame = MainFrame.drop(MainFrame.loc[MainFrame['price_level']>=1].index)
+    MainFrame = MainFrame.drop(MainFrame.loc[MainFrame['price_level']>=1].index)
     
     # Drop price level, if it exists
+    MainFrame['asset_name'] = MainFrame['name']
     MainFrame = MainFrame.loc[:,MainFrame.columns.isin(['latitude','longitude',
-            'vicinity','name','place_id','category',])]
+            'address','asset_name','place_id','category',])]
     
     # 'URL' column will be added using Google Maps API "Place Details"
     websites = {'place_id':[], 'website':[]}
@@ -144,6 +146,9 @@ def createGoogleDF(apiKey, lat, long, radius):
     
     # Drop duplicates
     MainFrame = MainFrame.drop_duplicates()
+    
+    # Establish Source:
+    MainFrame['source_type'] = 'Google API' 
     
     return MainFrame
 
