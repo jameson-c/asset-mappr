@@ -76,10 +76,12 @@ def createGoogleDF(apiKey, lat, long, radius):
     MainFrame = pd.DataFrame()
     catIndex = 1
     latlong = ','.join([lat, long])
+        
     for keyword in keywords[1:]:
     
         results = getMapData(apiKey,
                                latlong, keyword, radius)
+                
         data = results[0]
         data['category'] = categories[catIndex]
         nextToken = results[1]
@@ -134,7 +136,7 @@ def createGoogleDF(apiKey, lat, long, radius):
     websites = {'place_id':[], 'website':[]}
     for i in MainFrame['place_id']:
         result = getLocationWebsite(apiKey,
-                                       i,'website')
+                                        i,'website')
     
         if not result.empty:
             websites['place_id'].append(i)
@@ -150,6 +152,7 @@ def createGoogleDF(apiKey, lat, long, radius):
     # Establish Source:
     MainFrame['source_type'] = 'Google API' 
     
+    # Add a description field
+    MainFrame['description'] = ''
+    
     return MainFrame
-
-        

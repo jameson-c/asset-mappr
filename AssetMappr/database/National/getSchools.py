@@ -28,7 +28,7 @@ Input:
                      
 Output: A pandas dataframe containing post secondary schools in
         our standard format: 
-        name	category	vicinity	latitude	longitude	website
+        name	category  description	address	latitude	longitude	website
 '''
 
 def getPostSecSchools(countyFIPS):
@@ -48,7 +48,8 @@ def getPostSecSchools(countyFIPS):
     if not df.empty: # If there ARE results, continue
         # drop unnecessary files, add category column
         # df.drop(['geometry.x', 'geometry.y'],axis = 1)  
-        df['category'] = 'Postsecondary Schools'
+        df['category'] = 'Education and workforce development'
+        df['description'] = 'Postsecondary school'
         df['website'] = ''
         df.rename(columns={'attributes.NAME': 'asset_name',
                        'attributes.STREET': 'address',
@@ -58,12 +59,12 @@ def getPostSecSchools(countyFIPS):
     
         df['address'] = df["address"] + ', ' + df["city"]
     
-        df = df[['asset_name','category','address','latitude','longitude','website']]
+        df = df[['asset_name','category','description','address','latitude','longitude','website']]
     
         return df
     
     else: # Otherwise, return empty dataframe
-        column_names = ['asset_name','category','address','latitude','longitude','website']
+        column_names = ['asset_name','category','description','address','latitude','longitude','website']
         df = pd.DataFrame(columns = column_names)
         return df
         
@@ -79,7 +80,7 @@ Input:
                      
 Output: A pandas dataframe containing post secondary schools in
         our standard format: 
-        name	category	vicinity	latitude	longitude	website
+        name	category  description	address	latitude	longitude	website
 '''
 def getPubSchools(countyname, state):
     state = state.upper()
@@ -98,7 +99,8 @@ def getPubSchools(countyname, state):
     if not df.empty: # If there ARE results, continue
         # drop unnecessary files, add category column
         # df.drop(['geometry.x', 'geometry.y'],axis = 1)  
-        df['category'] = 'Public Schools'
+        df['category'] = 'Education and workforce development'
+        df['description'] = 'Public school'
         df['website'] = ''
         df.rename(columns={'attributes.SCH_NAME': 'asset_name',
                        'attributes.LSTREET1': 'address',
@@ -108,12 +110,12 @@ def getPubSchools(countyname, state):
     
         df['address'] = df['address'] + ', ' + df['city']
     
-        df = df[['asset_name','category','address','latitude','longitude','website']]
+        df = df[['asset_name','category','description','address','latitude','longitude','website']]
     
         return df
     
     else: # Otherwise, return empty dataframe
-        column_names = ['asset_name','category','address','latitude','longitude','website']
+        column_names = ['asset_name','category','description','address','latitude','longitude','website']
         df = pd.DataFrame(columns = column_names)
         return df
 '''
@@ -126,7 +128,7 @@ Input:
                      
 Output: A pandas dataframe containing post secondary schools in
         our standard format: 
-        name	category	vicinity	latitude	longitude	website
+        name	category description address	latitude	longitude	website
 '''
 def getPrivSchools(countyFIPS):
     
@@ -145,7 +147,8 @@ def getPrivSchools(countyFIPS):
     if not df.empty: # If there ARE results, continue
         # drop unnecessary files, add category column
         # df.drop(['geometry.x', 'geometry.y'],axis = 1)  
-        df['category'] = 'Private Schools'
+        df['category'] = 'Education and workforce development'
+        df['description'] = 'Private school'
         df['website'] = ''
         df.rename(columns={'attributes.NAME': 'asset_name',
                        'attributes.STREET': 'address',
@@ -155,12 +158,12 @@ def getPrivSchools(countyFIPS):
     
         df['address'] = df['address'] + ', ' + df['city']
     
-        df = df[['asset_name','category','address','latitude','longitude','website']]
+        df = df[['asset_name','category','description','address','latitude','longitude','website']]
     
         return df
     
     else: # Otherwise, return empty dataframe
-        column_names = ['asset_name','category','address','latitude','longitude','website']
+        column_names = ['asset_name','category','description','address','latitude','longitude','website']
         df = pd.DataFrame(columns = column_names)
         return df
 

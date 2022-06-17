@@ -118,24 +118,24 @@ def populateMasterTables(conn):
     
     # Create the record that will be used to populate the source master file
     source_master = pd.DataFrame([['NCES Common Core of Data API'],
-                                     ['Community Benefit Hospitals API']],
+                                     ['Community Benefit Hospitals API'],
+                                     ['Google API']],
                                     columns = ['source_type'])
     
     # Create the record that will be used to populate the categories master file
-    category_master = pd.DataFrame([['Religious'],
-                                    ['Postsecondary Schools'],
-                                    ['Financial Assistance'],
-                                    ['Entertainment'],
-                                    ['Food Access'],
-                                    ['Recreation'],
-                                    ['Workforce Development'],
-                                    ['Libraries'],
-                                    ['Housing'],
-                                    ['Community Centers'],
-                                    ['Private Schools'],
-                                    ['Service Organizations'],
+    category_master = pd.DataFrame([['Sports and recreation'],
+                                    ['Culture and history'],
+                                    ['Education and workforce development'],
                                     ['Healthcare'],
-                                    ['Public Schools']],
+                                    ['Housing'],
+                                    ['Places of worship'],
+                                    ['Community service and assistance'],
+                                    ['Transport and infrastructure'],
+                                    ['Food access'],
+                                    ['Nature and parks'],
+                                    ['Libraries'],
+                                    ['Economic development opportunities'],
+                                    ['Local business and economy']],
                                     columns = ['category'])
     # categories_master
     execute_values(conn, category_master, 'categories_master')
@@ -235,7 +235,7 @@ def populateDB(data, conn):
     insert contingency
     '''
     categories = data[['asset_id', 'category']]
-    data = data[['asset_id', 'asset_name','asset_type', 'community_geo_id',
+    data = data[['asset_id', 'asset_name','description','asset_type', 'community_geo_id',
                  'source_type', 'website', 'latitude','longitude','address',
                  'generated_timestamp']]
     execute_values(conn, data, 'assets')

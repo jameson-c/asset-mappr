@@ -66,6 +66,14 @@ if __name__ == '__main__':
     '''
     Generating Asset Metadata
     '''
+    
+    # Do some basic cleaning of miscategorised assets
+    wrong_cat_assets = ["DICK'S Sporting Goods", "Jan & Jeff's Discount Store",
+                  "Outdoors LTD", "Rick Rafail Pool Construction", 'The Salvation Army Thrift Store & Donation Center',
+                  "Walmart Home Theater Installation", 'Hutchinson Park', "Marra's Mountaineer Sport Shop"]
+    
+    nationalData = nationalData[~nationalData.asset_name.isin(wrong_cat_assets)]
+    
     # Set AssetIDs
     nationalData['asset_id'] = [uuid.uuid4() for _ in range(len(nationalData.index))]
     

@@ -29,7 +29,7 @@ Input:
                      
 Output: A pandas dataframe containing hospitals in
         our standard format: 
-        name	category	vicinity	latitude	longitude	website
+        name	category	description address	latitude	longitude	website
 '''
 
 def getHospitals(twoLetterState, CountyFIPS, APIkey):
@@ -50,6 +50,7 @@ def getHospitals(twoLetterState, CountyFIPS, APIkey):
         df = df.drop(df.loc[df['fips_state_and_county_code']!=CountyFIPS].index)
         
         df['category'] = 'Healthcare'
+        df['description'] = 'Hospital'
         df['asset_name'] = df['name']
         df['website'] = ''
         df['source_type'] = 'Community Benefit Hospitals API'
@@ -66,12 +67,12 @@ def getHospitals(twoLetterState, CountyFIPS, APIkey):
         df['latitude'] = lat
         df['longitude'] = long
     
-        df = df[['asset_name','category','address','latitude','longitude','website','source_type']]
+        df = df[['asset_name','category','description','address','latitude','longitude','website','source_type']]
     
         return df
     
     else: # Otherwise, return empty dataframe
-        column_names = ['asset_name','category','address','latitude','longitude','website', 'source_type']
+        column_names = ['asset_name','category','description','address','latitude','longitude','website', 'source_type']
         df = pd.DataFrame(columns = column_names)
         return df
     
