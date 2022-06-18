@@ -37,8 +37,7 @@ def readDB(app, community_geo_id=False):
     
     # Load the values master list 
     master_value_tags = pd.read_sql_table('values_master', con=con_string)
-    master_value_tags = master_value_tags.values.tolist()
-    master_value_tags = [item for sublist in master_value_tags for item in sublist]
+    master_value_tags = [i for i in master_value_tags['value']]
     
     # Load the main assets database
     df = pd.read_sql_table('assets', con=con_string)
