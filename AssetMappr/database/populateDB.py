@@ -137,6 +137,22 @@ def populateMasterTables(conn):
                                     ['Economic development opportunities'],
                                     ['Local business and economy']],
                                     columns = ['category'])
+    
+    # Create the record that will be used to populate the values master file
+    values_master = pd.DataFrame([['Needs renovation', 'Negative'],
+                                  ['Services need improvement', 'Negative'],
+                                  ['Needs maintenance/clean-up', 'Negative'],
+                                  ['Physical space should be used differently', 'Negative'],
+                                  ['Harmful for the community', 'Negative'],
+                                  ['Good for family/kids', 'Positive'],
+                                  ['Good for community spirit', 'Positive'],
+                                  ['Fond memories', 'Positive'],
+                                  ['Great services provided', 'Positive'],
+                                  ['Useful in daily life', 'Positive'],
+                                  ['Visually pleasing or beautiful', 'Positive'],
+                                  ['Entertaining/fun', 'Positive']],
+                                  columns=['value', 'value_type'])
+    
     # categories_master
     execute_values(conn, category_master, 'categories_master')
     
@@ -145,6 +161,9 @@ def populateMasterTables(conn):
     
     # communities_master
     execute_values(conn, community_master, 'communities_master')
+    
+    # values_master
+    execute_values(conn, values_master, 'values_master')
    
 '''
 Func: execute_values
