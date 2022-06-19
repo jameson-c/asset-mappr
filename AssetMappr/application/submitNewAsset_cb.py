@@ -16,7 +16,6 @@ Output:
     Callbacks relating to the submit-new-asset feature
      
 """
-import dash
 from dash.dependencies import Input, Output, State
 import dash_leaflet as dl
 import uuid

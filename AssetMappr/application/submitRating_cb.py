@@ -42,8 +42,6 @@ def submitRating_cb(app):
         else:
             # Get Asset ID from the click data
             asset_id = clickData['points'][0]['customdata'][3]
-            print(clickData)
-            print(value_tag)
 
             # Write the rating information to the staged ratings table in the DB
             submitRating_db(asset_id, rating_score, rating_comments, value_tag)

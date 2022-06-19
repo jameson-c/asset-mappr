@@ -8,7 +8,9 @@ Input:
     in the 'presentation' folder
     - df: the main assets data frame loaded in
     - master_categories: the unique list of possible category values
-    - master_value_tags: the unique list of possible value tags
+    - tagList: the unique list of possible value tags
+    - asset_categories: data frame with assets and their catagories
+    
     
 Output:
     - A function called makeLayout() that returns the layout section of the Dash app,
@@ -17,14 +19,11 @@ Output:
 # =============================================================================
 # Imports
 # =============================================================================
-import dash
-import pandas as pd
+
 from dash import dcc
 from dash import html
 import dash_bootstrap_components as dbc
-import dash_leaflet as dl
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+
 
 # Importing all the layout components
 from AssetMappr.presentation.showMap import showMap
@@ -32,13 +31,14 @@ from AssetMappr.presentation.showAssetInfo import showAssetInfo
 from AssetMappr.presentation.submitRating import submitRating
 from AssetMappr.presentation.submitNewAsset import submitNewAsset
 from AssetMappr.presentation.suggestMissingAsset import suggestMissingAsset
-
+from AssetMappr.presentation.showMap_Planner import showMap_Planner
+from AssetMappr.presentation.showAssetInfo_Planner import showAssetInfo_Planner
 # =============================================================================
 # Function
 # =============================================================================
 
 
-def makeLayout(df, master_categories, master_value_tags):
+def makeLayout(df, master_categories, tagList, asset_categories):
 
     return html.Div([
 
@@ -68,10 +68,10 @@ def makeLayout(df, master_categories, master_value_tags):
                         # Displays information on the asset selected using the map click
                         html.H5(
                             'Click any asset in the map to see the detailed information:', id='info'),
-                        showAssetInfo(),
+                        showAssetInfo(master_categories),
                         html.Hr(),
                         # Displays the functionality to rate the selected asset
-                        submitRating(master_value_tags),
+                        submitRating(tagList),
                         html.Br(),
                         html.Hr(),
                         # Displays the function to submit new assets
@@ -85,6 +85,12 @@ def makeLayout(df, master_categories, master_value_tags):
             # Tab 2: Page to suggest 'missing' assets, share other thoughts about community dev
             dcc.Tab(id='tab2', label='What are your hopes for the future?', children=[
                 suggestMissingAsset(master_categories),
-            ])
+            ]),
+
+            # Tab 3: Page to planner view (name is tbd)
+            dcc.Tab(id='tab3', label='Planner View', children=[
+                showMap_Planner()
+            ]),
+
         ]),
     ])

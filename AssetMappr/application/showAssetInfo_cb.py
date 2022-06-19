@@ -20,7 +20,10 @@ from dash.dependencies import Input, Output, State
 from dash import dash_table
 from dash import dcc
 from dash import html
+
 import pandas as pd
+
+import dash_bootstrap_components as dbc
 
 
 def showAssetInfo_cb(app):
@@ -65,8 +68,8 @@ def showAssetInfo_cb(app):
             else:
                 # Returns the website as a clickable link
                 return 'Website: ', html.A(the_link, href=the_link, target="_blank")
-            
-    #Show the address. And clicking it will lead to google map direction page.
+
+    # Show the address. And clicking it will lead to google map direction page.
     @app.callback(
         Output('display-asset-address', 'children'),
         [Input('graph', 'clickData')])
@@ -75,4 +78,23 @@ def showAssetInfo_cb(app):
             return None
         else:
             addressLink = clickData['points'][0]['customdata'][4]
-            return 'Address: ',html.A(addressLink, href= 'https://www.google.com/maps/dir/?api=1&AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30&destination={}+PA'.format(addressLink),target="_blank")
+            return 'Address: ', html.A(addressLink, href='https://www.google.com/maps/dir/?api=1&AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30&destination={}+PA'.format(addressLink), target="_blank")
+
+    @app.callback(Output('open-edit-window', 'hidden'),
+                  [Input('graph', 'clickData')])
+    def show_suggest_edit_button(clickData):
+        if clickData is None:
+            return True
+        else:
+            return False
+
+    @app.callback(
+        Output('modal-sugget-edit', 'is_open'),
+        [Input('open-edit-window', 'n_clicks')],
+        [State('modal-sugget-edit', 'is_open')]
+    )
+    def toggle_modal(n0, is_open):
+        if n0:
+            return not is_open
+        return is_open
+    

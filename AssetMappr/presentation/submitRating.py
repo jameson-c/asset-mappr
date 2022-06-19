@@ -25,7 +25,7 @@ import dash_daq as daq
 from sqlalchemy import true
 
 
-def submitRating(master_value_tags):
+def submitRating(tagList):
 
     return html.Div([
         # How do you feel about XXX(asset-name)?
@@ -56,8 +56,8 @@ def submitRating(master_value_tags):
         # Value tag options
         dcc.Dropdown(
             id='value-tag',
-            options=[{'label': i, 'value': i} for i in master_value_tags],
-            value=master_value_tags,
+            options=[{'label': i, 'value': i} for i in tagList],
+            value = tagList,
             multi=True,
         ),
 
