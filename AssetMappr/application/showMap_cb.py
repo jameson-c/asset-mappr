@@ -109,7 +109,7 @@ def showMap_cb(app, df, asset_categories):
                 mapbox=dict(
                     accesstoken=mapbox_access_token,
                     bearing=25,
-                    style='streets',
+                    style='light',
                     center=dict(
                         lat=39.8993885,
                         lon=-79.7249338
