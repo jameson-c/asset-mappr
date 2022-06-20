@@ -57,7 +57,7 @@ def submitRating(tagList_pos):
         dcc.Dropdown(
             id='value-tag',
             options=[{'label': i, 'value': i} for i in tagList_pos],
-            value=tagList_pos,
+            value=None,
             multi=True
         ),
 

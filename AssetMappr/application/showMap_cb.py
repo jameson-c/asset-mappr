@@ -20,6 +20,7 @@ from dash.dependencies import Input, Output, State
 import pandas as pd
 import requests
 import json
+import dash_html_components as html
 
 
 def showMap_cb(app, df, asset_categories):
@@ -41,6 +42,7 @@ def showMap_cb(app, df, asset_categories):
 
     @app.callback(
         Output('graph', 'figure'),
+        Output('no-result-alert','children'),
         [Input('recycling_type', 'value'),
          Input('search-address-button-tab1', 'n_clicks')],
         State('address-search-tab1', 'value'))
@@ -128,13 +130,18 @@ def showMap_cb(app, df, asset_categories):
                     zoom=11.5
                 ),
             )
+            return {
+            'data': locations,
+            'layout': layout
+        }, None
+
 
         else:
             # Geocode the lat-lng using Google Maps API
             google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
 
             # Adding Uniontown PA to make the search more accurate (to generalize)
-            address_search = address_search_1 + ' Uniontown, PA'
+            address_search = address_search_1 + 'PA'
 
             params = {'key': google_api_key,
                       'address': address_search}
@@ -143,33 +150,62 @@ def showMap_cb(app, df, asset_categories):
 
             response = requests.get(url, params)
             result = json.loads(response.text)
+            
+            if result['status'] not in ['INVALID_REQUEST', 'ZERO_RESULTS']:
 
-            lat = result['results'][0]['geometry']['location']['lat']
-            lon = result['results'][0]['geometry']['location']['lng']
+                lat = result['results'][0]['geometry']['location']['lat']
+                lon = result['results'][0]['geometry']['location']['lng']
 
-            layout = go.Layout(
-                uirevision='foo',  # preserves state of figure/map after callback activated
-                clickmode='event+select',
-                hovermode='closest',
-                hoverdistance=2,
-                showlegend=False,
-                autosize=True,
-                margin=dict(l=0, r=0, t=0, b=0),
+                layout = go.Layout(
+                    uirevision='foo',  # preserves state of figure/map after callback activated
+                    clickmode='event+select',
+                    hovermode='closest',
+                    hoverdistance=2,
+                    showlegend=False,
+                    autosize=True,
+                    margin=dict(l=0, r=0, t=0, b=0),
 
-                mapbox=dict(
-                    accesstoken=mapbox_access_token,
-                    bearing=25,
-                    style='streets',
-                    center=dict(
-                        lat=lat,
-                        lon=lon
-                    ),
-                    pitch=40,
-                    zoom=18
+                    mapbox=dict(
+                        accesstoken=mapbox_access_token,
+                        bearing=25,
+                        style='streets',
+                        center=dict(
+                            lat=lat,
+                            lon=lon
+                        ),
+                        pitch=40,
+                        zoom=20
+                    )
                 )
-            )
-        # Return figure
-        return {
-            'data': locations,
-            'layout': layout
-        }
+
+                # Return figure
+                return {
+                    'data': locations,
+                    'layout': layout
+                },None
+            else:
+                layout = go.Layout(
+                    uirevision='foo',  # preserves state of figure/map after callback activated
+                    clickmode='event+select',
+                    hovermode='closest',
+                    hoverdistance=2,
+                    showlegend=False,
+                    autosize=True,
+                    margin=dict(l=0, r=0, t=0, b=0),
+
+                    mapbox=dict(
+                        accesstoken=mapbox_access_token,
+                        bearing=25,
+                        style='streets',
+                        center=dict(
+                            lat=39.8993885,
+                            lon=-79.7249338
+                        ),
+                        pitch=40,
+                        zoom=11.5
+                    ),
+                )
+                return {
+                    'data': locations,
+                    'layout': layout
+                },html.Div("invalid address")

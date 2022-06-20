@@ -38,6 +38,7 @@ def showMap(master_categories):
             dbc.Textarea(id='address-search-tab1',
                          placeholder='Search for the street or area'),
             dbc.Button('Find', id='search-address-button-tab1', n_clicks=0),
+            html.Div(id='no-result-alert')
         ]),
 
         html.Br(),
