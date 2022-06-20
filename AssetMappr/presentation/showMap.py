@@ -13,7 +13,7 @@ Output:
 """
 from dash import dcc
 from dash import html
-import pandas as pd
+import dash_bootstrap_components as dbc
 
 
 def showMap(master_categories):
@@ -32,6 +32,13 @@ def showMap(master_categories):
                           value=[x for x in master_categories],
                           options=[
                               {'label': str(x), 'value': x} for x in master_categories])
+        ]),
+
+        dbc.Row([
+            dbc.Textarea(id='address-search-tab1',
+                         placeholder='Search for the street or area'),
+            dbc.Button('Find', id='search-address-button-tab1', n_clicks=0),
+            html.Div(id='no-result-alert')
         ]),
 
         html.Br(),

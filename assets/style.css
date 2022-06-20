@@ -45,6 +45,22 @@ Desc: This is css file, to change the web layout.
 
 }
 
+#choose-the-source,
+#choose-the-stat {
+    margin-left: 18px;
+    width: 40%;
+}
+
+
+#graph,
+#graph-for-planner,
+#bar-chart-for-planner {
+    margin-left: 18px;
+    margin-right: 0;
+    width: 40%
+}
+
+
 
 #submit-rating-button:hover {
     margin-left: 18px;
@@ -52,6 +68,8 @@ Desc: This is css file, to change the web layout.
     background-color: #119445;
     border-color: #119445;
 }
+
+
 
 #enterButton {
     display: inline-block;
@@ -81,7 +99,8 @@ Desc: This is css file, to change the web layout.
 
 /*Tab's label setting*/
 #tab1,
-#tab2 {
+#tab2,
+#tab3 {
     font-size: 23px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -106,7 +125,7 @@ Desc: This is css file, to change the web layout.
 
 /*adjust checklist*/
 #recycling_type {
-    height: 100px;
+    height: 190px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -121,6 +140,30 @@ Desc: This is css file, to change the web layout.
 #graph {
     float: left;
     top: 18%;
+}
+
+#address-search-tab1 {
+    margin-left: 18px;
+    width: 30%;
+    font-size: 15px;
+}
+
+#search-address-button-tab1 {
+    margin-left: 18px;
+    color: #FFF;
+    background-color: #119445;
+    border-color: #119445;
+    width: 70px;
+}
+
+#suggest-edit-instruction{
+    margin-left: 18px;
+    font-style: italic;
+    color: red;
+}
+
+#open-edit-window {
+    margin-left: 18px;
 }
 
 

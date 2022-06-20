@@ -21,11 +21,12 @@ import dash
 from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
 from dash import html
+from dash import dcc
 
 from AssetMappr.database.submitRating_db import submitRating_db
 
 
-def submitRating_cb(app):
+def submitRating_cb(app, tagList_pos, tagList_neg):
     @app.callback(
         Output(component_id='submit-rating-confirmation',
                component_property='children'),
@@ -42,8 +43,6 @@ def submitRating_cb(app):
         else:
             # Get Asset ID from the click data
             asset_id = clickData['points'][0]['customdata'][3]
-            print(clickData)
-            print(value_tag)
 
             # Write the rating information to the staged ratings table in the DB
             submitRating_db(asset_id, rating_score, rating_comments, value_tag)
@@ -90,3 +89,17 @@ def submitRating_cb(app):
             return html.H6("Extremely important/valuable for the community")
         else:
             return html.H6("Please rate, it really helps.")
+
+    # change the value tag options based on the rating score
+    @app.callback([Output('value-tag', 'options'),
+                   Output('value-tag', 'value')],
+                  Input('rating-score', 'value'),
+                  )
+    def showValue(rating_score):
+        # default(before clicking the asset)
+        if rating_score == None:
+            return [{'label': i, 'value': i} for i in tagList_pos], None
+        elif rating_score <= 3:
+            return [{'label': i, 'value': i} for i in tagList_neg], None
+        else:
+            return [{'label': i, 'value': i} for i in tagList_pos], None
