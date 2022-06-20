@@ -19,6 +19,7 @@ Outputs: (see the database documentation for more info on these tables)
     - master_value_tags: a list of the unique master value tags (for use in the ratings function)
     - missing_assets: data frame of missing_assets table
     - rating_score: data frame of staged_rating tables
+    - tagList_pos/neg: the positive and negative value list
 
 """
 import pandas as pd
@@ -40,9 +41,8 @@ def readDB(app, community_geo_id=False):
 
     # Load the values master list
     master_value_tags = pd.read_sql_table('values_master', con=con_string)
-    tagList = master_value_tags.loc[:,'value'].tolist()
-    # master_value_tags = master_value_tags.values.tolist()
-    # master_value_tags = [item for sublist in master_value_tags for item in sublist]
+    tagList_pos = master_value_tags.loc[master_value_tags['value_type'] == 'Positive', 'value'].tolist()
+    tagList_neg = master_value_tags.loc[master_value_tags['value_type'] == 'Negative', 'value'].tolist()
     
     # Load the main assets database
     df = pd.read_sql_table('assets', con=con_string)
@@ -54,4 +54,4 @@ def readDB(app, community_geo_id=False):
     
     rating_score = pd.read_sql_table('staged_ratings', con=con_string)
     
-    return df, asset_categories, master_categories, tagList, missing_assets, rating_score
+    return df, asset_categories, master_categories, tagList_pos, tagList_neg, missing_assets, rating_score

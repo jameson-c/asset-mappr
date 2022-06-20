@@ -32,13 +32,12 @@ from AssetMappr.presentation.submitRating import submitRating
 from AssetMappr.presentation.submitNewAsset import submitNewAsset
 from AssetMappr.presentation.suggestMissingAsset import suggestMissingAsset
 from AssetMappr.presentation.showMap_Planner import showMap_Planner
-from AssetMappr.presentation.showAssetInfo_Planner import showAssetInfo_Planner
 # =============================================================================
 # Function
 # =============================================================================
 
 
-def makeLayout(df, master_categories, tagList, asset_categories):
+def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories):
 
     return html.Div([
 
@@ -71,7 +70,7 @@ def makeLayout(df, master_categories, tagList, asset_categories):
                         showAssetInfo(master_categories),
                         html.Hr(),
                         # Displays the functionality to rate the selected asset
-                        submitRating(tagList),
+                        submitRating(tagList_pos),
                         html.Br(),
                         html.Hr(),
                         # Displays the function to submit new assets
