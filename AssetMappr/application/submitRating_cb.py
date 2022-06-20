@@ -89,17 +89,17 @@ def submitRating_cb(app, tagList_pos, tagList_neg):
             return html.H6("Excellent! What did you enjoy?")
         else:
             return html.H6("Please rate, it really helps.")
-        
-    #change the value tag options based on the rating score
+
+    # change the value tag options based on the rating score
     @app.callback([Output('value-tag', 'options'),
                    Output('value-tag', 'value')],
                   Input('rating-score', 'value'),
                   )
     def showValue(rating_score):
-        #default(before clicking the asset)
+        # default(before clicking the asset)
         if rating_score == None:
-            return [{'label': i, 'value': i} for i in tagList_pos], tagList_pos
+            return [{'label': i, 'value': i} for i in tagList_pos], None
         elif rating_score <= 3:
-            return [{'label': i, 'value': i} for i in tagList_neg], tagList_neg
+            return [{'label': i, 'value': i} for i in tagList_neg], None
         else:
-            return [{'label': i, 'value': i} for i in tagList_pos], tagList_pos
+            return [{'label': i, 'value': i} for i in tagList_pos], None
