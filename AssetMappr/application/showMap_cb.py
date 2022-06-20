@@ -49,18 +49,12 @@ def showMap_cb(app, df, asset_categories):
     def update_figure(chosen_recycling, n_clicks, address_search_1):
         # Nonlocal tells this nested function to access map_df from the outer function - otherwise throws an undefined error
         nonlocal map_df
-        # We should change this part when the categories are changed. Becuase each category has one symbol, it is a one on one thing, we have to manually choose the symbol for each category.
-        categoryList = ["Community Centers", "Entertainment", "Financial Assistance", "Food Access",
-                        "Healthcare",
-                        "Housing",
-                        "Libraries",
-                        "Postsecondary Schools",
-                        "Private Schools",
-                        "Public Schools",
-                        "Recreation",
-                        "Religious",
-                        "Service Organizations"]
-        # keep it as a backup choice: You can change the color only for the circle, by now, we aren't be able to change the symbols' colors
+        #We should change this part when the categories are changed. Becuase each category has one symbol, it is a one on one thing, we have to manually choose the symbol for each category.
+        categoryList = ["Sports and recreation", "Culture and history", "Education and workforce development",
+                        "Healthcare", "Housing", "Places of worship", "Community service and assistance", "Transport and infrastructure",
+                        "Food access", "Nature and parks", "Libraries", "Economic development opportunities", "Local business and economy"]
+        #keep it as a backup choice: You can change the color only for the circle, by now, we aren't be able to change the symbols' colors
+
         # colorList = ['#000000', '#003786', '#0e58a8', '#30a4ca', '#54c8df', '#9be4ef',
         #              '#e1e9d1', '#f3d573', '#e7b000', '#da8200', '#c65400',  '#498534',  '#217eb8']
         # backup color choices: '#ac2301','#001f4d','#4c0000','#217eb8',
@@ -68,18 +62,17 @@ def showMap_cb(app, df, asset_categories):
         # for item in zip(categoryList, colorList):
         #     map_df.loc[map_df['category'] == item[0],
         #                'colorBasedCategory'] = item[1]
-
-        # These symbols are from: https://labs.mapbox.com/maki-icons
-        symbolList = ['town', 'amusement-park', 'bank', 'restaurant-pizza',
-                      'hospital-JP',
+        #These symbols are from: https://labs.mapbox.com/maki-icons
+        symbolList = ['american-football', 'museum', 'school', 'hospital-JP',
                       'lodging',
-                      'library',
-                      'school',
-                      'school',
-                      'school',
-                      'baseball',
                       'place-of-worship',
-                      'town-hall']
+                      'toilet',
+                      'bus',
+                      'grocery',
+                      'park',
+                      'library',
+                      'circle-stroked',
+                      'bank']
 
         # Zip the categoryList and symbolList. Each category has their different symbol.
         for item in zip(categoryList, symbolList):
@@ -121,7 +114,7 @@ def showMap_cb(app, df, asset_categories):
                 mapbox=dict(
                     accesstoken=mapbox_access_token,
                     bearing=25,
-                    style='streets',
+                    style='light',
                     center=dict(
                         lat=39.8993885,
                         lon=-79.7249338

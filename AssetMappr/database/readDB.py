@@ -43,6 +43,7 @@ def readDB(app, community_geo_id=False):
     master_value_tags = pd.read_sql_table('values_master', con=con_string)
     tagList_pos = master_value_tags.loc[master_value_tags['value_type'] == 'Positive', 'value'].tolist()
     tagList_neg = master_value_tags.loc[master_value_tags['value_type'] == 'Negative', 'value'].tolist()
+    master_value_tags = [i for i in master_value_tags['value']]
     
     # Load the main assets database
     df = pd.read_sql_table('assets', con=con_string)
