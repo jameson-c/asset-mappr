@@ -17,7 +17,7 @@ from dash import dcc
 
 
 def showAssetInfo(master_categories):
-    return html.Div([
+    return html.Div(className='third-panel-asset-info', children=[
         html.H6(id='display-asset-name'),
 
         html.H6(id='display-asset-desc'),
@@ -25,13 +25,13 @@ def showAssetInfo(master_categories):
         html.Pre(id='web_link'),
 
         html.H6(id='display-asset-address'),
-        
+
         html.P(id='suggest-edit-instruction'),
 
         html.Button("Sugget an edit", id="open-edit-window",
                     n_clicks=0, hidden=True),
-        
-        #suggest an edit
+
+        # suggest an edit
         dbc.Modal([
 
             dbc.ModalHeader(dbc.ModalTitle(
@@ -46,7 +46,7 @@ def showAssetInfo(master_categories):
                     dbc.FormText(
                         'Wrong name? Change it above.', color='secondary'),
                 ]),
-                
+
                 html.Br(),
 
                 html.Div([
@@ -93,18 +93,21 @@ def showAssetInfo(master_categories):
 
 
                 html.Br(),
-                
-                
+
+
                 html.Div([
-                    dbc.Label('Is the asset closed or removed? If not, leave this blank.'),
-                    
+                    dbc.Label(
+                        'Is the asset closed or removed? If not, leave this blank.'),
+
                     dcc.Dropdown(id='current-status',
                                  options=[{'label': 'Permanently closed', 'value': 'Permanently closed'},
-                                          {'label': 'Temporarily closed', 'value': 'Temporarily closed'},
-                                          {'label': 'Never existed', 'value': 'Never existed'}
+                                          {'label': 'Temporarily closed',
+                                              'value': 'Temporarily closed'},
+                                          {'label': 'Never existed',
+                                              'value': 'Never existed'}
                                           ],
                                  value=None,
-                                 multi=False),                    
+                                 multi=False),
                     dbc.FormText(
                         'Tell us the current status of this asset', color='secondary'),
                 ]),
@@ -119,6 +122,8 @@ def showAssetInfo(master_categories):
             id='modal-sugget-edit',
             is_open=False,
             size='xl'
-        )
+        ),
+        html.Hr(),
+        html.Br()
 
     ])

@@ -27,13 +27,13 @@ from sqlalchemy import true
 
 def submitRating(tagList_pos):
 
-    return html.Div([
+    return html.Div(className='third-panel-rating', children=[
         # How do you feel about XXX(asset-name)?
         html.Div(id='HowDoYouFeel'),
 
         # Slider bar to score the asset
         html.H5(
-            'Use the slider below to indicate a rating, where 1 is lowest and 5 is highest:', style={'color': 'dimgray', 'font-size': '18px'}),
+            'Use the slider below to indicate a rating, where 1 is lowest and 5 is highest:', style={'color': 'olivedrab', 'font-size': '14px'}),
 
         # Different responses based on different rate score
         html.Div(id='rating-remind'),
