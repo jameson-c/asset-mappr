@@ -80,6 +80,18 @@ def showAssetInfo_cb(app):
             addressLink = clickData['points'][0]['customdata'][4]
             return 'Address: ', html.A(addressLink, href='https://www.google.com/maps/dir/?api=1&AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30&destination={}+PA'.format(addressLink), target="_blank")
 
+    # Show the instruction/option to open the 'suggest an edit' feature
+    @app.callback(
+        Output('suggest-edit-instruction', 'children'),
+        [Input('graph', 'clickData')]
+        )
+    def show_suggest_edit_instruction(clickData):
+        if clickData is None:
+            return None
+        else:
+            return '''Is this information, or the asset itself, wrong? 
+                      Click below to suggest an edit to our records:'''
+
     @app.callback(Output('open-edit-window', 'hidden'),
                   [Input('graph', 'clickData')])
     def show_suggest_edit_button(clickData):

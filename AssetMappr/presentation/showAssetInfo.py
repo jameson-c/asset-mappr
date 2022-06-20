@@ -25,6 +25,8 @@ def showAssetInfo(master_categories):
         html.Pre(id='web_link'),
 
         html.H6(id='display-asset-address'),
+        
+        html.P(id='suggest-edit-instruction'),
 
         html.Button("Sugget an edit", id="open-edit-window",
                     n_clicks=0, hidden=True),
@@ -33,7 +35,7 @@ def showAssetInfo(master_categories):
         dbc.Modal([
 
             dbc.ModalHeader(dbc.ModalTitle(
-                "Something wrong with these information? Tell us about it here!")),
+                "Something wrong with the information about this asset? Edit the information below and click submit")),
 
             dbc.ModalBody([
 
@@ -42,49 +44,9 @@ def showAssetInfo(master_categories):
                     dbc.Input(id='suggested-name', required=True,
                               type='text', placeholder='Enter Asset Name'),
                     dbc.FormText(
-                        'Wrong name?', color='secondary'),
+                        'Wrong name? Change it above.', color='secondary'),
                 ]),
-
-                html.Br(),
-
-                html.Div([
-                    dbc.Label('Description'),
-                    dbc.Input(id='suggested-desc', type='text',
-                              placeholder='Enter Description'),
-                    dbc.FormText('''A short description of the asset. For example, if you entered a school, is it a primary or post-secondary school?''',
-                                 color='secondary'),
-                ]),
-
-                html.Br(),
-
-                html.Div([
-                    dbc.Label('Address'),
-                    dbc.Input(id='suggested-address',
-                              type='text', placeholder='Enter Address'),
-                    dbc.FormText('''Address''',
-                                 color='secondary'),
-                ]),
-
-                html.Br(),
-
-                html.Div([
-                    dbc.Label('Website'),
-                    dbc.Input(id='suggested-website', type='url',
-                              placeholder='Enter website (leave blank if None)'),
-                    dbc.FormText(
-                        'This could also be a relevant Facebook/social media page', color='secondary'),
-                ]),
-
-                html.Br(),
-
-                html.Div([
-                    dbc.Label('Close or Remove'),
-                    dbc.Input(
-                        id='current-status', placeholder='temporarily closed, permanently closed, does not exist here'),
-                    dbc.FormText(
-                        'Tell us the current status of this asset', color='secondary'),
-                ]),
-
+                
                 html.Br(),
 
                 html.Div([
@@ -95,7 +57,56 @@ def showAssetInfo(master_categories):
                                  value=None,
                                  multi=False),
                     dbc.FormText(
-                        '''Select the category relating to this asset.''', color='secondary'),
+                        '''Is there a different category that this asset should be in, other than the one
+                           shown above? Change it above to tell us.''', color='secondary'),
+                ]),
+
+                html.Br(),
+
+                html.Div([
+                    dbc.Label('Description'),
+                    dbc.Input(id='suggested-desc', type='text',
+                              placeholder='Enter Description'),
+                    dbc.FormText('''Wrong or missing description? Add or change one above.''',
+                                 color='secondary'),
+                ]),
+
+                html.Br(),
+
+                html.Div([
+                    dbc.Label('Address'),
+                    dbc.Input(id='suggested-address',
+                              type='text', placeholder='Enter Address'),
+                    dbc.FormText('''Wrong address? Enter the correct one in a clear format: street number, street, area/locality''',
+                                 color='secondary'),
+                ]),
+
+                html.Br(),
+
+                html.Div([
+                    dbc.Label('Website'),
+                    dbc.Input(id='suggested-website', type='url',
+                              placeholder='Enter website (leave blank if None)'),
+                    dbc.FormText(
+                        'Wrong or missing website? Edit above. This could also be a relevant Facebook/social media page', color='secondary'),
+                ]),
+
+
+                html.Br(),
+                
+                
+                html.Div([
+                    dbc.Label('Is the asset closed or removed? If not, leave this blank.'),
+                    
+                    dcc.Dropdown(id='current-status',
+                                 options=[{'label': 'Permanently closed', 'value': 'Permanently closed'},
+                                          {'label': 'Temporarily closed', 'value': 'Temporarily closed'},
+                                          {'label': 'Never existed', 'value': 'Never existed'}
+                                          ],
+                                 value=None,
+                                 multi=False),                    
+                    dbc.FormText(
+                        'Tell us the current status of this asset', color='secondary'),
                 ]),
 
                 dbc.Button("Submit", id='submit-suggest-button'),

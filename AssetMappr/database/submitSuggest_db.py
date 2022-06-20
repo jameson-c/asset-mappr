@@ -49,6 +49,10 @@ def submitSuggest_db(edit_id, asset_id, name, desc, address, category, website, 
 
     # get lat lon from google API
     google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
+    
+    # Need to generalise this
+    address = address + ' Uniontown, PA'
+
     params = {'key': google_api_key,
               'address': suggested_address}
     url = 'https://maps.googleapis.com/maps/api/geocode/json?'
