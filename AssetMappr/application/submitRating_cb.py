@@ -79,14 +79,14 @@ def submitRating_cb(app):
                   )
     def showRatingRemind(rating_score):
         if rating_score == 1:
-            return html.H6("Very disappointing. What went wrong?")
+            return html.H6("Bad or harmful for the community")
         if rating_score == 2:
-            return html.H6("Pretty bad. What went wrong?")
+            return html.H6("Not very useful for the community")
         if rating_score == 3:
-            return html.H6("Just Average. What went wrong?")
+            return html.H6("Neutral - no strong feelings")
         if rating_score == 4:
-            return html.H6("Pretty good, but what could be better?")
+            return html.H6("Good for the community, some areas for improvement")
         if rating_score == 5:
-            return html.H6("Excellent! What did you enjoy?")
+            return html.H6("Extremely important/valuable for the community")
         else:
             return html.H6("Please rate, it really helps.")

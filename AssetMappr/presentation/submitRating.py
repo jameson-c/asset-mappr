@@ -33,7 +33,7 @@ def submitRating(master_value_tags):
 
         # Slider bar to score the asset
         html.H5(
-            'Use the slider below to indicate a rating (1-5):', style={'color': 'dimgray', 'font-size': '18px'}),
+            'Use the slider below to indicate a rating, where 1 is lowest and 5 is highest:', style={'color': 'dimgray', 'font-size': '18px'}),
 
         # Different responses based on different rate score
         html.Div(id='rating-remind'),
@@ -51,19 +51,19 @@ def submitRating(master_value_tags):
 
         # Choose the value tags
         html.H5(
-            'Would you describe this asset as...', style={'color': 'dimgray', 'font-size': '18px'}),
+            'Why do you feel this way? Select all options that apply', style={'color': 'dimgray', 'font-size': '18px'}),
 
         # Value tag options
         dcc.Dropdown(
             id='value-tag',
             options=[{'label': i, 'value': i} for i in master_value_tags],
-            value=master_value_tags,
+            value=None,
             multi=True,
         ),
 
         # Text box to provide comments
         html.H5(
-            'Anything to add?', style={'color': 'dimgray', 'font-size': '18px'}),
+            'Any other specific suggestions or comments to add?', style={'color': 'dimgray', 'font-size': '18px'}),
         dcc.Textarea(
             placeholder='Share your thoughts...',
             id='rating-comments',
