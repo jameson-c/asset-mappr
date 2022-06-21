@@ -33,13 +33,15 @@ from AssetMappr.presentation.submitNewAsset import submitNewAsset
 from AssetMappr.presentation.suggestMissingAsset import suggestMissingAsset
 from AssetMappr.presentation.showMap_Planner import showMap_Planner
 from AssetMappr.presentation.catSummary_Planner import catSummary_Planner
+from AssetMappr.presentation.topAssets_Planner import topAssets_Planner
 
 # =============================================================================
 # Function
 # =============================================================================
 
 
-def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories):
+def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories,
+               rating_score, rating_values):
 
     return html.Div([
 
@@ -93,17 +95,19 @@ def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories
                 
                 dbc.Row([
                     
-                    dbc.Col([showMap_Planner()]),
+                    dbc.Col([
+                        showMap_Planner(),
+                        
+                        tableDownload_Planner(),
+                        
+                        ]),
                     
-                    dbc.Col([catSummary_Planner()])
+                    dbc.Col([
+                        catSummary_Planner(),
+                        topAssets_Planner(df, rating_score, rating_values)
+                        ])
                     
                     ]),
-                
-                # topAssets_Planner(),
-                
-                # assetsTable_Planner(),
-                
-                # suggestionsTable_Planner(),
                 
             ]),
 

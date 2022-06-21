@@ -1,5 +1,5 @@
 """
-File: showMapf_Planner.py
+File: showMap_Planner.py
 Author: Anna Wang
 
 Desc: This file returns an HTML Div with the asset map for planner views

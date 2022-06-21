@@ -42,7 +42,7 @@ from AssetMappr.application.submitSuggestEdit_cb import submitSuggestEdit_cb
 
 from AssetMappr.application.showMap_Planner_cb import showMap_Planner_cb
 from AssetMappr.application.showAssetInfo_Planner_cb import showAssetInfo_Planner_cb
-from AssetMappr.application.catSummary_Planner_cb import catSummary_Planner_cb
+from AssetMappr.application.catSummary_Planner_cb import catSummary_Planner_cb 
 
 # =============================================================================
 # Initialize app
@@ -60,7 +60,7 @@ community_lat = 39.8993885
 community_long = -79.7249338
 
 # Load data from the postgreSQL database (this will eventually depend on community input chosen)
-df, asset_categories, master_categories, tagList_pos, tagList_neg, missing_assets, rating_score = readDB()
+df, asset_categories, master_categories, tagList_pos, tagList_neg, missing_assets, rating_score, rating_values = readDB()
 
 # This column demarcates between assets read in from the DB and staged assets added by the user
 # in the current session, so they can be displayed on the map in different colors and ratings for
@@ -97,7 +97,8 @@ def display_page(pathname):
     # If the user navigates to the main home page of the app
     # Note: there is a link in the landing_page that takes users to the home page
     if pathname == '/home':
-        return makeLayout(df, master_categories, tagList_neg, tagList_pos, asset_categories)
+        return makeLayout(df, master_categories, tagList_neg, tagList_pos, asset_categories,
+                          rating_score, rating_values)
 
 # =============================================================================
 # Callbacks
