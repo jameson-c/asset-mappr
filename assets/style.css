@@ -142,7 +142,7 @@ body {
     /* float: left; */
     margin-left: 0;
     padding: 0;
-    height: 106vh;
+    height: 111vh;
     margin-top: 10px;
 
 }
@@ -187,7 +187,7 @@ body {
     border: 2px double gainsboro;
     padding: 8px;
     font-size: 14px;
-    height: 25vh;
+    height: 30vh;
 }
 
 .third-panel-rating {
