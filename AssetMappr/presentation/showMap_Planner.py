@@ -20,43 +20,37 @@ import plotly.express as px
 
 def showMap_Planner():
     return html.Div([
-        dbc.Row([
-            dbc.Col(
-                html.H4(
-                    'Explore Your Community Here!'),
-            ),
-            dbc.Col(
-                html.H4(
-                    'Category Stat'),
-            )
-
-        ]),
-        dbc.Row([
-            dcc.Dropdown(
+        
+        html.H5('What would you like to see on the map?'),
+        
+        html.H6('Type of assets'),
+        
+        dcc.Dropdown(
                 id='choose-the-source',
                 options=[
                     {"label": "Existing Assets", "value": 'Existing Assets'},
-                    {"label": "Missing Assets", "value": 'Missing Assets'},
+                    {"label": "Suggested 'Missing' Assets", "value": 'Missing Assets'},
                     {"label": "All", "value": 'All'}],
                 value='Existing Assets',
                 multi=False
             ),
-            dcc.Dropdown(
-                id='choose-the-stat',
-                options=[
-                    {"label": "count_number", "value": 'count_number'}],
-                value='count_number',
-                multi=False
+        
+        html.H6('Type of map'),
+        
+        dcc.Dropdown(
+            id='map-type',
+            options=[
+                {"label": 'Points', 'value': 'Points'},
+                {'label': 'Heatmap', 'value': 'Heatmap'},
+                {'label': 'Both', 'value': 'Both'}
+                ],
+            value='Points',
+            multi=False
             ),
+        
+        dcc.Graph(id='graph-for-planner',
+                  config={'displayModeBar': True, 'scrollZoom': True})
 
-        ]),
-        dbc.Row([
-            dcc.Graph(id='graph-for-planner',
-                      config={'displayModeBar': True, 'scrollZoom': True}),
-            dcc.Graph(id='bar-chart-for-planner')
-
-        ]),
-
-        dbc.Row(showAssetInfo_Planner())
+#        dbc.Row(showAssetInfo_Planner())
 
     ])
