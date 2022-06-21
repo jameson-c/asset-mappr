@@ -29,11 +29,12 @@ def submitRating(tagList_pos):
 
     return html.Div(className='third-panel-rating', children=[
         # How do you feel about XXX(asset-name)?
-        html.Div(id='HowDoYouFeel'),
+        html.H5(id='HowDoYouFeel', style={
+                'color': 'dimgray', 'font-size': '15px'}),
 
         # Slider bar to score the asset
         html.H5(
-            'Use the slider below to indicate a rating, where 1 is lowest and 5 is highest:', style={'color': 'olivedrab', 'font-size': '14px'}),
+            'Use the slider below to indicate a rating, where 1 is lowest and 5 is highest:', style={'color': 'olivedrab', 'font-size': '14px', 'font-style': 'italic'}),
 
         # Different responses based on different rate score
         html.Div(id='rating-remind'),
@@ -48,10 +49,10 @@ def submitRating(tagList_pos):
             id='rating-score',
             size=300,
         ),
-
+        html.Br(),
         # Choose the value tags
         html.H5(
-            'Why do you feel this way? Select all options that apply', style={'color': 'dimgray', 'font-size': '18px'}),
+            'Why do you feel this way? Select all options that apply', style={'color': 'dimgray', 'font-size': '15px'}),
 
         # Value tag options
         dcc.Dropdown(
@@ -60,10 +61,10 @@ def submitRating(tagList_pos):
             value=None,
             multi=True
         ),
-
+        html.Br(),
         # Text box to provide comments
         html.H5(
-            'Any other specific suggestions or comments to add?', style={'color': 'dimgray', 'font-size': '18px'}),
+            'Any other specific suggestions or comments to add?', style={'color': 'dimgray', 'font-size': '15px'}),
         dcc.Textarea(
             placeholder='Share your thoughts...',
             id='rating-comments',

@@ -37,4 +37,5 @@ def showCheckbox(master_categories):
                       value=[x for x in master_categories],
                       options=[
                           {'label': str(x), 'value': x} for x in master_categories]),
+        html.Hr()
     ])

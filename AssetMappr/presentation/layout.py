@@ -52,14 +52,6 @@ def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories
                 # This tab uses a grid structure of rows and columns
 
                 # Row 1
-                # dbc.Row([
-                #     dbc.Col(
-                #         html.H4(
-                #             'Use the map below to view and select assets', id='useTheMap'),
-                #     ),
-                # ]),
-
-                # Row 2
                 dbc.Row([
                     dbc.Col([
                         # Outputs an option to select categories
@@ -67,16 +59,17 @@ def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories
                         # Displays the function to submit new assets
                         html.H6(
                             'Know about an asset we don\'t have? Tell us about it! \U0001f447', id='know'),
-                        submitNewAsset(master_categories)],width=3),
-                    # the map displaying assets 
-                    dbc.Col(showMap(), width=5),
+                        submitNewAsset(master_categories)], width=3),
+                    # the map displaying assets
+                    dbc.Col(showMap(), width=6),
                     dbc.Col([
                         showAssetInfo(master_categories),
                         # Displays the functionality to rate the selected asset
                         submitRating(tagList_pos),
                         html.Br(),
-                    ], width=4),
+                    ], width=3),
                 ], className="g-0"),
+                # , className="g-0"
             ]),
 
             # Tab 2: Page to suggest 'missing' assets, share other thoughts about community dev

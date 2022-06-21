@@ -54,10 +54,10 @@ def submitRating_cb(app, tagList_pos, tagList_neg):
                   )
     def review_label(clickData):
         if clickData == None:
-            return html.H5('After clicking the asset, you can rate it.')
+            return 'After clicking the asset, you can rate it.'
         else:
             asset_name = clickData['points'][0]['customdata'][0]
-            return html.H5('How do you feel about {}?'.format(asset_name))
+            return 'How do you feel about {}?'.format(asset_name)
 
     # clear after submitting
     @app.callback(Output('rating-comments', 'value'),

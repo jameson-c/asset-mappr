@@ -133,7 +133,7 @@ def showMap_cb(app, df, asset_categories):
             google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
 
             # Adding Uniontown PA to make the search more accurate (to generalize)
-            address_search = address_search_1 + 'PA'
+            address_search = address_search_1 + ' Uniontown,PA'
 
             params = {'key': google_api_key,
                       'address': address_search}

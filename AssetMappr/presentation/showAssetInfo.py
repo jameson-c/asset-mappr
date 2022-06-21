@@ -18,6 +18,7 @@ from dash import dcc
 
 def showAssetInfo(master_categories):
     return html.Div(className='third-panel-asset-info', children=[
+
         html.H6(id='display-asset-name'),
 
         html.H6(id='display-asset-desc'),
@@ -123,7 +124,6 @@ def showAssetInfo(master_categories):
             is_open=False,
             size='xl'
         ),
-        html.Hr(),
         html.Br()
 
     ])

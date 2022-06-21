@@ -35,8 +35,9 @@ def showAssetInfo_cb(app):
         Output('display-asset-name', 'children'),
         [Input('graph', 'clickData')])
     def display_asset_name(clickData):
-        if clickData is None:
-            return None
+        if clickData == None:
+            return html.H6('Click any asset on the map to see the information.',style={
+                'color': 'dimgray', 'font-size': '15px'})
         else:
             # clickData is a JSON style dictionary, with the customdata field
             # containing a data frame with relevant information about the clicked point
