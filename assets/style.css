@@ -4,10 +4,7 @@ Author: Anna Wang
 
 Desc: This is css file, to change the web layout.
 */
-/* 
-body {
-    background-color: ghostwhite;
-} */
+
 
 /*This is for the whole landing page*/
 .landing {
@@ -142,7 +139,7 @@ body {
     /* float: left; */
     margin-left: 0;
     padding: 0;
-    height: 111vh;
+    height: 130vh;
     margin-top: 10px;
 
 }
@@ -197,8 +194,8 @@ body {
     margin-bottom: 10px;
     border: 2px double gainsboro;
     padding: 8px;
-    font-size: 14px;
-    height: 80vh
+    font-size: 13px;
+    height: 99vh
 }
 
 
@@ -209,7 +206,7 @@ body {
 #display-asset-address {
     /* padding-top: 8px; */
     padding-right: 8px;
-    font-size: 13px;
+    font-size: 12px;
     color: slategray;
     flex-direction: column;
     flex-wrap: wrap;
