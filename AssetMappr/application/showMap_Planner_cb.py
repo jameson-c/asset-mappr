@@ -10,7 +10,8 @@ Input:
     app: an initialized dash app
     df: main data frame with assets to be displayed
     asset_categories: data frame with assets and their catagories (in separate df because 1 asset can have many cats)
-    missing_assets: suggestion assets from community members
+    missing_assets: data frame with suggestion assets from community members
+    rating_score: data frame of the ratings table
 Output: 
     Callbacks relating to the showMap_Planner feature
      

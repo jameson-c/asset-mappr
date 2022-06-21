@@ -26,7 +26,7 @@ import pandas as pd
 from flask_sqlalchemy import SQLAlchemy
 
 
-def readDB(app, community_geo_id=False):
+def readDB(community_geo_id=False):
 
     # con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a/assetmappr_database'
 

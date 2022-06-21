@@ -1,22 +1,41 @@
-# -*- coding: utf-8 -*-
 """
-Created on Mon Jun 20 19:59:39 2022
+File: catSummary_Planner.py
+Author: Anna Wang, Mihir Bhaskar
 
-@author: mihir
+Desc: This file returns an HTML Div with the category summary bar chart
+
+The main bar chart is created in catSummary_Planner_cb in the application folder
+
+Input
+
+Output:
+    - HTML Div, called in makeLayout()
 """
 
-            ),
-            dcc.Dropdown(
-                id='choose-the-stat',
-                options=[
-                    {"label": "count_number", "value": 'count_number'}],
-                value='count_number',
-                multi=False
-            ),
+from dash import dcc
+from dash import html
+import dash_bootstrap_components as dbc
+from AssetMappr.presentation.showAssetInfo_Planner import showAssetInfo_Planner
+import plotly.express as px
 
-        ]),
-        dbc.Row([
-            ),
-            dcc.Graph(id='bar-chart-for-planner')
+def catSummary_Planner():
+    return html.Div([
+        
+        html.H5('What type of category-wise summary would you like to see?'),
+        
+        html.H6('Select statistic:'),
+        
+        dcc.Dropdown(
+            id='choose-the-stat',
+            options=[
+                {"label": "Number of existing assets", "value": 'count_number'},
+                {"label": "Average of all ratings for assets", "value": 'rating_avg'},
+                {"label": "Number of suggested (missing) assets", "value": 'num_missing'}             
+                ],
+            value='count_number',
+            multi=False
+        ),
 
-        ]),
+        dcc.Graph(id='bar-chart-for-planner')
+
+        ])

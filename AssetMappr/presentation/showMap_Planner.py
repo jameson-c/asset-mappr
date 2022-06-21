@@ -12,6 +12,7 @@ Output:
     - HTML Div, called in makeLayout()
 """
 from dash import dcc
+import dash_bootstrap_components as dbc
 from dash import html
 import dash_bootstrap_components as dbc
 from AssetMappr.presentation.showAssetInfo_Planner import showAssetInfo_Planner
@@ -22,31 +23,41 @@ def showMap_Planner():
     return html.Div([
         
         html.H5('What would you like to see on the map?'),
+
+        dbc.Row([
+            
+            dbc.Col([
+                html.H6('Type of assets'),
         
-        html.H6('Type of assets'),
-        
-        dcc.Dropdown(
-                id='choose-the-source',
-                options=[
-                    {"label": "Existing Assets", "value": 'Existing Assets'},
-                    {"label": "Suggested 'Missing' Assets", "value": 'Missing Assets'},
-                    {"label": "All", "value": 'All'}],
-                value='Existing Assets',
-                multi=False
-            ),
-        
-        html.H6('Type of map'),
-        
-        dcc.Dropdown(
-            id='map-type',
-            options=[
-                {"label": 'Points', 'value': 'Points'},
-                {'label': 'Heatmap', 'value': 'Heatmap'},
-                {'label': 'Both', 'value': 'Both'}
-                ],
-            value='Points',
-            multi=False
-            ),
+                dcc.Dropdown(
+                        id='choose-the-source',
+                        options=[
+                            {"label": "Existing Assets", "value": 'Existing Assets'},
+                            {"label": "Suggested 'Missing' Assets", "value": 'Missing Assets'},
+                            {"label": "All", "value": 'All'}],
+                        value='Existing Assets',
+                        multi=False
+                    ),                
+                
+                ]),
+            
+            dbc.Col([
+
+                html.H6('Type of map'),
+                
+                dcc.Dropdown(
+                    id='map-type',
+                    options=[
+                        {"label": 'Points', 'value': 'Points'},
+                        {'label': 'Heatmap', 'value': 'Heatmap'},
+                        {'label': 'Both', 'value': 'Both'}
+                        ],
+                    value='Points',
+                    multi=False
+                    ),                
+                ])
+            
+            ]),
         
         dcc.Graph(id='graph-for-planner',
                   config={'displayModeBar': True, 'scrollZoom': True})

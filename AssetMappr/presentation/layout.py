@@ -32,6 +32,8 @@ from AssetMappr.presentation.submitRating import submitRating
 from AssetMappr.presentation.submitNewAsset import submitNewAsset
 from AssetMappr.presentation.suggestMissingAsset import suggestMissingAsset
 from AssetMappr.presentation.showMap_Planner import showMap_Planner
+from AssetMappr.presentation.catSummary_Planner import catSummary_Planner
+
 # =============================================================================
 # Function
 # =============================================================================
@@ -89,9 +91,13 @@ def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories
             # Tab 3: Page to planner view (name is tbd)
             dcc.Tab(id='tab3', label='Planner View', children=[
                 
-                showMap_Planner(),
-                
-                # catSummary_Planner(),
+                dbc.Row([
+                    
+                    dbc.Col([showMap_Planner()]),
+                    
+                    dbc.Col([catSummary_Planner()])
+                    
+                    ]),
                 
                 # topAssets_Planner(),
                 

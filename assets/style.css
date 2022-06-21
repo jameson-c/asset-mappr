@@ -49,7 +49,6 @@ Desc: This is css file, to change the web layout.
 #choose-the-stat,
 #map-type {
     margin-left: 18px;
-    width: 40%;
 }
 
 
@@ -58,7 +57,6 @@ Desc: This is css file, to change the web layout.
 #bar-chart-for-planner {
     margin-left: 18px;
     margin-right: 0;
-    width: 50%
 }
 
 
