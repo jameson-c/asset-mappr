@@ -14,9 +14,7 @@ Output:
 from dash import dcc
 import dash_bootstrap_components as dbc
 from dash import html
-import dash_bootstrap_components as dbc
 import plotly.express as px
-
 
 def showMap_Planner():
     return html.Div([
@@ -28,6 +26,7 @@ def showMap_Planner():
             dbc.Col([
                 html.H6('Type of assets'),
         
+                # Dropdown to choose the type of assets to display on the map
                 dcc.Dropdown(
                         id='choose-the-source',
                         options=[
@@ -44,6 +43,7 @@ def showMap_Planner():
 
                 html.H6('Type of map'),
                 
+                # Dropdown to decide the type of map to show
                 dcc.Dropdown(
                     id='map-type',
                     options=[
@@ -58,9 +58,9 @@ def showMap_Planner():
             
             ]),
         
+        # Graph object/placeholder for map created in callback
         dcc.Graph(id='graph-for-planner',
                   config={'displayModeBar': True, 'scrollZoom': True})
 
-#        dbc.Row(showAssetInfo_Planner())
 
     ])

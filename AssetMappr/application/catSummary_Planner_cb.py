@@ -1,5 +1,22 @@
+"""
+File: catSummary_Planner_cb.py
+Author: Mihir Bhaskar, Anna Wang
+
+Desc: This file creates the callback that generates the category summary bar graphs in the planner dashboard
+      
+This is linked to the catSummary_Planner.py feature in presentation
+
+Input: 
+    app: an initialized dash app
+    master_categories: a list of the unique possible set of category values
+    asset_categories: data frame with assets and their catagories (in separate df because 1 asset can have many cats)
+    missing_assets: data frame with suggestion assets from community members
+    rating_score: data frame of the ratings table
+Output: 
+    Callbacks relating to the showMap_Planner feature
+     
+"""
 import pandas as pd  # (version 0.24.2)
-import datetime as dt
 import dash  # (version 1.0.0)
 from dash import dcc
 from dash import html
@@ -12,32 +29,36 @@ import plotly.express as px
 
 def catSummary_Planner_cb(app, master_categories, asset_categories, missing_assets, rating_score):
     
-    # Counts by category
+    # Counts by category for existing assetse
     existing_cat_counts = asset_categories.groupby('category').count()
         
-    # Getting the average rating across all assets that were rated in the category
+    # Getting the average rating and number of ratings for each asset
     avg_rating_assets = rating_score.groupby('asset_id').agg(avg_asset_rating= ('rating_scale', np.mean),
                                                              num_ratings = ('staged_rating_id', np.count_nonzero))
     
+    # Merging this ratings data to see the category each asset belongs to
     cat_ratings = pd.merge(asset_categories, avg_rating_assets, on='asset_id')
     
+    # Aggregating the data again at a category level - taking an average of the average ratings across assets, 
+    # summing the total ratings observed for a category, and getting the unique assets over which those ratings were observed
     
     cat_ratings = cat_ratings.groupby('category').agg(avg_cat_rating = ('avg_asset_rating', np.mean),
                                                       tot_ratings = ('num_ratings', 'sum'),
                                                       unique_assets = ('asset_id', pd.Series.nunique))
     
+    # Counts by primary category for missing/suggested assets
     missing_cat_counts = missing_assets.groupby('primary_category').agg(count = ('suggestion_id', pd.Series.nunique))
     
-
+    # Callback which creates the bar chart by category based on the selected input statistic desired
     @app.callback(
-        Output(component_id='bar-chart-for-planner',
-               component_property='figure'),
+        Output('bar-chart-for-planner', 'figure'),
         Input('choose-the-stat', 'value'))
     def showChart(stat_type):
         
         # Declaring the above processed datasets as nonlocals so this nested function can access
         nonlocal existing_cat_counts, cat_ratings, missing_cat_counts
         
+        # Barchart to show count of existing assets by category
         if stat_type == 'count_number':
             barchart = px.bar(
                 existing_cat_counts,
@@ -45,12 +66,13 @@ def catSummary_Planner_cb(app, master_categories, asset_categories, missing_asse
                 opacity=0.9,
                 barmode='group',
                 
-                labels={"asset_id": "Count"},
+                labels={"asset_id": "Number of assets"},
                 title="Number of existing assets by category",
                 
                 orientation='h')
             barchart.update_layout(yaxis={'categoryorder': 'total ascending'})
         
+        # Barchart to show the average rating across all assets in each category
         elif stat_type == 'rating_avg':
             barchart = px.bar(
                 cat_ratings,
@@ -59,12 +81,13 @@ def catSummary_Planner_cb(app, master_categories, asset_categories, missing_asse
                 opacity=0.9,
                 barmode='group',
                 
-                labels={"avg_cat_rating": "Average rating across all assets in category"},
+                labels={"avg_cat_rating": "Average rating (1-5) across all assets in the category"},
                 title="Average asset ratings by category",
                 
                 orientation='h')
             barchart.update_layout(yaxis={'categoryorder': 'total ascending'})
-            
+        
+        # Barchart to show the count of missing assets for each category
         else:
             barchart = px.bar(
                 missing_cat_counts,

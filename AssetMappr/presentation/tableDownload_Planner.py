@@ -2,7 +2,7 @@
 File: tableDownload_Planner.py
 Author: Mihir Bhaskar
 
-Desc: This file returns an HTML Div with the table download component
+Desc: This file returns an HTML Div with the table display and download component of the planner dashboard
 
 The main table is created in tableDownload_Planner_cb in the application folder
 
@@ -38,11 +38,11 @@ def tableDownload_Planner():
                         multi=False)           
                 ]),
             
+            # Button to click to download the data in an Excel file (the data displayed in the table)
             dbc.Col([
                 html.Button("Download table data", id="download_button"),
                 dcc.Download(id="download-dataframe-xlsx")                
                 ])
-        
 
             ]),
                 

@@ -4,9 +4,13 @@ Author: Mihir Bhaskar
 
 Desc: This file returns an HTML Div with the top/bottom assets by ratings
 
-The main map is created in showMap_Planner_cb in the application folder
+This function has no associated callback, because there is no user interactivity. It just
+processes the data read in by the app initially, on ratings, and displays the output.
 
-Input
+Inputs:
+    - df: data frame of the main assets table
+    - rating_score: data frame of the ratings table (NOTE: CURRENTLY THIS IS STAGED RATINGS - need to change code accordingly)
+    - rating_values: data frame of the mapping from ratings to 'value tags' associated with that rating
 
 Output:
     - HTML Div, called in makeLayout()
@@ -18,73 +22,94 @@ import numpy as np
 
 def topAssets_Planner(df, rating_score, rating_values):
     
-    # Data processing to get the top and bottom assets
+    ### DATA PROCESSING ###
     
-    # Keep only what's needed in df
+    # Keep only the fields needed in the main assets table
     df = df[['asset_id', 'asset_name']]
     
-    # Add asset_id to rating values table 
+    ## Step 1: get the 'most common' value tag for a given asset
+    
+    # Merging rating-values table with rating-score to get the asset_id
     rating_values = pd.merge(rating_values, rating_score[['staged_rating_id', 'asset_id']], on='staged_rating_id')
     
-    # Merge the rating values table with the 
+    # Merge the rating-values table with the main assets data frame
     asset_values = pd.merge(df, rating_values, on='asset_id')
     
-    # Aggregate this table by asset_id to get the top value for each asset
+    # Aggregate this table by asset_id to get the most frequently chosen value for each asset
     asset_values = asset_values.groupby('asset_id').agg(most_common_value = ('value', lambda x: x.value_counts().index[0]))
     
-    asset_values = asset_values.reset_index() # pull asset_id out of the index for later use in merging
+    # Pull asset_id out of the index for later use in merging (during the merge, asset_id gets pushed into the index)
+    asset_values = asset_values.reset_index() 
     
-    # Collapse ratings table down to one observation per asset, which is the average rating
+    ## Step 2: get info about the rating score from the ratings table
+    
+    # Aggregate ratings table by asset_id, to get the average rating and the number of ratings for each asset
     avg_rating_assets = rating_score.groupby('asset_id').agg(avg_asset_rating= ('rating_scale', np.mean),
                                                              num_ratings = ('staged_rating_id', np.count_nonzero))
+    
     avg_rating_assets = avg_rating_assets.reset_index() # pull asset_id out of index fo rlater use in merging
 
-    # Extract one nonmissing comment out for each asset
+    ## Step 3: extract one comment at random from the set of comments associated with an asset's ratings, to display ##
+
     comments_df = rating_score[['asset_id', 'comments']]
-    comments_df = comments_df.dropna(subset=['comments'])
-    comments_df = comments_df[~comments_df['comments'].isin(['', ' '])]   
+    comments_df = comments_df.dropna(subset=['comments']) # drop missing comments
+    comments_df = comments_df[~comments_df['comments'].isin(['', ' '])] # drop empty comments that are basically missing but not NA
     
     # Randomly sample one comment per asset_id
     comments_df = comments_df.groupby('asset_id').apply(lambda x: x.sample(1)).reset_index(drop=True)
     
-    # Merging all the useful data together
+    ## Step 4: merging all the data together into one data frame ##
+    
+    # Using left joins here because not all assets may have all of the rating information. E.g. some assets may have
+    # ratings, but no comments. Using left join with the main assets df table makes sure we don't drop any assets because of this.
+    
     df = pd.merge(df, asset_values, on='asset_id', how='left')
     df = pd.merge(df, avg_rating_assets, on='asset_id', how='left')
     df = pd.merge(df, comments_df, on='asset_id', how='left')
     
-    # Selecting assets with at least five ratings and sorting
-    df = df.dropna(subset=['avg_asset_rating'])
-    df = df[df['num_ratings'] >= 5]
-    df = df.sort_values(['avg_asset_rating'])
-    
+    ## Step 5: Selecting assets with at least five ratings so the ratings average is reliable ##
+    df = df.dropna(subset=['avg_asset_rating']) # drop assets with no ratings at all
+    df = df[df['num_ratings'] >= 5] # keep if there are at least 5 ratings for the asset
+    df = df.sort_values(['avg_asset_rating']) # Sort values from descending to ascending, so the 'worst' assets are first rows, best are bottom rows
+ 
+    ### CREATING THE ACTUAL DISPLAY COMPONENTS ###   
+ 
     return html.Div([
         
+        # Header for the 'top' 2 assets section
         html.H5('Top assets by rating'),
         
+        # CardGroup groups the two display cards together, so they're the same height/appear in the same row
         dbc.CardGroup([
             
-            # Top asset
+            # Top asset number 1, with highest rating: the last row of sorted df created above
             dbc.Card([
                 
-                dbc.CardHeader(df['asset_name'].iloc[-1]), # Getting the name of the best asset by picking the last observation in sorted df
+                dbc.CardHeader(df['asset_name'].iloc[-1]), 
                 
                 dbc.CardBody([
                     
+                    # Badge that displays the most common value. 'Success' and the classname are standard
+                    # badge formats selected from the dbc documentation; basically it makes a green 'pill'-shaped badge
                     dbc.Badge(df['most_common_value'].iloc[-1], pill=True, color='success', 
                               className="me-1"),
                     
                     html.Br(),
-                                        
-                    html.P('''"{}"'''.format(df['comments'].iloc[-1])),
+                         
+                    # Displaying the randomly chosen comment in quotation marks
+                    html.P(' "{}" '.format(df['comments'].iloc[-1])),
                     
                     ]),
                 
+                # Showing the average rating and total number of ratings
                 dbc.CardFooter(['Average rating: {:.2f} out of 5 (from {} ratings)'.format(df['avg_asset_rating'].iloc[-1],
                                                                                             df['num_ratings'].iloc[-1])
                                 ]),
                 
                 ]),
             
+            # Top Asset Number 2 (the second-from-bottom row in DF)
+            # Same structure followed as above 
             dbc.Card([
                 
                 dbc.CardHeader(df['asset_name'].iloc[-2]),
@@ -111,14 +136,17 @@ def topAssets_Planner(df, rating_score, rating_values):
         
         html.H5('Bottom assets by rating'),
         
+        # Cardgroup for bottom 2 assets - same structure followed as for top assets
         dbc.CardGroup([
             
             dbc.Card([
                 
+                # The worst asset is the first row of df, hence iloc[0]
                 dbc.CardHeader(df['asset_name'].iloc[0]),
                 
                 dbc.CardBody([
                     
+                    # Color changed to 'danger', to format it as red background - white text
                     dbc.Badge(df['most_common_value'].iloc[0], pill=True, color='danger', 
                               className="me-1"),
                     
@@ -134,6 +162,7 @@ def topAssets_Planner(df, rating_score, rating_values):
                 
                 ]),
             
+            # Card for second-worst asset (second row in the dataset)
             dbc.Card([
                 
                 dbc.CardHeader(df['asset_name'].iloc[1]),

@@ -26,6 +26,8 @@ def showMap_Planner_cb(app, df, asset_categories, missing_assets, rating_score):
     
     # Merge the assets and asset-category mappings into a single df
     map_df = pd.merge(df, asset_categories, on='asset_id')
+    
+    # Add the average rating score for the asset to the data frame
     avg_rating = rating_score.groupby(
         'asset_id').agg({'rating_scale': [np.mean]})
     pd.set_option('display.max_columns', None)
@@ -33,7 +35,7 @@ def showMap_Planner_cb(app, df, asset_categories, missing_assets, rating_score):
     map_df['avg_score'] = map_df.iloc[:,-1]
     map_df = pd.merge(map_df,rating_score,on='asset_id',how='left')
     
-    # This callback receives input on which categories the user has selected (recycling_type)
+    # This callback receives input on which categories the user has selected 
     # And outputs the map object
     @app.callback(Output('graph-for-planner', 'figure'),
                   [Input('choose-the-source', 'value')],

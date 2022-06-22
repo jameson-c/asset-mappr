@@ -112,6 +112,8 @@ def display_page(pathname):
 # Applying all the callbacks, passing relevant inputs so they can be used in the callbacks
 showMap_cb(app, df, asset_categories)
 showAssetInfo_cb(app)
+showSuggestEdit_initial_cb(app)
+submitSuggestEdit_cb(app)
 submitRating_cb(app, tagList_pos, tagList_neg)
 submitNewAsset_cb(app, df, asset_categories)
 suggestMissingAsset_cb(app)
@@ -119,8 +121,6 @@ suggestMissingAsset_cb(app)
 showMap_Planner_cb(app, df, asset_categories, missing_assets, rating_score)
 showAssetInfo_Planner_cb(app)
 catSummary_Planner_cb(app, master_categories, asset_categories, missing_assets, rating_score)
-showSuggestEdit_initial_cb(app)
-submitSuggestEdit_cb(app)
 tableDownload_Planner_cb(app, df, asset_categories, missing_assets, rating_score, rating_values)
 
 # =============================================================================
