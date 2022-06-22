@@ -43,7 +43,6 @@ from AssetMappr.application.showSuggestEdit_cb import showSuggestEdit_initial_cb
 from AssetMappr.application.submitSuggestEdit_cb import submitSuggestEdit_cb
 
 from AssetMappr.application.showMap_Planner_cb import showMap_Planner_cb
-from AssetMappr.application.showAssetInfo_Planner_cb import showAssetInfo_Planner_cb
 from AssetMappr.application.catSummary_Planner_cb import catSummary_Planner_cb
 from AssetMappr.application.tableDownload_Planner_cb import tableDownload_Planner_cb
  
@@ -119,7 +118,6 @@ submitNewAsset_cb(app, df, asset_categories)
 suggestMissingAsset_cb(app)
 
 showMap_Planner_cb(app, df, asset_categories, missing_assets, rating_score)
-showAssetInfo_Planner_cb(app)
 catSummary_Planner_cb(app, master_categories, asset_categories, missing_assets, rating_score)
 tableDownload_Planner_cb(app, df, asset_categories, missing_assets, rating_score, rating_values)
 
