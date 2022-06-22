@@ -23,6 +23,8 @@ import pandas as pd
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 import uuid
+from dash import dash_table
+
 
 # Import the function that reads data from the DB
 from AssetMappr.database.readDB import readDB
@@ -42,7 +44,9 @@ from AssetMappr.application.submitSuggestEdit_cb import submitSuggestEdit_cb
 
 from AssetMappr.application.showMap_Planner_cb import showMap_Planner_cb
 from AssetMappr.application.showAssetInfo_Planner_cb import showAssetInfo_Planner_cb
-from AssetMappr.application.catSummary_Planner_cb import catSummary_Planner_cb 
+from AssetMappr.application.catSummary_Planner_cb import catSummary_Planner_cb
+from AssetMappr.application.tableDownload_Planner_cb import tableDownload_Planner_cb
+ 
 
 # =============================================================================
 # Initialize app
@@ -117,6 +121,7 @@ showAssetInfo_Planner_cb(app)
 catSummary_Planner_cb(app, master_categories, asset_categories, missing_assets, rating_score)
 showSuggestEdit_initial_cb(app)
 submitSuggestEdit_cb(app)
+tableDownload_Planner_cb(app, df, asset_categories, missing_assets, rating_score, rating_values)
 
 # =============================================================================
 # Run the app

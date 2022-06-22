@@ -23,6 +23,7 @@ Output:
 from dash import dcc
 from dash import html
 import dash_bootstrap_components as dbc
+from dash import dash_table
 
 
 # Importing all the layout components
@@ -34,6 +35,8 @@ from AssetMappr.presentation.suggestMissingAsset import suggestMissingAsset
 from AssetMappr.presentation.showMap_Planner import showMap_Planner
 from AssetMappr.presentation.catSummary_Planner import catSummary_Planner
 from AssetMappr.presentation.topAssets_Planner import topAssets_Planner
+from AssetMappr.presentation.tableDownload_Planner import tableDownload_Planner
+
 
 # =============================================================================
 # Function

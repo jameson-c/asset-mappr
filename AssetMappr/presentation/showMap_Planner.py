@@ -15,7 +15,6 @@ from dash import dcc
 import dash_bootstrap_components as dbc
 from dash import html
 import dash_bootstrap_components as dbc
-from AssetMappr.presentation.showAssetInfo_Planner import showAssetInfo_Planner
 import plotly.express as px
 
 
