@@ -123,20 +123,20 @@ def populateMasterTables(conn):
                                     columns = ['source_type'])
     
     # Create the record that will be used to populate the categories master file
-    category_master = pd.DataFrame([['Sports and recreation'],
-                                    ['Culture and history'],
-                                    ['Education and workforce development'],
-                                    ['Healthcare'],
-                                    ['Housing'],
-                                    ['Places of worship'],
-                                    ['Community service and assistance'],
-                                    ['Transport and infrastructure'],
-                                    ['Food access'],
-                                    ['Nature and parks'],
-                                    ['Libraries'],
-                                    ['Economic development opportunities'],
-                                    ['Local business and economy']],
-                                    columns = ['category'])
+    category_master = pd.DataFrame([['Sports and recreation', 'Includes sports facilities/fields, playgrounds, amusement parks, etc.'],
+                                    ['Culture and history', 'Includes museums, arts centers, memorials/statues, music halls/concert venues, etc.'],
+                                    ['Education and workforce development', 'Includes schools, job centers, vocational training, etc.'],
+                                    ['Healthcare', 'Includes hospitals, clinics, doctors/dentists, health department offices, nursing homes, etc.'],
+                                    ['Housing', 'Includes public housing, affordable housing, housing for seniors, etc.'],
+                                    ['Places of worship', 'For all religions'],
+                                    ['Community service and assistance', 'Includes all government and non-governmental services: libraries, non-profits, community centers, shelter homes, soup kitchens, etc.'],
+                                    ['Transport and infrastructure', 'Includes public transport facilities, road safety, bike rental, internet access points, etc.'],
+                                    ['Food access', 'Access to nutritious food: grocery stores, farmers markets, community gardens, SNAP vendors, etc.'],
+                                    ['Nature and parks', 'Includes parks, forests, trails, lakes, etc.'],
+                                    ['Economic development opportunities', 'Includes vacant lots, blight, greenfield/brownfield sites, commercial spaces for lease, etc.'],
+                                    ['Local business and economy', 'Includes important local businesses and employers (e.g. cafes, restaurants), banks/credit unions, etc.']],
+                                    columns = ['category', 'description'])
+    
     
     # Create the record that will be used to populate the values master file
     values_master = pd.DataFrame([['Needs renovation', 'Negative'],
