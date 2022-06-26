@@ -118,8 +118,6 @@ Desc: This is css file, to change the web layout.
     font-family: Arial;
     padding-bottom: 40px;
     font-size: 15px;
-    /* background-color: ghostwhite; */
-    /* border: 2px double gray; */
     padding: 8px
 }
 
@@ -131,7 +129,6 @@ Desc: This is css file, to change the web layout.
     flex-direction: column;
     flex-wrap: wrap;
 }
-
 
 
 /*Set the map's position*/
@@ -148,7 +145,7 @@ Desc: This is css file, to change the web layout.
     padding-top: 8px;
     margin-left: 18px;
     width: 60%;
-    font-size: 15px;
+    font-size: 13px;
     height: 30px
 }
 
@@ -184,7 +181,8 @@ Desc: This is css file, to change the web layout.
     border: 2px double gainsboro;
     padding: 8px;
     font-size: 14px;
-    height: 30vh;
+    min-height: 30vh;
+    height: fit-content;
 }
 
 .third-panel-rating {
@@ -195,7 +193,8 @@ Desc: This is css file, to change the web layout.
     border: 2px double gainsboro;
     padding: 8px;
     font-size: 13px;
-    height: 99vh
+    min-height: 99vh;
+    height: fit-content;
 }
 
 

@@ -63,21 +63,15 @@ def showMap_cb(app, df, asset_categories):
         #     map_df.loc[map_df['category'] == item[0],
         #                'colorBasedCategory'] = item[1]
         # These symbols are from: https://labs.mapbox.com/maki-icons
-        symbolList = ['american-football', 'museum', 'school', 'hospital-JP',
-                      'lodging',
-                      'place-of-worship',
-                      'toilet',
-                      'bus',
-                      'grocery',
-                      'park',
-                      'library',
-                      'circle-stroked',
-                      'bank']
+        symbolList = ['park', 'museum', 'school', 'hospital', 'lodging', 'place-of-worship', 'toilet', 'bus',
+                      'grocery', 'park', 'library', 'circle-stroked', 'bank']
 
         # Zip the categoryList and symbolList. Each category has their different symbol.
         for item in zip(categoryList, symbolList):
             map_df.loc[map_df['category'] == item[0],
                        'symbolBasedCategory'] = item[1]
+
+        print(map_df.loc[map_df['category'] == 'Nature and parks'])
 
         # Filtering the dataset to only keep assets in the selected categories
         df_sub = map_df[(map_df['category'].isin(chosen_recycling))]
@@ -166,7 +160,7 @@ def showMap_cb(app, df, asset_categories):
                             lon=lon
                         ),
                         pitch=40,
-                        zoom=20
+                        zoom=18
                     )
                 )
 
@@ -194,7 +188,7 @@ def showMap_cb(app, df, asset_categories):
                             lon=-79.7249338
                         ),
                         pitch=40,
-                        zoom=11.5
+                        zoom=18
                     ),
                 )
                 return {
