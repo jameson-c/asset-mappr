@@ -71,8 +71,6 @@ def showMap_cb(app, df, asset_categories):
             map_df.loc[map_df['category'] == item[0],
                        'symbolBasedCategory'] = item[1]
 
-        print(map_df.loc[map_df['category'] == 'Nature and parks'])
-
         # Filtering the dataset to only keep assets in the selected categories
         df_sub = map_df[(map_df['category'].isin(chosen_recycling))]
 
@@ -97,7 +95,7 @@ def showMap_cb(app, df, asset_categories):
 
         if n_clicks == 0:
             layout = go.Layout(
-                uirevision='foo',  # preserves state of figure/map after callback activated
+                # uirevision='foo',  # preserves state of figure/map after callback activated
                 clickmode='event+select',
                 hovermode='closest',
                 hoverdistance=2,
@@ -143,7 +141,7 @@ def showMap_cb(app, df, asset_categories):
                 lon = result['results'][0]['geometry']['location']['lng']
 
                 layout = go.Layout(
-                    uirevision='foo',  # preserves state of figure/map after callback activated
+                    # uirevision='foo',  # preserves state of figure/map after callback activated
                     clickmode='event+select',
                     hovermode='closest',
                     hoverdistance=2,
@@ -160,7 +158,7 @@ def showMap_cb(app, df, asset_categories):
                             lon=lon
                         ),
                         pitch=40,
-                        zoom=18
+                        zoom=20
                     )
                 )
 
@@ -169,9 +167,10 @@ def showMap_cb(app, df, asset_categories):
                     'data': locations,
                     'layout': layout
                 }, None
+
             else:
                 layout = go.Layout(
-                    uirevision='foo',  # preserves state of figure/map after callback activated
+                    # uirevision='foo',  # preserves state of figure/map after callback activated
                     clickmode='event+select',
                     hovermode='closest',
                     hoverdistance=2,
@@ -188,7 +187,7 @@ def showMap_cb(app, df, asset_categories):
                             lon=-79.7249338
                         ),
                         pitch=40,
-                        zoom=18
+                        zoom=11.5
                     ),
                 )
                 return {
