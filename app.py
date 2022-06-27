@@ -42,6 +42,7 @@ from AssetMappr.application.showAssetInfo_Planner_cb import showAssetInfo_Planne
 from AssetMappr.application.showStatCat_cb import showStatCat_cb
 from AssetMappr.application.showSuggestEdit_cb import showSuggestEdit_initial_cb
 from AssetMappr.application.submitSuggestEdit_cb import submitSuggestEdit_cb
+from AssetMappr.application.searchForName_cb import searchForName_cb
 # =============================================================================
 # Initialize app
 # =============================================================================
@@ -114,6 +115,7 @@ showAssetInfo_Planner_cb(app)
 showStatCat_cb(app, asset_categories)
 showSuggestEdit_initial_cb(app)
 submitSuggestEdit_cb(app)
+searchForName_cb(app, df, asset_categories)
 
 # =============================================================================
 # Run the app

@@ -16,22 +16,22 @@ from dash import html
 import dash_bootstrap_components as dbc
 
 
-
-
-
-
-def showCheckbox(master_categories, master_categories_desc):
+def showCheckbox(master_categories):
     return html.Div(className='first-panel', children=[
-        # search bar
+        # search bar for searching address
         dbc.Row([
             dbc.Textarea(id='address-search-tab1',
                          placeholder='Search for the street or area'),
             dbc.Button('Find', id='search-address-button-tab1', n_clicks=0),
-            html.Div(id='no-result-alert')]),
-
+           
+        
+        dbc.Row([
+            html.Div(id='no-result-alert')])
+        ]),
+        
         html.Br(),
-
-
+        html.Hr(),
+        # search bar for searching asset name
 
 
         # Checklist to select categories of assets to display on the map
@@ -43,11 +43,10 @@ def showCheckbox(master_categories, master_categories_desc):
         ),
         # Checklist with options drawing from master_categories list
         dcc.Checklist(id="recycling_type",
-            value=[x for x in master_categories],
-            options=[
-                {'value': x, 'label': str(x), 'title': str(x)} for x in master_categories]),
+                      value=[x for x in master_categories],
+                      options=[
+                          {'value': x, 'label': str(x), 'title': str(x)} for x in master_categories]),
 
         html.Hr(),
 
     ])
-

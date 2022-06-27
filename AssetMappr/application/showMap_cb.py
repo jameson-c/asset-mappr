@@ -63,8 +63,16 @@ def showMap_cb(app, df, asset_categories):
         #     map_df.loc[map_df['category'] == item[0],
         #                'colorBasedCategory'] = item[1]
         # These symbols are from: https://labs.mapbox.com/maki-icons
-        symbolList = ['park', 'museum', 'school', 'hospital', 'lodging', 'place-of-worship', 'toilet', 'bus',
-                      'grocery', 'park', 'library', 'circle-stroked', 'bank']
+        symbolList = ['park', 'museum', 'school', 'hospital',
+                      'lodging',
+                      'place-of-worship',
+                      'toilet',
+                      'bus',
+                      'grocery',
+                      'park',
+                      'library',
+                      'circle-stroked',
+                      'bank']
 
         # Zip the categoryList and symbolList. Each category has their different symbol.
         for item in zip(categoryList, symbolList):
@@ -95,7 +103,7 @@ def showMap_cb(app, df, asset_categories):
 
         if n_clicks == 0:
             layout = go.Layout(
-                # uirevision='foo',  # preserves state of figure/map after callback activated
+                uirevision='foo',  # preserves state of figure/map after callback activated
                 clickmode='event+select',
                 hovermode='closest',
                 hoverdistance=2,
@@ -125,7 +133,7 @@ def showMap_cb(app, df, asset_categories):
             google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
 
             # Adding Uniontown PA to make the search more accurate (to generalize)
-            address_search = address_search_1 + ' Uniontown,PA'
+            address_search = address_search_1 + ' Uniontown, PA'
 
             params = {'key': google_api_key,
                       'address': address_search}
@@ -141,7 +149,7 @@ def showMap_cb(app, df, asset_categories):
                 lon = result['results'][0]['geometry']['location']['lng']
 
                 layout = go.Layout(
-                    # uirevision='foo',  # preserves state of figure/map after callback activated
+                    uirevision=address_search_1,  # preserves state of figure/map after callback activated
                     clickmode='event+select',
                     hovermode='closest',
                     hoverdistance=2,
@@ -167,10 +175,9 @@ def showMap_cb(app, df, asset_categories):
                     'data': locations,
                     'layout': layout
                 }, None
-
             else:
                 layout = go.Layout(
-                    # uirevision='foo',  # preserves state of figure/map after callback activated
+                    uirevision='foo',  # preserves state of figure/map after callback activated
                     clickmode='event+select',
                     hovermode='closest',
                     hoverdistance=2,
