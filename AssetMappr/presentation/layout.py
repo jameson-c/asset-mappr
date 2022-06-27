@@ -95,23 +95,26 @@ def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories
 
             # Tab 3: Page to planner view (name is tbd)
             dcc.Tab(id='tab3', label='Planner View', children=[
-                
+
                 dbc.Row([
-                    
+
                     dbc.Col([
                         showMap_Planner(),
-                        
-                        tableDownload_Planner(),
-                        
-                        ]),
-                    
+                    ])
+
+                ]),
+
+                dbc.Row([
+
                     dbc.Col([
-                        catSummary_Planner(),
                         topAssets_Planner(df, rating_score, rating_values)
-                        ])
-                    
-                    ]),
+                    ])
+                ]),
                 
+                dbc.Row([
+                    tableDownload_Planner(),
+                ]),
+
             ]),
 
         ]),

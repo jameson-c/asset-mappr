@@ -11,38 +11,50 @@ Input
 Output:
     - HTML Div, called in makeLayout()
 """
+from turtle import width
 from dash import dcc
 import dash_bootstrap_components as dbc
 from dash import html
-import plotly.express as px
+
 
 def showMap_Planner():
     return html.Div([
-        
-        html.H5('What would you like to see on the map?'),
 
         dbc.Row([
-            
+
+            dbc.Col(className="title-what",
+                    children=[html.H5('What would you like to see on the map?')], width=6),
+            dbc.Col(className="title-what", children=[
+                    html.H5('What type of category-wise summary would you like to see?')], width=6)
+        ]),
+
+
+        dbc.Row([
+
             dbc.Col([
-                html.H6('Type of assets'),
-        
+                html.H6(className='subtitle-for-dropdown',
+                        children=['Type of assets:']),
+
                 # Dropdown to choose the type of assets to display on the map
                 dcc.Dropdown(
-                        id='choose-the-source',
-                        options=[
-                            {"label": "Existing Assets", "value": 'Existing Assets'},
-                            {"label": "Suggested 'Missing' Assets", "value": 'Missing Assets'},
-                            {"label": "All", "value": 'All'}],
-                        value='Existing Assets',
-                        multi=False
-                    ),                
-                
-                ]),
-            
+                    id='choose-the-source',
+                    options=[
+                        {"label": "Existing Assets",
+                         "value": 'Existing Assets'},
+                        {"label": "Suggested 'Missing' Assets",
+                         "value": 'Missing Assets'},
+                        {"label": "All", "value": 'All'}],
+                    value='Existing Assets',
+                    multi=False
+                ),
+
+            ], width=3),
+
             dbc.Col([
 
-                html.H6('Type of map'),
-                
+                html.H6(className='subtitle-for-dropdown',
+                        children=['Type of map:']),
+
                 # Dropdown to decide the type of map to show
                 dcc.Dropdown(
                     id='map-type',
@@ -50,17 +62,53 @@ def showMap_Planner():
                         {"label": 'Points', 'value': 'Points'},
                         {'label': 'Heatmap', 'value': 'Heatmap'},
                         {'label': 'Both', 'value': 'Both'}
-                        ],
+                    ],
                     value='Points',
                     multi=False
-                    ),                
-                ])
-            
-            ]),
-        
-        # Graph object/placeholder for map created in callback
-        dcc.Graph(id='graph-for-planner',
-                  config={'displayModeBar': True, 'scrollZoom': True})
+                ),
+            ], width=3),
 
+
+            dbc.Col([
+                dbc.Row([
+                    html.H6(className='subtitle-for-dropdown',
+                            children=['Select statistic:']),
+                    dcc.Dropdown(
+                        id='choose-the-stat',
+                        options=[
+                            {"label": "Number of existing assets",
+                                "value": 'count_number'},
+                            {"label": "Average of all ratings for assets",
+                             "value": 'rating_avg'},
+                            {"label": "Number of suggested (missing) assets",
+                             "value": 'num_missing'}
+                        ],
+                        value='count_number',
+                        multi=False
+                    )
+
+                ])
+
+                # Dropdown to choose the type of category-wise stat user wants to see
+            ], width=3)
+
+
+        ]),
+
+        dbc.Row([
+
+            dbc.Col([
+                # Graph object/placeholder for map created in callback
+                dcc.Graph(id='graph-for-planner', config={'displayModeBar': True, 'scrollZoom': True},
+                          style={'background': '#00FC87', 'height': '70vh', 'width': '100vh'})]),
+
+            dbc.Col([
+                # Graph component to hold the graph created in the callback
+                dcc.Graph(id='bar-chart-for-planner',
+                          style={'background': '#00FC87', 'height': '70vh', 'width': '100vh'})
+            ])
+
+        ]),
+        html.Hr()
 
     ])
