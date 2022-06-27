@@ -33,7 +33,6 @@ from AssetMappr.presentation.submitRating import submitRating
 from AssetMappr.presentation.submitNewAsset import submitNewAsset
 from AssetMappr.presentation.suggestMissingAsset import suggestMissingAsset
 from AssetMappr.presentation.showMap_Planner import showMap_Planner
-from AssetMappr.presentation.catSummary_Planner import catSummary_Planner
 from AssetMappr.presentation.topAssets_Planner import topAssets_Planner
 from AssetMappr.presentation.tableDownload_Planner import tableDownload_Planner
 

@@ -99,16 +99,18 @@ def showMap_Planner():
 
             dbc.Col([
                 # Graph object/placeholder for map created in callback
-                dcc.Graph(id='graph-for-planner', config={'displayModeBar': True, 'scrollZoom': True},
-                          style={'background': '#00FC87', 'height': '70vh', 'width': '100vh'})]),
+                dcc.Graph(id='graph-for-planner',
+                          config={'displayModeBar': True, 'scrollZoom': True})
+            ], width=6),
+            # style={'background': '#00FC87', 'height': '70vh', 'width': '100vh'})
 
             dbc.Col([
                 # Graph component to hold the graph created in the callback
-                dcc.Graph(id='bar-chart-for-planner',
-                          style={'background': '#00FC87', 'height': '70vh', 'width': '100vh'})
-            ])
+                dcc.Graph(id='bar-chart-for-planner')
+            ], width=6)
 
-        ]),
+        ],class_name="g-0"),
+        
         html.Hr()
 
     ])

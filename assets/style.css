@@ -66,7 +66,7 @@ Desc: This is css file, to change the web layout.
 #map-type,
 #choose-the-source,
 #choose-the-stat {
-    width: 20em;
+    /* width: 20em; */
     margin-left: 18px;
 
 }
@@ -91,7 +91,6 @@ Desc: This is css file, to change the web layout.
 
 
 #choose-the-table-source {
-    width: 24em;
     margin-left: 20px;
 }
 

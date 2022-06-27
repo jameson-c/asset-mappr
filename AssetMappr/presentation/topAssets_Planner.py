@@ -88,7 +88,7 @@ def topAssets_Planner(df, rating_score, rating_values):
 
         # Header for the 'top' 2 assets section
 
-        html.H5('Top assets by rating \U0001F603', style={
+        html.H5('Top assets by rating', style={
                 'font-size': '23px', 'font-weight': 'bold', 'color': 'darkolivegreen'}),
 
         # CardGroup groups the two display cards together, so they're the same height/appear in the same row
@@ -110,7 +110,8 @@ def topAssets_Planner(df, rating_score, rating_values):
                     html.Br(),
 
                     # Displaying the randomly chosen comment in quotation marks
-                    html.P(' "{}" '.format(df['comments'].iloc[-1])),
+                    html.P([' "{}" '.format(df['comments'].iloc[-1])],
+                           style={'margin-top': '10px'}),
 
                 ]),
 
@@ -135,7 +136,8 @@ def topAssets_Planner(df, rating_score, rating_values):
 
                     html.Br(),
 
-                    html.P('''"{}"'''.format(df['comments'].iloc[-2])),
+                    html.P('''"{}"'''.format(
+                        df['comments'].iloc[-2]), style={'margin-top': '10px'}),
 
                 ]),
 
@@ -149,7 +151,7 @@ def topAssets_Planner(df, rating_score, rating_values):
         ]),
         html.Br(),
 
-        html.H5('Bottom assets by rating \U0001F928', style={
+        html.H5('Bottom assets by rating', style={
                 'font-size': '23px', 'font-weight': 'bold', 'color': 'maroon'}),
 
         # Cardgroup for bottom 2 assets - same structure followed as for top assets
@@ -169,7 +171,8 @@ def topAssets_Planner(df, rating_score, rating_values):
 
                     html.Br(),
 
-                    html.P('''"{}"'''.format(df['comments'].iloc[0])),
+                    html.P('''"{}"'''.format(df['comments'].iloc[0]), style={
+                           'margin-top': '18px'}),
 
                 ]),
 
@@ -193,7 +196,7 @@ def topAssets_Planner(df, rating_score, rating_values):
                     html.Br(),
 
 
-                    html.P('''"{}"'''.format(df['comments'].iloc[1])),
+                    html.P('''"{}"'''.format(df['comments'].iloc[1]),style={'margin-top': '10px'}),
 
                 ]),
 

@@ -115,19 +115,23 @@ def tableDownload_Planner_cb(app, df, asset_categories, missing_assets, rating_s
         nonlocal df, missing_df
 
         if type_of_assets == 'Existing Assets':
-
+            print(df.columns.values)
             # Data needs to be converted into a dictionary format to be read by dash Data Table
             tmpdta = df.to_dict('rows')
-            tmpcols = [{"name": i, "id": i, } for i in (df.columns)]
+            data_columns = ['Asset ID', 'Asset Name', 'Description', 'Address', 'Website', 'Category1','Category2',
+                        'Popular Value Tag' ,'Average Rating Score' ,'Number of Ratings','Comments']
+            df_columns = ['asset_id','asset_name', 'description' ,'address', 'website' ,'category_1','category_2' ,
+                      'most_common_rated_value' ,'avg_asset_rating' ,'num_ratings','all_comments']
+
 
         # Case when type = Missing Assets
         else:
             # Data needs to be converted into a dictionary format to be read by dash Data Table
             tmpdta = missing_df.to_dict('rows')
-            tmpcols = [{"name": i, "id": i, } for i in (missing_df.columns)]
-
+            data_columns = ['Asset Name','Description','Primary Category','Address','Justification','Time']
+            df_columns = ['missing_asset_name','description','primary_category','address','justification','generated_timestamp']
         # Return a Dash Data Table with the relevant data
-        return dash_table.DataTable(data=tmpdta, columns=tmpcols,
+        return dash_table.DataTable(data=tmpdta,columns=[{'name': col, 'id': df_columns[idx]} for (idx, col) in enumerate(data_columns)],
                                     style_data_conditional=[{
                                         'if': {'row_index': 'odd'},
                                         'backgroundColor': 'rgb(220, 220, 220)'
@@ -145,13 +149,12 @@ def tableDownload_Planner_cb(app, df, asset_categories, missing_assets, rating_s
                                         'backgroundColor': 'white',
                                         'color': 'darkolivegreen',
                                         'fontSize': 16,
+                                        'textAlign':'center'
 
                                     },
                                     style_cell={
                                         'textAlign': 'left', 'fontSize': 13, 'font-family': 'sans-serif'},
-                                    fixed_rows={'headers': True, 'data': 0}
-
-                                    )
+                                    fixed_rows={'headers': True, 'data': 0})
 
     # This callback interacts with the download button to download the table data as an Excel file
     @app.callback(

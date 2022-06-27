@@ -22,7 +22,7 @@ def tableDownload_Planner():
         html.Hr(),
 
         html.Div(className="title-what",
-                children=[html.H5('What would you like to see in the table?')]),
+                 children=[html.H5('What would you like to see in the table?')]),
 
         dbc.Row([
 
@@ -32,7 +32,7 @@ def tableDownload_Planner():
             ]),
 
         ]),
-        
+
         dbc.Row([
             dbc.Col([
                     dcc.Dropdown(
@@ -43,14 +43,14 @@ def tableDownload_Planner():
                             {"label": "Suggested 'Missing' Assets", "value": 'Missing Assets'}],
                         value='Missing Assets',
                         multi=False)
-                    ], width=3),
+                    ], width=4),
             # Button to click to download the data in an Excel file (the data displayed in the table)
             dbc.Col([
                 dbc.Button("Download data", id="download_button"),
                 dcc.Download(id="download-dataframe-xlsx")
             ], width=3)
 
-        ], className="g-0"),
+        ]),
 
         dbc.Row([
             # Place holder for the table that will be outputted by the linked callback
