@@ -115,12 +115,11 @@ def tableDownload_Planner_cb(app, df, asset_categories, missing_assets, rating_s
         nonlocal df, missing_df
 
         if type_of_assets == 'Existing Assets':
-            print(df.columns.values)
             # Data needs to be converted into a dictionary format to be read by dash Data Table
             tmpdta = df.to_dict('rows')
-            data_columns = ['Asset ID', 'Asset Name', 'Description', 'Address', 'Website', 'Category1','Category2',
+            data_columns = ['Asset Name', 'Description', 'Address', 'Website', 'Category1','Category2',
                         'Popular Value Tag' ,'Average Rating Score' ,'Number of Ratings','Comments']
-            df_columns = ['asset_id','asset_name', 'description' ,'address', 'website' ,'category_1','category_2' ,
+            df_columns = ['asset_name', 'description' ,'address', 'website' ,'category_1','category_2' ,
                       'most_common_rated_value' ,'avg_asset_rating' ,'num_ratings','all_comments']
 
 
