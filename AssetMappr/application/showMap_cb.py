@@ -42,18 +42,18 @@ def showMap_cb(app, df, asset_categories):
 
     @app.callback(
         Output('graph', 'figure'),
-        Output('no-result-alert','children'),
+        Output('no-result-alert', 'children'),
         [Input('recycling_type', 'value'),
          Input('search-address-button-tab1', 'n_clicks')],
         State('address-search-tab1', 'value'))
     def update_figure(chosen_recycling, n_clicks, address_search_1):
         # Nonlocal tells this nested function to access map_df from the outer function - otherwise throws an undefined error
         nonlocal map_df
-        #We should change this part when the categories are changed. Becuase each category has one symbol, it is a one on one thing, we have to manually choose the symbol for each category.
+        # We should change this part when the categories are changed. Becuase each category has one symbol, it is a one on one thing, we have to manually choose the symbol for each category.
         categoryList = ["Sports and recreation", "Culture and history", "Education and workforce development",
                         "Healthcare", "Housing", "Places of worship", "Community service and assistance", "Transport and infrastructure",
                         "Food access", "Nature and parks", "Libraries", "Economic development opportunities", "Local business and economy"]
-        #keep it as a backup choice: You can change the color only for the circle, by now, we aren't be able to change the symbols' colors
+        # keep it as a backup choice: You can change the color only for the circle, by now, we aren't be able to change the symbols' colors
 
         # colorList = ['#000000', '#003786', '#0e58a8', '#30a4ca', '#54c8df', '#9be4ef',
         #              '#e1e9d1', '#f3d573', '#e7b000', '#da8200', '#c65400',  '#498534',  '#217eb8']
@@ -62,8 +62,8 @@ def showMap_cb(app, df, asset_categories):
         # for item in zip(categoryList, colorList):
         #     map_df.loc[map_df['category'] == item[0],
         #                'colorBasedCategory'] = item[1]
-        #These symbols are from: https://labs.mapbox.com/maki-icons
-        symbolList = ['american-football', 'museum', 'school', 'hospital-JP',
+        # These symbols are from: https://labs.mapbox.com/maki-icons
+        symbolList = ['park', 'museum', 'school', 'hospital',
                       'lodging',
                       'place-of-worship',
                       'toilet',
@@ -124,17 +124,16 @@ def showMap_cb(app, df, asset_categories):
                 ),
             )
             return {
-            'data': locations,
-            'layout': layout
-        }, None
-
+                'data': locations,
+                'layout': layout
+            }, None
 
         else:
             # Geocode the lat-lng using Google Maps API
             google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
 
             # Adding Uniontown PA to make the search more accurate (to generalize)
-            address_search = address_search_1 + 'PA'
+            address_search = address_search_1 + ' Uniontown, PA'
 
             params = {'key': google_api_key,
                       'address': address_search}
@@ -143,14 +142,14 @@ def showMap_cb(app, df, asset_categories):
 
             response = requests.get(url, params)
             result = json.loads(response.text)
-            
+
             if result['status'] not in ['INVALID_REQUEST', 'ZERO_RESULTS']:
 
                 lat = result['results'][0]['geometry']['location']['lat']
                 lon = result['results'][0]['geometry']['location']['lng']
 
                 layout = go.Layout(
-                    uirevision='foo',  # preserves state of figure/map after callback activated
+                    uirevision=address_search_1,  # preserves state of figure/map after callback activated
                     clickmode='event+select',
                     hovermode='closest',
                     hoverdistance=2,
@@ -161,7 +160,7 @@ def showMap_cb(app, df, asset_categories):
                     mapbox=dict(
                         accesstoken=mapbox_access_token,
                         bearing=25,
-                        style='streets',
+                        style='light',
                         center=dict(
                             lat=lat,
                             lon=lon
@@ -175,7 +174,7 @@ def showMap_cb(app, df, asset_categories):
                 return {
                     'data': locations,
                     'layout': layout
-                },None
+                }, None
             else:
                 layout = go.Layout(
                     uirevision='foo',  # preserves state of figure/map after callback activated
@@ -189,7 +188,7 @@ def showMap_cb(app, df, asset_categories):
                     mapbox=dict(
                         accesstoken=mapbox_access_token,
                         bearing=25,
-                        style='streets',
+                        style='light',
                         center=dict(
                             lat=39.8993885,
                             lon=-79.7249338
@@ -201,4 +200,4 @@ def showMap_cb(app, df, asset_categories):
                 return {
                     'data': locations,
                     'layout': layout
-                },html.Div("invalid address")
+                }, html.Div("invalid address")
