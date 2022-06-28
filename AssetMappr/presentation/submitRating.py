@@ -14,23 +14,17 @@ Other notes:
     - This interacts with the submitRating_cb in 'application'
 
 """
-import dash
-from dash.dependencies import Input, Output, State
-from dash import dash_table
 from dash import dcc
 from dash import html
-import pandas as pd
-from matplotlib import style
 import dash_daq as daq
-from sqlalchemy import true
 
 
 def submitRating(tagList_pos):
 
     return html.Div(className='third-panel-rating', children=[
+
         # How do you feel about XXX(asset-name)?
-        html.H5(id='HowDoYouFeel', style={
-                'color': 'dimgray', 'font-size': '15px'}),
+        html.H5(id='HowDoYouFeel'),
 
         # Slider bar to score the asset
         html.H5(
@@ -57,7 +51,8 @@ def submitRating(tagList_pos):
         # Value tag options
         dcc.Dropdown(
             id='value-tag',
-            options=[{'label': i, 'value': i,'title':i} for i in tagList_pos],
+            options=[{'label': i, 'value': i, 'title': i}
+                     for i in tagList_pos],
             value=None,
             multi=True
         ),

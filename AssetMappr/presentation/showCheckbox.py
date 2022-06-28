@@ -18,10 +18,7 @@ import dash_bootstrap_components as dbc
 
 def showCheckbox(master_categories, master_categories_desc):
     # Prepare for hovertext on category
-    for i in master_categories_desc:
-        i.lower()
     res = dict(zip(master_categories, master_categories_desc))
-    print(res)
     return html.Div(className='first-panel', children=[
         # search bar for searching address
         dbc.Row([
@@ -34,10 +31,10 @@ def showCheckbox(master_categories, master_categories_desc):
                 html.Div(id='no-result-alert')])
         ]),
 
-        html.Br(),
         html.Hr(),
         # search bar for searching asset name
-
+        dbc.Row([
+                html.Div('Filter By Category', style={'font-size': '16px', 'font-weight': '150px', 'color': 'darkslategray', 'font-family': 'Verdana', 'margin-bottom': '10px'})]),
 
         # Checklist to select categories of assets to display on the map
         dcc.Checklist(
@@ -47,17 +44,16 @@ def showCheckbox(master_categories, master_categories_desc):
             labelStyle={"display": "inline-block"},
         ),
 
-
-
         dbc.Container([
             dbc.Checklist(id="recycling_type",
                           value=[x for x in master_categories],
                       options=[
                               {'value': x, 'label': str(x), 'label_id': str(x)} for x in master_categories
-                      ])
+                          ])
         ]
-            #to show the hover text
-            + [dbc.Tooltip(res[i], target=i, placement='left-start',style={'text-transform':'lowercase'}) for i in res]
+            # to show the hover text
+            + [dbc.Tooltip(res[i], target=i, placement='left-start',
+                           style={'text-transform': 'lowercase'}) for i in res]
         ),
 
 
