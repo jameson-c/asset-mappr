@@ -132,6 +132,7 @@ def tableDownload_Planner_cb(app, df, asset_categories, missing_assets, rating_s
             df_columns = ['missing_asset_name','description','primary_category','address','justification','generated_timestamp']
         # Return a Dash Data Table with the relevant data
         return dash_table.DataTable(data=tmpdta,columns=[{'name': col, 'id': df_columns[idx]} for (idx, col) in enumerate(data_columns)],
+                                    filter_action='native',
                                     style_data_conditional=[{
                                         'if': {'row_index': 'odd'},
                                         'backgroundColor': 'rgb(220, 220, 220)'

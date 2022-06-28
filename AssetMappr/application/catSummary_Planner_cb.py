@@ -47,6 +47,7 @@ def catSummary_Planner_cb(app, master_categories, asset_categories, missing_asse
                                                       tot_ratings=(
                                                           'num_ratings', 'sum'),
                                                       unique_assets=('asset_id', pd.Series.nunique))
+    print(cat_ratings.head(100))
 
     # Counts by primary category for missing/suggested assets
     missing_cat_counts = missing_assets.groupby('primary_category').agg(
@@ -79,15 +80,20 @@ def catSummary_Planner_cb(app, master_categories, asset_categories, missing_asse
         elif stat_type == 'rating_avg':
             barchart = px.bar(
                 cat_ratings,
-                x=cat_ratings['avg_cat_rating'],
+                x=round(cat_ratings['avg_cat_rating'], 2),
                 # color="INDEX_NAME",
                 opacity=0.9,
                 barmode='group',
+                custom_data=[cat_ratings['tot_ratings'],cat_ratings['unique_assets']],
                 # Average score: (), from () ratings across () assets
                 labels={
-                    "avg_cat_rating": "Average rating {} from {} ratings across () assets".format(cat_ratings['avg_cat_rating'])},
+                    "avg_cat_rating": "Average rating () from () ratings across () assets"},
                 title="Average asset ratings by category",
                 orientation='h')
+
+            barchart.update_traces(
+                hovertemplate='Average rating %{x} from %{customdata[0]} ratings across %{customdata[1]} assets <extra></extra>')
+
             barchart.update_layout(
                 yaxis={'categoryorder': 'total ascending'}, yaxis_title=None)
 
