@@ -37,7 +37,7 @@ def showCheckbox(master_categories, master_categories_desc):
                 html.Div('Filter By Category', style={'font-size': '16px', 'font-weight': '150px', 'color': 'darkslategray', 'font-family': 'Verdana', 'margin-bottom': '10px'})]),
 
         # Checklist to select categories of assets to display on the map
-        dcc.Checklist(
+        dbc.Checklist(
             id="all-or-none",
             options=[{"label": "Select All", "value": "All"}],
             value=["All"],
