@@ -33,16 +33,20 @@ def submitRating(tagList_pos):
         # Different responses based on different rate score
         html.Div(id='rating-remind'),
 
-        # Slider for rating
-        daq.Slider(
-            min=1,
-            max=5,
-            handleLabel={"showCurrentValue": True,
-                         "label": "value"},
-            step=1,
-            id='rating-score',
-            size=300,
-        ),
+        html.Div(id='slider', children=[
+            # Slider for rating
+            dcc.Slider(
+                min=1,
+                max=5,
+                tooltip={"placement": "top", "always_visible": True},
+                step=1,
+                id='rating-score',
+            ),
+
+        ]),
+
+
+
         html.Br(),
         # Choose the value tags
         html.H5(

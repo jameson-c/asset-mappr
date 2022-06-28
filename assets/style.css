@@ -259,13 +259,17 @@ a:active {
 
 /*Slider setting*/
 #rating-score {
-    margin-top: 10%;
     margin-bottom: 2%;
-    margin-left: 18px
+    margin-left: 18px;
+    margin-right: 8px
 }
 
 #rating-remind {
     margin-left: 18px
+}
+
+#slider {
+    width: auto;
 }
 
 /*Text area setting*/
@@ -303,12 +307,10 @@ a:active {
     margin-left: 18px;
     background-color: #4CAF50;
     color: white;
-    /* padding: 10px 15px; */
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
-    width: 310px;
 }
 
 #open-asset-submit:hover {
