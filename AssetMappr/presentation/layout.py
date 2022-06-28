@@ -55,7 +55,7 @@ def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories
                 dbc.Row([
                     dbc.Col([
                         # Outputs an option to select categories
-                        showCheckbox(master_categories),
+                        showCheckbox(master_categories,master_categories_desc),
                         # Displays the function to submit new assets
                         html.H6(
                             'Know about an asset we don\'t have? Tell us about it! \U0001f447', id='know'),
