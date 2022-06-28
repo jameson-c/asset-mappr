@@ -23,7 +23,8 @@ import pandas as pd
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 import uuid
-from AssetMappr.application.showMap_Planner_cb import showMap_Planner_cb
+from dash import dash_table
+
 
 # Import the function that reads data from the DB
 from AssetMappr.database.readDB import readDB
@@ -38,11 +39,14 @@ from AssetMappr.application.showMap_cb import showMap_cb
 from AssetMappr.application.submitRating_cb import submitRating_cb
 from AssetMappr.application.submitNewAsset_cb import submitNewAsset_cb
 from AssetMappr.application.suggestMissingAsset_cb import suggestMissingAsset_cb
-from AssetMappr.application.showAssetInfo_Planner_cb import showAssetInfo_Planner_cb
-from AssetMappr.application.showStatCat_cb import showStatCat_cb
 from AssetMappr.application.showSuggestEdit_cb import showSuggestEdit_initial_cb
 from AssetMappr.application.submitSuggestEdit_cb import submitSuggestEdit_cb
-from AssetMappr.application.searchForName_cb import searchForName_cb
+
+
+from AssetMappr.application.showMap_Planner_cb import showMap_Planner_cb
+from AssetMappr.application.catSummary_Planner_cb import catSummary_Planner_cb
+from AssetMappr.application.tableDownload_Planner_cb import tableDownload_Planner_cb
+
 # =============================================================================
 # Initialize app
 # =============================================================================
@@ -59,7 +63,8 @@ community_lat = 39.8993885
 community_long = -79.7249338
 
 # Load data from the postgreSQL database (this will eventually depend on community input chosen)
-df, asset_categories, master_categories, master_categories_desc, tagList_pos, tagList_neg, missing_assets, rating_score = readDB(
+
+df, asset_categories, master_categories, master_categories_desc, tagList_pos, tagList_neg, missing_assets, rating_score, rating_values = readDB(
     app)
 
 # This column demarcates between assets read in from the DB and staged assets added by the user
@@ -97,7 +102,8 @@ def display_page(pathname):
     # If the user navigates to the main home page of the app
     # Note: there is a link in the landing_page that takes users to the home page
     if pathname == '/home':
-        return makeLayout(df, master_categories, tagList_neg, tagList_pos, asset_categories, master_categories_desc)
+        return makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories, master_categories_desc,rating_score, rating_values)
+
 
 # =============================================================================
 # Callbacks
@@ -107,15 +113,14 @@ def display_page(pathname):
 # Applying all the callbacks, passing relevant inputs so they can be used in the callbacks
 showMap_cb(app, df, asset_categories)
 showAssetInfo_cb(app)
+showSuggestEdit_initial_cb(app)
+submitSuggestEdit_cb(app)
 submitRating_cb(app, tagList_pos, tagList_neg)
 submitNewAsset_cb(app, df, asset_categories)
 suggestMissingAsset_cb(app)
 showMap_Planner_cb(app, df, asset_categories, missing_assets, rating_score)
-showAssetInfo_Planner_cb(app)
-showStatCat_cb(app, asset_categories)
-showSuggestEdit_initial_cb(app)
-submitSuggestEdit_cb(app)
-searchForName_cb(app, df, asset_categories)
+catSummary_Planner_cb(app, master_categories, asset_categories, missing_assets, rating_score)
+tableDownload_Planner_cb(app, df, asset_categories, missing_assets, rating_score, rating_values)
 
 # =============================================================================
 # Run the app

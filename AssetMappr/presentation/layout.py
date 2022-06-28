@@ -23,6 +23,7 @@ Output:
 from dash import dcc
 from dash import html
 import dash_bootstrap_components as dbc
+from dash import dash_table
 
 
 # Importing all the layout components
@@ -32,6 +33,8 @@ from AssetMappr.presentation.submitRating import submitRating
 from AssetMappr.presentation.submitNewAsset import submitNewAsset
 from AssetMappr.presentation.suggestMissingAsset import suggestMissingAsset
 from AssetMappr.presentation.showMap_Planner import showMap_Planner
+from AssetMappr.presentation.topAssets_Planner import topAssets_Planner
+from AssetMappr.presentation.tableDownload_Planner import tableDownload_Planner
 from AssetMappr.presentation.showCheckbox import showCheckbox
 
 # =============================================================================
@@ -39,7 +42,7 @@ from AssetMappr.presentation.showCheckbox import showCheckbox
 # =============================================================================
 
 
-def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories, master_categories_desc):
+def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories, master_categories_desc,rating_score, rating_values):
 
     return html.Div([
 
@@ -79,7 +82,26 @@ def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories
 
             # Tab 3: Page to planner view (name is tbd)
             dcc.Tab(id='tab3', label='Planner View', children=[
-                showMap_Planner()
+
+                dbc.Row([
+
+                    dbc.Col([
+                        showMap_Planner(),
+                    ])
+
+                ]),
+
+                dbc.Row([
+
+                    dbc.Col([
+                        topAssets_Planner(df, rating_score, rating_values)
+                    ])
+                ]),
+                
+                dbc.Row([
+                    tableDownload_Planner(),
+                ]),
+
             ]),
 
         ]),
