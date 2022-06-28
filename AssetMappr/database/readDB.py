@@ -26,7 +26,7 @@ import pandas as pd
 from flask_sqlalchemy import SQLAlchemy
 
 
-def readDB(app, community_geo_id=False):
+def readDB(community_geo_id=False):
 
     # con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a/assetmappr_database'
 
@@ -56,4 +56,7 @@ def readDB(app, community_geo_id=False):
 
     rating_score = pd.read_sql_table('staged_ratings', con=con_string)
 
-    return df, asset_categories, master_categories, master_categories_desc, tagList_pos, tagList_neg, missing_assets, rating_score
+    rating_values = pd.read_sql_table('staged_values', con=con_string)
+    
+
+    return df, asset_categories, master_categories, master_categories_desc, tagList_pos, tagList_neg, missing_assets, rating_score,rating_values

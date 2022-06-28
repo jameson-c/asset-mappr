@@ -16,6 +16,15 @@ Desc: This is css file, to change the web layout.
 }
 
 
+.subtitle-for-dropdown {
+    color: #555;
+    font-size: 17px;
+    margin-left: 18px;
+}
+
+#select-statistic {
+    margin-left: 20px;
+}
 
 /*Buttons*/
 #submit-rating-button {
@@ -48,20 +57,55 @@ Desc: This is css file, to change the web layout.
 
 }
 
-#choose-the-source,
-#choose-the-stat {
+#choose-the-source {
     margin-left: 18px;
-    width: 40%;
 }
 
 
+
+#graph,
 #graph-for-planner,
 #bar-chart-for-planner {
     margin-left: 18px;
-    width: 40%;
+    margin-right: 0;
+}
+
+#map-type,
+#choose-the-source,
+#choose-the-stat {
+    /* width: 20em; */
+    margin-left: 18px;
+
+}
+
+.title-what {
+    font-weight: bold;
+    color: darkolivegreen;
+    margin-top: 18px;
+    margin-left: 18px;
+}
+
+.card {
+    margin-left: 18px;
+    margin-right: 18px;
+}
+
+#data-table {
+    margin-left: 18px;
+    margin-right: 18px;
+    width: 105em;
+    height: 80em;
 }
 
 
+#choose-the-table-source {
+    margin-left: 20px;
+}
+
+#data-table {
+    margin-left: 18px;
+    margin-right: 18px;
+}
 
 #submit-rating-button:hover {
     margin-left: 18px;
@@ -149,6 +193,7 @@ Desc: This is css file, to change the web layout.
     height: auto;
 }
 
+
 #search-address-button-tab1 {
     padding-top: 8px;
     color: #FFF;
@@ -217,7 +262,6 @@ Desc: This is css file, to change the web layout.
     color: slategray;
     flex-direction: column;
     flex-wrap: wrap;
-
 }
 
 #display-asset-name {
@@ -313,9 +357,22 @@ a:active {
     font-size: 18px;
 }
 
+
 #open-asset-submit:hover {
     background-color: #157819;
     color: white;
+}
+
+#download_button {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    height: 38px;
+    width: 150px;
+    margin-bottom: 1em;
 }
 
 /* Hopes for the future page */
