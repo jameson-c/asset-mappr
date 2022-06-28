@@ -59,4 +59,4 @@ def readDB(community_geo_id=False):
     rating_values = pd.read_sql_table('staged_values', con=con_string)
     
 
-    return df, asset_categories, master_categories, master_categories_desc, tagList_pos, tagList_neg, missing_assets, rating_score
+    return df, asset_categories, master_categories, master_categories_desc, tagList_pos, tagList_neg, missing_assets, rating_score,rating_values

@@ -95,7 +95,7 @@ def catSummary_Planner_cb(app, master_categories, asset_categories, missing_asse
                 hovertemplate='Average rating %{x} from %{customdata[0]} ratings across %{customdata[1]} assets <extra></extra>')
 
             barchart.update_layout(
-                yaxis={'categoryorder': 'total ascending'}, yaxis_title=None)
+                yaxis={'categoryorder': 'total ascending'}, yaxis_title=None, xaxis_title='Average rating')
 
         # Barchart to show the count of missing assets for each category
         else:

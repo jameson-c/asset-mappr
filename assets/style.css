@@ -255,7 +255,6 @@ Desc: This is css file, to change the web layout.
     color: slategray;
     flex-direction: column;
     flex-wrap: wrap;
-
 }
 
 #display-asset-name {

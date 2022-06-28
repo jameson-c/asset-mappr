@@ -46,7 +46,7 @@ from AssetMappr.application.submitSuggestEdit_cb import submitSuggestEdit_cb
 from AssetMappr.application.showMap_Planner_cb import showMap_Planner_cb
 from AssetMappr.application.catSummary_Planner_cb import catSummary_Planner_cb
 from AssetMappr.application.tableDownload_Planner_cb import tableDownload_Planner_cb
- 
+
 # =============================================================================
 # Initialize app
 # =============================================================================
@@ -64,7 +64,7 @@ community_long = -79.7249338
 
 # Load data from the postgreSQL database (this will eventually depend on community input chosen)
 
-df, asset_categories, master_categories, master_categories_desc, tagList_pos, tagList_neg, missing_assets, rating_score = readDB(
+df, asset_categories, master_categories, master_categories_desc, tagList_pos, tagList_neg, missing_assets, rating_score, rating_values = readDB(
     app)
 
 # This column demarcates between assets read in from the DB and staged assets added by the user
@@ -102,7 +102,7 @@ def display_page(pathname):
     # If the user navigates to the main home page of the app
     # Note: there is a link in the landing_page that takes users to the home page
     if pathname == '/home':
-        return makeLayout(df, master_categories, tagList_neg, tagList_pos, asset_categories, master_categories_desc)
+        return makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories, master_categories_desc,rating_score, rating_values)
 
 
 # =============================================================================
@@ -118,17 +118,9 @@ submitSuggestEdit_cb(app)
 submitRating_cb(app, tagList_pos, tagList_neg)
 submitNewAsset_cb(app, df, asset_categories)
 suggestMissingAsset_cb(app)
-
 showMap_Planner_cb(app, df, asset_categories, missing_assets, rating_score)
-
 catSummary_Planner_cb(app, master_categories, asset_categories, missing_assets, rating_score)
 tableDownload_Planner_cb(app, df, asset_categories, missing_assets, rating_score, rating_values)
-
-showAssetInfo_Planner_cb(app)
-showStatCat_cb(app, asset_categories)
-showSuggestEdit_initial_cb(app)
-submitSuggestEdit_cb(app)
-
 
 # =============================================================================
 # Run the app

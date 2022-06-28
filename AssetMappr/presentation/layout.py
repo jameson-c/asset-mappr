@@ -42,7 +42,7 @@ from AssetMappr.presentation.showCheckbox import showCheckbox
 # =============================================================================
 
 
-def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories, master_categories_desc):
+def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories, master_categories_desc,rating_score, rating_values):
 
     return html.Div([
 
