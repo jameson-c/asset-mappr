@@ -35,15 +35,14 @@ from AssetMappr.presentation.suggestMissingAsset import suggestMissingAsset
 from AssetMappr.presentation.showMap_Planner import showMap_Planner
 from AssetMappr.presentation.topAssets_Planner import topAssets_Planner
 from AssetMappr.presentation.tableDownload_Planner import tableDownload_Planner
-
+from AssetMappr.presentation.showCheckbox import showCheckbox
 
 # =============================================================================
 # Function
 # =============================================================================
 
 
-def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories,
-               rating_score, rating_values):
+def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories, master_categories_desc):
 
     return html.Div([
 
@@ -57,34 +56,23 @@ def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories
 
                 # Row 1
                 dbc.Row([
-                    dbc.Col(
-                        html.H4(
-                            'Use the map below to view and select assets', id='useTheMap'),
-                    ),
-                ]),
-
-                # Row 2
-                dbc.Row([
-                    dbc.Col(
-                        # Outputs the map displaying assets and an option to select categories
-                        showMap(master_categories),
-                    ),
                     dbc.Col([
-                        # Displays information on the asset selected using the map click
-                        html.H5(
-                            'Click any asset in the map to see the detailed information:', id='info'),
-                        showAssetInfo(master_categories),
-                        html.Hr(),
-                        # Displays the functionality to rate the selected asset
-                        submitRating(tagList_pos),
-                        html.Br(),
-                        html.Hr(),
+                        # Outputs an option to select categories
+                        showCheckbox(master_categories,master_categories_desc),
                         # Displays the function to submit new assets
                         html.H6(
                             'Know about an asset we don\'t have? Tell us about it! \U0001f447', id='know'),
-                        submitNewAsset(master_categories),
-                    ]),
-                ]),
+                        submitNewAsset(master_categories)], width=3),
+                    # the map displaying assets
+                    dbc.Col(showMap(), width=6),
+                    dbc.Col([
+                        showAssetInfo(master_categories),
+                        # Displays the functionality to rate the selected asset
+                        submitRating(tagList_pos),
+                        html.Br(),
+                    ], width=3),
+                ], className="g-0"),
+                # , className="g-0"
             ]),
 
             # Tab 2: Page to suggest 'missing' assets, share other thoughts about community dev

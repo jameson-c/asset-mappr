@@ -34,27 +34,29 @@ def readDB(community_geo_id=False):
     con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a.ohio-postgres.render.com/assetmappr_database'
 
     # Load the categories master list
-    master_categories = pd.read_sql_table('categories_master', con=con_string)
-    master_categories = master_categories.values.tolist()
-    master_categories = [
-        item for sublist in master_categories for item in sublist]
+    master_category = pd.read_sql_table('categories_master', con=con_string)
+    master_categories = master_category['category'].values.tolist()
+    master_categories_desc = master_category['description'].values.tolist()
 
     # Load the values master list
     master_value_tags = pd.read_sql_table('values_master', con=con_string)
-    tagList_pos = master_value_tags.loc[master_value_tags['value_type'] == 'Positive', 'value'].tolist()
-    tagList_neg = master_value_tags.loc[master_value_tags['value_type'] == 'Negative', 'value'].tolist()
+    tagList_pos = master_value_tags.loc[master_value_tags['value_type']
+                                        == 'Positive', 'value'].tolist()
+    tagList_neg = master_value_tags.loc[master_value_tags['value_type']
+                                        == 'Negative', 'value'].tolist()
     master_value_tags = [i for i in master_value_tags['value']]
-    
+
     # Load the main assets database
     df = pd.read_sql_table('assets', con=con_string)
 
     # Load the asset-categories mapping database
     asset_categories = pd.read_sql_table('asset_categories', con=con_string)
-    
+
     missing_assets = pd.read_sql_table('missing_assets', con=con_string)
-    
+
     rating_score = pd.read_sql_table('staged_ratings', con=con_string)
-    
+
     rating_values = pd.read_sql_table('staged_values', con=con_string)
     
-    return df, asset_categories, master_categories, tagList_pos, tagList_neg, missing_assets, rating_score, rating_values
+
+    return df, asset_categories, master_categories, master_categories_desc, tagList_pos, tagList_neg, missing_assets, rating_score

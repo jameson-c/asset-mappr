@@ -48,6 +48,7 @@ CREATE TABLE SOURCES_MASTER(
 
 CREATE TABLE CATEGORIES_MASTER(
     category VARCHAR(200),
+    description TEXT,
     
     PRIMARY KEY(category)
     
