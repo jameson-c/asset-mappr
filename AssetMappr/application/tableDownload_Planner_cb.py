@@ -23,6 +23,7 @@ import pandas as pd
 import numpy as np
 from dash import dash_table
 from collections import OrderedDict
+import xlsxwriter
 
 
 def tableDownload_Planner_cb(app, df, asset_categories, missing_assets, rating_score, rating_values):
@@ -91,11 +92,13 @@ def tableDownload_Planner_cb(app, df, asset_categories, missing_assets, rating_s
     # Each unique comment is separated by " | "
     comments_df['all_comments'] = comments_df.groupby(
         'asset_id')['comments'].transform(lambda x: ' | '.join(x))
-    comments_df.drop_duplicates('asset_id')
+    comments_df = comments_df.drop_duplicates('asset_id')
 
     # Merge this onto the overall df
     df = pd.merge(
         df, comments_df[['asset_id', 'all_comments']], on='asset_id', how='left')
+    
+    df['avg_asset_rating'] = round(df['avg_asset_rating'], 2)
 
     ### MAKING THE MISSING ASSETS TABLE ###
 
@@ -117,20 +120,21 @@ def tableDownload_Planner_cb(app, df, asset_categories, missing_assets, rating_s
         if type_of_assets == 'Existing Assets':
             # Data needs to be converted into a dictionary format to be read by dash Data Table
             tmpdta = df.to_dict('rows')
-            data_columns = ['Asset Name', 'Description', 'Address', 'Website', 'Category1','Category2',
-                        'Popular Value Tag' ,'Average Rating Score' ,'Number of Ratings','Comments']
-            df_columns = ['asset_name', 'description' ,'address', 'website' ,'category_1','category_2' ,
-                      'most_common_rated_value' ,'avg_asset_rating' ,'num_ratings','all_comments']
-
+            data_columns = ['Asset Name', 'Description', 'Address', 'Website', 'Category1', 'Category2',
+                            'Popular Value Tag', 'Average Rating Score', 'Number of Ratings', 'Comments']
+            df_columns = ['asset_name', 'description', 'address', 'website', 'category_1', 'category_2',
+                          'most_common_rated_value', 'avg_asset_rating', 'num_ratings', 'all_comments']
 
         # Case when type = Missing Assets
         else:
             # Data needs to be converted into a dictionary format to be read by dash Data Table
             tmpdta = missing_df.to_dict('rows')
-            data_columns = ['Asset Name','Description','Primary Category','Address','Justification','Time']
-            df_columns = ['missing_asset_name','description','primary_category','address','justification','generated_timestamp']
+            data_columns = ['Asset Name', 'Description',
+                            'Primary Category', 'Address', 'Justification', 'Time']
+            df_columns = ['missing_asset_name', 'description', 'primary_category',
+                          'address', 'justification', 'generated_timestamp']
         # Return a Dash Data Table with the relevant data
-        return dash_table.DataTable(data=tmpdta,columns=[{'name': col, 'id': df_columns[idx]} for (idx, col) in enumerate(data_columns)],
+        return dash_table.DataTable(data=tmpdta, columns=[{'name': col, 'id': df_columns[idx]} for (idx, col) in enumerate(data_columns)],
                                     filter_action='native',
                                     style_data_conditional=[{
                                         'if': {'row_index': 'odd'},
@@ -143,18 +147,18 @@ def tableDownload_Planner_cb(app, df, asset_categories, missing_assets, rating_s
                                         'minWidth': '100px', 'width': '160px', 'maxWidth': '180px',
                                         'overflow': 'hidden',
                                         'textOverflow': 'ellipsis',
-                                    },
+        },
 
-                                    style_header={
+            style_header={
                                         'backgroundColor': 'white',
                                         'color': 'darkolivegreen',
                                         'fontSize': 16,
-                                        'textAlign':'center'
+                                        'textAlign': 'center'
 
-                                    },
-                                    style_cell={
+        },
+            style_cell={
                                         'textAlign': 'left', 'fontSize': 13, 'font-family': 'sans-serif'},
-                                    fixed_rows={'headers': True, 'data': 0})
+            fixed_rows={'headers': True, 'data': 0})
 
     # This callback interacts with the download button to download the table data as an Excel file
     @app.callback(

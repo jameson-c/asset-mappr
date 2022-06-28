@@ -47,7 +47,6 @@ def catSummary_Planner_cb(app, master_categories, asset_categories, missing_asse
                                                       tot_ratings=(
                                                           'num_ratings', 'sum'),
                                                       unique_assets=('asset_id', pd.Series.nunique))
-    print(cat_ratings.head(100))
 
     # Counts by primary category for missing/suggested assets
     missing_cat_counts = missing_assets.groupby('primary_category').agg(
