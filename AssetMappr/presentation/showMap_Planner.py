@@ -25,7 +25,7 @@ def showMap_Planner():
             dbc.Col(className="title-what",
                     children=[html.H5('What would you like to see on the map?')], width=6),
             dbc.Col(className="title-what", children=[
-                    html.H5('What type of category-wise summary would you like to see?')], width=6)
+                    html.H5('What type of category-wise summary would you like to see?')], style={'margin-left': 0}, width=5)
         ]),
 
 
@@ -72,7 +72,7 @@ def showMap_Planner():
             dbc.Col([
                 dbc.Row([
                     html.H6(className='subtitle-for-dropdown',
-                            children=['Select statistic:']),
+                            children=['Select statistic:'], id='select-statistic'),
                     dcc.Dropdown(
                         id='choose-the-stat',
                         options=[
@@ -109,8 +109,8 @@ def showMap_Planner():
                 dcc.Graph(id='bar-chart-for-planner')
             ], width=6)
 
-        ],class_name="g-0"),
-        
+        ], class_name="g-0"),
+
         html.Hr()
 
     ])

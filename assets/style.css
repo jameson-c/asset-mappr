@@ -19,8 +19,12 @@ Desc: This is css file, to change the web layout.
 .subtitle-for-dropdown {
     color: #555;
     font-size: 17px;
+    margin-left: 18px;
 }
 
+#select-statistic {
+    margin-left: 20px;
+}
 
 /*Buttons*/
 #submit-rating-button {
@@ -78,6 +82,7 @@ Desc: This is css file, to change the web layout.
     font-weight: bold;
     color: darkolivegreen;
     margin-top: 18px;
+    margin-left: 18px;
 }
 
 .card {

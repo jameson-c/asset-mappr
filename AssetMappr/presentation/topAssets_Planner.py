@@ -89,7 +89,7 @@ def topAssets_Planner(df, rating_score, rating_values):
         # Header for the 'top' 2 assets section
 
         html.H5('Top assets by rating', style={
-                'font-size': '23px', 'font-weight': 'bold', 'color': 'darkolivegreen'}),
+                'font-size': '23px', 'font-weight': 'bold', 'color': 'darkolivegreen', 'margin-left': '18px'}),
 
         # CardGroup groups the two display cards together, so they're the same height/appear in the same row
         dbc.CardGroup([
@@ -147,12 +147,11 @@ def topAssets_Planner(df, rating_score, rating_values):
 
             ]),
 
-
         ]),
         html.Br(),
 
         html.H5('Bottom assets by rating', style={
-                'font-size': '23px', 'font-weight': 'bold', 'color': 'maroon'}),
+                'font-size': '23px', 'font-weight': 'bold', 'color': 'maroon', 'margin-left': '18px'}),
 
         # Cardgroup for bottom 2 assets - same structure followed as for top assets
         dbc.CardGroup([
@@ -196,7 +195,8 @@ def topAssets_Planner(df, rating_score, rating_values):
                     html.Br(),
 
 
-                    html.P('''"{}"'''.format(df['comments'].iloc[1]),style={'margin-top': '10px'}),
+                    html.P('''"{}"'''.format(df['comments'].iloc[1]), style={
+                           'margin-top': '10px'}),
 
                 ]),
 
