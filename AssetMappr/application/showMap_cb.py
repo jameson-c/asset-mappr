@@ -166,7 +166,7 @@ def showMap_cb(app, df, asset_categories):
                             lon=lon
                         ),
                         pitch=40,
-                        zoom=20
+                        zoom=16
                     )
                 )
 
