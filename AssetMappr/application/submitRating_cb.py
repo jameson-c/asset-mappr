@@ -62,10 +62,10 @@ def submitRating_cb(app, tagList_pos, tagList_neg):
     # clear after submitting
     @app.callback(Output('rating-comments', 'value'),
                   Output('rating-score', 'value'),
-                Input('submit-rating-button', 'n_clicks')
-                )
+                  Input('submit-rating-button', 'n_clicks')
+                  )
     def clear_persistence(n_clicks):
-        return " ",1 if n_clicks else dash.no_update
+        return " ", -1 if n_clicks else dash.no_update
 
     # Show the responding reminder based on the value the user chooses.
     # (for the copyright) The follwings are from Ubereats:
@@ -78,22 +78,19 @@ def submitRating_cb(app, tagList_pos, tagList_neg):
                   [Input('rating-score', 'value'),
                    Input('submit-rating-button', 'n_clicks')]
                   )
-    def showRatingRemind(rating_score,n_clicks):
-        if n_clicks >0:
-            return html.H6("Please rate, it really helps.")
+    def showRatingRemind(rating_score, n_clicks):
+        if rating_score == 1:
+            return html.H6("Bad or harmful for the community")
+        if rating_score == 2:
+            return html.H6("Not very useful for the community")
+        if rating_score == 3:
+            return html.H6("Neutral - no strong feelings")
+        if rating_score == 4:
+            return html.H6("Good for the community, some areas for improvement")
+        if rating_score == 5:
+            return html.H6("Extremely important/valuable for the community")
         else:
-            if rating_score == 1:
-                return html.H6("Bad or harmful for the community")
-            if rating_score == 2:
-                return html.H6("Not very useful for the community")
-            if rating_score == 3:
-                return html.H6("Neutral - no strong feelings")
-            if rating_score == 4:
-                return html.H6("Good for the community, some areas for improvement")
-            if rating_score == 5:
-                return html.H6("Extremely important/valuable for the community")
-            else:
-                return html.H6("Please rate, it really helps.")
+            return html.H6("Please rate, it really helps.")
 
     # change the value tag options based on the rating score
     @app.callback([Output('value-tag', 'options'),
@@ -101,17 +98,11 @@ def submitRating_cb(app, tagList_pos, tagList_neg):
                   Input('rating-score', 'value'),
                   Input('submit-rating-button', 'n_clicks')
                   )
-    def showValue(rating_score,n_clicks):     
-        if n_clicks > 0:
-            return  [{'label': i, 'value': i} for i in tagList_pos],None
+    def showValue(rating_score,value):
+        # default(before clicking the asset)
+        if rating_score == None:
+            return [{'label': i, 'value': i} for i in tagList_pos],None
+        elif rating_score <= 3:
+            return [{'label': i, 'value': i} for i in tagList_neg],None
         else:
-            # default(before clicking the asset)
-            if rating_score == None:
-                return [{'label': i, 'value': i} for i in tagList_pos], None
-            elif rating_score <= 3:
-                return [{'label': i, 'value': i} for i in tagList_neg], None
-            else:
-                return [{'label': i, 'value': i} for i in tagList_pos], None
-            
-   
-            
+            return [{'label': i, 'value': i} for i in tagList_pos],None

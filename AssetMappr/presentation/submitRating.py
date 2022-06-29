@@ -40,11 +40,11 @@ def submitRating(tagList_pos):
                 max=5,
                 tooltip={"placement": "top", "always_visible": True},
                 step=1,
+                value=None,
                 id='rating-score',
             ),
 
         ]),
-
 
 
         html.Br(),
