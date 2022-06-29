@@ -217,7 +217,7 @@ def submitNewAsset_cb(app, df, asset_categories):
 
             # Feed the info into the database-write function, which writes to SQL (found in database folder)
             submitNewAsset_db(staged_asset_id, ip, user_name, user_role, name, categories, desc, 
-                              site, click_lat_lng, community_geo_id=123, address=address)
+                              site, click_lat_lng, community_geo_id=4278528, address=address)
             
             # Writing the asset to the temporary data frame used by the app, so the user can see this uploaded asset
             # in their current session. Note: this is over and above writing it to the actual postgreSQL DB, which happens

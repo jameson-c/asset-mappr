@@ -217,7 +217,7 @@ def suggestMissingAsset_cb(app):
             
             # Write to the database
             suggestMissingAsset_db(ip, user_name, user_role, name, categories, desc, click_lat_lng, 
-                                   justification, address_missing, community_geo_id=123)
+                                   justification, address_missing, community_geo_id=4278528)
                         
             # Returns user confirmation, and empty strings/None types to the corresponding Input boxes
             return (dbc.Alert('''Suggestion for {} submited successfully! Thank you for helping out.'''.format(name), 

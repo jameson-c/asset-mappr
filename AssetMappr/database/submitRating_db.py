@@ -43,7 +43,7 @@ def submitRating_db(asset_id, rating_score, rating_comments, value_tag):
     rating_scale = rating_score
     comments = rating_comments
 
-    user_community = 123  # to be generalised
+    user_community = 4278528  # to be generalised
     generated_timestamp = datetime.now()
 
     value = value_tag
