@@ -26,96 +26,107 @@ from collections import OrderedDict
 import xlsxwriter
 
 
-def tableDownload_Planner_cb(app, df, asset_categories, missing_assets, rating_score, rating_values):
-
-    ### MAKING THE EXISTING ASSETS TABLE - PULLING TOGETHER ALL USEFUL INFO ###
-
-    # Keeping relevant columns in the main assets
-    df = df[['asset_id', 'asset_name', 'description', 'address', 'website']]
-
-    ## MERGING ON CATEGORY INFO ##
-
-    # Making asset_categories data wide (asset_id, category_1, category_2, etc.) so it can be merged uniquely
-    # with df, and displayed in one row alongside the other asset information
-
-    # Starting a counter variable in asset categories within each asset ID
-    asset_categories['counter'] = asset_categories.groupby(
-        'asset_id').cumcount() + 1
-
-    # Converting to string so now the counter variable = 'category_1' for an asset's first category, 'category_2'
-    # for an asset's second category, etc.
-    asset_categories['counter'] = asset_categories['counter'].apply(str)
-    asset_categories['counter'] = 'category_' + asset_categories['counter']
-
-    # Pivoting to wide
-    asset_categories = asset_categories.pivot(
-        index='asset_id', columns='counter', values='category')
-
-    # Merging the category info
-    df = pd.merge(df, asset_categories, on='asset_id')
-
-    ## MERGING ON RATINGS INFO ##
-
-    # Add asset_id to rating values table
-    rating_values = pd.merge(rating_values, rating_score[[
-                             'staged_rating_id', 'asset_id']], on='staged_rating_id')
-
-    # Merge the rating values table with the
-    asset_values = pd.merge(df, rating_values, on='asset_id')
-
-    # Aggregate this table by asset_id to get the most common rated tag for each asset
-    asset_values = asset_values.groupby('asset_id').agg(
-        most_common_rated_value=('value', lambda x: x.value_counts().index[0]))
-
-    # pull asset_id out of the index for later use in merging
-    asset_values = asset_values.reset_index()
-
-    # Merge the most common rated value info
-    df = pd.merge(df, asset_values, on='asset_id', how='left')
-
-    # Collapse ratings table down to one observation per asset, which is the average rating score and number of ratings
-    avg_rating_assets = rating_score.groupby('asset_id').agg(avg_asset_rating=('rating_scale', np.mean),
-                                                             num_ratings=('staged_rating_id', np.count_nonzero))
-    # pull asset_id out of index fo rlater use in merging
-    avg_rating_assets = avg_rating_assets.reset_index()
-
-    # Merging this info on
-    df = pd.merge(df, avg_rating_assets, on='asset_id', how='left')
-
-    # Processing the comments
-
-    comments_df = rating_score[['asset_id', 'comments']]
-    comments_df = comments_df.dropna(subset=['comments'])
-    comments_df = comments_df[~comments_df['comments'].isin(['', ' '])]
-
-    # Join all the comments together into a single string, in a comlumn called 'all_comments'
-    # Each unique comment is separated by " | "
-    comments_df['all_comments'] = comments_df.groupby(
-        'asset_id')['comments'].transform(lambda x: ' | '.join(x))
-    comments_df = comments_df.drop_duplicates('asset_id')
-
-    # Merge this onto the overall df
-    df = pd.merge(
-        df, comments_df[['asset_id', 'all_comments']], on='asset_id', how='left')
-    
-    df['avg_asset_rating'] = round(df['avg_asset_rating'], 2)
-
-    ### MAKING THE MISSING ASSETS TABLE ###
-
-    # Keeping relevant columns
-    missing_df = missing_assets[['missing_asset_name', 'description',
-                                 'primary_category', 'address', 'justification', 'generated_timestamp']]
+def tableDownload_Planner_cb(app):
 
     # This callback receives input on which type of assets the user has selected
     # And outputs the table object
 
     @app.callback(Output('data-table', 'children'),
-                  Input('choose-the-table-source', 'value'),
+                  [Input('choose-the-table-source', 'value')],
+                # Retrieves the relevant community's data from the dcc.Store object
+                [Input('assets-df', 'data')],
+                [Input('asset-categories-cnm', 'data')],
+                [Input('missing-assets-planner-view', 'data')],
+                [Input('rating-score-planner-view', 'data')],
+                [Input('rating-value-planner-view', 'data')],
                   )
-    def update_table(type_of_assets):
+    def update_table(type_of_assets,df_cnm,asset_categories,missing_assets,rating_score,rating_values):
+    
+        # Transform the JSON format data from the dcc.Store back into data frames
+        df_cnm = pd.read_json(df_cnm, orient='split')
+        asset_categories = pd.read_json(asset_categories, orient='split')
+        missing_assets = pd.read_json(missing_assets, orient='split')
+        rating_score = pd.read_json(rating_score, orient='split')
+        rating_values = pd.read_json(rating_values, orient='split')
+    
+        ### MAKING THE EXISTING ASSETS TABLE - PULLING TOGETHER ALL USEFUL INFO ###
 
-        # so this nested function can access the dataframes created outside it
-        nonlocal df, missing_df
+        # Keeping relevant columns in the main assets
+        df = df_cnm[['asset_id', 'asset_name', 'description', 'address', 'website']]
+
+        ## MERGING ON CATEGORY INFO ##
+
+        # Making asset_categories data wide (asset_id, category_1, category_2, etc.) so it can be merged uniquely
+        # with df, and displayed in one row alongside the other asset information
+
+        # Starting a counter variable in asset categories within each asset ID
+        asset_categories['counter'] = asset_categories.groupby(
+            'asset_id').cumcount() + 1
+
+        # Converting to string so now the counter variable = 'category_1' for an asset's first category, 'category_2'
+        # for an asset's second category, etc.
+        asset_categories['counter'] = asset_categories['counter'].apply(str)
+        asset_categories['counter'] = 'category_' + asset_categories['counter']
+
+        # Pivoting to wide
+        asset_categories = asset_categories.pivot(
+            index='asset_id', columns='counter', values='category')
+
+        # Merging the category info
+        df = pd.merge(df, asset_categories, on='asset_id')
+
+        ## MERGING ON RATINGS INFO ##
+
+        # Add asset_id to rating values table
+        rating_values = pd.merge(rating_values, rating_score[[
+                                'staged_rating_id', 'asset_id']], on='staged_rating_id')
+
+        # Merge the rating values table with the
+        asset_values = pd.merge(df, rating_values, on='asset_id')
+
+        # Aggregate this table by asset_id to get the most common rated tag for each asset
+        asset_values = asset_values.groupby('asset_id').agg(
+            most_common_rated_value=('value', lambda x: x.value_counts().index[0]))
+
+        # pull asset_id out of the index for later use in merging
+        asset_values = asset_values.reset_index()
+
+        # Merge the most common rated value info
+        df = pd.merge(df, asset_values, on='asset_id', how='left')
+
+        # Collapse ratings table down to one observation per asset, which is the average rating score and number of ratings
+        avg_rating_assets = rating_score.groupby('asset_id').agg(avg_asset_rating=('rating_scale', np.mean),
+                                                                num_ratings=('staged_rating_id', np.count_nonzero))
+        # pull asset_id out of index fo rlater use in merging
+        avg_rating_assets = avg_rating_assets.reset_index()
+
+        # Merging this info on
+        df = pd.merge(df, avg_rating_assets, on='asset_id', how='left')
+
+        # Processing the comments
+
+        comments_df = rating_score[['asset_id', 'comments']]
+        comments_df = comments_df.dropna(subset=['comments'])
+        comments_df = comments_df[~comments_df['comments'].isin(['', ' '])]
+
+        # Join all the comments together into a single string, in a comlumn called 'all_comments'
+        # Each unique comment is separated by " | "
+        comments_df['all_comments'] = comments_df.groupby(
+            'asset_id')['comments'].transform(lambda x: ' | '.join(x))
+        comments_df = comments_df.drop_duplicates('asset_id')
+
+        # Merge this onto the overall df
+        df = pd.merge(
+            df, comments_df[['asset_id', 'all_comments']], on='asset_id', how='left')
+        
+        df['avg_asset_rating'] = round(df['avg_asset_rating'], 2)
+
+        ### MAKING THE MISSING ASSETS TABLE ###
+
+        # Keeping relevant columns
+        missing_df = missing_assets[['missing_asset_name', 'description',
+                                    'primary_category', 'address', 'justification', 'generated_timestamp']]
+
 
         if type_of_assets == 'Existing Assets':
             # Data needs to be converted into a dictionary format to be read by dash Data Table
@@ -165,13 +176,104 @@ def tableDownload_Planner_cb(app, df, asset_categories, missing_assets, rating_s
         Output('download-dataframe-xlsx', 'data'),
         # Download only triggers when button is clicked, hence INput-State pair
         [Input('download_button', 'n_clicks')],
+        # Retrieves the relevant community's data from the dcc.Store object
+        [Input('assets-df', 'data')],
+        [Input('asset-categories-cnm', 'data')],
+        [Input('missing-assets-planner-view', 'data')],
+        [Input('rating-score-planner-view', 'data')],
+        [Input('rating-value-planner-view', 'data')],
         [State('choose-the-table-source', 'value')],
         prevent_initial_call=True,
     )
-    def download_function(n_clicks, type_of_assets):
+    def download_function(n_clicks,df_cnm,asset_categories,missing_assets,rating_score,rating_values, type_of_assets):
+        
+        
+        # Transform the JSON format data from the dcc.Store back into data frames
+        df_cnm = pd.read_json(df_cnm, orient='split')
+        asset_categories = pd.read_json(asset_categories, orient='split')
+        missing_assets = pd.read_json(missing_assets, orient='split')
+        rating_score = pd.read_json(rating_score, orient='split')
+        rating_values = pd.read_json(rating_values, orient='split')
+    
+        ### MAKING THE EXISTING ASSETS TABLE - PULLING TOGETHER ALL USEFUL INFO ###
 
-        nonlocal df, missing_df  # access data frames created in the outer function
+        # Keeping relevant columns in the main assets
+        df = df_cnm[['asset_id', 'asset_name', 'description', 'address', 'website']]
 
+        ## MERGING ON CATEGORY INFO ##
+
+        # Making asset_categories data wide (asset_id, category_1, category_2, etc.) so it can be merged uniquely
+        # with df, and displayed in one row alongside the other asset information
+
+        # Starting a counter variable in asset categories within each asset ID
+        asset_categories['counter'] = asset_categories.groupby(
+            'asset_id').cumcount() + 1
+
+        # Converting to string so now the counter variable = 'category_1' for an asset's first category, 'category_2'
+        # for an asset's second category, etc.
+        asset_categories['counter'] = asset_categories['counter'].apply(str)
+        asset_categories['counter'] = 'category_' + asset_categories['counter']
+
+        # Pivoting to wide
+        asset_categories = asset_categories.pivot(
+            index='asset_id', columns='counter', values='category')
+
+        # Merging the category info
+        df = pd.merge(df, asset_categories, on='asset_id')
+
+        ## MERGING ON RATINGS INFO ##
+
+        # Add asset_id to rating values table
+        rating_values = pd.merge(rating_values, rating_score[[
+                                'staged_rating_id', 'asset_id']], on='staged_rating_id')
+
+        # Merge the rating values table with the
+        asset_values = pd.merge(df, rating_values, on='asset_id')
+
+        # Aggregate this table by asset_id to get the most common rated tag for each asset
+        asset_values = asset_values.groupby('asset_id').agg(
+            most_common_rated_value=('value', lambda x: x.value_counts().index[0]))
+
+        # pull asset_id out of the index for later use in merging
+        asset_values = asset_values.reset_index()
+
+        # Merge the most common rated value info
+        df = pd.merge(df, asset_values, on='asset_id', how='left')
+
+        # Collapse ratings table down to one observation per asset, which is the average rating score and number of ratings
+        avg_rating_assets = rating_score.groupby('asset_id').agg(avg_asset_rating=('rating_scale', np.mean),
+                                                                num_ratings=('staged_rating_id', np.count_nonzero))
+        # pull asset_id out of index fo rlater use in merging
+        avg_rating_assets = avg_rating_assets.reset_index()
+
+        # Merging this info on
+        df = pd.merge(df, avg_rating_assets, on='asset_id', how='left')
+
+        # Processing the comments
+
+        comments_df = rating_score[['asset_id', 'comments']]
+        comments_df = comments_df.dropna(subset=['comments'])
+        comments_df = comments_df[~comments_df['comments'].isin(['', ' '])]
+
+        # Join all the comments together into a single string, in a comlumn called 'all_comments'
+        # Each unique comment is separated by " | "
+        comments_df['all_comments'] = comments_df.groupby(
+            'asset_id')['comments'].transform(lambda x: ' | '.join(x))
+        comments_df = comments_df.drop_duplicates('asset_id')
+
+        # Merge this onto the overall df
+        df = pd.merge(
+            df, comments_df[['asset_id', 'all_comments']], on='asset_id', how='left')
+        
+        df['avg_asset_rating'] = round(df['avg_asset_rating'], 2)
+
+        ### MAKING THE MISSING ASSETS TABLE ###
+
+        # Keeping relevant columns
+        missing_df = missing_assets[['missing_asset_name', 'description',
+                                    'primary_category', 'address', 'justification', 'generated_timestamp']] 
+        
+        
         # Only if the button is clicked, initiate the download
         if n_clicks:
             if type_of_assets == 'Existing Assets':

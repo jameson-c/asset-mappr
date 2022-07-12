@@ -24,38 +24,46 @@ import numpy as np
 
 def showMap_Planner_cb(app, df, asset_categories, missing_assets, rating_score):
     
-    # Merge the assets and asset-category mappings into a single df
-    map_df = pd.merge(df, asset_categories, on='asset_id')
-    
-    # Add the average rating score for the asset to the data frame
-    avg_rating = rating_score.groupby(
-        'asset_id').agg({'rating_scale': [np.mean]})
-    pd.set_option('display.max_columns', None)
-    map_df = pd.merge(map_df, avg_rating,on='asset_id', how='left')
-    map_df['avg_score'] = map_df.iloc[:,-1]
-    map_df = pd.merge(map_df,rating_score,on='asset_id',how='left')
-    
+
     # This callback receives input on which categories the user has selected 
     # And outputs the map object
     @app.callback(Output('graph-for-planner', 'figure'),
                   [Input('choose-the-source', 'value')],
-                  [Input('map-type', 'value')])
-    def update_figure(choose_the_source, map_type):
-        # Nonlocal tells this nested function to access map_df from the outer function - otherwise throws an undefined error
-        nonlocal map_df
+                  [Input('map-type', 'value')],
+                # Retrieves the relevant community's data from the dcc.Store object
+                [Input('assets-df', 'data')],
+                [Input('asset-categories-cnm', 'data')],
+                [Input('missing-assets-planner-view', 'data')],
+                [Input('rating-score-planner-view', 'data')],
+                [Input('selected-community-info', 'data')],)
+    def update_figure(choose_the_source, map_type,df_cnm,asset_categories,missing_assets,rating_score,selected_community):
+        # Transform the JSON format data from the dcc.Store back into data frames
+        df_cnm = pd.read_json(df_cnm, orient='split')
+        asset_categories = pd.read_json(asset_categories, orient='split')
+        missing_assets = pd.read_json(missing_assets, orient='split')
+        rating_score = pd.read_json(rating_score, orient='split')
+        selected_community = pd.read_json(selected_community, orient='split')
+        
+        # Merge the assets and asset-category mappings into a single df
+        map_df = pd.merge(df, asset_categories, on='asset_id')
+        
+        
+        # Add the average rating score for the asset to the data frame
+        avg_rating = rating_score.groupby(
+            'asset_id').agg({'rating_scale': [np.mean]})
+        pd.set_option('display.max_columns', None)
+        map_df = pd.merge(map_df, avg_rating,on='asset_id', how='left')
+        map_df['avg_score'] = map_df.iloc[:,-1]
+        map_df = pd.merge(map_df,rating_score,on='asset_id',how='left')
+
+
+
         # We should change this part when the categories are changed. Becuase each category has one symbol, it is a one on one thing, we have to manually choose the symbol for each category.
         categoryList = ["Sports and recreation", "Culture and history", "Education and workforce development",
                         "Healthcare", "Housing", "Places of worship", "Community service and assistance", "Transport and infrastructure",
                         "Food access", "Nature and parks", "Libraries", "Economic development opportunities", "Local business and economy"]
-        #keep it as a backup choice: You can change the color only for the circle, by now, we aren't be able to change the symbols' colors
-
-        # colorList = ['#000000', '#003786', '#0e58a8', '#30a4ca', '#54c8df', '#9be4ef',
-        #              '#e1e9d1', '#f3d573', '#e7b000', '#da8200', '#c65400',  '#498534',  '#217eb8']
-        # backup color choices: '#ac2301','#001f4d','#4c0000','#217eb8',
-
-        # for item in zip(categoryList, colorList):
-        #     map_df.loc[map_df['category'] == item[0],
-        #                'colorBasedCategory'] = item[1]
+ 
+ 
         #These symbols are from: https://labs.mapbox.com/maki-icons
         symbolList = ['american-football', 'museum', 'school', 'hospital-JP',
                       'lodging',
@@ -76,6 +84,11 @@ def showMap_Planner_cb(app, df, asset_categories, missing_assets, rating_score):
         # Setting mapbox access token (this is for accessing their base maps)
         mapbox_access_token = 'pk.eyJ1IjoicWl3YW5nYWFhIiwiYSI6ImNremtyNmxkNzR5aGwyb25mOWxocmxvOGoifQ.7ELp2wgswTdQZS_RsnW1PA'
         
+        
+        # Get the community lat-long to center on (from the selected community info)
+        community_center_lat = float(selected_community['latitude'])
+        community_center_lon = float(selected_community['longitude'])
+        
         # Setting the layout for the map (same regardless of the options chosen)
         layout = go.Layout(
                 uirevision='foo',  # preserves state of figure/map after callback activated
@@ -91,8 +104,8 @@ def showMap_Planner_cb(app, df, asset_categories, missing_assets, rating_score):
                     bearing=25,
                     style='streets',
                     center=dict(
-                        lat=39.8993885,
-                        lon=-79.7249338
+                        lat=community_center_lat, # this is the center lat-long for the selected community
+                        lon=community_center_lon
                     ),
                     pitch=40,
                     zoom=12
