@@ -87,6 +87,9 @@ if __name__ == '__main__':
     # varying across these rows is the category. The same asset ID needs to be assigned for these rows referring to the same asset - right
     # now, a new uuid is created for every row in the table.
     
+    # This is some nice code to look for similar locations and flag them, based on similar lat/longs:
+        # https://stackoverflow.com/questions/54867061/how-to-detect-almost-duplicate-locations-in-a-pandas-dataframe
+    
     # Set AssetIDs
     nationalData['asset_id'] = [uuid.uuid4() for _ in range(len(nationalData.index))]
     
