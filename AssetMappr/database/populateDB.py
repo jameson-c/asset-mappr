@@ -109,7 +109,8 @@ CHANGE THIS and run manually if master tables need to be updated.
 def populateMasterTables(conn):
 
     # Create the record that will be used to populate the community master file
-    community_master = pd.DataFrame([[4278528, 'Uniontown', 'C5', '39.8993024', '-79.7245287']],
+    community_master = pd.DataFrame([[4278528, 'Uniontown', 'C5', '39.8993024', '-79.7245287'],
+                                     [4250408, 'Monongahela', 'C5', '40.1955304', '-79.9222298']],
                                     columns = ['community_geo_id',
                                                'community_name',
                                                'community_class_code',
@@ -257,6 +258,10 @@ def populateDB(data, conn):
     data = data[['asset_id', 'asset_name','description','asset_type', 'community_geo_id',
                  'source_type', 'website', 'latitude','longitude','address',
                  'generated_timestamp']]
+    
+    # Drop exact duplicates in 'data' once we've removed the categories (if multiple categories)
+    data = data.drop_duplicates()
+    
     execute_values(conn, data, 'assets')
     execute_values(conn, categories, 'asset_categories')
 

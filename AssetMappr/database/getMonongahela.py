@@ -1,6 +1,6 @@
 """
-File: getUniontown.py
-Author: Jameson Carter
+File: getMonongahela.py
+Author: Mihir Bhaskar
 
 Desc: This file calls the state, local, and national scripts to populate the 
       Render PostGres database with pre-populated assets. 
@@ -25,6 +25,7 @@ Inputs:
         
 Output: pandas dataframe Schools, written to .csv
 """
+
 import uuid
 from datetime import datetime
 import pandas as pd
@@ -41,21 +42,21 @@ if __name__ == '__main__':
     '''
     # Google Data- Social Benefit
     apikey = input('Enter your Google Places API Key: ')
-    lat = '39.8993024' # obtained from center of incorporated place as sourced below
-    lon = '-79.7245287'
+    lat = '40.1955304' # obtained from center of incorporated place as sourced below
+    lon = '-79.9222298'
     radius = '6000'
     
     # NCES Schools API, Hospitals via Community Benefit Insights uses similar inputs
-    countyFIPS = '42051'
+    countyFIPS = '42125'
     state = 'PA'
-    countyName = 'Fayette County'
+    countyName = 'Washington County'
     
     nationalData = national.genNatData(countyFIPS,countyName,state,# Colleges, HS, Elementary, Hospitals
                                        apikey, lat, lon, radius) # Google API
 
     # Incorporated Place GEOID
     # Sourced from https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?form
-    nationalData['community_geo_id'] = 4278528
+    nationalData['community_geo_id'] = 4250408
 
     '''
     STATE data input for the community
@@ -66,27 +67,7 @@ if __name__ == '__main__':
     '''
     Generating Asset Metadata
     '''
-    
-    # Do some basic cleaning of miscategorised/wrong assets
-    wrong_cat_assets = ["DICK'S Sporting Goods", "Jan & Jeff's Discount Store",
-                  "Outdoors LTD", "Rick Rafail Pool Construction", 'The Salvation Army Thrift Store & Donation Center',
-                  "Walmart Home Theater Installation", 'Hutchinson Park', "Marra's Mountaineer Sport Shop"]
-    
-    nationalData = nationalData[~nationalData.asset_name.isin(wrong_cat_assets)]
-    
-    # Need to sort out duplicates that arise from the same asset coming from two different sources (Maps API and getSchools/getHospitals), referring to the same category
-    # For these cases, these two rows need to be collapsed into one
-    # If time: sometimes, one data source will have more info than the other (e.g. website vs. no website), so if this info can also be preserved/collapsed into one row that would be great
-    
-    # Asset ID (uuid) needs to be created on the basis of asset name + location
-    
-    # There are cases where the asset name is the same, but there could be multiple locations (e.g. multiple outlets of the same store)
-    # There are also cases where the location is the same, but there are two different assets in that location - e.g. an elementary school, and a middle school by different names
-    
-    # Right now, in nationalData, there are multiple rows for the same asset if it has multiple categories, and the only thing
-    # varying across these rows is the category. The same asset ID needs to be assigned for these rows referring to the same asset - right
-    # now, a new uuid is created for every row in the table.
-    
+ 
     # Set AssetIDs
     nationalData['asset_id'] = [uuid.uuid4() for _ in range(len(nationalData.index))]
     
@@ -110,5 +91,3 @@ if __name__ == '__main__':
     dat = nationalData
     if result == True:
         populateDB(dat,conn)
-    
-    
