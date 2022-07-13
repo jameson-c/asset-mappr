@@ -28,7 +28,7 @@ Input:
                      
 Output: A pandas dataframe containing post secondary schools in
         our standard format: 
-        name	category	vicinity	latitude	longitude	website
+        name	category  description	address	latitude	longitude	website
 '''
 
 def getPostSecSchools(countyFIPS):
@@ -48,22 +48,23 @@ def getPostSecSchools(countyFIPS):
     if not df.empty: # If there ARE results, continue
         # drop unnecessary files, add category column
         # df.drop(['geometry.x', 'geometry.y'],axis = 1)  
-        df['category'] = 'Postsecondary Schools'
+        df['category'] = 'Education and workforce development'
+        df['description'] = 'Postsecondary school'
         df['website'] = ''
-        df.rename(columns={'attributes.NAME': 'name',
-                       'attributes.STREET': 'vicinity',
+        df.rename(columns={'attributes.NAME': 'asset_name',
+                       'attributes.STREET': 'address',
                        'attributes.CITY': 'city',
                        'attributes.LAT': 'latitude',
                        'attributes.LON': 'longitude'}, inplace = True)
     
-        df['vicinity'] = df["vicinity"] + ', ' + df["city"]
+        df['address'] = df["address"] + ', ' + df["city"]
     
-        df = df[['name','category','vicinity','latitude','longitude','website']]
+        df = df[['asset_name','category','description','address','latitude','longitude','website']]
     
         return df
     
     else: # Otherwise, return empty dataframe
-        column_names = ['name','category','vicinity','latitude','longitude','website']
+        column_names = ['asset_name','category','description','address','latitude','longitude','website']
         df = pd.DataFrame(columns = column_names)
         return df
         
@@ -79,7 +80,7 @@ Input:
                      
 Output: A pandas dataframe containing post secondary schools in
         our standard format: 
-        name	category	vicinity	latitude	longitude	website
+        name	category  description	address	latitude	longitude	website
 '''
 def getPubSchools(countyname, state):
     state = state.upper()
@@ -98,22 +99,23 @@ def getPubSchools(countyname, state):
     if not df.empty: # If there ARE results, continue
         # drop unnecessary files, add category column
         # df.drop(['geometry.x', 'geometry.y'],axis = 1)  
-        df['category'] = 'Public Elementary and High Schools'
+        df['category'] = 'Education and workforce development'
+        df['description'] = 'Public school'
         df['website'] = ''
-        df.rename(columns={'attributes.SCH_NAME': 'name',
-                       'attributes.LSTREET1': 'vicinity',
+        df.rename(columns={'attributes.SCH_NAME': 'asset_name',
+                       'attributes.LSTREET1': 'address',
                        'attributes.LCITY': 'city',
                        'attributes.LATCOD': 'latitude',
                        'attributes.LONCOD': 'longitude'}, inplace = True)
     
-        df['vicinity'] = df['vicinity'] + ', ' + df['city']
+        df['address'] = df['address'] + ', ' + df['city']
     
-        df = df[['name','category','vicinity','latitude','longitude','website']]
+        df = df[['asset_name','category','description','address','latitude','longitude','website']]
     
         return df
     
     else: # Otherwise, return empty dataframe
-        column_names = ['name','category','vicinity','latitude','longitude','website']
+        column_names = ['asset_name','category','description','address','latitude','longitude','website']
         df = pd.DataFrame(columns = column_names)
         return df
 '''
@@ -126,7 +128,7 @@ Input:
                      
 Output: A pandas dataframe containing post secondary schools in
         our standard format: 
-        name	category	vicinity	latitude	longitude	website
+        name	category description address	latitude	longitude	website
 '''
 def getPrivSchools(countyFIPS):
     
@@ -145,22 +147,23 @@ def getPrivSchools(countyFIPS):
     if not df.empty: # If there ARE results, continue
         # drop unnecessary files, add category column
         # df.drop(['geometry.x', 'geometry.y'],axis = 1)  
-        df['category'] = 'Private Elementary and High Schools'
+        df['category'] = 'Education and workforce development'
+        df['description'] = 'Private school'
         df['website'] = ''
-        df.rename(columns={'attributes.NAME': 'name',
-                       'attributes.STREET': 'vicinity',
+        df.rename(columns={'attributes.NAME': 'asset_name',
+                       'attributes.STREET': 'address',
                        'attributes.CITY': 'city',
                        'attributes.LAT': 'latitude',
                        'attributes.LON': 'longitude'}, inplace = True)
     
-        df['vicinity'] = df['vicinity'] + ', ' + df['city']
+        df['address'] = df['address'] + ', ' + df['city']
     
-        df = df[['name','category','vicinity','latitude','longitude','website']]
+        df = df[['asset_name','category','description','address','latitude','longitude','website']]
     
         return df
     
     else: # Otherwise, return empty dataframe
-        column_names = ['name','category','vicinity','latitude','longitude','website']
+        column_names = ['asset_name','category','description','address','latitude','longitude','website']
         df = pd.DataFrame(columns = column_names)
         return df
 
@@ -169,6 +172,16 @@ def getAllSchools(countyFIPS,countyName,state):
     private = getPrivSchools(countyFIPS)
     public = getPubSchools(countyName,state)
     college = getPostSecSchools(countyFIPS)
+    
+    # Establish Sources:
+    private['source_type'] = 'NCES Common Core of Data API' 
+    public['source_type'] = 'NCES Common Core of Data API' 
+    college['source_type'] = 'NCES Common Core of Data API' 
+    
+    # Proper names
+    private['asset_name'] = private['asset_name'].str.title()
+    public['asset_name'] = public['asset_name'].str.title()
+    college['asset_name'] = college['asset_name'].str.title()
     
     print('\nIf any of these searches yield no results, make sure your county names, county codes, and state codes are correct')
     print(f'We found {len(private)} private schools')
