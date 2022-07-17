@@ -3,8 +3,8 @@ File: getHospitals.py
 Author: Michaela Marincic
 
 Desc: This file gets hospitals across the US from the Community Benefit API:
-    - About: https://www.communitybenefitinsight.org/?page=info.data_api
-    - API: http://www.communitybenefitinsight.org/api/get_hospitals.php
+    - About: https://npiregistry.cms.hhs.gov/registry/help-api
+    - API: https://npiregistry.cms.hhs.gov/api/demo?version=2.1
 
 Finally, the file outputs a pandas dataframe that contains all of the hospital data.
 
@@ -12,6 +12,7 @@ Finally, the file outputs a pandas dataframe that contains all of the hospital d
 Inputs: Google Places API key, state abbreviation
 Output: pandas dataframe Schools, written to .csv
 """
+
 import pandas as pd
 import time
 import requests
@@ -43,39 +44,65 @@ def getHealthcare(twoLetterState, APIkey):
         "state":"PA",
         "limit":200,
         "pretty":True
-        }    
-print(practAddresses)
+        }   
+    
+print(newDF)
+
     # Call the API
     response = requests.get(url, params=params)
     result = json.loads(response.text)
     df = pd.json_normalize(result['results']) # normalize json file into pandas
     
     if not df.empty: # If there ARE results, continue
-        # Healthcare providers with multiple addresses have those addresses stored as sub-tables.
+        # Healthcare providers with multiple addresses have those addresses stored as sub-tables under
+        # practiceLocations.
         # Therefore, we need to normalize each of the affiliated addresses
         practLocations = pd.json_normalize(df['practiceLocations'])
-        practAddresses = pd.DataFrame()
-        for i in range(0,50):
-            results = pd.json_normalize(practLocations[i])
-            practAddresses = pd.concat([practAddresses,results], axis=1)
-            
+        practAddress_1 = pd.json_normalize(practLocations[0])
+        practAddress_1['vicinity'] = practAddress_1['address_1'] + ', ' + practAddress_1['city']
+        practAddress_1['address'] = practAddress_1['address_1'] + ', ' + practAddress_1['city'] + ', ' + practAddress_1['state']
+        practAddress_1 = practAddress_1[['vicinity','address']]
+        
+        practAddress_2 = pd.json_normalize(practLocations[1])
+        practAddress_2['vicinity'] = practAddress_2['address_1'] + ', ' + practAddress_2['city']
+        practAddress_2['address'] = practAddress_2['address_1'] + ', ' + practAddress_2['city'] + ', ' + practAddress_2['state']
+        practAddress_2 = practAddress_2[['vicinity','address']]
+        
+        practAddress_3 = pd.json_normalize(practLocations[2])
+        practAddress_3['vicinity'] = practAddress_3['address_1'] + ', ' + practAddress_3['city']
+        practAddress_3['address'] = practAddress_3['address_1'] + ', ' + practAddress_3['city'] + ', ' + practAddress_3['state']
+        practAddress_3 = practAddress_3[['vicinity','address']]
+                
+        #Pull out the name of each location and assign the category as "healthcare" and website as "".
         df['name'] = df['basic.organization_name']
         df['category'] = 'healthcare'
-        df['vicinity'] = df['street_address'] + ', ' + df['city']
-        df['address'] = df['street_address'] + ', ' + df['city'] + ', ' + df['state']
+        df['website'] = ''
+    
+        df = df[['name','category','website']]
+        
+        #Concatenate df with each of the 3 practAdress dataframes, then stack all three dataframes.
+        
+        df1 = pd.concat([df, practAddress_1], axis=1)        
+        df2 = pd.concat([df, practAddress_2], axis=1)        
+        df3 = pd.concat([df, practAddress_3], axis=1)
+        
+        newDF = pd.concat([df1, df2, df3])
+        newDF = newDF[newDF['address'].notnull()]
+        
+        #The latitude and longitude will be found by plugging the addresses into Google's API.
         lat = []
         long = []
-        for i in df['address']:
+        for i in newDF['address']:
             coords = getAddressCoords(i, APIkey)[0]
             lat.append(coords[0])
             long.append(coords[1])
             
-        df['latitude'] = lat
-        df['longitude'] = long
+        newDF['latitude'] = lat
+        newDF['longitude'] = long
     
-        df = df[['name','category','vicinity','latitude','longitude','website']]
+        newDF = newDF[['name','category','vicinity','latitude','longitude','website']]
     
-        return df
+        return newDF
     
     else: # Otherwise, return empty dataframe
         column_names = ['name','category','vicinity','latitude','longitude','website']
