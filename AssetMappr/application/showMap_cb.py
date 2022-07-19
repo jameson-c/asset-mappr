@@ -146,7 +146,6 @@ def showMap_cb(app):
             google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
 
             community_name = selected_community['community_name'][1]
-            print(community_name)
 
             # Adding Uniontown PA to make the search more accurate (to generalize)
             address_search = address_search_1 + community_name + ', PA'
