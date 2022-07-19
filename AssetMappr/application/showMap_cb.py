@@ -42,14 +42,13 @@ def showMap_cb(app):
         Output('no-result-alert', 'children'),
         [Input('recycling_type', 'value')],
         [Input('search-address-button-tab1', 'n_clicks')],
-        
+
         # Retrieves the relevant community's data from the dcc.Store object
         [Input('assets-df', 'data')],
         [Input('selected-community-info', 'data')],
         [Input('asset-categories-cnm', 'data')],
         State('address-search-tab1', 'value'))
-    
-    def update_figure(chosen_recycling, n_clicks, df_cnm, selected_community, asset_categories,address_search_1):
+    def update_figure(chosen_recycling, n_clicks, df_cnm, selected_community, asset_categories, address_search_1):
         # Transform the JSON format data from the dcc.Store back into data frames
         df_cnm = pd.read_json(df_cnm, orient='split')
         asset_categories = pd.read_json(asset_categories, orient='split')
@@ -58,7 +57,7 @@ def showMap_cb(app):
 
         # Merge the assets and asset-category mappings into a single df
         map_df = pd.merge(df_cnm, asset_categories, on='asset_id')
-       
+
         # We should change this part when the categories are changed. Becuase each category has one symbol, it is a one on one thing, we have to manually choose the symbol for each category.
         categoryList = ["Sports and recreation", "Culture and history", "Education and workforce development",
                         "Healthcare", "Housing", "Places of worship", "Community service and assistance", "Transport and infrastructure",
@@ -91,7 +90,7 @@ def showMap_cb(app):
 
         # Filtering the dataset to only keep assets in the selected categories
         df_sub = map_df[(map_df['category'].isin(chosen_recycling))]
-        
+
         # Get the community lat-long to center on (from the selected community info)
         community_center_lat = float(selected_community['latitude'])
         community_center_lon = float(selected_community['longitude'])
@@ -130,7 +129,7 @@ def showMap_cb(app):
                     bearing=25,
                     style='light',
                     center=dict(
-                        lat=community_center_lat, # this is the center lat-long for the selected community
+                        lat=community_center_lat,  # this is the center lat-long for the selected community
                         lon=community_center_lon
                     ),
                     pitch=40,
@@ -145,11 +144,9 @@ def showMap_cb(app):
         else:
             # Geocode the lat-lng using Google Maps API
             google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
-            
-            # Retrieve the name of the community to add to the geocoding search to make it more accurate
-            selected_community = pd.read_json(selected_community, orient='split')
-            
+
             community_name = selected_community['community_name'][1]
+            print(community_name)
 
             # Adding Uniontown PA to make the search more accurate (to generalize)
             address_search = address_search_1 + community_name + ', PA'
@@ -209,7 +206,7 @@ def showMap_cb(app):
                         bearing=25,
                         style='light',
                         center=dict(
-                            lat=community_center_lat, # this is the center lat-long for the selected community
+                            lat=community_center_lat,  # this is the center lat-long for the selected community
                             lon=community_center_lon
                         ),
                         pitch=40,
