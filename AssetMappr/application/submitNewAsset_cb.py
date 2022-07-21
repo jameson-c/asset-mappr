@@ -23,6 +23,7 @@ from flask import request
 import dash_bootstrap_components as dbc
 import requests
 import json
+import os
 
 
 from AssetMappr.database.submitNewAsset_db import submitNewAsset_db
@@ -164,7 +165,7 @@ def submitNewAsset_cb(app, df, asset_categories):
     def geocoded_clicked_ltlng(click_lat_lng):
         
         # Geocode the lat-lng using Google Maps API
-        google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
+        google_api_key = os.getenv('google_api_key')
         
         params = {'key': google_api_key,
                   'latlng': '{},{}'.format(click_lat_lng[0], click_lat_lng[1])}
