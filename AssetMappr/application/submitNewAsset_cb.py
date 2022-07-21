@@ -24,6 +24,8 @@ import dash_bootstrap_components as dbc
 import requests
 import json
 import os
+from dash import dash_table
+from geopy.distance import distance
 
 
 from AssetMappr.database.submitNewAsset_db import submitNewAsset_db
@@ -180,6 +182,35 @@ def submitNewAsset_cb(app, df, asset_categories):
         address = result['results'][0]['formatted_address']
         
         return 'Selected address: {}'.format(address)
+    
+    # Callback to display assets close to the clicked location 
+    @app.callback(
+        Output('nearby-assets-table','children'),
+        Input('submit-asset-map', 'click_lat_lng')
+        )
+    def nearby_asset_display(click_lat_lng):
+        nonlocal df
+        point = tuple(click_lat_lng)
+        
+        # Combining lat-long into one column in df with tuples
+        df['coords'] = df[['latitude', 'longitude']].apply(tuple, axis=1)
+        
+        # Apply distance function to create a new column with distances from the selected point
+        df['distance'] = df.apply(lambda x: distance(point, x['coords']).miles, axis=1)
+        
+        # Filter those observations where the distance is less than 0.03 miles
+        nearby = df[df['distance'] <= 0.03]
+        nearby = nearby[['asset_name', 'description']]
+        
+        # Send the asset names back as a data table
+        if len(nearby) != 0:
+            return dash_table.DataTable(data = nearby.to_dict('rows'),
+                                        columns=[{"name": i, "id": i} for i in nearby.columns])
+        
+        else:
+            return ''
+
+        
 
     # Callback to take all the user-submitted info on the new asset, write it to the database, and reset the form
     @app.callback(

@@ -93,6 +93,15 @@ def submitNewAsset(master_categories):
                   
                 # This takes an output from the CB which is the geocoded address based on the current clicked lat-long on the map
                 html.P(id='clicked-address'),
+                
+                html.Br(),
+                
+                # This section shows other nearby assets to make sure the user isn't re-entering an existing asset
+                html.P('The below assets are near your selected location and already in our system:'),
+                
+                html.Div(id='nearby-assets-table'),
+                
+                html.Br(),
 
                        
                 html.Small('''Tip: You can click the + and - buttons on the side to zoom in and out, click/hold/drag the map to move it around,
