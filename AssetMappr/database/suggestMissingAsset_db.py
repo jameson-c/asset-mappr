@@ -30,10 +30,7 @@ import os
 def suggestMissingAsset_db(ip, user_name, user_role, name, categories, desc, click_lat_lng, 
                            justification, address, community_geo_id):
 
-    # When deploying on Render, use this string
-    # con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a/assetmappr_database'
-    
-    # If running the app externally (e.g. outside render/locally), use this connection string instead:
+    # Getting database connection URI from environment
     con_string = os.getenv('db_uri')
 
     # Establish connection with database (details found in Heroku dashboard after login)

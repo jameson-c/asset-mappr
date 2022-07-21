@@ -132,7 +132,7 @@ def submitNewAsset_cb(app, df, asset_categories):
             return ''
         else:
             # Geocode the lat-lng using Google Maps API
-            google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
+            google_api_key = os.getenv('google_api_key')
             
             # Adding Uniontown PA to make the search more accurate (to generalize)
             address_search = address_search + ' Uniontown, PA'
