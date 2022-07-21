@@ -47,7 +47,7 @@ from AssetMappr.application.submitSuggestEdit_cb import submitSuggestEdit_cb
 from AssetMappr.application.showMap_Planner_cb import showMap_Planner_cb
 from AssetMappr.application.catSummary_Planner_cb import catSummary_Planner_cb
 from AssetMappr.application.tableDownload_Planner_cb import tableDownload_Planner_cb
-
+from AssetMappr.application.topAssets_Planner_cb import topAssets_cb
 # =============================================================================
 # Initialize app
 # =============================================================================
@@ -60,9 +60,9 @@ server = app.server
 app.title = 'AssetMappr'
 
 
-# Load data from the postgreSQL database (this will eventually depend on community input chosen)
+# Load master data from the postgreSQL database (this will eventually depend on community input chosen)
 
-df, asset_categories, master_categories, master_categories_desc, tagList_pos, tagList_neg, missing_assets, rating_score, rating_values, master_communities = readMasters()
+asset_categories, master_categories, master_categories_desc, tagList_pos, tagList_neg, missing_assets, rating_score, rating_values, master_communities = readMasters()
 
 
 # This column demarcates between assets read in from the DB and staged assets added by the user
@@ -119,7 +119,7 @@ def display_page(pathname):
     # If the user navigates to the main home page of the app
     # Note: there is a link in the landing_page that takes users to the home page
     if pathname == '/home':
-        return makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories, master_categories_desc, rating_score, rating_values)
+        return makeLayout(master_categories, tagList_pos, tagList_neg, asset_categories, master_categories_desc, rating_score, rating_values)
 
 
 # =============================================================================
@@ -136,9 +136,10 @@ submitSuggestEdit_cb(app)
 submitRating_cb(app, tagList_pos, tagList_neg)
 submitNewAsset_cb(app)
 suggestMissingAsset_cb(app)
-showMap_Planner_cb(app, df, asset_categories, missing_assets, rating_score)
+showMap_Planner_cb(app)
 catSummary_Planner_cb(app)
 tableDownload_Planner_cb(app)
+topAssets_cb(app)
 
 # =============================================================================
 # Run the app

@@ -46,9 +46,6 @@ def readMasters():
                                         == 'Negative', 'value'].tolist()
     master_value_tags = [i for i in master_value_tags['value']]
 
-    # Load the main assets database
-    df = pd.read_sql_table('assets', con=con_string)
-
     # Load the asset-categories mapping database
     asset_categories = pd.read_sql_table('asset_categories', con=con_string)
 
@@ -62,7 +59,7 @@ def readMasters():
     master_communities = pd.read_sql_table('communities_master', con=con_string)
     
 
-    return df, asset_categories, master_categories, master_categories_desc, tagList_pos, tagList_neg, missing_assets, rating_score,rating_values, master_communities
+    return asset_categories, master_categories, master_categories_desc, tagList_pos, tagList_neg, missing_assets, rating_score,rating_values, master_communities
 
 def readDB(community_geo_id):
     '''

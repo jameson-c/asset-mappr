@@ -23,7 +23,6 @@ Output:
 from dash import dcc
 from dash import html
 import dash_bootstrap_components as dbc
-from dash import dash_table
 
 
 # Importing all the layout components
@@ -33,7 +32,6 @@ from AssetMappr.presentation.submitRating import submitRating
 from AssetMappr.presentation.submitNewAsset import submitNewAsset
 from AssetMappr.presentation.suggestMissingAsset import suggestMissingAsset
 from AssetMappr.presentation.showMap_Planner import showMap_Planner
-from AssetMappr.presentation.topAssets_Planner import topAssets_Planner
 from AssetMappr.presentation.tableDownload_Planner import tableDownload_Planner
 from AssetMappr.presentation.showCheckbox import showCheckbox
 
@@ -42,7 +40,7 @@ from AssetMappr.presentation.showCheckbox import showCheckbox
 # =============================================================================
 
 
-def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories, master_categories_desc,rating_score, rating_values):
+def makeLayout(master_categories, tagList_pos, tagList_neg, asset_categories, master_categories_desc, rating_score, rating_values):
 
     return html.Div([
 
@@ -58,7 +56,8 @@ def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories
                 dbc.Row([
                     dbc.Col([
                         # Outputs an option to select categories
-                        showCheckbox(master_categories,master_categories_desc),
+                        showCheckbox(master_categories,
+                                     master_categories_desc),
                         # Displays the function to submit new assets
                         html.H6(
                             'Know about an asset we don\'t have? Tell us about it! \U0001f447', id='know'),
@@ -92,12 +91,9 @@ def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories
                 ]),
 
                 dbc.Row([
-
-                    dbc.Col([
-                        topAssets_Planner(df, rating_score, rating_values)
-                    ])
+                    dbc.Col(html.Div(id='top-assets', children=[]),)
                 ]),
-                
+
                 dbc.Row([
                     tableDownload_Planner(),
                 ]),
@@ -105,4 +101,5 @@ def makeLayout(df, master_categories, tagList_pos, tagList_neg, asset_categories
             ]),
 
         ]),
+
     ])

@@ -22,7 +22,7 @@ import pandas as pd
 import numpy as np
 
 
-def showMap_Planner_cb(app, df, asset_categories, missing_assets, rating_score):
+def showMap_Planner_cb(app):
     
 
     # This callback receives input on which categories the user has selected 
@@ -45,7 +45,7 @@ def showMap_Planner_cb(app, df, asset_categories, missing_assets, rating_score):
         selected_community = pd.read_json(selected_community, orient='split')
         
         # Merge the assets and asset-category mappings into a single df
-        map_df = pd.merge(df, asset_categories, on='asset_id')
+        map_df = pd.merge(df_cnm, asset_categories, on='asset_id')
         
         
         # Add the average rating score for the asset to the data frame

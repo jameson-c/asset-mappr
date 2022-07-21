@@ -402,3 +402,7 @@ a:active {
     font-size: 18px;
     width: 520px;
 }
+
+#no-enough-ratings-top-assets {
+    margin-left: 18px;
+}
