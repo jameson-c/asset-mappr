@@ -24,7 +24,6 @@ def readMasters():
         - tagList_pos/neg: the positive and negative value list, from 'master values' associated with ratings
         - master_communities: a dataframe of all the communities incorporated into assetmappr
     '''
-
     # Loading the DB connection URI string from the environment
     con_string = os.getenv('db_uri')
 
@@ -59,10 +58,8 @@ def readDB(community_geo_id):
         - rating_value: data frame of the mapping of chosen value tags for each of the ratings 
     '''
 
-    # con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a/assetmappr_database'
-
-    # If running the app externally (e.g. outside render/locally), use this connection string instead:
-    con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a.ohio-postgres.render.com/assetmappr_database'
+    # Loading the DB connection URI string from the environment
+    con_string = os.getenv('db_uri')
 
     # Load the main assets database
     query = '''SELECT * FROM assets 
