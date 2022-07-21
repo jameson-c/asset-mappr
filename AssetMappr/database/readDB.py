@@ -2,36 +2,31 @@
 File: readDB.py
 Author: Mihir Bhaskar, Anna Wang
 
-Desc: This file interacts with the postgreSQL database to read in the initial datasets when we initialise the app session
-    
-TODOs:
-    - Connect to SQL centrally once, instead of starting many different connections
-    - Make the input dependent on community_geo_id
-    
-Inputs:
-    - app: an initialized Dash app
-    - community_geo_id (pending implementation)
-   
-Outputs: (see the database documentation for more info on these tables)
-    - df: data frame of the main assets table
-    - asset_categories: data frame of the asset-categories table
-    - master_categories: a list of the unique master category values
-    - master_value_tags: a list of the unique master value tags (for use in the ratings function)
-    - missing_assets: data frame of missing_assets table
-    - rating_score: data frame of staged_rating tables
-    - tagList_pos/neg: the positive and negative value list
+Desc: This file interacts with the postgreSQL database to read in data we need for the app
 
+It has two functions: readMasters(), which reads all the standard info that is independent of the selected community,
+and readDB(), which reads the tables of information about assets and ratings relevant for the chosen community
+
+See the database documentation here for more info about the DB structure and tables:
+    https://docs.google.com/document/d/1lKTvWjOiNHWJKcMsqipY3JN79LT2jm9fHox5TMSI-ew/edit?usp=sharing
+    
 """
 import pandas as pd
 from flask_sqlalchemy import SQLAlchemy
-
+import os
 
 def readMasters():
+    '''
+    Input: none
+    Outputs:
+        - master_categories: a list of the unique master category values
+        - master_categories_desc: a list of the descriptions of what each category means
+        - tagList_pos/neg: the positive and negative value list, from 'master values' associated with ratings
+        - master_communities: a dataframe of all the communities incorporated into assetmappr
+    '''
 
-    # con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a/assetmappr_database'
-
-    # If running the app externally (e.g. outside render/locally), use this connection string instead:
-    con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a.ohio-postgres.render.com/assetmappr_database'
+    # Loading the DB connection URI string from the environment
+    con_string = os.getenv('db_uri')
 
     # Load the categories master list
     master_category = pd.read_sql_table('categories_master', con=con_string)
@@ -57,9 +52,11 @@ def readDB(community_geo_id):
     '''
     Inputs: (int) community_geo_id: the geo ID of the selected community for which to retrieve info for from the DB
     Output:
-        - df: a data frame with the main assets table
-        - asset_categories: a data frame mapping the assets in df to the categories they belong to
-
+        - df_cnm: a data frame with the main assets table for the chosen community
+        - asset_categories: a data frame mapping the assets in df_cnm to the categories they belong to
+        - missing_assets: data frame of missing_assets table for the community
+        - rating_score: data frame of staged_rating tables
+        - rating_value: data frame of the mapping of chosen value tags for each of the ratings 
     '''
 
     # con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a/assetmappr_database'
@@ -107,4 +104,5 @@ def readDB(community_geo_id):
     # in the current session, so they can be displayed on the map in different colors and ratings for
     # verified vs. staged assets can be distinguished
     # df['asset_status'] = 'Verified'
+    
     return df_cnm, asset_categories, missing_assets, rating_score, rating_value

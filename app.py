@@ -26,7 +26,7 @@ import uuid
 from dash import dash_table
 
 
-# Import the function that reads data from the DB
+# Import the function that reads master data from the DB
 from AssetMappr.database.readDB import readMasters
 
 # Import the layout functions
@@ -60,8 +60,7 @@ server = app.server
 app.title = 'AssetMappr'
 
 
-# Load master data from the postgreSQL database (this will eventually depend on community input chosen)
-
+# Load master information from the postgreSQL database (this is standard info about the categories, etc. that is independent of the community selected)
 master_categories, master_categories_desc, tagList_pos, tagList_neg, master_communities = readMasters()
 
 
@@ -96,19 +95,17 @@ app.layout = html.Div([
     dcc.Store(id='asset-categories-cnm', storage_type='session'),
     # base info about the selected community (name, geo_id, lat-long to center on)
     dcc.Store(id='selected-community-info', storage_type='session'),
-
+    # data on all the 'missing' assets suggested by the community in the 'hopes for the future' tab
     dcc.Store(id='missing-assets-planner-view', storage_type='session'),
-
+    # info on the ratings submitted by users about assets
     dcc.Store(id='rating-score-planner-view', storage_type='session'),
-
+    # info on the 'value' tags associated with each of the ratings
     dcc.Store(id='rating-value-planner-view', storage_type='session'),
 
 
 ])
 
 # Callback to provide the relevant content depending on the page in the app
-
-
 @app.callback(Output('page-content', 'children'),
               Input('url', 'pathname'))
 def display_page(pathname):

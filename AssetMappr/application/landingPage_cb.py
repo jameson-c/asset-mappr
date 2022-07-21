@@ -24,7 +24,7 @@ Output:
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 
-# the readDB function does the SQL interaction
+# the readDB function does the SQL interaction to load community-specific data
 from AssetMappr.database.readDB import readDB
 
 
@@ -38,8 +38,6 @@ def landingPage_cb(app, master_communities):
         [Output('rating-score-planner-view', 'data')],
         [Output('rating-value-planner-view', 'data')],
         
-        
-
         [Input('enterButton', 'n_clicks')],
         [Input('community-select', 'value')]
     )
@@ -61,6 +59,5 @@ def landingPage_cb(app, master_communities):
                                                     == community_geo_id]
             
             # dcc.Store data has to be in JSON format, so returning it using to_json
-            # Three output containers, so three return outputs
             return (df_cnm.to_json(orient='split'), asset_categories.to_json(orient='split'), selected_community.to_json(orient='split')
                     ,missing_assets.to_json(orient='split'),rating_score.to_json(orient='split'),rating_value.to_json(orient='split'))
