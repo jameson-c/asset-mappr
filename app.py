@@ -62,7 +62,7 @@ app.title = 'AssetMappr'
 
 # Load master data from the postgreSQL database (this will eventually depend on community input chosen)
 
-asset_categories, master_categories, master_categories_desc, tagList_pos, tagList_neg, missing_assets, rating_score, rating_values, master_communities = readMasters()
+master_categories, master_categories_desc, tagList_pos, tagList_neg, master_communities = readMasters()
 
 
 # This column demarcates between assets read in from the DB and staged assets added by the user
@@ -119,7 +119,7 @@ def display_page(pathname):
     # If the user navigates to the main home page of the app
     # Note: there is a link in the landing_page that takes users to the home page
     if pathname == '/home':
-        return makeLayout(master_categories, tagList_pos, tagList_neg, asset_categories, master_categories_desc, rating_score, rating_values)
+        return  makeLayout(master_categories, tagList_pos, tagList_neg, master_categories_desc)
 
 
 # =============================================================================

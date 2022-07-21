@@ -46,20 +46,12 @@ def readMasters():
                                         == 'Negative', 'value'].tolist()
     master_value_tags = [i for i in master_value_tags['value']]
 
-    # Load the asset-categories mapping database
-    asset_categories = pd.read_sql_table('asset_categories', con=con_string)
-
-    missing_assets = pd.read_sql_table('missing_assets', con=con_string)
-
-    rating_score = pd.read_sql_table('staged_ratings', con=con_string)
-
-    rating_values = pd.read_sql_table('staged_values', con=con_string)
-    
     # Load the communities master list
-    master_communities = pd.read_sql_table('communities_master', con=con_string)
-    
+    master_communities = pd.read_sql_table(
+        'communities_master', con=con_string)
 
-    return asset_categories, master_categories, master_categories_desc, tagList_pos, tagList_neg, missing_assets, rating_score,rating_values, master_communities
+    return master_categories, master_categories_desc, tagList_pos, tagList_neg, master_communities
+
 
 def readDB(community_geo_id):
     '''
@@ -67,52 +59,52 @@ def readDB(community_geo_id):
     Output:
         - df: a data frame with the main assets table
         - asset_categories: a data frame mapping the assets in df to the categories they belong to
-    
+
     '''
-    
+
     # con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a/assetmappr_database'
-    
+
     # If running the app externally (e.g. outside render/locally), use this connection string instead:
     con_string = 'postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a.ohio-postgres.render.com/assetmappr_database'
-    
-    # Load the main assets database    
+
+    # Load the main assets database
     query = '''SELECT * FROM assets 
                WHERE community_geo_id = {}'''.format(community_geo_id)
-    
+
     df_cnm = pd.read_sql(query, con=con_string)
-    
+
     # Load the asset-categories mapping database for the relevant asset IDs
     query = '''SELECT * FROM asset_categories 
                WHERE asset_id IN
                    (SELECT asset_id FROM assets 
                     WHERE community_geo_id = {})
                '''.format(community_geo_id)
-    
+
     asset_categories = pd.read_sql(query, con=con_string)
-    
+
     # Load missing asstes
     query = '''SELECT * FROM missing_assets 
                WHERE user_community ={}'''.format(community_geo_id)
-    
+
     missing_assets = pd.read_sql(query, con=con_string)
-    
-    #Load rating score
+
+    # Load rating score
     query = '''SELECT * FROM staged_ratings 
                WHERE user_community ={}'''.format(community_geo_id)
-    
+
     rating_score = pd.read_sql(query, con=con_string)
-    
-    #Load rating value
+
+    # Load rating value
     query = '''SELECT * FROM staged_values 
                WHERE staged_rating_id IN
                    (SELECT staged_rating_id FROM staged_ratings 
                     WHERE user_community = {})
                '''.format(community_geo_id)
-    
+
     rating_value = pd.read_sql(query, con=con_string)
-    
+
     # This column demarcates between assets read in from the DB and staged assets added by the user
     # in the current session, so they can be displayed on the map in different colors and ratings for
     # verified vs. staged assets can be distinguished
     # df['asset_status'] = 'Verified'
-    return df_cnm, asset_categories ,missing_assets ,rating_score, rating_value
+    return df_cnm, asset_categories, missing_assets, rating_score, rating_value

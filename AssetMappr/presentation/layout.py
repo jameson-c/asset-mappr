@@ -40,7 +40,7 @@ from AssetMappr.presentation.showCheckbox import showCheckbox
 # =============================================================================
 
 
-def makeLayout(master_categories, tagList_pos, tagList_neg, asset_categories, master_categories_desc, rating_score, rating_values):
+def makeLayout(master_categories, tagList_pos, tagList_neg, master_categories_desc):
 
     return html.Div([
 
@@ -71,7 +71,7 @@ def makeLayout(master_categories, tagList_pos, tagList_neg, asset_categories, ma
                         html.Br(),
                     ], width=3),
                 ], className="g-0"),
-                # , className="g-0"
+
             ]),
 
             # Tab 2: Page to suggest 'missing' assets, share other thoughts about community dev
