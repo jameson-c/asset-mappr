@@ -24,6 +24,7 @@ import dash_leaflet as dl
 import dash_bootstrap_components as dbc
 import json
 import requests
+import os
 
 
 from flask import request
@@ -130,7 +131,7 @@ def suggestMissingAsset_cb(app):
             return ''
         else:
             # Geocode the lat-lng using Google Maps API
-            google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
+            google_api_key = os.getenv('google_api_key')
             
             # Adding Uniontown PA to make the search more accurate (to generalize)
             address_search = address_search + ' Uniontown, PA'
@@ -165,7 +166,7 @@ def suggestMissingAsset_cb(app):
     def geocoded_clicked_ltlng_missing(click_lat_lng):
         
         # Geocode the lat-lng using Google Maps API
-        google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
+        google_api_key = os.getenv('google_api_key')
         
         params = {'key': google_api_key,
                   'latlng': '{},{}'.format(click_lat_lng[0], click_lat_lng[1])}
