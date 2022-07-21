@@ -60,7 +60,7 @@ server = app.server
 app.title = 'AssetMappr'
 
 
-# Load master data from the postgreSQL database (this will eventually depend on community input chosen)
+# Load master data from the postgreSQL database (this will be unrelated with ommunity input chosen)
 
 master_categories, master_categories_desc, tagList_pos, tagList_neg, master_communities = readMasters()
 

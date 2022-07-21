@@ -57,8 +57,11 @@ def readDB(community_geo_id):
     '''
     Inputs: (int) community_geo_id: the geo ID of the selected community for which to retrieve info for from the DB
     Output:
-        - df: a data frame with the main assets table
+        - df_cnm: a data frame with the main assets table
         - asset_categories: a data frame mapping the assets in df to the categories they belong to
+        - missing_assets:data frame of missing_assets table
+        - rating_score: data frame of staged_rating tables
+        - rating_value: data frame of staged_values tables
 
     '''
 
