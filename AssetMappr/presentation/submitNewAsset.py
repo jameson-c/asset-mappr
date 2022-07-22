@@ -94,16 +94,6 @@ def submitNewAsset(master_categories):
                 # This takes an output from the CB which is the geocoded address based on the current clicked lat-long on the map
                 html.P(id='clicked-address'),
                 
-                html.Br(),
-                
-                # This section shows other nearby assets to make sure the user isn't re-entering an existing asset
-                html.P('The below assets are near your selected location and already in our system:'),
-                
-                html.Div(id='nearby-assets-table'),
-                
-                html.Br(),
-
-                       
                 html.Small('''Tip: You can click the + and - buttons on the side to zoom in and out, click/hold/drag the map to move it around,
                            or use the address search bar on the right to navigate to a spot'''),
 
@@ -138,7 +128,7 @@ def submitNewAsset(master_categories):
             
             dbc.ModalFooter([
                 dbc.Button("Back", id='back-modal-1', n_clicks=0),
-                dbc.Button("Next", id='open-modal-3', n_clicks=0)
+                dbc.Button("Next", id='open-modal-2_5', n_clicks=0)
                 ]),
              
             ], 
@@ -146,6 +136,36 @@ def submitNewAsset(master_categories):
             is_open=False, 
             size='xl'
             ),
+                                   
+        # Modal 2.5 (stylised modal-2_5): warning about assets already in our DB, very close to selected location
+        dbc.Modal([
+            
+            dbc.ModalHeader(dbc.ModalTitle("Are you sure we don't already have this asset in our records?")),
+            
+            dbc.ModalBody([
+                
+                # This section shows other nearby assets to make sure the user isn't re-entering an existing asset
+                html.P('''If there are assets in our records that are close to the location you selected, they will be displayed in a table below.'''),
+                html.P('''If the asset you are trying to submit is shown in the table, then you can close this window. You can submit a rating, or edit the 
+                       specific info about this asset by finding this asset on the main map page and clicking on it.
+                       '''),
+                       
+                html.P("If the asset you are trying to tell us about is not listed below, please proceed by clicking 'Next'"),
+                
+                html.Div(id='nearby-assets-table'),
+                
+                ]),
+            
+            dbc.ModalFooter([
+                dbc.Button("Back", id='back-modal-2', n_clicks=0),
+                dbc.Button("Next", id='open-modal-3', n_clicks=0)
+                ]),
+             
+            ], 
+            id='modal-2_5', 
+            is_open=False, 
+            size='xl'
+            ),        
 
         # Modal 3: information about the user
         dbc.Modal([
@@ -178,7 +198,7 @@ def submitNewAsset(master_categories):
                 ]),
             
             dbc.ModalFooter([
-                dbc.Button("Back", id='back-modal-2', n_clicks=0),
+                dbc.Button("Back", id='back-modal-2_5', n_clicks=0),
                 dbc.Button("Next", id='open-modal-4', n_clicks=0),
                 ])
              
