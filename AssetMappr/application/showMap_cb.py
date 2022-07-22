@@ -20,7 +20,7 @@ from dash.dependencies import Input, Output, State
 import pandas as pd
 import requests
 import json
-import dash_html_components as html
+from dash import html
 import os
 
 
