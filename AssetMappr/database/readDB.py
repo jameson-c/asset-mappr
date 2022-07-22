@@ -12,8 +12,9 @@ See the database documentation here for more info about the DB structure and tab
     
 """
 import pandas as pd
-from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
 import os
+
 
 def readMasters():
     '''
@@ -25,7 +26,7 @@ def readMasters():
         - master_communities: a dataframe of all the communities incorporated into assetmappr
     '''
     # Loading the DB connection URI string from the environment
-    con_string = os.getenv('db_uri')
+    con_string = os.getenv("DB_URI")
 
     # Load the categories master list
     master_category = pd.read_sql_table('categories_master', con=con_string)
@@ -59,7 +60,7 @@ def readDB(community_geo_id):
     '''
 
     # Loading the DB connection URI string from the environment
-    con_string = os.getenv('db_uri')
+    con_string = os.getenv('DB_URI')
 
     # Load the main assets database
     query = '''SELECT * FROM assets 
@@ -101,5 +102,5 @@ def readDB(community_geo_id):
     # in the current session, so they can be displayed on the map in different colors and ratings for
     # verified vs. staged assets can be distinguished
     # df['asset_status'] = 'Verified'
-    
+
     return df_cnm, asset_categories, missing_assets, rating_score, rating_value

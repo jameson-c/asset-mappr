@@ -31,7 +31,6 @@ from AssetMappr.database.readDB import readDB
 
 def catSummary_Planner_cb(app):
     
-
     # Callback which creates the bar chart by category based on the selected input statistic desired
     @app.callback(
         Output('bar-chart-for-planner', 'figure'),

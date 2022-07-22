@@ -40,7 +40,7 @@ def showMap_cb(app):
 
     @app.callback(
         Output('graph', 'figure'),
-        Output('no-result-alert', 'children'),
+        # Output('no-result-alert', 'children'),
         [Input('recycling_type', 'value')],
         [Input('search-address-button-tab1', 'n_clicks')],
 
@@ -140,14 +140,15 @@ def showMap_cb(app):
             return {
                 'data': locations,
                 'layout': layout
-            }, None
+            }
 
         else:
             # Geocode the lat-lng using Google Maps API
-            google_api_key = os.getenv('google_api_key')
+            google_api_key = os.getenv('GOOGLE_API_KEY')
 
-            community_name = selected_community['community_name'][1]
-
+            community_name = selected_community['community_name'][0]
+            print(selected_community['community_name'][0])
+            
             # Adding Uniontown PA to make the search more accurate (to generalize)
             address_search = address_search_1 + community_name + ', PA'
 
@@ -190,7 +191,7 @@ def showMap_cb(app):
                 return {
                     'data': locations,
                     'layout': layout
-                }, None
+                }
             else:
                 layout = go.Layout(
                     uirevision='foo',  # preserves state of figure/map after callback activated
@@ -216,4 +217,4 @@ def showMap_cb(app):
                 return {
                     'data': locations,
                     'layout': layout
-                }, html.Div("invalid address")
+                }

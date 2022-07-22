@@ -137,12 +137,12 @@ def submitNewAsset_cb(app):
             return ''
         else:
             # Geocode the lat-lng using Google Maps API
-            google_api_key = os.getenv('google_api_key')
+            google_api_key = os.getenv('GOOGLE_API_KEY')
             
             # Retrieve the name of the community to add to the geocoding search to make it more accurate
             selected_community = pd.read_json(selected_community, orient='split')
             
-            community_name = selected_community['community_name'][1]
+            community_name = selected_community['community_name'][0]
                         
             # Adding place name to make the search more accurate (to generalize)
             address_search = address_search + ' ' + community_name + ', PA'
@@ -178,7 +178,7 @@ def submitNewAsset_cb(app):
     def geocoded_clicked_ltlng(click_lat_lng):
         
         # Geocode the lat-lng using Google Maps API
-        google_api_key = os.getenv('google_api_key')
+        google_api_key = os.getenv('GOOGLE_API_KEY')
         
         params = {'key': google_api_key,
                   'latlng': '{},{}'.format(click_lat_lng[0], click_lat_lng[1])}

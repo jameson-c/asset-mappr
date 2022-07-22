@@ -28,7 +28,7 @@ def showCheckbox(master_categories, master_categories_desc):
 
 
             dbc.Row([
-                html.Div(id='no-result-alert')])
+                html.Div(id='no-result-alert', children=[])])
         ]),
 
         html.Hr(),
