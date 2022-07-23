@@ -15,6 +15,7 @@ Inputs:
 Output:
     - HTML Div, called in makeLayout()
 """
+from curses.panel import bottom_panel
 import dash_bootstrap_components as dbc
 from dash import html
 import pandas as pd
@@ -86,21 +87,74 @@ def topAssets_cb(app):
 
         # Using left joins here because not all assets may have all of the rating information. E.g. some assets may have
         # ratings, but no comments. Using left join with the main assets df table makes sure we don't drop any assets because of this.
+        # comments_df may be empty. Setting the condition for that.
 
         df = pd.merge(df, asset_values, on='asset_id', how='left')
         df = pd.merge(df, avg_rating_assets, on='asset_id', how='left')
-        df = pd.merge(df, comments_df, on='asset_id', how='left')
-
+        
         ## Step 5: Selecting assets with at least five ratings so the ratings average is reliable ##
         # drop assets with no ratings at all
         df = df.dropna(subset=['avg_asset_rating'])
         # keep if there are at least 5 ratings for the asset
-        if df[df['num_ratings'] >= 5] is None:
-            df = df[df['num_ratings'] >= 5]
-            # Sort values from descending to ascending, so the 'worst' assets are first rows, best are bottom rows
-            df = df.sort_values(['avg_asset_rating'])
-            ### CREATING THE ACTUAL DISPLAY COMPONENTS ###
-
+        if df[df['num_ratings'] >= 5].empty == False:
+            ## comments_df may be empty
+            if comments_df.empty == False:
+                df = pd.merge(df, comments_df, on='asset_id', how='left')
+                df = df[df['num_ratings'] >= 5]
+                # Sort values from descending to ascending, so the 'worst' assets are first rows, best are bottom rows
+                df = df.sort_values(['avg_asset_rating'])
+                #setting the varibles which will be used in the return
+                topAsset_1_Name = df['asset_name'].iloc[-1]
+                topAsset_1_Value = df['most_common_value'].iloc[-1]
+                topAsset_1_Comment = df['comments'].iloc[-1]
+                topAsset_1_AvgScore = df['avg_asset_rating'].iloc[-1]
+                topAsset_1_NumRating =  df['num_ratings'].iloc[-1]
+                
+                topAsset_2_Name = df['asset_name'].iloc[-2]
+                topAsset_2_Value = df['most_common_value'].iloc[-2]
+                topAsset_2_Comment = df['comments'].iloc[-2]
+                topAsset_2_AvgScore = df['avg_asset_rating'].iloc[-2]
+                topAsset_2_NumRating =  df['num_ratings'].iloc[-2]
+                
+                bottom_1_Name = df['asset_name'].iloc[0]
+                bottom_1_Value = df['most_common_value'].iloc[0]
+                bottom_1_Comment = df['comments'].iloc[0]
+                bottom_1_AvgScore = df['avg_asset_rating'].iloc[0]
+                bottom_1_NumRating =  df['num_ratings'].iloc[0]
+                
+                bottom_2_Name = df['asset_name'].iloc[1]
+                bottom_2_Value = df['most_common_value'].iloc[1]
+                bottom_2_Comment = df['comments'].iloc[1]
+                bottom_2_AvgScore = df['avg_asset_rating'].iloc[1]
+                bottom_2_NumRating =  df['num_ratings'].iloc[1] 
+            else:
+                #setting the varibles which will be used in the return when comments is empty
+                topAsset_1_Name = df['asset_name'].iloc[-1]
+                topAsset_1_Value = df['most_common_value'].iloc[-1]
+                topAsset_1_Comment = 'No comments yet'
+                topAsset_1_AvgScore = df['avg_asset_rating'].iloc[-1]
+                topAsset_1_NumRating =  df['num_ratings'].iloc[-1]
+                
+                topAsset_2_Name = df['asset_name'].iloc[-2]
+                topAsset_2_Value = df['most_common_value'].iloc[-2]
+                topAsset_2_Comment ='No comments yet'
+                topAsset_2_AvgScore = df['avg_asset_rating'].iloc[-2]
+                topAsset_2_NumRating =  df['num_ratings'].iloc[-2]
+                
+                bottom_1_Name = df['asset_name'].iloc[0]
+                bottom_1_Value = df['most_common_value'].iloc[0]
+                bottom_1_Comment ='No comments yet'
+                bottom_1_AvgScore = df['avg_asset_rating'].iloc[0]
+                bottom_1_NumRating =  df['num_ratings'].iloc[0]
+                
+                bottom_2_Name = df['asset_name'].iloc[1]
+                bottom_2_Value = df['most_common_value'].iloc[1]
+                bottom_2_Comment = 'No comments yet'
+                bottom_2_AvgScore = df['avg_asset_rating'].iloc[1]
+                bottom_2_NumRating =  df['num_ratings'].iloc[1] 
+                 
+                ### CREATING THE ACTUAL DISPLAY COMPONENTS ###
+                
             return html.Div([
 
                 # Header for the 'top' 2 assets section
@@ -114,27 +168,27 @@ def topAssets_cb(app):
                     # Top asset number 1, with highest rating: the last row of sorted df created above
                     dbc.Card([
 
-                        dbc.CardHeader(df['asset_name'].iloc[-1], style={
+                        dbc.CardHeader(topAsset_1_Name, style={
                             'font-size': '14px', 'font-weight': 'bold'}),
 
                         dbc.CardBody([
 
                             # Badge that displays the most common value. 'Success' and the classname are standard
                             # badge formats selected from the dbc documentation; basically it makes a green 'pill'-shaped badge
-                            dbc.Badge(df['most_common_value'].iloc[-1], pill=True, color='success',
-                                      className="me-1"),
+                            dbc.Badge(topAsset_1_Value, pill=True, color='success',
+                                    className="me-1"),
 
                             html.Br(),
 
                             # Displaying the randomly chosen comment in quotation marks
-                            html.P([' "{}" '.format(df['comments'].iloc[-1])],
-                                   style={'margin-top': '10px'}),
+                            html.P([' "{}" '.format(topAsset_1_Comment)],
+                                style={'margin-top': '10px'}),
 
                         ]),
 
                         # Showing the average rating and total number of ratings
-                        dbc.CardFooter(['Average rating: {:.2f} out of 5 (from {} ratings)'.format(df['avg_asset_rating'].iloc[-1],
-                                                                                                   df['num_ratings'].iloc[-1])
+                        dbc.CardFooter(['Average rating: {:.2f} out of 5 (from {} ratings)'.format(topAsset_1_AvgScore,
+                                                                                                topAsset_1_NumRating)
                                         ]),
 
                     ]),
@@ -143,23 +197,23 @@ def topAssets_cb(app):
                     # Same structure followed as above
                     dbc.Card([
 
-                        dbc.CardHeader(df['asset_name'].iloc[-2], style={
+                        dbc.CardHeader(topAsset_2_Name, style={
                             'font-size': '14px', 'font-weight': 'bold'}),
 
                         dbc.CardBody([
 
-                            dbc.Badge(df['most_common_value'].iloc[-2], pill=True, color='success',
-                                      className="me-1"),
+                            dbc.Badge(topAsset_2_Value, pill=True, color='success',
+                                    className="me-1"),
 
                             html.Br(),
 
                             html.P('''"{}"'''.format(
-                                df['comments'].iloc[-2]), style={'margin-top': '10px'}),
+                                topAsset_2_Comment), style={'margin-top': '10px'}),
 
                         ]),
 
-                        dbc.CardFooter(['Average rating: {:.2f} out of 5 (from {} ratings)'.format(df['avg_asset_rating'].iloc[-2],
-                                                                                                   int(df['num_ratings'].iloc[-2]))
+                        dbc.CardFooter(['Average rating: {:.2f} out of 5 (from {} ratings)'.format(topAsset_2_AvgScore,
+                                                                                                int(topAsset_2_NumRating))
                                         ]),
 
                     ]),
@@ -176,24 +230,24 @@ def topAssets_cb(app):
                     dbc.Card(className="card", children=[
 
                         # The worst asset is the first row of df, hence iloc[0]
-                        dbc.CardHeader(df['asset_name'].iloc[0], style={
+                        dbc.CardHeader(bottom_1_Name, style={
                             'font-size': '14px', 'font-weight': 'bold'}),
 
                         dbc.CardBody([
 
                             # Color changed to 'danger', to format it as red background - white text
-                            dbc.Badge(df['most_common_value'].iloc[0], pill=True, color='danger',
-                                      className="me-1"),
+                            dbc.Badge(bottom_1_Value, pill=True, color='danger',
+                                    className="me-1"),
 
                             html.Br(),
 
-                            html.P('''"{}"'''.format(df['comments'].iloc[0]), style={
+                            html.P('''"{}"'''.format(bottom_1_Comment), style={
                                 'margin-top': '18px'}),
 
                         ]),
 
-                        dbc.CardFooter(['Average rating: {:.2f} out of 5 (from {} ratings)'.format(df['avg_asset_rating'].iloc[0],
-                                                                                                   int(df['num_ratings'].iloc[0]))
+                        dbc.CardFooter(['Average rating: {:.2f} out of 5 (from {} ratings)'.format(bottom_1_AvgScore),
+                                                                                                int(bottom_1_NumRating)
                                         ]),
 
                     ]),
@@ -201,25 +255,24 @@ def topAssets_cb(app):
                     # Card for second-worst asset (second row in the dataset)
                     dbc.Card(className="card", children=[
 
-                        dbc.CardHeader(df['asset_name'].iloc[1], style={
+                        dbc.CardHeader(bottom_2_Name, style={
                             'font-size': '14px', 'font-weight': 'bold'}),
 
                         dbc.CardBody([
 
-                            dbc.Badge(df['most_common_value'].iloc[1], pill=True, color='danger',
-                                      className="me-1"),
+                            dbc.Badge(bottom_2_Value, pill=True, color='danger',
+                                    className="me-1"),
 
                             html.Br(),
 
 
-                            html.P('''"{}"'''.format(df['comments'].iloc[1]), style={
+                            html.P('''"{}"'''.format(bottom_2_Comment), style={
                                 'margin-top': '10px'}),
 
                         ]),
 
-                        dbc.CardFooter(['Average rating: {:.2f} out of 5 (from {} ratings)'.format(df['avg_asset_rating'].iloc[1],
-                                                                                                   int(df['num_ratings'].iloc[1]))
-                                        ]),
+                        dbc.CardFooter(['Average rating: {:.2f} out of 5 (from {} ratings)'.format(bottom_2_AvgScore,
+                                                                                                int(bottom_2_NumRating))]),
 
                     ]),
 

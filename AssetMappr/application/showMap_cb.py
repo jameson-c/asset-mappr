@@ -55,7 +55,7 @@ def showMap_cb(app):
         asset_categories = pd.read_json(asset_categories, orient='split')
 
         selected_community = pd.read_json(selected_community, orient='split')
-
+        print(selected_community['community_name'].values.tolist()[0])
         # Merge the assets and asset-category mappings into a single df
         map_df = pd.merge(df_cnm, asset_categories, on='asset_id')
 
@@ -146,8 +146,7 @@ def showMap_cb(app):
             # Geocode the lat-lng using Google Maps API
             google_api_key = os.getenv('GOOGLE_API_KEY')
 
-            community_name = selected_community['community_name'][0]
-            print(selected_community['community_name'][0])
+            community_name = selected_community['community_name'].values.tolist()[0]
             
             # Adding Uniontown PA to make the search more accurate (to generalize)
             address_search = address_search_1 + community_name + ', PA'
