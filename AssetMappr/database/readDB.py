@@ -30,7 +30,7 @@ import os
 def readDB(community_geo_id=False):
 
     # Getting database connection URI from environment
-    con_string = os.getenv('db_uri')
+    con_string = os.getenv('DB_URI')
 
     # Load the categories master list
     master_category = pd.read_sql_table('categories_master', con=con_string)
