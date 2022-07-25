@@ -214,12 +214,15 @@ def submitNewAsset_cb(app):
     # Callback to show assets that are close to the clicked location (prompt users to check if duplicate submission) 
     @app.callback(
         Output('nearby-assets-table','children'),
-        Input('submit-asset-map', 'click_lat_lng')
+        Input('submit-asset-map', 'click_lat_lng'),
+        Input('assets-df', 'data'),
         )
-    def nearby_asset_display(click_lat_lng):
-        nonlocal df # pulling the loaded assets data frame from the outer function
+    def nearby_asset_display(click_lat_lng, df):
         point = tuple(click_lat_lng) # lat-long needs to be as a tuple for the distance function
         
+        # processing data coming in JSON format
+        df = pd.read_json(df, orient='split')
+
         # Combining lat-long into one column in df with tuples
         df['coords'] = df[['latitude', 'longitude']].apply(tuple, axis=1)
         
