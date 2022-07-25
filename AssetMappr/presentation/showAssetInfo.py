@@ -29,7 +29,7 @@ def showAssetInfo(master_categories):
 
         html.P(id='suggest-edit-instruction'),
 
-        html.Button("Sugget an edit", id="open-edit-window",
+        html.Button("Suggest an edit", id="open-edit-window",
                     n_clicks=0, hidden=True),
 
         # suggest an edit

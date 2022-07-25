@@ -24,42 +24,52 @@ from dash import html
 from dash.dependencies import Input, Output
 import numpy as np
 
-import plotly  # (version 4.4.1)
 import plotly.express as px
 
+# the readDB function does the SQL interaction
+from AssetMappr.database.readDB import readDB
 
-def catSummary_Planner_cb(app, master_categories, asset_categories, missing_assets, rating_score):
-
-    # Counts by category for existing assetse
-    existing_cat_counts = asset_categories.groupby('category').count()
-
-    # Getting the average rating and number of ratings for each asset
-    avg_rating_assets = rating_score.groupby('asset_id').agg(avg_asset_rating=('rating_scale', np.mean),
-                                                             num_ratings=('staged_rating_id', np.count_nonzero))
-
-    # Merging this ratings data to see the category each asset belongs to
-    cat_ratings = pd.merge(asset_categories, avg_rating_assets, on='asset_id')
-
-    # Aggregating the data again at a category level - taking an average of the average ratings across assets,
-    # summing the total ratings observed for a category, and getting the unique assets over which those ratings were observed
-
-    cat_ratings = cat_ratings.groupby('category').agg(avg_cat_rating=('avg_asset_rating', np.mean),
-                                                      tot_ratings=(
-                                                          'num_ratings', 'sum'),
-                                                      unique_assets=('asset_id', pd.Series.nunique))
-
-    # Counts by primary category for missing/suggested assets
-    missing_cat_counts = missing_assets.groupby('primary_category').agg(
-        count=('suggestion_id', pd.Series.nunique))
-
+def catSummary_Planner_cb(app):
+    
     # Callback which creates the bar chart by category based on the selected input statistic desired
     @app.callback(
         Output('bar-chart-for-planner', 'figure'),
-        Input('choose-the-stat', 'value'))
-    def showChart(stat_type):
+        Input('choose-the-stat', 'value'),
+        # Retrieves the relevant community's data from the dcc.Store object
+        [Input('asset-categories-cnm', 'data')],
+        [Input('missing-assets-planner-view', 'data')],
+        [Input('rating-score-planner-view', 'data')],
+        
+        )
+    def showChart(stat_type,asset_categories,missing_assets,rating_score):
+        # Transform the JSON format data from the dcc.Store back into data frames
+        asset_categories = pd.read_json(asset_categories, orient='split')
+        missing_assets = pd.read_json(missing_assets, orient='split')
+        rating_score = pd.read_json(rating_score, orient='split')
+            
+        # Counts by category for existing assetse
+        existing_cat_counts = asset_categories.groupby('category').count()
 
-        # Declaring the above processed datasets as nonlocals so this nested function can access
-        nonlocal existing_cat_counts, cat_ratings, missing_cat_counts
+        # Getting the average rating and number of ratings for each asset
+        avg_rating_assets = rating_score.groupby('asset_id').agg(avg_asset_rating=('rating_scale', np.mean),
+                                                                num_ratings=('staged_rating_id', np.count_nonzero))
+
+        # Merging this ratings data to see the category each asset belongs to
+        cat_ratings = pd.merge(asset_categories, avg_rating_assets, on='asset_id')
+
+        # Aggregating the data again at a category level - taking an average of the average ratings across assets,
+        # summing the total ratings observed for a category, and getting the unique assets over which those ratings were observed
+
+        cat_ratings = cat_ratings.groupby('category').agg(avg_cat_rating=('avg_asset_rating', np.mean),
+                                                        tot_ratings=(
+                                                            'num_ratings', 'sum'),
+                                                        unique_assets=('asset_id', pd.Series.nunique))
+
+        # Counts by primary category for missing/suggested assets
+        missing_cat_counts = missing_assets.groupby('primary_category').agg(
+            count=('suggestion_id', pd.Series.nunique))      
+            
+
 
         # Barchart to show count of existing assets by category
         if stat_type == 'count_number':

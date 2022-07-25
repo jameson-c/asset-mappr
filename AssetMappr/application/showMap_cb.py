@@ -24,10 +24,7 @@ import dash_html_components as html
 import os
 
 
-def showMap_cb(app, df, asset_categories):
-
-    # Merge the assets and asset-category mappings into a single df
-    map_df = pd.merge(df, asset_categories, on='asset_id')
+def showMap_cb(app):
 
     # This callback receives input on which categories the user has selected (recycling_type)
     # And outputs the map object
@@ -43,13 +40,25 @@ def showMap_cb(app, df, asset_categories):
 
     @app.callback(
         Output('graph', 'figure'),
-        Output('no-result-alert', 'children'),
-        [Input('recycling_type', 'value'),
-         Input('search-address-button-tab1', 'n_clicks')],
+        # Output('no-result-alert', 'children'),
+        [Input('recycling_type', 'value')],
+        [Input('search-address-button-tab1', 'n_clicks')],
+
+        # Retrieves the relevant community's data from the dcc.Store object
+        [Input('assets-df', 'data')],
+        [Input('selected-community-info', 'data')],
+        [Input('asset-categories-cnm', 'data')],
         State('address-search-tab1', 'value'))
-    def update_figure(chosen_recycling, n_clicks, address_search_1):
-        # Nonlocal tells this nested function to access map_df from the outer function - otherwise throws an undefined error
-        nonlocal map_df
+    def update_figure(chosen_recycling, n_clicks, df_cnm, selected_community, asset_categories, address_search_1):
+        # Transform the JSON format data from the dcc.Store back into data frames
+        df_cnm = pd.read_json(df_cnm, orient='split')
+        asset_categories = pd.read_json(asset_categories, orient='split')
+
+        selected_community = pd.read_json(selected_community, orient='split')
+        print(selected_community['community_name'].values.tolist()[0])
+        # Merge the assets and asset-category mappings into a single df
+        map_df = pd.merge(df_cnm, asset_categories, on='asset_id')
+
         # We should change this part when the categories are changed. Becuase each category has one symbol, it is a one on one thing, we have to manually choose the symbol for each category.
         categoryList = ["Sports and recreation", "Culture and history", "Education and workforce development",
                         "Healthcare", "Housing", "Places of worship", "Community service and assistance", "Transport and infrastructure",
@@ -82,6 +91,10 @@ def showMap_cb(app, df, asset_categories):
 
         # Filtering the dataset to only keep assets in the selected categories
         df_sub = map_df[(map_df['category'].isin(chosen_recycling))]
+
+        # Get the community lat-long to center on (from the selected community info)
+        community_center_lat = float(selected_community['latitude'])
+        community_center_lon = float(selected_community['longitude'])
 
         # Setting mapbox access token (this is for accessing their base maps)
         mapbox_access_token = 'pk.eyJ1IjoicWl3YW5nYWFhIiwiYSI6ImNremtyNmxkNzR5aGwyb25mOWxocmxvOGoifQ.7ELp2wgswTdQZS_RsnW1PA'
@@ -117,8 +130,8 @@ def showMap_cb(app, df, asset_categories):
                     bearing=25,
                     style='light',
                     center=dict(
-                        lat=39.8993885,
-                        lon=-79.7249338
+                        lat=community_center_lat,  # this is the center lat-long for the selected community
+                        lon=community_center_lon
                     ),
                     pitch=40,
                     zoom=11.5
@@ -127,14 +140,16 @@ def showMap_cb(app, df, asset_categories):
             return {
                 'data': locations,
                 'layout': layout
-            }, None
+            }
 
         else:
             # Geocode the lat-lng using Google Maps API
-            google_api_key = os.getenv('google_api_key')
+            google_api_key = os.getenv('GOOGLE_API_KEY')
 
+            community_name = selected_community['community_name'].values.tolist()[0]
+            
             # Adding Uniontown PA to make the search more accurate (to generalize)
-            address_search = address_search_1 + ' Uniontown, PA'
+            address_search = address_search_1 + community_name + ', PA'
 
             params = {'key': google_api_key,
                       'address': address_search}
@@ -175,7 +190,7 @@ def showMap_cb(app, df, asset_categories):
                 return {
                     'data': locations,
                     'layout': layout
-                }, None
+                }
             else:
                 layout = go.Layout(
                     uirevision='foo',  # preserves state of figure/map after callback activated
@@ -191,8 +206,8 @@ def showMap_cb(app, df, asset_categories):
                         bearing=25,
                         style='light',
                         center=dict(
-                            lat=39.8993885,
-                            lon=-79.7249338
+                            lat=community_center_lat,  # this is the center lat-long for the selected community
+                            lon=community_center_lon
                         ),
                         pitch=40,
                         zoom=11.5
@@ -201,4 +216,4 @@ def showMap_cb(app, df, asset_categories):
                 return {
                     'data': locations,
                     'layout': layout
-                }, html.Div("invalid address")
+                }

@@ -9,6 +9,7 @@ Desc: This file creates the callbacks which interact with the submitRating funct
           - showMap_cb.py file, because it uses the map/graph to pull info about the clicked asset
             so that we know which asset the user is rating
           - submitRating.py in the database folder, which writes the rating to the SQL DB
+          - app.py, which tells us which community the user has selected (to get the community_geo_id)
          
 Input: 
     app: an initialized dash app
@@ -22,6 +23,8 @@ from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
 from dash import html
 from dash import dcc
+import pandas as pd
+from flask import request
 
 from AssetMappr.database.submitRating_db import submitRating_db
 
@@ -34,18 +37,27 @@ def submitRating_cb(app, tagList_pos, tagList_neg):
         [State('graph', 'clickData')],
         [State('rating-score', 'value')],
         [State('rating-comments', 'value')],
+        [State('selected-community-info', 'data')],
         [State('value-tag', 'value')]
     )
-    def submit_rating(n_clicks, clickData, rating_score, rating_comments, value_tag):
+    def submit_rating(n_clicks, clickData, rating_score, rating_comments, selected_community, value_tag):
         # This callback is only triggered when someone clicks the submit button
         if n_clicks == 0:
             return ''
         else:
             # Get Asset ID from the click data
             asset_id = clickData['points'][0]['customdata'][3]
+            
+            # Get user's IP address
+            ip = request.remote_addr
+
+            # Extract the selected commmunity_geo_id
+            selected_community = pd.read_json(selected_community, orient='split')
+            community_geo_id = int(selected_community['community_geo_id'])
+
 
             # Write the rating information to the staged ratings table in the DB
-            submitRating_db(asset_id, rating_score, rating_comments, value_tag)
+            submitRating_db(ip, asset_id, rating_score, rating_comments, community_geo_id, value_tag)
             return dbc.Alert('Your review has been submitted - Thanks for sharing! ', dismissable=True, color='success')
 
     # Show the label: "How do you feel about XXXX(asset name)?"
