@@ -27,8 +27,8 @@ def showCheckbox(master_categories, master_categories_desc):
             dbc.Button('Find', id='search-address-button-tab1', n_clicks=0),
 
 
-            dbc.Row([
-                html.Div(id='no-result-alert')])
+            # dbc.Row([
+            #     html.Div(id='no-result-alert', children=[])])
         ]),
 
         html.Hr(),

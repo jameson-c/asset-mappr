@@ -5,12 +5,12 @@ Author: Mihir Bhaskar
 Desc: This file creates the callbacks which interact with the submitNewAsset popup
       
       This is linked to the submitNewAsset.py layout file, as well as the submitNewAsset_db
-      file in the Database folder, which writes the new user-entered asset info to the database
+      file in the Database folder, which writes the new user-entered asset info to the database.
+      
+      It also takes intputs from the dcc.Store containers in app.py, with relevant community-specific data
 
 Input: 
     app: an initialized dash app
-    df: data frame with loaded assets
-    asset_categories: data frame with asset-category mappings
     
 Output: 
     Callbacks relating to the submit-new-asset feature
@@ -23,18 +23,14 @@ from flask import request
 import dash_bootstrap_components as dbc
 import requests
 import json
+import pandas as pd
 import os
 from dash import dash_table
 from geopy.distance import distance
 
-
 from AssetMappr.database.submitNewAsset_db import submitNewAsset_db
 
-def submitNewAsset_cb(app, df, asset_categories):
-    
-    # Creating copies of the data frame and asset categories to be used later
-    df_copy = df
-    asset_categories_copy = asset_categories
+def submitNewAsset_cb(app):
     
     # Callbacks for each of the sub-modals, to control when it opens/closes
     # The modals are connected with back/next buttons, which determine when each one is open/close
@@ -114,15 +110,23 @@ def submitNewAsset_cb(app, df, asset_categories):
     # Callback to render the Leaflet map on which users will pin the location of the asset
     @app.callback(
         Output('submit-asset-map', 'children'),
-        Input('modal-2', 'is_open')
+        Input('modal-2', 'is_open'),
+        Input('selected-community-info', 'data') # this is to get the selected community's centering lat-long when loading the map
         )
-    def render_map_on_show(is_open):
+    def render_map_on_show(is_open, selected_community):
         # This ensures that the map only renders if modal 2 is open, preventing screen resizing issues
         if is_open:
+            
+            # Get the lat-long to center on when the map loads
+            selected_community = pd.read_json(selected_community, orient='split')
+            community_center_lat = float(selected_community['latitude'])
+            community_center_lon = float(selected_community['longitude'])
+
+            
             return dl.Map([dl.TileLayer(), dl.LayerGroup(id='layer')],
                       id='submit-asset-map', 
                       # TODO: automate the centering of the map based on user input on community
-                      zoom=14, center=(39.8993885, -79.7249338),
+                      zoom=14, center=(community_center_lat, community_center_lon),
                       style={'width': '100%', 'height': '65vh', 'margin': "auto", "display": "block"}
                      )
     
@@ -142,17 +146,26 @@ def submitNewAsset_cb(app, df, asset_categories):
         Output('submit-asset-map', 'zoom'),
         Output('address-search', 'value'), # this is to clear the value in the search box once submitted
         [Input('search-address-button', 'n_clicks')],
-        [State('address-search', 'value')]
+        [State('address-search', 'value')],
+        [State('selected-community-info', 'data')] # getting info on the selected community to extract the name and make the geocode search more accurate
         )
-    def zoom_to_address(n_clicks, address_search):
+    def zoom_to_address(n_clicks, address_search, selected_community):
         if n_clicks == 0:
             return ''
         else:
             # Geocode the lat-lng using Google Maps API
             google_api_key = os.getenv('GOOGLE_API_KEY')
             
-            # Adding Uniontown PA to make the search more accurate (to generalize)
-            address_search = address_search + ' Uniontown, PA'
+            # Retrieve the name of the community to add to the geocoding search to make it more accurate
+            selected_community = pd.read_json(selected_community, orient='split')
+            
+            community_name = selected_community['community_name'].values.tolist()[0]
+                        
+            # Adding place name to make the search more accurate (to generalize)
+            address_search = address_search + ' ' + community_name + ', PA'
+            community_center_lat = float(selected_community['latitude'])
+            community_center_lon = float(selected_community['longitude'])
+
             
             params = {'key': google_api_key,
                       'address': address_search}
@@ -172,7 +185,7 @@ def submitNewAsset_cb(app, df, asset_categories):
                 return ('', (lat, long), 20, '')
                         
             else:
-                return ('Invalid address; try entering', (39.8993885, -79.7249338), 14, address_search)
+                return ('Invalid address; try entering', (community_center_lat, community_center_lon), 14, address_search)
     
     # Callback to display the geocoded address based on the clicked lat long
     @app.callback(
@@ -258,9 +271,11 @@ def submitNewAsset_cb(app, df, asset_categories):
         [State('asset-categories', 'value')],
         [State('asset-desc', 'value')],
         [State('asset-website', 'value')],
-        [State('submit-asset-map', 'click_lat_lng')]
+        [State('submit-asset-map', 'click_lat_lng')],
+        [State('selected-community-info', 'data')]
         )
-    def store_submitted_info(n_clicks, user_name, user_role, name, categories, desc, site, click_lat_lng):
+    def store_submitted_info(n_clicks, user_name, user_role, name, categories, 
+                             desc, site, click_lat_lng, selected_community):
         
         # If the 'Submit' button has not been clicked yet, return or do nothing
         if n_clicks == 0:
@@ -272,35 +287,38 @@ def submitNewAsset_cb(app, df, asset_categories):
 
             # Create a staged asset ID            
             staged_asset_id = str(uuid.uuid4()) 
+            
+            # Extract the selected commmunity_geo_id
+            selected_community = pd.read_json(selected_community, orient='split')
+            community_geo_id = int(selected_community['community_geo_id'])
 
             # Feed the info into the database-write function, which writes to SQL (found in database folder)
             submitNewAsset_db(staged_asset_id, ip, user_name, user_role, name, categories, desc, 
-                              site, click_lat_lng, community_geo_id=4278528, address=address)
+                              site, click_lat_lng, community_geo_id, address=address)
+            
+            # Note: all the code below is an attempt to append this staged asset to the DF temporarily. Need to explore
+            # A different solution later, for now commenting everything out
             
             # Writing the asset to the temporary data frame used by the app, so the user can see this uploaded asset
             # in their current session. Note: this is over and above writing it to the actual postgreSQL DB, which happens
             # above
             
-            # Nonlocal tells this nested function to access these variables from the outer function - otherwise throws an undefined error
-            nonlocal df_copy
-            nonlocal asset_categories_copy
+            # # Appending the information to a new row in df_copy
+            # new_df_row = {'asset_id': staged_asset_id, 'asset_name': name,
+            #            'asset_status': 'Staged', 'community_geo_id': 123,
+            #            'source_type': 'User', 'description': desc, 'website': site,
+            #            'latitude': click_lat_lng[0], 'longitude': click_lat_lng[1]}
+            # df_copy = df_copy.append(new_df_row, ignore_index=True)
             
-            # Appending the information to a new row in df_copy
-            new_df_row = {'asset_id': staged_asset_id, 'asset_name': name,
-                       'asset_status': 'Staged', 'community_geo_id': 123,
-                       'source_type': 'User', 'description': desc, 'website': site,
-                       'latitude': click_lat_lng[0], 'longitude': click_lat_lng[1]}
-            df_copy = df_copy.append(new_df_row, ignore_index=True)
+            # # Appending the category information to new row(s) in asset_categories_copy
+            # for cat in categories:
+            #     new_cat_row = {'asset_id': staged_asset_id, 'category': cat}
+            #     asset_categories_copy = asset_categories_copy.append(new_cat_row, ignore_index=True)
             
-            # Appending the category information to new row(s) in asset_categories_copy
-            for cat in categories:
-                new_cat_row = {'asset_id': staged_asset_id, 'category': cat}
-                asset_categories_copy = asset_categories_copy.append(new_cat_row, ignore_index=True)
-            
-            # This global part ensures that we write these changes to the global versions of df and asset_categories,
-            # that can be accessed by the rest of the application (e.g. the showMap functions)
-            global df, asset_categories
-            df, asset_categories = df_copy, asset_categories_copy
+            # # This global part ensures that we write these changes to the global versions of df and asset_categories,
+            # # that can be accessed by the rest of the application (e.g. the showMap functions)
+            # global df, asset_categories
+            # df, asset_categories = df_copy, asset_categories_copy
      
             # Returns user confirmation, and empty strings/None types to the corresponding Input boxes
             return (dbc.Alert('''{} submited successfully!  

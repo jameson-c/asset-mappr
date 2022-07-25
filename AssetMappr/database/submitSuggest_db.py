@@ -30,7 +30,7 @@ import os
 def submitSuggest_db(edit_id, asset_id, name, desc, address, category, website, status, ip):
 
     # Getting database connection URI from environment
-    con_string = os.getenv('db_uri')
+    con_string = os.getenv('DB_URI')
 
     # Establish connection with database (details found in Heroku dashboard after login)
     conn = psycopg2.connect(con_string)
@@ -46,10 +46,10 @@ def submitSuggest_db(edit_id, asset_id, name, desc, address, category, website, 
     suggested_address = address
 
     # get lat lon from google API
-    google_api_key = 'AIzaSyDitOkTVs4g0ibg_Yt04DQqLaUYlxZ1o30'
+    google_api_key = os.getenv('GOOGLE_API_KEY')
     
     # Need to generalise this
-    address = address + ' Uniontown, PA'
+    address = address + ', PA'
 
     params = {'key': google_api_key,
               'address': suggested_address}

@@ -31,7 +31,7 @@ def suggestMissingAsset_db(ip, user_name, user_role, name, categories, desc, cli
                            justification, address, community_geo_id):
 
     # Getting database connection URI from environment
-    con_string = os.getenv('db_uri')
+    con_string = os.getenv('DB_URI')
 
     # Establish connection with database (details found in Heroku dashboard after login)
     conn = psycopg2.connect(con_string)

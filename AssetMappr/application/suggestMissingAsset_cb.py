@@ -22,6 +22,7 @@ from dash import html
 import pandas as pd
 import dash_leaflet as dl
 import dash_bootstrap_components as dbc
+import pandas as pd
 import json
 import requests
 import os
@@ -96,15 +97,22 @@ def suggestMissingAsset_cb(app):
     # Callback to render the Leaflet map on which users will pin the location of the missing asset
     @app.callback(
         Output('submit-missing-asset-map', 'children'),
-        Input('modal-2-missing', 'is_open')
+        Input('modal-2-missing', 'is_open'),
+        Input('selected-community-info', 'data')
         )
-    def render_map_on_show(is_open):
+    def render_map_on_show(is_open, selected_community):
         # This ensures that the map only renders if the modal is open, preventing screen resizing issues
         if is_open:
+            
+            # Get the lat-long to center on when the map loads
+            selected_community = pd.read_json(selected_community, orient='split')
+            community_center_lat = float(selected_community['latitude'])
+            community_center_lon = float(selected_community['longitude'])
+
             return dl.Map([dl.TileLayer(), dl.LayerGroup(id='missing-layer')],
                       id='submit-missing-asset-map', 
                       # TODO: automate the centering of the map based on user input on community
-                      zoom=14, center=(39.8993885, -79.7249338),
+                      zoom=14, center=(community_center_lat, community_center_lon),
                       style={'width': '100%', 'height': '50vh', 'margin': "auto", "display": "block"}
                      )
     
@@ -124,17 +132,25 @@ def suggestMissingAsset_cb(app):
         Output('submit-missing-asset-map', 'zoom'),
         Output('address-search-missing', 'value'), # this is to clear the value in the search box once submitted
         [Input('search-address-button-missing', 'n_clicks')],
-        [State('address-search-missing', 'value')]
+        [State('address-search-missing', 'value')],
+        [State('selected-community-info', 'data')]
         )
-    def zoom_to_address_missing(n_clicks, address_search):
+    def zoom_to_address_missing(n_clicks, address_search, selected_community):
         if n_clicks == 0:
             return ''
         else:
             # Geocode the lat-lng using Google Maps API
             google_api_key = os.getenv('GOOGLE_API_KEY')
+
+            # Retrieve the name of the community to add to the geocoding search to make it more accurate
+            selected_community = pd.read_json(selected_community, orient='split')
             
-            # Adding Uniontown PA to make the search more accurate (to generalize)
-            address_search = address_search + ' Uniontown, PA'
+            community_name = selected_community['community_name'].values.tolist()[0]
+            
+            # Adding place name to make the search more accurate (to generalize)
+            address_search = address_search + ' ' + community_name + ', PA'
+            community_center_lat = float(selected_community['latitude'])
+            community_center_lon = float(selected_community['longitude'])
             
             params = {'key': google_api_key,
                       'address': address_search}
@@ -154,7 +170,7 @@ def suggestMissingAsset_cb(app):
                 return ('', (lat, long), 20, '')
                         
             else:
-                return ('Invalid address; try entering', (39.8993885, -79.7249338), 14, address_search)
+                return ('Invalid address; try entering', (community_center_lat, community_center_lon), 14, address_search)
 
 
 
@@ -204,10 +220,11 @@ def suggestMissingAsset_cb(app):
         [State('missing-asset-categories', 'value')],
         [State('missing-asset-desc', 'value')],
         [State('missing-asset-justification', 'value')],
-        [State('submit-missing-asset-map', 'click_lat_lng')]
-                
+        [State('submit-missing-asset-map', 'click_lat_lng')],
+        [State('selected-community-info', 'data')]
         )
-    def store_submitted_info(n_clicks, user_name, user_role, name, categories, desc, justification, click_lat_lng):
+    def store_submitted_info(n_clicks, user_name, user_role, name, categories, 
+                             desc, justification, click_lat_lng, selected_community):
         # If the 'Submit' button has not been clicked yet, return or do nothing
         if n_clicks == 0:
             return ''
@@ -215,10 +232,14 @@ def suggestMissingAsset_cb(app):
         else:
             # Get the IP address from which this callback request was generated
             ip = request.remote_addr
-            
+    
+            # Extract the selected commmunity_geo_id
+            selected_community = pd.read_json(selected_community, orient='split')
+            community_geo_id = int(selected_community['community_geo_id'])
+
             # Write to the database
             suggestMissingAsset_db(ip, user_name, user_role, name, categories, desc, click_lat_lng, 
-                                   justification, address_missing, community_geo_id=4278528)
+                                   justification, address_missing, community_geo_id)
                         
             # Returns user confirmation, and empty strings/None types to the corresponding Input boxes
             return (dbc.Alert('''Suggestion for {} submited successfully! Thank you for helping out.'''.format(name), 
