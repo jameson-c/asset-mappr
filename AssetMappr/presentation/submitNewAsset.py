@@ -147,10 +147,11 @@ def submitNewAsset(master_categories):
                 # This section shows other nearby assets to make sure the user isn't re-entering an existing asset
                 html.P('''If there are assets in our records that are close to the location you selected, they will be displayed in a table below.'''),
                 html.P('''If the asset you are trying to submit is shown in the table, then you can close this window. You can submit a rating, or edit the 
-                       specific info about this asset by finding this asset on the main map page and clicking on it.
+                       info we have about this asset by finding it on the main map page and clicking it.
                        '''),
                        
-                html.P("If the asset you are trying to tell us about is not listed below, please proceed by clicking 'Next'"),
+                html.P("If the asset you are trying to tell us about is not listed below, please proceed by clicking 'Next'",
+                       style={"font-weight": "bold"}),
                 
                 html.Div(id='nearby-assets-table'),
                 
