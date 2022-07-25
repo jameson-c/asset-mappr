@@ -128,7 +128,7 @@ tableDownload_Planner_cb(app, df, asset_categories, missing_assets, rating_score
 if __name__ == '__main__':
 
     # If running locally for test, use this code
-    # app.run_server(debug=True)
+    app.run_server(debug=True)
 
     # If running on render, use code below
-    server.run(host="0.0.0.0")
+    # server.run(host="0.0.0.0")
