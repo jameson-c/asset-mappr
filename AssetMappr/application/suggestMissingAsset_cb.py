@@ -141,7 +141,7 @@ def suggestMissingAsset_cb(app):
         else:
             # Geocode the lat-lng using Google Maps API
             google_api_key = os.getenv('GOOGLE_API_KEY')
-            
+
             # Retrieve the name of the community to add to the geocoding search to make it more accurate
             selected_community = pd.read_json(selected_community, orient='split')
             

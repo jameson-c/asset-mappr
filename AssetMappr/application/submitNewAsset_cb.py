@@ -25,6 +25,8 @@ import requests
 import json
 import pandas as pd
 import os
+from dash import dash_table
+from geopy.distance import distance
 
 from AssetMappr.database.submitNewAsset_db import submitNewAsset_db
 
@@ -47,13 +49,13 @@ def submitNewAsset_cb(app):
             return not is_open
         return is_open
     
-    # Modal 2 callback (opens when the user clicks next from modal 1 or back from modal 3)
+    # Modal 2 callback (opens when the user clicks next from modal 1 or back from modal 2.5)
     @app.callback(
         Output('modal-2', 'is_open'),
         [Input('open-modal-2', 'n_clicks'),
          Input('back-modal-1', 'n_clicks'),
          Input('back-modal-2', 'n_clicks'),
-         Input('open-modal-3', 'n_clicks')
+         Input('open-modal-2_5', 'n_clicks')
         ],
         [State('modal-2', 'is_open')]
         )
@@ -62,11 +64,26 @@ def submitNewAsset_cb(app):
             return not is_open
         return is_open
     
+    # Modal 2.5 callback (opens when user clicks  next from modal 2 or back from modal 3)
+    @app.callback(
+        Output('modal-2_5', 'is_open'),
+        [Input('open-modal-2_5', 'n_clicks'),
+         Input('back-modal-2', 'n_clicks'),
+         Input('back-modal-2_5', 'n_clicks'),
+         Input('open-modal-3', 'n_clicks')
+        ],
+        [State('modal-2_5', 'is_open')]
+        )
+    def toggle_modal_2_5(n0, n1, n2, n3, is_open):
+        if n0 or n1 or n2:
+            return not is_open
+        return is_open
+    
     # Modal 3 callback (opens when the user clicks next from modal 2 or back from modal 4)
     @app.callback(
         Output('modal-3', 'is_open'),
         [Input('open-modal-3', 'n_clicks'),
-         Input('back-modal-2', 'n_clicks'),
+         Input('back-modal-2_5', 'n_clicks'),
          Input('back-modal-3', 'n_clicks'),
          Input('open-modal-4', 'n_clicks')
         ],
@@ -193,6 +210,49 @@ def submitNewAsset_cb(app):
         address = result['results'][0]['formatted_address']
         
         return 'Selected address: {}'.format(address)
+    
+    # Callback to show assets that are close to the clicked location (prompt users to check if duplicate submission) 
+    @app.callback(
+        Output('nearby-assets-table','children'),
+        Input('submit-asset-map', 'click_lat_lng'),
+        Input('assets-df', 'data'),
+        )
+    def nearby_asset_display(click_lat_lng, df):
+        point = tuple(click_lat_lng) # lat-long needs to be as a tuple for the distance function
+        
+        # processing data coming in JSON format
+        df = pd.read_json(df, orient='split')
+
+        # Combining lat-long into one column in df with tuples
+        df['coords'] = df[['latitude', 'longitude']].apply(tuple, axis=1)
+        
+        # Apply distance function (from geopy) to create a new column with distances from the selected point
+        df['distance'] = df.apply(lambda x: distance(point, x['coords']).miles, axis=1)
+        
+        # Filter those observations where the distance is less than 0.04 miles
+        nearby = df[df['distance'] <= 0.04]
+        nearby = nearby[['asset_name', 'description']]
+        
+        # Send the asset names back as a data table
+        if len(nearby) != 0:
+                        
+            table = dash_table.DataTable(data = nearby.to_dict('rows'),
+                                        columns=[{"name": 'Asset Name', "id": 'asset_name'},
+                                                 {'name': 'Description', 'id': 'description'}],
+                                        style_cell={'textAlign': 'left',
+                                                    'color': 'black'},
+                                        style_header={
+                                            #'fontWeight': 'bold',
+                                            'backgroundColor': '#2C3E50',
+                                            'color': 'white'
+                                        })
+            
+            return table
+        
+        else:
+            return ''
+
+        
 
     # Callback to take all the user-submitted info on the new asset, write it to the database, and reset the form
     @app.callback(
