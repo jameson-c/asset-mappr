@@ -106,7 +106,7 @@ def showMap_cb(app):
             marker=dict(
                 size=13, symbol=df_sub['symbolBasedCategory']),
             unselected={'marker': {'opacity': 1}},
-            selected={'marker': {'opacity': 0.5, 'size': 40}},
+            selected={'marker': {'opacity': 0.5, 'size': 40,'color':'red'}},
             # Displays the name of the asset when you hover over it
             hoverinfo='text',
             hovertext=df_sub['asset_name'],
