@@ -54,24 +54,38 @@ print(newDF)
     df = pd.json_normalize(result['results']) # normalize json file into pandas
     
     if not df.empty: # If there ARE results, continue
-        # Healthcare providers with multiple addresses have those addresses stored as sub-tables under
-        # practiceLocations.
+        # Healthcare providers with multiple addresses have those addresses stored as 
+        # sub-tables under both "Addresses" and "practiceLocations".
         # Therefore, we need to normalize each of the affiliated addresses
+        
+        ## Extract Practice Locations
         practLocations = pd.json_normalize(df['practiceLocations'])
         practAddress_1 = pd.json_normalize(practLocations[0])
-        practAddress_1['vicinity'] = practAddress_1['address_1'] + ', ' + practAddress_1['city']
         practAddress_1['address'] = practAddress_1['address_1'] + ', ' + practAddress_1['city'] + ', ' + practAddress_1['state']
-        practAddress_1 = practAddress_1[['vicinity','address']]
+        practAddress_1 = practAddress_1[['address']]
         
         practAddress_2 = pd.json_normalize(practLocations[1])
-        practAddress_2['vicinity'] = practAddress_2['address_1'] + ', ' + practAddress_2['city']
         practAddress_2['address'] = practAddress_2['address_1'] + ', ' + practAddress_2['city'] + ', ' + practAddress_2['state']
-        practAddress_2 = practAddress_2[['vicinity','address']]
+        practAddress_2 = practAddress_2[['address']]
         
         practAddress_3 = pd.json_normalize(practLocations[2])
-        practAddress_3['vicinity'] = practAddress_3['address_1'] + ', ' + practAddress_3['city']
         practAddress_3['address'] = practAddress_3['address_1'] + ', ' + practAddress_3['city'] + ', ' + practAddress_3['state']
-        practAddress_3 = practAddress_3[['vicinity','address']]
+        practAddress_3 = practAddress_3[['address']]
+        
+        ## Extract Addresses
+        Addresses = pd.json_normalize(df['Addresses'])
+        Addresses_1 = pd.json_normalize(Addresses[0])
+        Addresses_1['address'] = Addressess_1['address_1'] + ', ' + Addresses_1['city'] + ', ' + Addresses_1['state']
+        Addresses_1 = Addresses_1[['address']]
+        
+        Addresses_2 = pd.json_normalize(Addresses[1])
+        Addresses_2['address'] = Addresses_2['address_1'] + ', ' + Addresses_2['city'] + ', ' + Addresses_2['state']
+        Addresses_2 = Addresses_2[['address']]
+        
+        Addresses_3 = pd.json_normalize(Addresses[2])
+        Addresses_3['address'] = Addresses_3['address_1'] + ', ' + Addresses_3['city'] + ', ' + Addresses_3['state']
+        Addresses_3 = Addresses_3[['address']]
+        
                 
         #Pull out the name of each location and assign the category as "healthcare" and website as "".
         df['name'] = df['basic.organization_name']
