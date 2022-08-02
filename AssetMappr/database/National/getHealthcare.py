@@ -73,18 +73,15 @@ print(newDF)
         practAddress_3 = practAddress_3[['address']]
         
         ## Extract Addresses
-        Addresses = pd.json_normalize(df['Addresses'])
+        Addresses = pd.json_normalize(df['addresses'])
         Addresses_1 = pd.json_normalize(Addresses[0])
-        Addresses_1['address'] = Addressess_1['address_1'] + ', ' + Addresses_1['city'] + ', ' + Addresses_1['state']
+        Addresses_1['address'] = Addresses_1['address_1'] + ', ' + Addresses_1['city'] + ', ' + Addresses_1['state']
         Addresses_1 = Addresses_1[['address']]
         
         Addresses_2 = pd.json_normalize(Addresses[1])
         Addresses_2['address'] = Addresses_2['address_1'] + ', ' + Addresses_2['city'] + ', ' + Addresses_2['state']
         Addresses_2 = Addresses_2[['address']]
         
-        Addresses_3 = pd.json_normalize(Addresses[2])
-        Addresses_3['address'] = Addresses_3['address_1'] + ', ' + Addresses_3['city'] + ', ' + Addresses_3['state']
-        Addresses_3 = Addresses_3[['address']]
         
                 
         #Pull out the name of each location and assign the category as "healthcare" and website as "".
@@ -94,14 +91,11 @@ print(newDF)
     
         df = df[['name','category','website']]
         
-        #Concatenate df with each of the 3 practAdress dataframes, then stack all three dataframes.
+        #Concatenate df with the 5 address dataframes.
         
-        df1 = pd.concat([df, practAddress_1], axis=1)        
-        df2 = pd.concat([df, practAddress_2], axis=1)        
-        df3 = pd.concat([df, practAddress_3], axis=1)
+        df2 = pd.concat([df, practAddress_1, practAddress_2, practAddresses_3, Addresses_1, Addresses_2])
         
-        newDF = pd.concat([df1, df2, df3])
-        newDF = newDF[newDF['address'].notnull()]
+
         
         #The latitude and longitude will be found by plugging the addresses into Google's API.
         lat = []
