@@ -43,13 +43,15 @@ def showMap_cb(app):
         # Output('no-result-alert', 'children'),
         [Input('recycling_type', 'value')],
         [Input('search-address-button-tab1', 'n_clicks')],
+        [Input('search-name-button-tab1','n_clicks')],
 
         # Retrieves the relevant community's data from the dcc.Store object
         [Input('assets-df', 'data')],
         [Input('selected-community-info', 'data')],
         [Input('asset-categories-cnm', 'data')],
-        State('address-search-tab1', 'value'))
-    def update_figure(chosen_recycling, n_clicks, df_cnm, selected_community, asset_categories, address_search_1):
+        State('address-search-tab1', 'value'),
+        State('search-name-tab1','value'))
+    def update_figure(chosen_recycling, n_clicks, n_clicks_name, df_cnm, selected_community, asset_categories, address_search_1, nameValue):
         # Transform the JSON format data from the dcc.Store back into data frames
         df_cnm = pd.read_json(df_cnm, orient='split')
         asset_categories = pd.read_json(asset_categories, orient='split')
@@ -98,22 +100,42 @@ def showMap_cb(app):
 
         # Setting mapbox access token (this is for accessing their base maps)
         mapbox_access_token = 'pk.eyJ1IjoicWl3YW5nYWFhIiwiYSI6ImNremtyNmxkNzR5aGwyb25mOWxocmxvOGoifQ.7ELp2wgswTdQZS_RsnW1PA'
-
-        locations = [go.Scattermapbox(
-            lon=df_sub['longitude'],
-            lat=df_sub['latitude'],
-            mode='markers',
-            marker=dict(
-                size=13, symbol=df_sub['symbolBasedCategory']),
-            unselected={'marker': {'opacity': 1}},
-            selected={'marker': {'opacity': 0.5, 'size': 40}},
-            # Displays the name of the asset when you hover over it
-            hoverinfo='text',
-            hovertext=df_sub['asset_name'],
-            # Defines the data for each point that will be drawn for other functions
-            customdata=df_sub.loc[:, ['asset_name',
-                                      'description', 'website', 'asset_id', 'address', 'category']],
+        
+        # namse searching part
+        if n_clicks_name == 0:
+            locations = [go.Scattermapbox(
+                lon=df_sub['longitude'],
+                lat=df_sub['latitude'],
+                mode='markers',
+                marker=dict(
+                    size=13, symbol=df_sub['symbolBasedCategory']),
+                unselected={'marker': {'opacity': 1}},
+                selected={'marker': {'opacity': 0.5, 'size': 40}},
+                # Displays the name of the asset when you hover over it
+                hoverinfo='text',
+                hovertext=df_sub['asset_name'],
+                # Defines the data for each point that will be drawn for other functions
+                customdata=df_sub.loc[:, ['asset_name',
+                                        'description', 'website', 'asset_id', 'address', 'category']],
         )]
+        else :
+            df_sub_name = df_sub[df_sub['asset_name'].str.contains(nameValue,case=False)]        
+       
+            locations = [go.Scattermapbox(
+                lon=df_sub_name['longitude'],
+                lat=df_sub_name['latitude'],
+                mode='markers',
+                marker=dict(
+                    size=13, symbol=df_sub_name['symbolBasedCategory']),
+                unselected={'marker': {'opacity': 1}},
+                selected={'marker': {'opacity': 0.5, 'size': 40}},
+                # Displays the name of the asset when you hover over it
+                hoverinfo='text',
+                hovertext=df_sub_name['asset_name'],
+                # Defines the data for each point that will be drawn for other functions
+                customdata=df_sub_name.loc[:, ['asset_name',
+                                        'description', 'website', 'asset_id', 'address', 'category']],
+            )]
 
         if n_clicks == 0:
             layout = go.Layout(
