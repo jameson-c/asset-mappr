@@ -39,7 +39,9 @@ if __name__ == '__main__':
     '''
     NATIONAL data input for the community
     '''
-    # Google Data- Social Benefit
+    # Google Data
+    keyword_file = 'National/google_keywords/Uniontown_keywords.csv'
+    
     apikey = input('Enter your Google Places API Key: ')
     lat = '39.8993024' # obtained from center of incorporated place as sourced below
     lon = '-79.7245287'
@@ -51,7 +53,7 @@ if __name__ == '__main__':
     countyName = 'Fayette County'
     
     nationalData = national.genNatData(countyFIPS,countyName,state,# Colleges, HS, Elementary, Hospitals
-                                       apikey, lat, lon, radius) # Google API
+                                       keyword_file, apikey, lat, lon, radius) # Google API
 
     # Incorporated Place GEOID
     # Sourced from https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?form

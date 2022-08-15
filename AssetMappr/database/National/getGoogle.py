@@ -64,8 +64,8 @@ def getLocationWebsite(key, ID, fields):
     df = pd.json_normalize(result['result'])
     return df
 
-def createGoogleDF(apiKey, lat, long, radius):
-    with open('National/getGoogleKeywords.csv', 'r') as f:
+def createGoogleDF(keyword_file, apiKey, lat, long, radius):
+    with open(keyword_file, 'r') as f:
         keywords = []
         categories = []
         for line in f:
