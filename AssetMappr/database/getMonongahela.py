@@ -14,6 +14,7 @@ Inputs:
             https://data-nces.opendata.arcgis.com/datasets/nces::public-school-characteristics-2019-20/explore?location=36.667912%2C-96.401190%2C16.00
         state: 2 digit state acronym. Example: PA
     Google Data:
+        keyword_file: file that stores the desired keywords to pull from Google Maps API
         apikey: Google Places API key
         lat: latitude
         long: longitude
@@ -40,7 +41,8 @@ if __name__ == '__main__':
     '''
     NATIONAL data input for the community
     '''
-    # Google Data- Social Benefit
+    # Google Data
+    keyword_file = 'National/google_keywords/Monongahela_keywords.csv'
     apikey = input('Enter your Google Places API Key: ')
     lat = '40.1955304' # obtained from center of incorporated place as sourced below
     lon = '-79.9222298'
@@ -52,7 +54,7 @@ if __name__ == '__main__':
     countyName = 'Washington County'
     
     nationalData = national.genNatData(countyFIPS,countyName,state,# Colleges, HS, Elementary, Hospitals
-                                       apikey, lat, lon, radius) # Google API
+                                       keyword_file, apikey, lat, lon, radius) # Google API
 
     # Incorporated Place GEOID
     # Sourced from https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?form
