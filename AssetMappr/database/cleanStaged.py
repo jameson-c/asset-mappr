@@ -46,9 +46,13 @@ def cleanStaged(con_string):
     
         # Drop where user_name is from our team
         # Team names to drop
-        users_to_drop = ['Mihir', 'Jameson']
+        users_to_drop = ['Mihir', 'Jameson', 'jeremy', 'test']
         asset_data = asset_data[~asset_data.user_name.isin(users_to_drop)]
         
+        # Test asset names to drop
+        asset_data = asset_data[asset_data['asset_name'].str.contains('test')==False]
+        asset_data = asset_data[asset_data['asset_name'].str.contains('Test')==False]
+
         # Write these assets to main assets table
         asset_data = asset_data.rename(columns={'staged_asset_id': 'asset_id'})
         conn = psycopg2.connect(con_string)
