@@ -63,7 +63,6 @@ def showCheckbox(master_categories, master_categories_desc):
                            style={'text-transform': 'lowercase'}) for i in res]
         ),
 
-
         html.Hr(),
         
 

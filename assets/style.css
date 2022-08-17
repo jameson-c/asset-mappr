@@ -190,8 +190,8 @@ Desc: This is css file, to change the web layout.
     padding-top: 8px;
     margin-left: 18px;
     width: 60%;
-    font-size: 14px;
-    height: auto;
+    font-size: 11px;
+    height: 3em;
 }
 
 
@@ -344,7 +344,7 @@ a:active {
     color: green;
     font-weight: inherit;
     font-size: 18px;
-    padding: 18px;
+    padding-left: 18px;
 }
 
 /*Submit new asset button*/

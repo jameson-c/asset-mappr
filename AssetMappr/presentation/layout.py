@@ -58,8 +58,6 @@ def makeLayout(master_categories, tagList_pos, tagList_neg, master_categories_de
                         # Outputs an option to select categories
                         showCheckbox(master_categories,
                                      master_categories_desc),
-                        html.Br(),
-                        html.Br(),
                         # Displays the function to submit new assets
                         html.H6(
                             'Know about an asset we don\'t have? Tell us about it! \U0001f447', id='know'),
