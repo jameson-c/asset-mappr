@@ -95,6 +95,8 @@ def topAssets_cb(app):
         ## Step 5: Selecting assets with at least five ratings so the ratings average is reliable ##
         # drop assets with no ratings at all
         df = df.dropna(subset=['avg_asset_rating'])
+        print(df)
+        print(df[df['num_ratings'] >= 5])
         # keep if there are at least 5 ratings for the asset
         if df[df['num_ratings'] >= 5].empty == False:
             ## comments_df may be empty
@@ -246,8 +248,8 @@ def topAssets_cb(app):
 
                         ]),
 
-                        dbc.CardFooter(['Average rating: {:.2f} out of 5 (from {} ratings)'.format(bottom_1_AvgScore),
-                                                                                                int(bottom_1_NumRating)
+                        dbc.CardFooter(['Average rating: {:.2f} out of 5 (from {} ratings)'.format(bottom_1_AvgScore,
+                                                                                                int(bottom_1_NumRating))
                                         ]),
 
                     ]),
