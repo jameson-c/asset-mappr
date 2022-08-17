@@ -30,6 +30,13 @@ def showCheckbox(master_categories, master_categories_desc):
             # dbc.Row([
             #     html.Div(id='no-result-alert', children=[])])
         ]),
+        html.Hr(),
+
+        dbc.Row([
+            dbc.Textarea(id='search-name-tab1',
+                         placeholder='Search for the asset name'),
+            dbc.Button("Search", id='search-name-button-tab1', n_clicks=0),
+        ]),
 
         html.Hr(),
         # search bar for searching asset name
@@ -59,14 +66,5 @@ def showCheckbox(master_categories, master_categories_desc):
 
         html.Hr(),
         
-        dbc.Row([
-            dbc.Textarea(id='search-name-tab1',
-                         placeholder='Search for the asset name'),
-            dbc.Button('Search in Database', id='search-name-button-tab1', n_clicks=0),
-
-
-            # dbc.Row([
-            #     html.Div(id='no-result-alert', children=[])])
-        ]),
 
     ])
