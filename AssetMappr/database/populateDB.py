@@ -17,6 +17,7 @@ import pandas as pd
 import psycopg2
 import psycopg2.extras as extras
 import psycopg2.sql as sql
+import os
 
 '''
 Func: checkMasterTables
@@ -264,13 +265,11 @@ def populateDB(data, conn):
     
     execute_values(conn, data, 'assets')
     execute_values(conn, categories, 'asset_categories')
-
-    '''
     
 if __name__ == '__main__':
-    con_string = 'postgres://postgres:r]H,lQOEiRcxqMcM21!Q@localhost:5432/postgres'
+    con_string = os.getenv("DB_URI")
+
     # Establish connection with database
     conn = psycopg2.connect(con_string)
-    data = pd.read_csv('C:/Users/jacar/OneDrive/Documents/GitHub/asset-mappr/AssetMappr/database/NationalData.csv')
+    data = pd.read_csv('/AssetMappr/database/NationalData.csv')
     populateDB(data, conn)
-    '''

@@ -35,6 +35,7 @@ import National.genNationalData as national
 # import getLocalData
 import psycopg2
 from populateDB import populateDB, checkMasterTables
+import os
 
 if __name__ == '__main__':
     
@@ -82,9 +83,8 @@ if __name__ == '__main__':
     '''
     Populating the database
     '''
-    # Accessing DB externally (e.g. outside render/locally), use this connection string:
-    # con_string = 'postgresql://assetmappr_db_user:hyx8dhtgdq6mvyIfe3ANC2O7ceRheEr5@dpg-c9rao5j97ej5m8i836r0-a.ohio-postgres.render.com/assetmappr_db'
-    con_string = 'postgres://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a.ohio-postgres.render.com/assetmappr_database'
+    con_string = os.getenv("DB_URI")
+
     # Establish connection with database
     conn = psycopg2.connect(con_string)
     

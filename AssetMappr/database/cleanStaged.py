@@ -15,6 +15,7 @@ TODO:
 import pandas as pd
 import psycopg2
 from populateDB import populateDB
+import os
 
 def cleanStaged(con_string):
     '''
@@ -79,4 +80,6 @@ def cleanStaged(con_string):
         return 'Staged assets moved successfully'
 
 if __name__ == '__main__':
-    cleanStaged(con_string='postgresql://assetmappr_database_user:5uhs74LFYP5G2rsk6EGzPAptaStOb9T8@dpg-c9rifejru51klv494hag-a.ohio-postgres.render.com/assetmappr_database')
+    db_uri = os.getenv("DB_URI")
+
+    cleanStaged(con_string = db_uri)

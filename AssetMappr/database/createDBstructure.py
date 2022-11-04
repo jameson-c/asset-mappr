@@ -9,9 +9,12 @@ Outputs: New tables committed to the postgreSQL database to which the app is lin
 """
 
 import psycopg2
+import os
 
-# Establish connection with database (connection link found in Render -> postgreSQL -> external connection string)
-conn = psycopg2.connect(#####)
+# Establish connection with database
+con_string = os.getenv("DB_URI")
+
+conn = psycopg2.connect(con_string)
 
 # Create cursor object
 cursor = conn.cursor()
