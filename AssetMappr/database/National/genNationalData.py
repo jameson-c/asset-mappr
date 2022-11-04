@@ -19,19 +19,21 @@ Inputs:
         radius: radius around which to search for data
 Output: pandas dataframe Schools, written to .csv
 """
-import getSchools
-import getGoogle
+import National.getSchools
+import National.getGoogle
+import National.getHospitals
 import pandas as pd
 
 def genNatData(countyFIPS,countyName,state,# Colleges, Pub/Private HS, Elementary
-               apiKey, lat, long, radius # Google API
+               keyword_file, apiKey, lat, long, radius # Google API
             ):
     
-    private, public, college = getSchools.getAllSchools(countyFIPS,countyName,state)
-    google = getGoogle.createGoogleDF(apiKey, lat, long, radius)
-    
+    private, public, college = National.getSchools.getAllSchools(countyFIPS,countyName,state)
+    google = National.getGoogle.createGoogleDF(keyword_file, apiKey, lat, long, radius)
+    hospitals = National.getHospitals.getHospitals(state,countyFIPS,apiKey)
+                             
     frame = pd.concat([private, public, college,
-                       google])
+                       google, hospitals])
     
     return frame
                             

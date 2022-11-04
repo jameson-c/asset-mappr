@@ -1,6 +1,6 @@
 """
 File: getGoogleData.py
-Author: Michaela Marincic, Jameson Carter
+Author: Jameson Carter, Michaela Marincic
 
 Desc: This file uses the getMapData function to call the google API and
 search our keywords within a 50000 meter radius of the center of Pittsburgh, 
@@ -43,7 +43,8 @@ def getMapData(key, location, keyword, radius, next_page_token = None):
 
     # Rename to make everything simpler
     df = df.rename(columns={"geometry.location.lat": "latitude", 
-                       "geometry.location.lng": "longitude"})
+                       "geometry.location.lng": "longitude", 
+                       "vicinity": "address"})
     # Finally, return the next page token for the next page, if there is one
     try:
         next_page_tk = result['next_page_token']
@@ -63,8 +64,8 @@ def getLocationWebsite(key, ID, fields):
     df = pd.json_normalize(result['result'])
     return df
 
-def createGoogleDF(apiKey, lat, long, radius):
-    with open('National/getGoogleKeywords.csv', 'r') as f:
+def createGoogleDF(keyword_file, apiKey, lat, long, radius):
+    with open(keyword_file, 'r') as f:
         keywords = []
         categories = []
         for line in f:
@@ -75,10 +76,12 @@ def createGoogleDF(apiKey, lat, long, radius):
     MainFrame = pd.DataFrame()
     catIndex = 1
     latlong = ','.join([lat, long])
+        
     for keyword in keywords[1:]:
     
         results = getMapData(apiKey,
                                latlong, keyword, radius)
+                
         data = results[0]
         data['category'] = categories[catIndex]
         nextToken = results[1]
@@ -120,19 +123,20 @@ def createGoogleDF(apiKey, lat, long, radius):
 
    
     # Retain addresses
-    # MainFrame = MainFrame[MainFrame['vicinity'].str.contains('Pittsburgh')]
+    # MainFrame = MainFrame[MainFrame['address'].str.contains('Pittsburgh')]
     # Drop results with a price level listed (Gets rid of most of the restaurants)
-    # MainFrame = MainFrame.drop(MainFrame.loc[MainFrame['price_level']>=1].index)
+    MainFrame = MainFrame.drop(MainFrame.loc[MainFrame['price_level']>=1].index)
     
     # Drop price level, if it exists
+    MainFrame['asset_name'] = MainFrame['name']
     MainFrame = MainFrame.loc[:,MainFrame.columns.isin(['latitude','longitude',
-            'vicinity','name','place_id','category',])]
+            'address','asset_name','place_id','category',])]
     
     # 'URL' column will be added using Google Maps API "Place Details"
     websites = {'place_id':[], 'website':[]}
     for i in MainFrame['place_id']:
         result = getLocationWebsite(apiKey,
-                                       i,'website')
+                                        i,'website')
     
         if not result.empty:
             websites['place_id'].append(i)
@@ -145,6 +149,10 @@ def createGoogleDF(apiKey, lat, long, radius):
     # Drop duplicates
     MainFrame = MainFrame.drop_duplicates()
     
+    # Establish Source:
+    MainFrame['source_type'] = 'Google API' 
+    
+    # Add a description field
+    MainFrame['description'] = ''
+    
     return MainFrame
-
-        
