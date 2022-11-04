@@ -33,6 +33,40 @@ import National.genNationalData as national
 # import getLocalData
 import psycopg2
 from populateDB import populateDB, checkMasterTables
+'''
+# Establish connection with database (details found in Render dashboard after login)
+
+Goal of this file is to:
+    1. Check to ensure assets are not duplicated. If they are:
+        a. check to see if duplication was intended. Is this an update?
+    2. Populate to the following tables:
+        a. Assets:
+            Asset_ID
+            Source_Type
+            Community_GEOID
+        b. Asset_Categories:
+            Asset_ID
+            Category_ID
+        c. Communities_Master
+            Community_GEOID
+        d. Sources_Master
+            Source_Type
+    3. Check to see if the values in master tables are already present. In 
+    case of community master, do nothing. In case of sources_master, check to 
+    see if the source, for this community, is already used. Ask if data is being 
+    updated. If not, then do not overwrite.
+    4. If a given source type and community ID has been assigned, that suggests
+       asset is new. 
+    6. Do not overwrite asset in Assets if you are updating, but the name differs.
+
+
+cursor = conn.cursor()
+cursor.execute(createdb)
+createdb = 
+SQL
+
+conn.commit()
+'''
 
 if __name__ == '__main__':
     
