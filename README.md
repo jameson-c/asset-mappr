@@ -31,6 +31,10 @@ Standardized naming has been used where possible. For example, the feature that 
 
 Each code file has additional details and comments in the header. 
 
+## Additional background
+
+AssetMappr was started by a team of 5 students at Heinz College in January 2022: Mihir Bhaskar, Anna (Qi) Wang, Jameson Carter, Sara Maillacheruvu, and Michaela Marincic. Under the supervision of Professor Rick Stafford, the team built version 1 of this web and associated mobile application, working closely with communities in Southwestern PA to pilot the application.
+
 
 
 
