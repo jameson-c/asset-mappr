@@ -37,6 +37,8 @@ def landingPage_cb(app, master_communities):
         [Output('missing-assets-planner-view', 'data')],
         [Output('rating-score-planner-view', 'data')],
         [Output('rating-value-planner-view', 'data')],
+        [Output('survey-planner-view', 'data')],
+
         
         [Input('enterButton', 'n_clicks')],
         [Input('community-select', 'value')]
@@ -49,7 +51,7 @@ def landingPage_cb(app, master_communities):
 
             # Calling readDB function from database, feeding in community_geo_id as input
 
-            df_cnm, asset_categories ,missing_assets ,rating_score, rating_value = readDB(community_geo_id)
+            df_cnm, asset_categories ,missing_assets ,rating_score, rating_value,survey = readDB(community_geo_id)
 
             # Subsetting master_communities dataframe to the correct row, so it has info only about
             # the chosen community
@@ -59,4 +61,4 @@ def landingPage_cb(app, master_communities):
                                                     == community_geo_id]
             
             # dcc.Store data has to be in JSON format, so returning it using to_json
-            return df_cnm.to_json(orient='split'), asset_categories.to_json(orient='split'), selected_community.to_json(orient='split'),missing_assets.to_json(orient='split'),rating_score.to_json(orient='split'),rating_value.to_json(orient='split')
+            return df_cnm.to_json(orient='split'), asset_categories.to_json(orient='split'), selected_community.to_json(orient='split'),missing_assets.to_json(orient='split'),rating_score.to_json(orient='split'),rating_value.to_json(orient='split'),survey.to_json(orient='split')

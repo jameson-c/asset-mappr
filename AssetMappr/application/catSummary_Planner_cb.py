@@ -123,3 +123,6 @@ def catSummary_Planner_cb(app):
                 yaxis={'categoryorder': 'total ascending'}, yaxis_title=None)
 
         return barchart
+    
+    # def showSurveyChart(survey_questions, survey_responses):
+

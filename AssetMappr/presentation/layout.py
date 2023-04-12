@@ -34,6 +34,7 @@ from AssetMappr.presentation.suggestMissingAsset import suggestMissingAsset
 from AssetMappr.presentation.showMap_Planner import showMap_Planner
 from AssetMappr.presentation.tableDownload_Planner import tableDownload_Planner
 from AssetMappr.presentation.showCheckbox import showCheckbox
+from AssetMappr.presentation.showSurvey import survey_Planner
 
 # =============================================================================
 # Function
@@ -96,6 +97,11 @@ def makeLayout(master_categories, tagList_pos, tagList_neg, master_categories_de
 
                 dbc.Row([
                     tableDownload_Planner(),
+                ]),
+
+
+                dbc.Row([
+                    survey_Planner(),
                 ]),
 
             ]),

@@ -48,6 +48,7 @@ from AssetMappr.application.showMap_Planner_cb import showMap_Planner_cb
 from AssetMappr.application.catSummary_Planner_cb import catSummary_Planner_cb
 from AssetMappr.application.tableDownload_Planner_cb import tableDownload_Planner_cb
 from AssetMappr.application.topAssets_Planner_cb import topAssets_cb
+from AssetMappr.application.surveyPlanner_cb import survey_Planner_cb
 # =============================================================================
 # Initialize app
 # =============================================================================
@@ -101,11 +102,15 @@ app.layout = html.Div([
     dcc.Store(id='rating-score-planner-view', storage_type='session'),
     # info on the 'value' tags associated with each of the ratings
     dcc.Store(id='rating-value-planner-view', storage_type='session'),
+    # info on the 'value' tags associated with each of the ratings
+    dcc.Store(id='survey-planner-view', storage_type='session'),
 
 
 ])
 
 # Callback to provide the relevant content depending on the page in the app
+
+
 @app.callback(Output('page-content', 'children'),
               Input('url', 'pathname'))
 def display_page(pathname):
@@ -116,7 +121,7 @@ def display_page(pathname):
     # If the user navigates to the main home page of the app
     # Note: there is a link in the landing_page that takes users to the home page
     if pathname == '/home':
-        return  makeLayout(master_categories, tagList_pos, tagList_neg, master_categories_desc)
+        return makeLayout(master_categories, tagList_pos, tagList_neg, master_categories_desc)
 
 
 # =============================================================================
@@ -137,6 +142,7 @@ showMap_Planner_cb(app)
 catSummary_Planner_cb(app)
 tableDownload_Planner_cb(app)
 topAssets_cb(app)
+survey_Planner_cb(app)
 
 # =============================================================================
 # Run the app

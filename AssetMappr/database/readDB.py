@@ -14,6 +14,7 @@ See the database documentation here for more info about the DB structure and tab
 import pandas as pd
 from sqlalchemy import create_engine
 import os
+import json
 
 
 def readMasters():
@@ -98,9 +99,49 @@ def readDB(community_geo_id):
 
     rating_value = pd.read_sql(query, con=con_string)
 
+    #load survey questions
+    query = '''SELECT questions FROM survey_table'''
+    survey_questions = pd.read_sql(query, con=con_string)
+
+    out = survey_questions.to_json(orient='records')
+    data = json.loads(out)
+    q_value = []
+    for i in data:
+        q_dict = i['questions']
+        temp = json.loads(q_dict)
+        for j in range(1,9):
+            q_value.append(temp[str(j)]['question'])
+
+    #load survey response
+    query = '''SELECT response FROM survey_response 
+                WHERE survey_date >= '2023-03-24 00:00:00' '''
+    survey_responses = pd.read_sql(query, con=con_string)
+
+    out = survey_responses.to_json(orient='records')
+    data = json.loads(out)
+    response_values = []
+    for i in data:
+        response_dict = i["response"]
+        response_value = []
+        for j in range(1, 9):
+            if str(j) in response_dict:
+                temp = json.loads(response_dict[str(j)])
+                response_value.append(temp['value'])
+            else:
+                response_value.append(None)
+        response_values.append(response_value)
+
+    data_dict = {}
+    for col in range(len(q_value)):
+        col_name = q_value[col]
+        data_dict[col_name] = [lst[col] for lst in response_values]
+    survey = pd.DataFrame(data_dict)
+    print(survey)
+
+
     # This column demarcates between assets read in from the DB and staged assets added by the user
     # in the current session, so they can be displayed on the map in different colors and ratings for
     # verified vs. staged assets can be distinguished
     # df['asset_status'] = 'Verified'
 
-    return df_cnm, asset_categories, missing_assets, rating_score, rating_value
+    return df_cnm, asset_categories, missing_assets, rating_score, rating_value, survey
