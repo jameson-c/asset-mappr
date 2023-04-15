@@ -49,6 +49,7 @@ from AssetMappr.application.catSummary_Planner_cb import catSummary_Planner_cb
 from AssetMappr.application.tableDownload_Planner_cb import tableDownload_Planner_cb
 from AssetMappr.application.topAssets_Planner_cb import topAssets_cb
 from AssetMappr.application.surveyPlanner_cb import survey_Planner_cb
+from AssetMappr.application.surveyDownload_Planner_cb import surveyDownload_Planner_cb
 # =============================================================================
 # Initialize app
 # =============================================================================
@@ -141,6 +142,7 @@ suggestMissingAsset_cb(app)
 showMap_Planner_cb(app)
 catSummary_Planner_cb(app)
 tableDownload_Planner_cb(app)
+surveyDownload_Planner_cb(app)
 topAssets_cb(app)
 survey_Planner_cb(app)
 

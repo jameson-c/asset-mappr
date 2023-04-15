@@ -4,6 +4,7 @@ from matplotlib.pyplot import ylabel
 import pandas as pd  # (version 0.24.2)
 import dash  # (version 1.0.0)
 from dash import dcc
+import dash_bootstrap_components as dbc
 from dash import html
 from dash.dependencies import Input, Output
 import numpy as np
@@ -24,10 +25,6 @@ def survey_Planner_cb(app):
     )
     def showPie(survey):
         surveyMap = pd.read_json(survey, orient='split')
-        # random_x = [100, 2000, 550]
-        # names = ['A', 'B', 'C']
-
-        # piechart = px.pie(values=random_x, names=names)
         barchart = px.bar(
             surveyMap, x=surveyMap['What is your current use of the areas around the aquatorium?'])
         barchart.update_layout(

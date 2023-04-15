@@ -97,12 +97,28 @@ Desc: This is css file, to change the web layout.
     height: 80em;
 }
 
+#survey-table {
+    margin-left: 18px;
+    margin-right: 18px;
+    width: 105em;
+    height: 80em;
+}
+
 
 #choose-the-table-source {
     margin-left: 20px;
 }
 
+#choose-the-survey-source {
+    margin-left: 20px;
+}
+
 #data-table {
+    margin-left: 18px;
+    margin-right: 18px;
+}
+
+#survey-table {
     margin-left: 18px;
     margin-right: 18px;
 }
@@ -364,7 +380,8 @@ a:active {
     color: white;
 }
 
-#download_button {
+#download_button_csv,
+#download_button_pdf {
     background-color: #4CAF50;
     color: white;
     text-align: center;
@@ -372,8 +389,28 @@ a:active {
     display: inline-block;
     font-size: 13px;
     height: 38px;
-    width: 150px;
+    width: 180px;
     margin-bottom: 1em;
+}
+
+#button_survey_csv,
+#button_survey_pdf {
+    background-color: #3569a3;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    height: 38px;
+    width: 180px;
+    margin-bottom: 1em;
+}
+
+#stripe {
+    background-color: white;
+    text-align: center;
+    height: 50px;
+    color: black;
 }
 
 /* Hopes for the future page */

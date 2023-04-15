@@ -99,7 +99,7 @@ def readDB(community_geo_id):
 
     rating_value = pd.read_sql(query, con=con_string)
 
-    #load survey questions
+    # load survey questions
     query = '''SELECT questions FROM survey_table'''
     survey_questions = pd.read_sql(query, con=con_string)
 
@@ -109,12 +109,12 @@ def readDB(community_geo_id):
     for i in data:
         q_dict = i['questions']
         temp = json.loads(q_dict)
-        for j in range(1,9):
+        for j in range(1, 10):
             q_value.append(temp[str(j)]['question'])
 
-    #load survey response
+    # load survey response
     query = '''SELECT response FROM survey_response 
-                WHERE survey_date >= '2023-03-24 00:00:00' '''
+                WHERE survey_date >= '2023-03-24 00:00:00' AND survey_date <= '2023-03-24 23:59:59' '''
     survey_responses = pd.read_sql(query, con=con_string)
 
     out = survey_responses.to_json(orient='records')
@@ -123,7 +123,7 @@ def readDB(community_geo_id):
     for i in data:
         response_dict = i["response"]
         response_value = []
-        for j in range(1, 9):
+        for j in range(1, 10):
             if str(j) in response_dict:
                 temp = json.loads(response_dict[str(j)])
                 response_value.append(temp['value'])
@@ -136,8 +136,6 @@ def readDB(community_geo_id):
         col_name = q_value[col]
         data_dict[col_name] = [lst[col] for lst in response_values]
     survey = pd.DataFrame(data_dict)
-    print(survey)
-
 
     # This column demarcates between assets read in from the DB and staged assets added by the user
     # in the current session, so they can be displayed on the map in different colors and ratings for
