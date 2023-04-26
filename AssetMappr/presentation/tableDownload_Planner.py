@@ -58,6 +58,6 @@ def tableDownload_Planner():
 
         dbc.Row([
             # Place holder for the table that will be outputted by the linked callback
-            html.Div(id='data-table')
+            html.Div(id='data-table', style={'height': '550px'})
         ])
     ])

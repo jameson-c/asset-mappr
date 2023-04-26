@@ -23,53 +23,68 @@ def survey_Planner():
         dbc.Row([
 
             dbc.Col(className="title-what",
-                    children=[html.H5('Survey Response', style={'font-weight': 'bold'})], width=6)
+                    children=[html.H5('Survey Analysis', style={'font-weight': 'bold'})], width=6)
         ]),
 
 
         dbc.Row([
-
             dbc.Col([
                 html.H6(className='subtitle-for-dropdown',
-                        children=['Asset'], style={'font-weight': 'bold'}),
+                        children=['Asset'], style={'font-weight': 'bold', 'verticalAlign': 'top'}),
 
-                # Dropdown to choose assets to display on the map
                 dcc.Dropdown(
                     id='choose-the-source',
                     options=[
-                        {"label": "Existing Assets",
+                        {"label": "Aquatorium",
                          "value": 'Existing Assets'},
-                        {"label": "Suggested 'Missing' Assets",
-                         "value": 'Missing Assets'},
-                        {"label": "All", "value": 'All'}],
+                    ],
                     value='Existing Assets',
                     multi=False,
-                ),
-                html.H5('What is your current use of the areas around the asset?',
-                        style={'font-weight': 'bold'}),
-                dcc.Graph(id='bar-chart-survey-for-planner'),
+                    style={'verticalAlign': 'top'}
+                ),]),
+
+            dbc.Col([html.H6(children=['Number of Response'],
+                             style={"text-align": "center", 'verticalAlign': 'top', 'font-weight': 'bold'}),
 
 
-            ], width=6),
+                     html.H6(id='response-number-survey-for-planner',
+                             style={"font-size": "60px", "text-align": "center", 'verticalAlign': 'top'})])
+        ]),
+
+        dbc.Row([
 
             dbc.Col([
+                html.H6('', style={"font-size": "60px"}),
+                html.H6(id='q1-survey-for-planner',
+                        style={'verticalAlign': 'top', 'font-weight': 'bold'}),
 
-                html.H6(className='subtitle-for-dropdown',
-                        children=['Number of Response'],
-                        style={"text-align": "center"}),
-
-
-                html.H5(children=['8'],
-                        style={"font-size": "60px", "text-align": "center"}),
-
-                html.H5('What is your current use of the areas around the asset?'),
-                dcc.Graph(id='pie-chart-survey-for-planner'),
-            ], width=6),
+                dcc.Graph(id='bar-chart-survey-for-planner',
+                          style={'verticalAlign': 'top'}),
 
 
+            ], width=4),
 
+            dbc.Col([
+                html.H6(id='q2-survey-for-planner',
+                        style={'verticalAlign': 'top', 'font-weight': 'bold'}),
+
+                dcc.Graph(id='pie-chart-survey-for-planner',
+                          style={'verticalAlign': 'top'}),
+
+
+            ], width=4),
+
+            dbc.Col([
+                html.H6(id='q3-survey-for-planner',
+                        style={'verticalAlign': 'top', 'font-weight': 'bold'}),
+
+                dcc.Graph(id='bar-chart-q3-survey-for-planner',
+                          style={'verticalAlign': 'top'}),
+
+            ], width=4)
 
         ]),
+
 
 
 

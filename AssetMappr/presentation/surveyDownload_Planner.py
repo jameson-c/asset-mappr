@@ -46,11 +46,13 @@ def surveyDownload_Planner():
                     ], width=4),
             # Button to click to download the data in an Excel file (the data displayed in the table)
             dbc.Col([
-                dbc.Button("Download data as CSV", id="button_survey_csv"),
+                dbc.Button("Download data as CSV",
+                           id="button_survey_csv"),
                 dcc.Download(id="download-survey-xlsx")
             ], width=2),
             dbc.Col([
-                dbc.Button("Download data as PDF", id="button_survey_pdf"),
+                dbc.Button("Download data as PDF",
+                           id="button_survey_pdf"),
                 dcc.Download(id="download-survey-pdf")
             ], width=2),
 
