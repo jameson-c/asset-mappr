@@ -111,12 +111,17 @@ def createGoogleDF(keyword_file, apiKey, lat, long, radius):
        # exist, to data2 if data3 does not exist, and to nothing if neither
        # exist. The variable data should always exist.
         try:
-            MainFrame = MainFrame.append([data, data2, data3], ignore_index = True)
+            # MainFrame = MainFrame.append([data, data2, data3], ignore_index = True)
+            MainFrame = pd.concat([MainFrame, data, data2, data3], ignore_index=True)
         except:
             try:
-                MainFrame = MainFrame.append([data, data2], ignore_index = True)
+                # MainFrame = MainFrame.append([data, data2], ignore_index = True)
+                MainFrame = pd.concat([MainFrame, data, data2], ignore_index=True)
+
             except:
-                MainFrame = MainFrame.append([data], ignore_index = True)
+                # MainFrame = MainFrame.append([data], ignore_index = True)
+                MainFrame = pd.concat([MainFrame, data], ignore_index=True)
+
     
         # Tick up the index for 'categories' to get the category for the next keyword.        
         catIndex += 1

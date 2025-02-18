@@ -83,13 +83,14 @@ if __name__ == '__main__':
     '''
     Populating the database
     '''
-    con_string = os.getenv("DB_URI")
+    # con_string = os.getenv("DB_URI")
 
-    # Establish connection with database
-    conn = psycopg2.connect(con_string)
+    # # Establish connection with database
+    # conn = psycopg2.connect(con_string)
     
     # Now check to see if master tables align with the incoming data. Do not populate if there are inconsistencies.
-    result = checkMasterTables(nationalData, conn)
+    # result = checkMasterTables(nationalData, conn)
     dat = nationalData
-    if result == True:
-        populateDB(dat,conn)
+    dat.to_csv('monongahela_export.csv')
+    # if result == True:
+    #     populateDB(dat,conn)

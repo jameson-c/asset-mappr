@@ -1,0 +1,318 @@
+,asset_name,category,description,address,latitude,longitude,website,source_type,community_geo_id,asset_id,asset_type,generated_timestamp
+0,Central Christian Academy,Education and workforce development,Private school,"145 MCGOVERN RD, HOUSTON",40.2305,-80.217721,,NCES Common Core of Data API,4250408,c0128298-c181-444d-8748-56b4fe38cb2d,Tangible,41:41.9
+1,Faith Christian School,Education and workforce development,Private school,"524 E BEAU ST, WASHINGTON",40.1752,-80.230901,,NCES Common Core of Data API,4250408,b9bafd46-18ab-4eeb-8560-36859015438f,Tangible,41:41.9
+2,St Patrick School,Education and workforce development,Private school,"200 MURDOCK ST, CANONSBURG",40.25745,-80.194341,,NCES Common Core of Data API,4250408,2c3985d7-6f68-4e63-8e66-4894a614ed93,Tangible,41:41.9
+3,Madonna Catholic Regional School,Education and workforce development,Private school,"731 CHESS ST, MONONGAHELA",40.204957,-79.932573,,NCES Common Core of Data API,4250408,15d5dbae-944a-45dd-9b91-c8d7b0c06b06,Tangible,41:41.9
+4,Calvary Chapel Christian School,Education and workforce development,Private school,"205 NEWTOWN AVE, FREDERICKTOWN",39.993347,-79.99542,,NCES Common Core of Data API,4250408,b487c125-28fc-466e-bc6f-db5ac8f62c29,Tangible,41:41.9
+5,Cornerstone Mennonite School,Education and workforce development,Private school,"647 ELDERSVILLE RD, BURGETTSTOWN",40.35763,-80.466491,,NCES Common Core of Data API,4250408,f9b6bd65-4e77-4dcc-9d5c-3635a19fabf4,Tangible,41:41.9
+6,First Love Christian Academy,Education and workforce development,Private school,"150 SUNSET BLVD, WASHINGTON",40.194042,-80.253415,,NCES Common Core of Data API,4250408,ee359248-4104-44cf-9ded-e0d26c05ea49,Tangible,41:41.9
+7,Kindercare Learning Center,Education and workforce development,Private school,"124 WILHAVEN RD, MCMURRAY",40.28561,-80.118201,,NCES Common Core of Data API,4250408,0470a51e-23fe-4678-93ac-22c426dd376d,Tangible,41:41.9
+8,Transformation Learning,Education and workforce development,Private school,"3214 CONSTITUTION BLVD, CLAYSVILLE",40.154284,-80.370083,,NCES Common Core of Data API,4250408,78e7da10-7bb3-4420-9058-897a98c281c8,Tangible,41:41.9
+9,Merakey,Education and workforce development,Private school,"3 OAK ST, ELLSWORTH",40.110223,-80.016626,,NCES Common Core of Data API,4250408,1a96625c-2f28-466b-9f3c-4bf7c68c4bf2,Tangible,41:41.9
+10,Southwood School,Education and workforce development,Private school,"342 LINDEN CREEK RD, CANONSBURG",40.242966,-80.139918,,NCES Common Core of Data API,4250408,bef84e3b-0bb4-42f2-8457-e300a40201c5,Tangible,41:41.9
+11,Tec Education Center,Education and workforce development,Private school,"330 CENTRAL AVE, WASHINGTON",40.175509,-80.238038,,NCES Common Core of Data API,4250408,384c7166-eadd-4b44-a791-f1e02048d4b9,Tangible,41:41.9
+12,Gwens Montessori School,Education and workforce development,Private school,"860 ALLISON AVE, WASHINGTON",40.18099,-80.260571,,NCES Common Core of Data API,4250408,53503828-a9ce-4be8-baa1-0d7f56295f79,Tangible,41:41.9
+0,California Area El Sch,Education and workforce development,Public school,"40 Trojan Way, Coal Center",40.047648,-79.927039,,NCES Common Core of Data API,4250408,2ea1dd4f-bb15-441c-95ba-740164782a3a,Tangible,41:41.9
+1,North Strabane Intrmd Sch,Education and workforce development,Public school,"20 Giffin Drive, Canonsburg",40.2615,-80.167,,NCES Common Core of Data API,4250408,0bf0a23c-f360-4cf8-be01-2e63092146db,Tangible,41:41.9
+2,Avella Area Jshs,Education and workforce development,Public school,"1000 Avella Rd, Avella",40.2735,-80.418,,NCES Common Core of Data API,4250408,76d62594-8e88-42dc-a503-5770385aa69c,Tangible,41:41.9
+3,Avella El Center,Education and workforce development,Public school,"1000 Avella Rd, Avella",40.2742,-80.4185,,NCES Common Core of Data API,4250408,3dd99c7b-6d18-41ae-bb1d-d654d1c19320,Tangible,41:41.9
+4,Bentworth El Ctr,Education and workforce development,Public school,"100 Bearcat Dr, Bentleyville",40.1265,-80.0294,,NCES Common Core of Data API,4250408,1a4e07d2-8ee3-4127-b6d7-dafc571d1451,Tangible,41:41.9
+5,Bentworth Shs,Education and workforce development,Public school,"75 Bearcat Dr, Bentleyville",40.1245,-80.0205,,NCES Common Core of Data API,4250408,b2f02803-f372-4889-aa6a-3f1545bf7dd2,Tangible,41:41.9
+6,Bentworth Ms,Education and workforce development,Public school,"563 LINCOLN AVENUE, BENTLEYVILLE",40.126462,-80.029394,,NCES Common Core of Data API,4250408,f6e38b78-49b7-4651-98f0-c956d00dac25,Tangible,41:41.9
+7,Bethlehem-Center Shs,Education and workforce development,Public school,"179 Crawford Rd, Fredericktown",40.0195,-80.0284,,NCES Common Core of Data API,4250408,08a390d7-0d7c-4352-adc7-c8583de6563d,Tangible,41:41.9
+8,Bethlehem-Center Ms,Education and workforce development,Public school,"136 Crawford Rd, Fredericktown",40.0218,-80.0251,,NCES Common Core of Data API,4250408,335418da-b3cf-41c4-a795-106c024686ab,Tangible,41:41.9
+9,Bethlehem-Center El Sch,Education and workforce development,Public school,"194 Crawford Rd, Fredericktown",40.0242,-80.028,,NCES Common Core of Data API,4250408,42eaba1e-5522-4bb6-87bd-4ffc3b3b0eea,Tangible,41:41.9
+10,Burgettstown El Ctr,Education and workforce development,Public school,"100 Bavington Rd, Burgettstown",40.395596,-80.386811,,NCES Common Core of Data API,4250408,b0febf1e-4955-4ba8-b6c5-ca1309d21a20,Tangible,41:41.9
+11,Burgettstown Ms/Hs,Education and workforce development,Public school,"104 Bavington Rd, Burgettstown",40.3973,-80.3862,,NCES Common Core of Data API,4250408,1d095bd0-f1d9-4d62-a892-f3f92719ab16,Tangible,41:41.9
+12,California Area Shs,Education and workforce development,Public school,"11 Trojan Way, Coal Center",40.045357,-79.926514,,NCES Common Core of Data API,4250408,a269254f-bbe2-4ffb-9804-c26c5d447616,Tangible,41:41.9
+13,California Area Ms,Education and workforce development,Public school,"40 Trojan Way, Coal Center",40.047648,-79.927039,,NCES Common Core of Data API,4250408,bcc4f650-7634-4785-8ce4-f1208cdb16a7,Tangible,41:41.9
+14,Wylandville El Sch,Education and workforce development,Public school,"1254 Route 519, Eighty Four",40.2076,-80.1267,,NCES Common Core of Data API,4250408,1f9414d4-d7fe-46fc-b86c-209a0f09ec79,Tangible,41:41.9
+15,Canon-Mcmillan Shs,Education and workforce development,Public school,"314 Elm St Extension, Canonsburg",40.2503,-80.1945,,NCES Common Core of Data API,4250408,080dd327-a8b4-4c7d-bbba-bbe9b218fe62,Tangible,41:41.9
+16,South Central El,Education and workforce development,Public school,"230 S Central Ave, Canonsburg",40.2546,-80.1856,,NCES Common Core of Data API,4250408,a08cb576-8803-4c46-8af0-81477a095a7f,Tangible,41:41.9
+17,Hills-Hendersonville El Sch,Education and workforce development,Public school,"50 Mayview Rd, Canonsburg",40.3081,-80.1298,,NCES Common Core of Data API,4250408,af5e25ca-182f-4f90-a52d-9f563ae87ee1,Tangible,41:41.9
+18,Cecil Intrmd Sch,Education and workforce development,Public school,"3676 Millers Run Rd, Mc Donald",40.319,-80.224,,NCES Common Core of Data API,4250408,ddab4214-5cf4-4353-9fcb-15fb9217efe1,Tangible,41:41.9
+19,Canonsburg Ms,Education and workforce development,Public school,"25 E College St, Canonsburg",40.2608,-80.1862,,NCES Common Core of Data API,4250408,1853663c-6eb3-4477-b1eb-ef3469e4ceaf,Tangible,41:41.9
+20,Borland Manor El Sch,Education and workforce development,Public school,"30 Giffin Dr, Canonsburg",40.2593,-80.167,,NCES Common Core of Data API,4250408,0625958e-2bf2-48bd-8a1f-1c72b1eb6fb9,Tangible,41:41.9
+21,Charleroi Area Hs,Education and workforce development,Public school,"100 Fecsen Dr, Charleroi",40.158,-79.9187,,NCES Common Core of Data API,4250408,6bf516e2-6f60-4303-b4ed-19b23b755534,Tangible,41:41.9
+22,Charleroi Area Ms,Education and workforce development,Public school,"100 Fecsen Dr, Charleroi",40.1576,-79.9232,,NCES Common Core of Data API,4250408,1c84d19d-988a-4fdc-949b-051a300e9d25,Tangible,41:41.9
+23,Charleroi Area El Ctr,Education and workforce development,Public school,"75 Fecsen Dr, Charleroi",40.1565,-79.9228,,NCES Common Core of Data API,4250408,bc57f12e-4e73-4336-872b-ea7fe00bbca0,Tangible,41:41.9
+24,Allison Park El Sch,Education and workforce development,Public school,"803 McGovern Rd, Houston",40.2317,-80.2267,,NCES Common Core of Data API,4250408,28bd7b0f-defb-431c-9b21-a30b4dd67e2b,Tangible,41:41.9
+25,Chartiers-Houston Jshs,Education and workforce development,Public school,"2050 W Pike St, Houston",40.2328,-80.2158,,NCES Common Core of Data API,4250408,cd45fd8e-da08-41e5-a9c4-9bee2d751db1,Tangible,41:41.9
+26,Fort Cherry Jshs,Education and workforce development,Public school,"110 Fort Cherry Road, Mc Donald",40.345989,-80.280146,,NCES Common Core of Data API,4250408,4355da37-d4ef-4ba2-a78c-30aab6bde418,Tangible,41:41.9
+27,Fort Cherry El Ctr,Education and workforce development,Public school,"110 Fort Cherry Road, Mc Donald",40.345251,-80.281463,,NCES Common Core of Data API,4250408,eda0ae6d-38be-4aef-aabd-55e92dadabf2,Tangible,41:41.9
+28,Joe Walker El Sch,Education and workforce development,Public school,"2510 Park Ave, Washington",40.1205,-80.289,,NCES Common Core of Data API,4250408,cb93dadb-16f9-4d6b-a2a4-e5b7a0637957,Tangible,41:41.9
+29,Claysville El Sch,Education and workforce development,Public school,"119 Main St, Claysville",40.1176,-80.4152,,NCES Common Core of Data API,4250408,0b93ed06-5647-44b6-93f3-c44793346b5b,Tangible,41:41.9
+30,Mcguffey Hs,Education and workforce development,Public school,"86 McGuffey Drive, Claysville",40.1414,-80.3625,,NCES Common Core of Data API,4250408,33191e44-f9c3-408b-9372-785423e37ab9,Tangible,41:41.9
+31,Mcguffey Ms,Education and workforce development,Public school,"86 McGuffey Drive, Claysville",40.1413,-80.3642,,NCES Common Core of Data API,4250408,f8c44130-9ddc-4f22-88f2-a8c1938e2129,Tangible,41:41.9
+32,Mcmurray El Sch,Education and workforce development,Public school,"626 E McMurray Rd, McMurray",40.2808,-80.0772,,NCES Common Core of Data API,4250408,7ef81ee3-a595-4c9a-a26a-7281516310f3,Tangible,41:41.9
+33,Bower Hill El Sch,Education and workforce development,Public school,"424 Bower Hill Road, Venetia",40.2608,-80.0649,,NCES Common Core of Data API,4250408,3f8c985c-1a19-4a35-86eb-bed3b2c571a9,Tangible,41:41.9
+34,Pleasant Valley El Sch,Education and workforce development,Public school,"250 E McMurray Rd, McMurray",40.2669,-80.1197,,NCES Common Core of Data API,4250408,16e5fe1e-5d15-4bb4-b8c9-26cc4b4590bd,Tangible,41:41.9
+35,Peters Twp Ms,Education and workforce development,Public school,"625 E McMurray Rd, McMurray",40.2818,-80.0818,,NCES Common Core of Data API,4250408,59c02ed1-8e55-4fe0-b615-2ccb58239710,Tangible,41:41.9
+36,Peters Twp Hs,Education and workforce development,Public school,"264 E McMurray Rd, McMurray",40.2679,-80.1183,,NCES Common Core of Data API,4250408,f4d9b631-0c7c-4411-b55a-e8baac1e4f78,Tangible,41:41.9
+37,Ringgold El Sch North,Education and workforce development,Public school,"3685 Finleyville-Elrama Rd, Finleyville",40.2557,-79.9935,,NCES Common Core of Data API,4250408,65f92bdf-e404-4330-8523-be7fde20f1f0,Tangible,41:41.9
+38,Ringgold Ms,Education and workforce development,Public school,"2 Ram Dr, Monongahela",40.201248,-79.980205,,NCES Common Core of Data API,4250408,de4660ac-0cdc-44f5-bdcb-be4adf4bf6b9,Tangible,41:41.9
+39,Ringgold Shs,Education and workforce development,Public school,"1 Ram Drive, Monongahela",40.2002,-79.9789,,NCES Common Core of Data API,4250408,df0330e2-4e87-4331-a831-78a285a7ce37,Tangible,41:41.9
+40,Trinity West El Sch,Education and workforce development,Public school,"1041 Gabby Ave, Washington",40.1562,-80.2632,,NCES Common Core of Data API,4250408,1a364376-6127-49d2-a376-ecc9476c6068,Tangible,41:41.9
+41,Trinity North El Sch,Education and workforce development,Public school,"225 Midlan Drive, Washington",40.2007,-80.2975,,NCES Common Core of Data API,4250408,46788f4a-0dee-4638-99f4-260f513a151d,Tangible,41:41.9
+42,Trinity South El Sch,Education and workforce development,Public school,"2500 S Main Street Ext, Washington",40.1135,-80.206,,NCES Common Core of Data API,4250408,69dee5ad-c4a5-450b-903e-fc2bd271167b,Tangible,41:41.9
+43,Trinity East El Sch,Education and workforce development,Public school,"252 Cameron Rd, Washington",40.1886,-80.2101,,NCES Common Core of Data API,4250408,48a4c4f9-9b8f-4b7e-8828-8444f58e5843,Tangible,41:41.9
+44,Trinity Shs,Education and workforce development,Public school,"231 Park Ave, Washington",40.1646,-80.2494,,NCES Common Core of Data API,4250408,939862bc-f67c-4496-a8f9-e049ea7b925b,Tangible,41:41.9
+45,Trinity Ms,Education and workforce development,Public school,"50 Scenic Dr, Washington",40.1493,-80.2633,,NCES Common Core of Data API,4250408,2877912b-7337-441f-9b7e-b86a452a4366,Tangible,41:41.9
+46,Washington Park El Sch,Education and workforce development,Public school,"801 E Wheeling St, Washington",40.1675,-80.225,,NCES Common Core of Data API,4250408,4e805280-f055-40d2-9e69-1530fae86b61,Tangible,41:41.9
+47,Washington Hs,Education and workforce development,Public school,"201 Allison Ave, Washington",40.1742,-80.2534,,NCES Common Core of Data API,4250408,43259772-7f94-4c18-984d-c9e57a81c44d,Tangible,41:41.9
+48,Washington Junior High School,Education and workforce development,Public school,"201 Allison Avenue, Washington",40.1672,-80.2249,,NCES Common Core of Data API,4250408,af059d10-4e72-486c-bd90-6c40183d7cea,Tangible,41:41.9
+49,Mon Valley Ctc,Education and workforce development,Public school,"Five Guttman Avenue, Charleroi",40.1201,-79.8883,,NCES Common Core of Data API,4250408,acd71bac-8104-417f-834e-2a2bbac33693,Tangible,41:41.9
+50,Western Area Ctc,Education and workforce development,Public school,"688 Western Ave, Canonsburg",40.2544,-80.246,,NCES Common Core of Data API,4250408,f4cf5ed8-ec2c-4b59-8121-24fdde56f39b,Tangible,41:41.9
+51,California Area Intermediate Ms,Education and workforce development,Public school,"40 Trojan Way, Coal Center",40.047648,-79.927039,,NCES Common Core of Data API,4250408,2108812c-6a6e-4f95-b965-9ea5538a9072,Tangible,41:41.9
+52,Ringgold El Sch South,Education and workforce development,Public school,"120 Alexander Avenue, Monongahela",40.1737,-79.9134,,NCES Common Core of Data API,4250408,1b20ed36-f40f-44ef-9160-f2d48294e73e,Tangible,41:41.9
+53,Muse El Sch,Education and workforce development,Public school,"40 Muse School St, Muse",40.29233,-80.198541,,NCES Common Core of Data API,4250408,2b336af3-93bd-425b-a7c0-f10ac33a9a94,Tangible,41:41.9
+0,California University Of Pennsylvania,Education and workforce development,Postsecondary school,"250 University Ave, California",40.064964,-79.88679,,NCES Common Core of Data API,4250408,f1da9514-a5e8-4ff0-9c0f-70253269bc10,Tangible,41:41.9
+1,Penn Commercial Business/Technical School,Education and workforce development,Postsecondary school,"242 Oak Spring Road, Washington",40.182387,-80.238844,,NCES Common Core of Data API,4250408,d059253e-44c9-40e7-936d-573ab3fc49e7,Tangible,41:41.9
+2,Washington Health System School Of Nursing,Education and workforce development,Postsecondary school,"155 Wilson Ave, Washington",40.183984,-80.245709,,NCES Common Core of Data API,4250408,925ba62f-b32a-415a-956e-4fff30a3a40f,Tangible,41:41.9
+3,Washington & Jefferson College,Education and workforce development,Postsecondary school,"60 S Lincoln St, Washington",40.170622,-80.24049,,NCES Common Core of Data API,4250408,fa352f5c-1b31-4376-b1d5-6fbde94705ad,Tangible,41:41.9
+4,Western Area Career & Technology Center,Education and workforce development,Postsecondary school,"688 Western Avenue, Canonsburg",40.254722,-80.246117,,NCES Common Core of Data API,4250408,c238dbc2-5fea-4cbd-995f-5e6264ba23f6,Tangible,41:41.9
+5,Pennsylvania Western University,Education and workforce development,Postsecondary school,"250 University Avenue, California",40.064964,-79.88679,,NCES Common Core of Data API,4250408,b5b605f2-9ad9-42bd-902a-8517927881c5,Tangible,41:41.9
+0,9th Street Park Basketball Courts,Sports and recreation,,Monessen,40.1593818,-79.892929,,Google API,4250408,2d70371f-114a-4c9e-9405-51b3e5ed9044,Tangible,41:41.9
+1,Sixth Street Park,Sports and recreation,,Monessen,40.16095749999999,-79.8887614,,Google API,4250408,60b80b21-9ad2-46bb-a031-d1d29d47ac90,Tangible,41:41.9
+2,Shawnee Park Basketball Court,Sports and recreation,,Monessen,40.1559546,-79.875513,,Google API,4250408,9b2828bf-948d-422f-a34d-f1ed5aa6ec58,Tangible,41:41.9
+3,Charleroi Basketball Court,Sports and recreation,,"1 Chamber Plaza, Charleroi",40.1409289,-79.8965517,,Google API,4250408,bf8e6be9-39f6-4882-a627-6bb93842fe80,Tangible,41:41.9
+4,Monessen City Park Tennis Courts,Sports and recreation,,Monessen,40.1465664,-79.8718229,,Google API,4250408,4c39a435-fc4f-4cba-8cc1-c1c45174d07d,Tangible,41:41.9
+5,Ringgold Tennis Courts,Sports and recreation,,"1 Ram Dr, Monongahela",40.199559,-79.977673,,Google API,4250408,c1992561-98c7-423a-aaeb-53ad7d8ebc80,Tangible,41:41.9
+6,Tennis courts,Sports and recreation,,"2041 Meldon Ave, Donora",40.1861477,-79.8689797,,Google API,4250408,6d5a30c4-e44c-40ef-a95f-4ebeae679b05,Tangible,41:41.9
+7,Monessen Soccer Field,Sports and recreation,,"101 Elizabeth St, Monessen",40.1513636,-79.8770458,,Google API,4250408,9c90a498-f5b2-41e7-9b41-97a7353e5c28,Tangible,41:41.9
+8,Joe Montana Stadium,Sports and recreation,,"1 Ram Dr, Monongahela",40.1984384,-79.9804648,,Google API,4250408,bb056a59-dc36-4a44-963f-2da3b8e3ef89,Tangible,41:41.9
+11,Myron Pottios Stadium,Sports and recreation,,"100 Fecsen Dr, Charleroi",40.1577942,-79.9186358,,Google API,4250408,1d85b094-59d0-4e4b-b69d-cc082a34fa44,Tangible,41:41.9
+13,Round Hill Playground,Sports and recreation,,"400 Hereford Dr, Elizabeth",40.2452636,-79.8551384,,Google API,4250408,a615e222-dcb4-419b-9167-020e1d806bb9,Tangible,41:41.9
+14,Hillcrest Park Playground,Sports and recreation,,"631 Ridge Ave, Monongahela",40.1922051,-79.9076858,,Google API,4250408,cd868c06-1d63-4e5f-aad0-9d1b12439602,Tangible,41:41.9
+15,Shawnee Park Playground,Sports and recreation,,Monessen,40.1558287,-79.8753117,,Google API,4250408,211c1073-a2b9-4753-9789-9113478932d1,Tangible,41:41.9
+17,Chess Park,Sports and recreation,,"Chess St, Monongahela",40.20467319999999,-79.9313796,,Google API,4250408,a8065b8b-aa31-4e48-9e9a-89dfa584cc10,Tangible,41:41.9
+18,Palmer Park,Sports and recreation,,Donora,40.19320099999999,-79.8646553,,Google API,4250408,51708f0e-5874-4612-af5d-d579902fd708,Tangible,41:41.9
+19,Hall Memorial Park,Sports and recreation,,"435 Howard St, New Eagle",40.2119922,-79.9563608,,Google API,4250408,676b2519-568b-4787-af17-6ce6ff16c994,Tangible,41:41.9
+20,Round Hill Park,Sports and recreation,,"651 Round Hill Rd, Elizabeth",40.241837,-79.8523763,https://www.alleghenycounty.us/Parks-and-Events/Parks/Round-Hill-Park,Google API,4250408,c3e51856-8943-49a5-8bf8-dba1573a645c,Tangible,41:41.9
+21,Crest Avenue Park,Sports and recreation,,Charleroi,40.1400666,-79.9043607,,Google API,4250408,2ffc9a74-c143-4a20-bec2-12850384121a,Tangible,41:41.9
+22,Charleroi Community Park,Sports and recreation,,"1 Chamber Plaza, Charleroi",40.1415723,-79.8971324,https://www.facebook.com/Charleroi-Trustees-Community-Park-715031211942009/,Google API,4250408,d89afd16-ac36-4556-bb3d-e1b71717da2d,Tangible,41:41.9
+23,Gallatin Sunnyside Park,Sports and recreation,,"1942 Gallatin Tigers Rd, Monongahela",40.1968892,-79.8861417,,Google API,4250408,7d9fa057-540f-4700-9a76-a84928d4cc96,Tangible,41:41.9
+24,Mon Valley Country Club,Sports and recreation,,"1188 Country Club Rd, Monongahela",40.1807569,-79.9169055,http://www.monvalleycc.com/,Google API,4250408,7a608ba2-152a-4724-bd8e-f10bbc37728b,Tangible,41:41.9
+25,Roll R Way - Donora,Sports and recreation,,"590 Galiffa Dr, Donora",40.1771197,-79.8533988,http://www.rollrway.com/,Google API,4250408,44e77699-d66a-42a0-b494-9856472a1d6e,Tangible,41:41.9
+26,Valley Pool & Spa - Charleroi,Sports and recreation,,"751 Lincoln Ave, Charleroi",40.1478298,-79.9063362,http://www.valleypoolspa.com/,Google API,4250408,0e007f6f-b4db-4cb0-bc97-df7c114e00ea,Tangible,41:41.9
+27,R & R Pools & Construction,Sports and recreation,,"167 Main St, New Eagle",40.2078423,-79.9453661,http://rrpoolsandconstruction.com/,Google API,4250408,410c31d4-cbbf-4792-b286-e50e1537ad15,Tangible,41:41.9
+28,Del Suppo Pools and Spas,Sports and recreation,,"26 McKean Ave, Donora",40.1704965,-79.8590364,https://delsuppopools.com/,Google API,4250408,d41e3d6c-3878-4173-a401-47683caf160b,Tangible,41:41.9
+29,Round Hill Spray Park,Sports and recreation,,"351 Hereford Dr, Elizabeth",40.2448383,-79.8561839,,Google API,4250408,edfa4ffd-f56e-4093-baf9-6bcc9df471db,Tangible,41:41.9
+30,Monessen Veteran's Memorial,Culture and history,,Monessen,40.1440777,-79.8766744,,Google API,4250408,ebc95cb8-559b-4d5a-aaa2-520633814757,Tangible,41:41.9
+31,Mon Valley Memorial Park,Culture and history,,"49 2nd Street Extension, Donora",40.1758741,-79.8782729,https://liferemembered.com/memorial-parks/mon-valley-memorial-park,Google API,4250408,354d3772-4adf-49ac-b910-8c538e62e050,Tangible,41:41.9
+32,War Memorial,Culture and history,,"625 W Main St, Monongahela",40.204972,-79.9307044,,Google API,4250408,6e620c3b-1f55-4ac6-acd5-146b88724556,Tangible,41:41.9
+33,Hall Memorial Park,Culture and history,,"435 Howard St, New Eagle",40.2119922,-79.9563608,,Google API,4250408,c8243a34-420a-4ea7-8cfd-e9a1074df653,Tangible,41:41.9
+34,New Eagle: Route 88 + Memorial Dr,Culture and history,,New Eagle,40.2093805,-79.953467,,Google API,4250408,823d8c3a-0cca-4bc6-8123-a9b5bd7083ee,Tangible,41:41.9
+35,House of Jackson Memorial Chapel,Culture and history,,"546 Thompson Ave, Donora",40.1771365,-79.8572467,https://www.houseofjacksonmemorialchapel.com/,Google API,4250408,5c849c70-e1bc-47ec-ad85-f1a3258d2553,Tangible,41:41.9
+36,Donora: War Memorial,Culture and history,,Donora,40.168253,-79.8616362,,Google API,4250408,b36b4042-8992-47b3-bafd-b18a372864ff,Tangible,41:41.9
+37,Jimmy Rice Memorial Park,Culture and history,,New Eagle,40.2031046,-79.9592305,,Google API,4250408,3ef8bbac-c3f6-43d1-9754-7ad084de973d,Tangible,41:41.9
+38,Ken Griffey Memorial Field,Culture and history,,"Annex Field, 700 Orchard Avenue, Donora",40.1786711,-79.869416,,Google API,4250408,7bbfd321-a5bf-4909-93bf-798552d8e393,Tangible,41:41.9
+39,Monongahela Cemetery,Culture and history,,"800 Country Club Rd, Monongahela",40.1949806,-79.9216987,http://monongahelacemetery.com/,Google API,4250408,f73dfc1a-ffab-4db2-bb4a-006fe2d58778,Tangible,41:41.9
+40,Donora: opp War Memorial,Culture and history,,Donora,40.168485,-79.861248,,Google API,4250408,520fca84-97c0-4a96-b135-8b60c4bb9019,Tangible,41:41.9
+41,Boat Launch / Fishing Docks,Culture and history,,"331 3rd St, Monessen",40.1596569,-79.8832765,,Google API,4250408,9b2058a3-59c0-4162-9c80-42c4931cc1b6,Tangible,41:41.9
+42,Donora Smog Museum,Culture and history,,"595 McKean Ave, Donora",40.1776775,-79.8564029,http://www.donorahistoricalsociety.org/home,Google API,4250408,12b55157-3db6-4b11-865e-c7b8107b51c8,Tangible,41:41.9
+43,Monessen Heritage Museum,Culture and history,,"507 Donner Ave, Monessen",40.1618947,-79.8859488,http://monessenhistoricalsociety.com/,Google API,4250408,9dd8e8d3-e7fa-44f8-bc8d-3aafeee41667,Tangible,41:41.9
+44,Monongahela Area Historical Society at the Longwell House,Culture and history,,"711 W Main St, Monongahela",40.205393,-79.9316325,http://www.mahs-pa.org/,Google API,4250408,6a21d19d-547c-4ad3-ac4e-b603973f050c,Tangible,41:41.9
+45,Fort Pitt Coal Works,Culture and history,,"768 E Main St, Monongahela",40.1928077,-79.9043433,http://www.fortpittcoal.com/,Google API,4250408,f59624ba-32f1-402d-819d-b4f63128f3c9,Tangible,41:41.9
+46,Monessen City Park Amphitheater,Culture and history,,Monessen,40.1457178,-79.8737836,http://www.monessenamphitheater.com/,Google API,4250408,f2abbd74-78a8-4d23-9ffa-a0e064f68eb9,Tangible,41:41.9
+47,Off the Wall Arts,Culture and history,,"532 McKean Ave, Charleroi",40.1394348,-79.8982391,,Google API,4250408,8ce805d6-a6b3-4f63-8f51-1c0545a10253,Tangible,41:41.9
+49,Victory Hill Civic & Social,Culture and history,,"25 Jones Ln, Monongahela",40.1921299,-79.8893519,,Google API,4250408,3a3d50d1-8949-4fea-83b1-9c289265a98a,Tangible,41:41.9
+50,New Eagle Recreation Hall,Culture and history,,"160 Chess St, New Eagle",40.2074984,-79.9466206,,Google API,4250408,365be021-c868-489f-847c-b8b71d0e8497,Tangible,41:41.9
+51,Carroll Township Social Hall,Culture and history,,"Baird St, Monongahela",40.1684832,-79.9148816,http://carroll-social-hall.keeq.io/,Google API,4250408,edfcb3cf-7f68-437a-bb72-b1529b55af94,Tangible,41:41.9
+52,Southwest Training,Education and workforce development,,"570 Galiffa Dr, Donora",40.1759661,-79.853716,https://swtraining.org/,Google API,4250408,f4d70256-f888-428d-b705-31fe5adb5fdb,Tangible,41:41.9
+54,Monongahela Health Officer,Healthcare,,"449 W Main St, Monongahela",40.2036608,-79.9271332,,Google API,4250408,4a23663d-a0cd-42b1-8e7a-9df69da50d7a,Tangible,41:41.9
+55,Monessen Health Officer,Healthcare,,"100 3rd St #2, Monessen",40.1608992,-79.8821335,,Google API,4250408,b95de231-e58a-48bc-8090-a07c33cf8a98,Tangible,41:41.9
+56,Mon Valley Community Health Services,Healthcare,,"2 Eastgate Ave #101, Monessen",40.1599029,-79.870646,http://monvalleyprimarycare.org/,Google API,4250408,24c392f0-592a-42be-b594-4f78f658ace9,Tangible,41:41.9
+57,Penn Highlands Mon Valley,Healthcare,,"1163 Country Club Rd, Monongahela",40.181655,-79.9113036,https://www.monvalleyhospital.com/,Google API,4250408,241e0a11-5962-4a97-8480-fb77d9997ab4,Tangible,41:41.9
+58,Monongahela Valley Hospital Clinical Nutrition and Diabetes,Healthcare,,"1163 Country Club Rd, Monongahela",40.1818864,-79.9113593,https://www.monvalleyhospital.com/clinical-nutrition-diabetes.asp,Google API,4250408,9075db3d-6e73-40bd-9605-243082f5eecf,Tangible,41:41.9
+59,Full Gospel Fellowship Church,Places of worship,,"10th St & Upper Crest Ave, Charleroi",40.14170319999999,-79.9057832,,Google API,4250408,01f950c0-b150-4a86-8ffb-039f0e5a363b,Tangible,41:41.9
+60,"The Church of Jesus Christ (Monongahela, PA)",Places of worship,,"525 6th St, Monongahela",40.2017193,-79.9305944,https://thechurchofjesuschrist.org/location/monongahela/,Google API,4250408,d02001a0-b2fd-4564-af1d-27c60c4ba763,Tangible,41:41.9
+61,The Church of God,Places of worship,,Monongahela,40.2047526,-79.9294105,,Google API,4250408,e6037ca5-1247-48a4-95d9-0396193547cc,Tangible,41:41.9
+62,First Christian Church,Places of worship,,"630 Chess St, Monongahela",40.20435459999999,-79.9310159,http://www.fcmonongahela.com/,Google API,4250408,c8007df4-06c4-487b-a29a-f3a41bfd976c,Tangible,41:41.9
+63,First Christian Church (Disciples of Christ),Places of worship,,"61 Walnut Ridge Rd, Charleroi",40.1484723,-79.937657,https://fcc-charleroi.com/,Google API,4250408,bc9e8133-b2ec-4c5d-a7d0-2b37849ddb3b,Tangible,41:41.9
+64,Monongahela Church of the Nazarene,Places of worship,,"206 10th St, Monongahela",40.2055094,-79.9348349,http://moncitynazarene.org/,Google API,4250408,bd06f0b1-4221-42f6-855b-92c62abe84ae,Tangible,41:41.9
+65,First Christian Church,Places of worship,,"1516 Jones St, Monessen",40.1455868,-79.888602,,Google API,4250408,6285c1a1-1ff5-4ab1-9788-6aca1f449317,Tangible,41:41.9
+66,Calvary Bible Church,Places of worship,,"990 4th Street Ext, Charleroi",40.1505063,-79.9180453,http://www.calvarybiblecharleroi.org/,Google API,4250408,5bfb42a9-68d2-41a7-8311-ecc53ff733b3,Tangible,41:41.9
+67,River Hill Church of Christ,Places of worship,,"2105 River Hill Rd, Monongahela",40.2081004,-79.91421,http://www.riverhillchurch.org/,Google API,4250408,e136bffb-cb78-447f-b96e-25096cc4c0d7,Tangible,41:41.9
+68,Little City Church,Places of worship,,"130 W Main St, Monongahela",40.2005704,-79.9234789,,Google API,4250408,18a726c5-9a98-4c01-a2a2-1d0af1850742,Tangible,41:41.9
+69,First Baptist Church,Places of worship,,"601 W Main St, Monongahela",40.204897,-79.9297417,http://firstbaptistmon.org/,Google API,4250408,aeba60a3-b207-421b-9df1-26aa223421a2,Tangible,41:41.9
+70,Pleasant View Church,Places of worship,,Finleyville,40.2495029,-79.973275,,Google API,4250408,afa6484e-4f89-4a0f-84ef-053da636f296,Tangible,41:41.9
+71,Whole Truth Church of God,Places of worship,,"1004 McKean Ave, Donora",40.1837262,-79.8558051,,Google API,4250408,605ee846-e400-4879-b3b4-9827dd8d87c6,Tangible,41:41.9
+72,Round Hill Presbyterian Church,Places of worship,,"2150 Round Hill Church Rd, Elizabeth",40.2424956,-79.8592554,https://roundhillchurch.org/,Google API,4250408,3b181b97-ca5c-40e6-8632-9fe4c0136391,Tangible,41:41.9
+73,Gate of Heaven Church of God,Places of worship,,"644 Reed Ave, Monessen",40.1593441,-79.8904283,http://gateofheaven-church.com/,Google API,4250408,f054a805-0e5c-4475-a43e-9e167f4f47f3,Tangible,41:41.9
+74,First Baptist Church of Donora,Places of worship,,"541 Allen Ave, Donora",40.1788045,-79.8621907,,Google API,4250408,3bd41ff6-a2ee-422b-a76e-98a3ae2328bc,Tangible,41:41.9
+75,Union Baptist Church,Places of worship,,"670 McMahon Ave, Monessen",40.1574977,-79.8910217,,Google API,4250408,080b0908-5e52-4c44-840b-f43ee070e966,Tangible,41:41.9
+76,Community Baptist Church at Charleroi,Places of worship,,"1 Lockview Ave, Charleroi",40.1548254,-79.9094578,,Google API,4250408,aed0cd67-a8a0-4297-916f-cf4b8287534e,Tangible,41:41.9
+77,Kneset Church,Places of worship,,"1317 Grand Blvd, Monessen",40.1491017,-79.8891816,,Google API,4250408,3a851c4b-e98c-4eb5-bbc1-3eac22b57e79,Tangible,41:41.9
+78,United Methodist Church,Places of worship,,"400 Schoonmaker Ave, Monessen",40.16075499999999,-79.8845269,,Google API,4250408,c1d16812-d5e7-4af0-bd8d-33f04cf47ede,Tangible,41:41.9
+79,Mt Sinai Baptist Church,Places of worship,,"20 Brushton Ln, Charleroi",40.1569168,-79.909168,,Google API,4250408,653dd615-be89-454a-9c39-1c0bcb78b6b4,Tangible,41:41.9
+80,St Paul Baptist Church,Places of worship,,"49 S McKean Ave, Donora",40.1690685,-79.8606014,,Google API,4250408,092dcb4f-7242-49b1-aa81-37d533e7f36a,Tangible,41:41.9
+81,Ella Hollow Bible Church,Places of worship,,"3429 Rainbow Run Rd, Elizabeth",40.2057906,-79.8584361,,Google API,4250408,cc9a3ef5-3649-4214-926e-ca5466b3ebfd,Tangible,41:41.9
+82,Mt. Calvary Baptist Church,Places of worship,,"230 Reed Ave, Monessen",40.1584296,-79.8825674,,Google API,4250408,d6190b55-7a9e-43b5-bea7-0bc3dd271ebd,Tangible,41:41.9
+83,Grace Lutheran Church,Places of worship,,"911 Howard St, Monongahela",40.204007,-79.9347601,,Google API,4250408,1f5a955d-2b74-43ec-93ae-22806664aa4b,Tangible,41:41.9
+84,St Paul's Lutheran Church,Places of worship,,"1317 Grand Blvd, Monessen",40.1491017,-79.8891816,,Google API,4250408,ebf8cfc1-fdf2-4c39-a43f-f7a1c20a554e,Tangible,41:41.9
+85,Saint Marys Church,Places of worship,,Monongahela,40.2028486,-79.9308826,,Google API,4250408,3b2cba0f-2138-4a4b-a5ac-b7e45e67d163,Tangible,41:41.9
+86,The Epiphany of Our Lord Parish,Places of worship,,"44 Pennsylvania Blvd, Monessen",40.1428351,-79.8857846,https://www.eolparish.com/,Google API,4250408,e2db9cc7-810f-4f44-ad2c-d6a776f2991e,Tangible,41:41.9
+87,St Nicholas Orthodox Church,Places of worship,,"314 6th St, Monongahela",40.2035253,-79.9307255,http://www.orthodoxmon.org/,Google API,4250408,36a721ea-bdce-41b5-9ec9-e6d7202b4681,Tangible,41:41.9
+88,Fallowfield Baptist Church,Places of worship,,"62 Ernest Ave, Monongahela",40.153486,-79.9431716,,Google API,4250408,77c08027-ef78-4334-9431-f964a1a56a5b,Tangible,41:41.9
+89,Mt. Zion Church,Places of worship,,"Cracker Jack Rd, Monongahela",40.1805681,-79.9815402,,Google API,4250408,c6eaa5b6-9d4a-4d84-b182-6075e3f59fee,Tangible,41:41.9
+90,Ebenezer Baptist Church,Places of worship,,"503 6th St, Monongahela",40.2026642,-79.9307259,,Google API,4250408,548849e7-61f8-443e-8b98-1e5bd2d4db8e,Tangible,41:41.9
+91,New Testament Holiness Church,Places of worship,,"562 McKean Ave, Donora",40.1772795,-79.8561889,,Google API,4250408,c6c21b7a-d740-41fc-b63d-b91c4ccf84ab,Tangible,41:41.9
+92,Restoration Church Monongahela,Places of worship,,"3326 Rainbow Run Rd #4537, Monongahela",40.1981547,-79.8832288,http://restorationchurchintl.org/monongahela,Google API,4250408,9e6684c5-4e78-4946-9f52-fd999ea0f57b,Tangible,41:41.9
+93,The Valley Remnant Church,Places of worship,,"701 Meldon Ave, Donora",40.179445,-79.855355,https://valleyremnant.com/,Google API,4250408,db867120-4c5a-4598-a9cd-3ea6436139a2,Tangible,41:41.9
+94,Orchard Christian Fellowship,Places of worship,,"721 Schoonmaker Ave A, Monessen",40.161674,-79.88926,http://orchardchristianfellowship.com/,Google API,4250408,68f9841c-7735-4fb0-9905-a23de8813644,Tangible,41:41.9
+95,St John's Episcopal Church,Places of worship,,"988 Thompson Ave, Donora",40.18333579999999,-79.8567074,,Google API,4250408,0fda5a49-0634-405b-b35a-6fe6ea6b57e0,Tangible,41:41.9
+96,Mt Cavalry Baptist Church,Places of worship,,"Reed Ave, Monessen",40.1588286,-79.884897,,Google API,4250408,68903aed-ed16-409b-8074-9099861f98ec,Tangible,41:41.9
+97,St Mary's Byzantine Catholic Church Of The Assumption,Places of worship,,"125 McKee Ave, Monessen",40.1593179,-79.8801753,,Google API,4250408,85cfde43-2a05-4dd6-84c7-70e84d606277,Tangible,41:41.9
+98,Bethel AME Church,Places of worship,,"700 W Main St, Monongahela",40.2051298,-79.9318297,,Google API,4250408,e4d3c939-78f6-4d61-8ad9-d3a1927e705c,Tangible,41:41.9
+99,St. Andrew the Apostle Parish - St. Damien of Molokai Church,Places of worship,,"722 W Main St, Monongahela",40.2052511,-79.9323012,https://saintandrewmidmon.org/,Google API,4250408,915af76a-2df3-4d7b-b05f-87b5ce55329b,Tangible,41:41.9
+100,2nd Chance Community Church,Places of worship,,"636 McKean Ave, Charleroi",40.1404435,-79.8995537,http://www.2ndchancecommunitychurch.org/,Google API,4250408,fccfac3b-d2e9-4301-9621-546d3d31a006,Tangible,41:41.9
+101,FREE INDEED MINISTRY,Places of worship,,"401 2nd St, Monongahela",40.1999496,-79.9259459,http://freeindeed836.com/,Google API,4250408,4e86382e-3a0b-4954-b312-5fb105378d0c,Tangible,41:41.9
+102,St Michael's Antiochian Church,Places of worship,,"1201 Patton Ave, Monessen",40.1496279,-79.893,,Google API,4250408,30843386-6ee4-4ccb-819b-298bf26aff8f,Tangible,41:41.9
+103,St Nicholas Orthodox Church,Places of worship,,"1 St Nicholas Dr, Donora",40.1807604,-79.8585793,http://stnicholasorthodoxdonora.org/,Google API,4250408,bd4d4f90-4857-45c8-9d5a-2221f6f78f58,Tangible,41:41.9
+104,First Presbyterian Church,Places of worship,,"609 Chess St, Monongahela",40.2043817,-79.9302658,https://www.facebook.com/FirstPresbterianMonongahela/,Google API,4250408,4afe4175-4490-4aec-bf57-bf81866b79d3,Tangible,41:41.9
+105,Miracle Ridge Baptist Church,Places of worship,,"4102 Miracle Ridge Rd, Elizabeth",40.2270568,-79.8759273,http://mrbconline.org/,Google API,4250408,22826d32-8432-4a4b-bb48-10891b4714a1,Tangible,41:41.9
+106,The Church of Jesus Christ of Latter-day Saints,Places of worship,,"136 Sacred Heart Rd, Monongahela",40.1756167,-79.9311692,https://local.churchofjesuschrist.org/en/us/pa/monongahela/136-sacred-heart-road?utm_source=gmb&utm_medium=yext&y_source=1_NjcwODkwNjEtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D,Google API,4250408,608e97df-e837-4ea0-99d5-cd9ae6f58e92,Tangible,41:41.9
+107,CityReach Church Charleroi,Places of worship,,"1006 Fallowfield Ave, Charleroi",40.1433792,-79.9040827,http://crcharleroi.com/,Google API,4250408,cb768db7-4c46-4807-9f9d-cdeda32b68ae,Tangible,41:41.9
+108,First United Methodist Church,Places of worship,,"430 W Main St, Monongahela",40.2033302,-79.9271729,http://moncitymethodist.churchcenter.com/home,Google API,4250408,c8a55640-bdc7-4404-bc22-6b57782d4de6,Tangible,41:41.9
+109,Holy Trinity Orthodox Church,Places of worship,,"1000 Lookout Ave, Charleroi",40.1428597,-79.9051991,,Google API,4250408,e93d2428-4d9c-4b11-8bcf-68282dc6d8f1,Tangible,41:41.9
+110,St Michael's Byzantine Rite,Places of worship,,"511 Murray Ave, Donora",40.1772058,-79.8588508,https://archpitt.org/place/donorapa/,Google API,4250408,6676ca74-7982-451a-bf57-297214ce83eb,Tangible,41:41.9
+111,Nativity of the Virgin Mary Orthodox Church,Places of worship,,"506 High St, Monongahela",40.2022432,-79.9294624,,Google API,4250408,d4300b43-e5ef-4880-a811-fabdca496c77,Tangible,41:41.9
+112,Riverview Baptist Church,Places of worship,,"405 Main St, New Eagle",40.2097563,-79.9543871,http://www.riverview-bc.com/,Google API,4250408,7a2da653-c7ac-41a5-9057-199d2dcfdb8f,Tangible,41:41.9
+113,Bunola Church of the Nazarene,Places of worship,,"388 Bunola River Rd, Bunola",40.2380065,-79.9475293,https://thebunolanazarenechurch.org/,Google API,4250408,d35a76ef-0eba-47a6-9fd7-43a04c51843a,Tangible,41:41.9
+114,True Vine Anglican Church,Places of worship,,"700 E Main St, Monongahela",40.1930327,-79.9074686,http://truevinemoncity.wordpress.com/,Google API,4250408,60f30c1f-a7a6-42aa-bd5e-167f41b80aa0,Tangible,41:41.9
+115,The Living Room Church,Places of worship,,"613 Gilmer St, Webster",40.1866002,-79.850658,http://www.thelivingroomchurch.org/,Google API,4250408,565fb2d4-406d-4265-a4d2-67a1689d475d,Tangible,41:41.9
+116,Fellowship Baptist Church,Places of worship,,"916 Knox Ave, Monessen",40.1586798,-79.8922799,,Google API,4250408,f1adb0e2-caf4-45fc-a5cf-d2de921cab7c,Tangible,41:41.9
+117,St. Spyridon Greek Orthodox Church,Places of worship,,"1207 Grand Blvd, Monessen",40.151694,-79.8899744,https://www.stspyridon.pa.goarch.org/,Google API,4250408,c0e0c827-5457-4cd0-b4fb-e1e81bffb4d3,Tangible,41:41.9
+118,New Vision Christian Tabernacle,Places of worship,,"201 Thompson Ave, Donora",40.1738655,-79.8585544,,Google API,4250408,779866ef-b789-4124-8898-30516bce2e26,Tangible,41:41.9
+279,Carroll Township Social Hall,Community service and assistance,,"Baird St, Monongahela",40.1684832,-79.9148816,http://carroll-social-hall.keeq.io/,Google API,4250408,8dea7b50-c2b9-484d-8afe-4fddce1cf4c9,Tangible,41:41.9
+280,New Eagle Recreation Hall,Community service and assistance,,"160 Chess St, New Eagle",40.2074984,-79.9466206,,Google API,4250408,48a41cd2-ff22-4e30-b93b-05584a08f495,Tangible,41:41.9
+281,Monessen Civic Center,Community service and assistance,,"861 Donner Ave, Monessen",40.1622647,-79.8908824,,Google API,4250408,7b187843-e0c5-4ba3-9167-16b7513b17e0,Tangible,41:41.9
+282,Borough of New Eagle,Community service and assistance,,"157 Main St, New Eagle",40.2077258,-79.94482,https://neweagleboro.net/,Google API,4250408,646bd0c5-a516-4dfd-af51-fd5c6c80cf2e,Tangible,41:41.9
+363,Monongahela Food Pantry - Food Distribution Center,Community service and assistance,,"396 2nd St, Monongahela",40.2006248,-79.9258013,,Google API,4250408,180afdf9-723e-4b6e-984c-c5869923ac38,Tangible,41:41.9
+364,Donora Food Pantry - Food Distribution Center,Community service and assistance,,"685 Meldon Ave #305, Donora",40.1788922,-79.8555022,,Google API,4250408,6f624ef0-9703-4d11-9aa9-d0172181d922,Tangible,41:41.9
+365,Donora Food Pantry - Food Distribution Center,Community service and assistance,,"160 Thompson Ave, Donora",40.173594,-79.8584377,,Google API,4250408,0712391a-bab4-444a-b239-4adada430e5c,Tangible,41:41.9
+366,Charleroi Food Pantry - Food Distribution Center,Community service and assistance,,"828 Meadow Ave, Charleroi",40.1393803,-79.9051916,,Google API,4250408,b67a9cec-a59d-4969-8e57-041b9600e7c1,Tangible,41:41.9
+407,Southwestern Pa Human Services,Community service and assistance,,"8 Eastgate Ave, Monessen",40.159759,-79.8723078,,Google API,4250408,e52ce6e6-40f9-4bc8-b69d-02f28bf52787,Tangible,41:41.9
+408,DHS Inc,Community service and assistance,,"600 Walnut St, Monongahela",40.1922714,-79.9163852,,Google API,4250408,beb247ae-6462-4e28-b18e-b91af4b08116,Tangible,41:41.9
+409,Harvest Shelter,Community service and assistance,,"705 Hereford Dr, Elizabeth",40.2468369,-79.8541084,,Google API,4250408,fa9a7080-853a-4098-b320-33554d6d64c7,Tangible,41:41.9
+411,"Connect, Inc.",Community service and assistance,,"302 Chamber Plaza, Charleroi",40.1403756,-79.8966309,,Google API,4250408,be6eff86-c62f-4a7f-ad6f-74b226f9cf6b,Tangible,41:41.9
+412,sam vargo animale control services,Community service and assistance,,"34 Blythe Rd, Charleroi",40.1538815,-79.9177164,https://sam-vargo-animale-control-services.business.site/,Google API,4250408,e0954020-b73f-4c8c-9b3e-92083429bc07,Tangible,41:41.9
+453,Donora Public Library,Community service and assistance,,"510 Meldon Ave, Donora",40.176463,-79.8553022,http://www.donoralibrary.com/,Google API,4250408,d5c9129e-d100-442b-be7d-d378b161fcc6,Tangible,41:41.9
+454,Monongahela Area Library,Community service and assistance,,"813 W Main St, Monongahela",40.2057835,-79.9334818,http://www.washlibs.org/monongahela/,Google API,4250408,092f1eec-0cb6-4a42-9414-ce0db66b7756,Tangible,41:41.9
+455,Monessen Public Library,Community service and assistance,,"326 Donner Ave, Monessen",40.1611808,-79.8828907,https://www.monessenlibrary.org/,Google API,4250408,56b0b155-8a3d-4c2f-bdf0-d8317eda3de7,Tangible,41:41.9
+456,Charleroi Area Public Library,Community service and assistance,,"638 Fallowfield Ave, Charleroi",40.1400249,-79.9003531,https://www.charleroiarealibrary.org/,Google API,4250408,6a231825-bb48-4294-ae10-ec0faa2c960f,Tangible,41:41.9
+497,Chess Park,Nature and parks,,"Chess St, Monongahela",40.20467319999999,-79.9313796,,Google API,4250408,74684868-56c7-4f42-b259-6e5502eaa491,Tangible,41:41.9
+498,Palmer Park,Nature and parks,,Donora,40.19320099999999,-79.8646553,,Google API,4250408,7df244d7-01f1-4c9b-9af8-f5ecec9739c7,Tangible,41:41.9
+499,Hall Memorial Park,Nature and parks,,"435 Howard St, New Eagle",40.2119922,-79.9563608,,Google API,4250408,b588e22b-4ec9-4384-96aa-715dad72e2a0,Tangible,41:41.9
+500,Motheral Park,Nature and parks,,"477 Motheral Ave, Monessen",40.157927,-79.888729,http://www.cityofmonessen.com/,Google API,4250408,b108b392-fd81-4f7f-81ea-9ce4d5ce5ef5,Tangible,41:41.9
+501,Sixth Street Park,Nature and parks,,Monessen,40.16095749999999,-79.8887614,,Google API,4250408,d2a717fd-f6c6-4ad6-a0b0-8392c38a207e,Tangible,41:41.9
+502,Monessen City Park,Nature and parks,,Monessen,40.1452607,-79.8745735,,Google API,4250408,49c38524-01cc-4f63-b549-956e08058929,Tangible,41:41.9
+503,Round Hill Park,Nature and parks,,"651 Round Hill Rd, Elizabeth",40.241837,-79.8523763,https://www.alleghenycounty.us/Parks-and-Events/Parks/Round-Hill-Park,Google API,4250408,577370bb-b7d8-4005-8918-2135f6617872,Tangible,41:41.9
+504,St. Andrew the Apostle Parish Park,Nature and parks,,"George St, Monongahela",40.1990795,-79.9222729,,Google API,4250408,0dfd6eb4-9217-4ecf-9bd4-53951a93dbb9,Tangible,41:41.9
+505,Hill Crest Park,Nature and parks,,"786 Cassidy Ave, Monongahela",40.19176909999999,-79.9062279,,Google API,4250408,6b0a97e0-afe6-4c15-afdb-b1ce641ae5e8,Tangible,41:41.9
+506,Charleroi Community Park,Nature and parks,,"1 Chamber Plaza, Charleroi",40.1415723,-79.8971324,https://www.facebook.com/Charleroi-Trustees-Community-Park-715031211942009/,Google API,4250408,4f09a28d-49d7-4e78-b099-08cb5c25f042,Tangible,41:41.9
+507,Gallatin Sunnyside Park,Nature and parks,,"1942 Gallatin Tigers Rd, Monongahela",40.1968892,-79.8861417,,Google API,4250408,aa8cea7a-e29c-473f-909d-d48a20bd1d2a,Tangible,41:41.9
+508,Eastgate Park,Nature and parks,,"Parente Blvd, Monessen",40.1595115,-79.875522,,Google API,4250408,f7c6bf73-16d8-429a-9d62-64966fa2e9a8,Tangible,41:41.9
+509,Crest Avenue Park,Nature and parks,,Charleroi,40.1400666,-79.9043607,,Google API,4250408,a74d489b-c575-4a5f-82f8-ffd4308e74c7,Tangible,41:41.9
+510,Jimmy Rice Memorial Park,Nature and parks,,New Eagle,40.2031046,-79.9592305,,Google API,4250408,b4165d23-559d-404d-ac46-091cb558e8df,Tangible,41:41.9
+511,Monessen City Park Walking Track,Nature and parks,,Monessen,40.1440899,-79.8749744,,Google API,4250408,cbfc92d8-dddc-4dd9-9930-77cee29e1e90,Tangible,41:41.9
+512,Howard R Stewart Visitors Center,Nature and parks,,"934 Round Hill Rd #832, Elizabeth",40.2419126,-79.8523297,,Google API,4250408,6c54d355-aca8-46fe-a5b5-a7313bcf20a1,Tangible,41:41.9
+513,Harvest Shelter,Nature and parks,,"705 Hereford Dr, Elizabeth",40.2468369,-79.8541084,,Google API,4250408,59a37811-3715-4aa5-bb95-909cd0fee697,Tangible,41:41.9
+514,Monessen Amphitheater,Nature and parks,,"861 Donner Ave, Monessen",40.1457844,-79.8737866,http://www.monessenamphitheater.com/read-me/,Google API,4250408,6b36df01-c2b2-42da-a920-baf11c08a295,Tangible,41:41.9
+515,Ken Griffey Field,Nature and parks,,"590 Galiffa Dr, Donora",40.1780377,-79.8520553,,Google API,4250408,0858e92c-2967-4359-932c-3babe8f3f963,Tangible,41:41.9
+516,John Moreschi Gazebo,Nature and parks,,"Chess Park, Chess St, Monongahela",40.2048453,-79.9312345,,Google API,4250408,09eacf5d-2ad4-48fc-8cb4-53d456211ee1,Tangible,41:41.9
+517,"PARK MANOR, ADMINISTRATION BLDG.",Nature and parks,,"125 Park Manor Dr, Monessen",40.1480276,-79.875148,,Google API,4250408,4d634e8e-bc81-44f4-9947-94bc51ec1487,Tangible,41:41.9
+518,Monessen Veteran's Memorial,Nature and parks,,Monessen,40.1440777,-79.8766744,,Google API,4250408,dc0d3f7e-573b-49f2-9ec3-41c53a4340c0,Tangible,41:41.9
+519,Hayloft Grove,Nature and parks,,"780 Hereford Dr, Elizabeth",40.241494,-79.8541906,,Google API,4250408,6ed4cf11-cbf5-4750-a5f1-3332a11ab678,Tangible,41:41.9
+520,Harmony House Grove,Nature and parks,,"1079 Hereford Dr, Elizabeth",40.2516073,-79.85241,,Google API,4250408,5d7471b7-d3b1-4e6b-912f-bc717f87ea35,Tangible,41:41.9
+521,Noble J. Dick Aquatorium,Nature and parks,,"200 Railroad St, Monongahela",40.20315859999999,-79.9239924,,Google API,4250408,9d70e400-2188-4c56-8073-fb72daad052c,Tangible,41:41.9
+522,Boat Launch / Fishing Docks,Nature and parks,,"331 3rd St, Monessen",40.1596569,-79.8832765,,Google API,4250408,98a39ade-8da4-40b7-8480-83b829fdb864,Tangible,41:41.9
+543,Monongahela Farmers Market,Food access,,"7th St, Monongahela",40.2048979,-79.9317093,http://www.monongahelafarmersmarket.com/,Google API,4250408,8042ce9d-04bd-47f7-aad0-ed8cd572479e,Tangible,41:41.9
+570,Foodland,Food access,,"1223 W Main St, Monongahela",40.2064156,-79.9370449,http://www.foodlandstores.com/,Google API,4250408,9c96fe83-2857-4210-953b-d76a3e997ecc,Tangible,41:41.9
+571,Foodland,Food access,,"701 Donner Ave, Monessen",40.16228290000001,-79.8882683,http://www.foodlandstores.com/,Google API,4250408,7bd05521-08c8-4f58-b585-ae4a07559b27,Tangible,41:41.9
+572,Cox Market,Food access,,"711 Rte 481, Monongahela",40.1896611,-79.9304244,http://www.coxmkt.com/,Google API,4250408,046ce8e7-86b5-4485-8d71-56c09a6168d8,Tangible,41:41.9
+602,Monongahela: W Main St + 9th St,Transport and infrastructure,,Monongahela,40.2056913,-79.9338506,,Google API,4250408,11cda8d9-be4b-462b-921e-1a1feff93f53,Tangible,41:41.9
+603,Monongahela: W Main St + 5th St,Transport and infrastructure,,Monongahela,40.2039931,-79.9281925,,Google API,4250408,11ec4e94-1811-4eea-ab77-7363a1cc19f0,Tangible,41:41.9
+604,Donora: opp War Memorial,Transport and infrastructure,,Donora,40.168485,-79.861248,,Google API,4250408,04de1246-e90a-45c9-ab83-221e6719b272,Tangible,41:41.9
+605,Highland Terrace,Transport and infrastructure,,Donora,40.167093,-79.866332,,Google API,4250408,b56cf31e-dcaa-48f6-9d79-d503cdaca81e,Tangible,41:41.9
+606,Monongahela: W Main St + 9th St,Transport and infrastructure,,Monongahela,40.2055889,-79.9337353,,Google API,4250408,ae0f4975-3fa9-4507-9698-40d2859efdc3,Tangible,41:41.9
+607,Monongahela: W Main St + 11th St,Transport and infrastructure,,Monongahela,40.205938,-79.935442,,Google API,4250408,898548bd-a842-4e9b-ae68-ba98d2759b80,Tangible,41:41.9
+608,Monongahela: W Main St + 7th St,Transport and infrastructure,,Monongahela,40.2051402,-79.9312395,,Google API,4250408,7623c975-2932-40df-a6d5-de06c68250c9,Tangible,41:41.9
+609,Donora: McKean Ave + Market St,Transport and infrastructure,,Donora,40.169713,-79.8601,,Google API,4250408,7b4a766f-267c-48fe-9507-95de10bb6c57,Tangible,41:41.9
+610,Monongahela: W Main St + 5th St,Transport and infrastructure,,Monongahela,40.2040402,-79.9281013,,Google API,4250408,745855c1-b9b4-4a45-bc78-eeb7238af70e,Tangible,41:41.9
+611,Monongahela: E Main St + 1st St,Transport and infrastructure,,Monongahela,40.2000167,-79.9223802,,Google API,4250408,fdac7122-614e-4e80-aaad-9391f77d0f79,Tangible,41:41.9
+612,Monongahela: W Main St + 3rd St,Transport and infrastructure,,Monongahela,40.2024751,-79.9253386,,Google API,4250408,b1e58986-896e-4a13-bdd2-0ed89631c211,Tangible,41:41.9
+613,Monongahela: W Main St + 7th St,Transport and infrastructure,,Monongahela,40.205229,-79.931274,,Google API,4250408,27aabc24-a33c-4933-b812-ab0e645c7d75,Tangible,41:41.9
+614,Donora: McKean Ave + 9th St,Transport and infrastructure,,Donora,40.181858,-79.855754,,Google API,4250408,7e66d04e-2ba4-405d-934c-7f828b495bdc,Tangible,41:41.9
+615,Donora: McKean St + 11th St,Transport and infrastructure,,Donora,40.184717,-79.85616,,Google API,4250408,30a029d2-bc97-4d95-9a86-bc48c6c2b39e,Tangible,41:41.9
+616,Monongahela: W Main St + 4th St,Transport and infrastructure,,Monongahela,40.20301389999999,-79.9259797,,Google API,4250408,b4bdaf8d-eaa9-4126-9e26-7c8fb5b1a7e6,Tangible,41:41.9
+617,Grand Blvd + Watkins Rd (Grand Plaza),Transport and infrastructure,,Monessen,40.149764,-79.889144,,Google API,4250408,1d995980-140b-49ad-a89f-2806a08237cc,Tangible,41:41.9
+618,Monongahela: Route 837 + Walnut St,Transport and infrastructure,,Monongahela,40.1952309,-79.9147251,,Google API,4250408,83680603-5707-4762-ac07-75f44102ea32,Tangible,41:41.9
+619,North Charleroi: Transit Center,Transport and infrastructure,,North Charleroi,40.146477,-79.906323,,Google API,4250408,7e51fc83-7618-453b-ab60-1e4e146dab07,Tangible,41:41.9
+620,Donora: Meldon Ave + 15th St,Transport and infrastructure,,Donora,40.190349,-79.859838,,Google API,4250408,9d31c98f-cf0c-461e-b0b5-ca2412e0c9f5,Tangible,41:41.9
+621,North Charleroi: Lincoln Ave + 7th St,Transport and infrastructure,,North Charleroi,40.148356,-79.907065,,Google API,4250408,0a0e8c2a-edc6-4a25-bb7a-92b01136cc69,Tangible,41:41.9
+622,Monessen: Exxon Bus Shelter,Transport and infrastructure,,Monessen,40.15911,-79.875045,,Google API,4250408,567a5542-9082-4507-a709-2268d7ac674b,Tangible,41:41.9
+623,North Charleroi: Transit Center,Transport and infrastructure,,North Charleroi,40.146589,-79.906021,,Google API,4250408,36aaf750-9eb2-4f80-9a6b-4b9adcef7d27,Tangible,41:41.9
+624,Donora: Meldon Ave + 9th St,Transport and infrastructure,,Donora,40.1819554,-79.8549092,,Google API,4250408,37fa390e-f3a0-4905-8d5b-5387e657af42,Tangible,41:41.9
+625,Donora: Meldon Ave + 7th St,Transport and infrastructure,,Donora,40.1793406,-79.855113,,Google API,4250408,964ca596-7005-45f1-8153-bba6adf12d00,Tangible,41:41.9
+626,Route 88 + Carrol St,Transport and infrastructure,,New Eagle,40.20996220000001,-79.9551353,,Google API,4250408,d2823f05-7492-4b25-b578-ace66946134b,Tangible,41:41.9
+627,New Eagle: Route 88 + Memorial Dr,Transport and infrastructure,,New Eagle,40.2093703,-79.9536198,,Google API,4250408,c35bb914-b517-48d3-85b2-1b10faa3195e,Tangible,41:41.9
+628,New Eagle: Main St + Maple St,Transport and infrastructure,,New Eagle,40.20751,-79.944588,,Google API,4250408,1cc7e741-b204-499e-9470-58b48567351b,Tangible,41:41.9
+629,Donora: Meldon Ave + 15th St,Transport and infrastructure,,Donora,40.190339,-79.85969,,Google API,4250408,0853d8dd-6a0c-4072-860a-21c84ddcceb8,Tangible,41:41.9
+630,Donora: Meldon Ave + 11th St,Transport and infrastructure,,Donora,40.185011,-79.855432,,Google API,4250408,f579ec1e-86d7-499b-bcf1-63e0693b9ce2,Tangible,41:41.9
+631,Charleroi: McKean Ave + 9th St,Transport and infrastructure,,Charleroi,40.1426,-79.902046,,Google API,4250408,6fc77fee-2d87-4377-b3ea-405c07547690,Tangible,41:41.9
+632,Monongahela: Route 837 + Ridge Ave,Transport and infrastructure,,Monongahela,40.1933726,-79.9073088,,Google API,4250408,0f66c679-8f6e-4ac3-9532-3a9ebed1293b,Tangible,41:41.9
+633,Monongahela: W Main St + Foodland,Transport and infrastructure,,Monongahela,40.2063181,-79.9372235,,Google API,4250408,f3a5ef3d-afbc-4034-8630-65fabd0e83f6,Tangible,41:41.9
+634,Donora: Castner Ave + 4th St,Transport and infrastructure,,Donora,40.17696,-79.863394,,Google API,4250408,08a6947b-9e62-4380-996e-e3e35d8e1bc1,Tangible,41:41.9
+635,North Charleroi: Lincoln Ave + 7th St,Transport and infrastructure,,North Charleroi,40.1485882,-79.9070299,,Google API,4250408,880d2507-c041-4c48-9216-8b3d6a049aaf,Tangible,41:41.9
+636,New Eagle: Route 88 + Memorial Dr,Transport and infrastructure,,New Eagle,40.2093805,-79.953467,,Google API,4250408,580491bf-66cc-41b2-a57f-a1d18c7e323e,Tangible,41:41.9
+637,Donora: McKean Ave + 7th St,Transport and infrastructure,,Donora,40.17939,-79.85598,,Google API,4250408,73a024e4-e572-426e-8131-ba600a320735,Tangible,41:41.9
+638,McMahon @ 9th St.,Transport and infrastructure,,Monessen,40.157659,-79.891424,,Google API,4250408,d527d7ac-5dbb-4ef5-b706-b37555fd6c9e,Tangible,41:41.9
+639,Donora: 3rd St + McKean Ave,Transport and infrastructure,,Donora,40.174563,-79.856341,,Google API,4250408,6a3f3ed6-eba2-4c8f-9c95-c6e32a42b3c4,Tangible,41:41.9
+640,New Eagle: W Main St + Maple St,Transport and infrastructure,,New Eagle,40.2075677,-79.9443823,,Google API,4250408,21e7d715-11ba-4aef-bc80-2cbeaa8bb499,Tangible,41:41.9
+641,New Eagle: Main St + Hemlock St,Transport and infrastructure,,New Eagle,40.2083666,-79.948183,,Google API,4250408,db6f8f31-0c05-4e54-b7d2-2cc72a35bc12,Tangible,41:41.9
+642,Grand Blvd + Monessen Elementary,Transport and infrastructure,,Monessen,40.14982800000001,-79.889063,,Google API,4250408,4b0e997e-dc78-4706-8408-7aac8987a8cd,Tangible,41:41.9
+643,Route 837 + Walnut St,Transport and infrastructure,,Wickerham Manor-Fisher,40.192849,-79.893192,,Google API,4250408,01ed8337-f6de-468f-b3d3-efdae52dd919,Tangible,41:41.9
+644,Donora: Meldon Ave + 6th St,Transport and infrastructure,,Donora,40.1778896,-79.8552364,,Google API,4250408,33782467-dc9b-4ceb-b25e-af54caabc23d,Tangible,41:41.9
+645,Monongahela: W Main St + 3rd St,Transport and infrastructure,,Monongahela,40.2023911,-79.9253708,,Google API,4250408,544748b8-fa13-4994-9a45-b8509878d488,Tangible,41:41.9
+646,Grand Blvd + George & Hallworth House,Transport and infrastructure,,Monessen,40.146395,-79.88362,,Google API,4250408,5c09dd82-41fb-4a2e-81ae-37021221cc4b,Tangible,41:41.9
+647,Donora: Meldon Ave + 13th St,Transport and infrastructure,,Donora,40.187297,-79.856809,,Google API,4250408,aec7023e-091b-45c7-99df-a216c8789f7e,Tangible,41:41.9
+648,Donora: McKean Ave + 1st St,Transport and infrastructure,,Donora,40.172487,-79.857874,,Google API,4250408,b2ef458e-77e2-4268-be03-be9616f30a6b,Tangible,41:41.9
+649,Donora: 6th St + Castner Ave,Transport and infrastructure,,Donora,40.178956,-79.863307,,Google API,4250408,a3f400a4-67e7-4fe6-a35c-0a64191f8348,Tangible,41:41.9
+650,Donora: Modisette Ave + Chestnut St,Transport and infrastructure,,Donora,40.16997200000001,-79.864833,,Google API,4250408,3977c290-7967-460f-9712-a6b737858af1,Tangible,41:41.9
+651,Monessen: Donner Ave + Civic Center,Transport and infrastructure,,Monessen,40.1621961,-79.8911753,,Google API,4250408,aabe79a1-d273-4baa-910d-bd94a257c939,Tangible,41:41.9
+652,New Eagle: Route 88 after Maderia St.,Transport and infrastructure,,New Eagle,40.21039500000001,-79.961736,,Google API,4250408,0c1faa4f-b441-42bf-9114-c646693e61de,Tangible,41:41.9
+653,Donora: Meldon Ave + 13th St,Transport and infrastructure,,Donora,40.187357,-79.856733,,Google API,4250408,e879f80d-c3b7-4783-a1d3-d1899e045ab3,Tangible,41:41.9
+654,Donora: McKean Ave + 6th St,Transport and infrastructure,,Donora,40.1780331,-79.8561484,,Google API,4250408,e143476a-5e69-46e9-804b-5ed8ce4a3c99,Tangible,41:41.9
+655,Route 88 opp Hospital Dr,Transport and infrastructure,,Carroll Township,40.1821726,-79.9164766,,Google API,4250408,54ad9ce7-5007-4dd5-a72a-43b815eee66e,Tangible,41:41.9
+656,New Eagle: W Main St + Hemlock St,Transport and infrastructure,,New Eagle,40.208385,-79.9480006,,Google API,4250408,458845c8-2a5f-4643-b64e-ca832a8b4794,Tangible,41:41.9
+657,Donora: 6th St + Thompson Ave,Transport and infrastructure,,Donora,40.17794,-79.857292,,Google API,4250408,8081be75-3915-4c94-8c8f-53b008fcb6f3,Tangible,41:41.9
+658,Monessen: Donner Ave + Parente Blvd,Transport and infrastructure,,Monessen,40.160077,-79.876051,,Google API,4250408,d3f33c27-3b22-4340-8017-901964dee8da,Tangible,41:41.9
+659,Route 88 + Marion,Transport and infrastructure,,New Eagle,40.2107304,-79.9573776,,Google API,4250408,c9e5180a-6961-4160-999f-eeae4f68991f,Tangible,41:41.9
+660,North Charleroi: Lincoln Ave + Lock St,Transport and infrastructure,,North Charleroi,40.150993,-79.907548,,Google API,4250408,22d27e81-1c75-4d72-8887-f8baba26e6f7,Tangible,41:41.9
+661,Black Diamond: Route 837 + Nelson St,Transport and infrastructure,,Monongahela,40.1927989,-79.9022019,,Google API,4250408,cdde4a03-6923-4b2c-8db4-0c6c31f2987a,Tangible,41:41.9
+742,Belios,Local business and economy,,"509 W Main St, Monongahela",40.2043717,-79.9286128,,Google API,4250408,de78ae4b-58d3-469b-a4d9-9416c810a24a,Tangible,41:41.9
+743,Main Street Antiques,Local business and economy,,"800 W Main St, Monongahela",40.205369,-79.9329237,,Google API,4250408,f7fbfbce-453c-4007-9d19-5b730a905247,Tangible,41:41.9
+744,Red Boot Antiques,Local business and economy,,"905 W Main St, Monongahela",40.2057879,-79.9339229,https://www.facebook.com/Red-Boot-Antiques-396527983751658/,Google API,4250408,0f9c6334-68ce-4b4b-865e-61d9d9927563,Tangible,41:41.9
+745,Yesterday's Best,Local business and economy,,"141 Main St, New Eagle",40.2075189,-79.9436134,,Google API,4250408,98dcaa1e-c85b-4f5a-8daf-c194ddc24a65,Tangible,41:41.9
+746,Industrial Farmhouse Living,Local business and economy,,"144 Main St, New Eagle",40.2072629,-79.9437464,,Google API,4250408,839f68e1-5d68-4700-95f1-88357784fe66,Tangible,41:41.9
+747,2nd Time,Local business and economy,,"615 McKean Ave, Charleroi",40.1397452,-79.8993071,,Google API,4250408,512ee803-e36c-48f1-a3cf-58d7747ae5ae,Tangible,41:41.9
+788,KeyBank,Local business and economy,,"318 W Main St, Monongahela",40.20265089999999,-79.9262116,https://www.key.com/locations/pa/monongahela/BRCH32900281/318-west-main-street?ppc=cmpgmb,Google API,4250408,4b3977d2-21af-4159-a6b6-91907412e1b0,Tangible,41:41.9
+789,Citizens,Local business and economy,,"1731 Grand Blvd, Monessen",40.1435762,-79.8802467,https://locations.citizensbank.com/pa/monessen/1731-grand-blvd.html,Google API,4250408,6c0fd50c-5b56-46f5-ba20-ef3c5110a031,Tangible,41:41.9
+790,PNC Bank,Local business and economy,,"300 W Main St, Monongahela",40.20250679999999,-79.9258322,https://apps.pnc.com/locator/location-details/pennsylvania/monongahela/15063/00054001/monongahela?lnksrc=branch-listing-google,Google API,4250408,b9e387ca-8817-4e60-bf25-8fde8f00773f,Tangible,41:41.9
+791,cfsbank Monongahela,Local business and economy,,"1220 W Main St, Monongahela",40.2060001,-79.9373082,https://cfsbank.com/locations/monongahela/,Google API,4250408,059261f5-8b9f-4552-8c62-7734aa483924,Tangible,41:41.9
+792,Citizens Supermarket Branch,Local business and economy,,"1300 Country Club Rd, Monongahela",40.172134,-79.9168498,https://locations.citizensbank.com/pa/monongahela/1300-country-club-rd.html,Google API,4250408,674c1db0-d3bd-4d35-adf6-4aff59af4d4e,Tangible,41:41.9
+793,PNC ATM,Local business and economy,,"300 W Main St, Monongahela",40.2024823,-79.9258512,https://apps.pnc.com/locator/location-details/pennsylvania/monongahela/15063/PJ1962/monongahela?lnksrc=atm-listing-google,Google API,4250408,11acdcb0-d2ad-49f4-88be-baeb55a3bd2c,Tangible,41:41.9
+794,Citizens ATM,Local business and economy,,"1300 Country Club Rd, Monongahela",40.1723439,-79.9167385,https://www.citizensbank.com/search/answers.aspx?query=ATM&referrerPageUrl=https%3A%2F%2Flocations.citizensbank.com%2F&tabOrder=.%2Findex.html%2Clocations%2CFAQ%2Chelp_articles%2Cinvestors_bank_resources%2Chsbc_resources%2Cproducts&facetFilters=%7B%7D&filters=%7B%7D&verticalUrl=locations.html,Google API,4250408,3b32d066-5cbf-43d1-bc20-1f4c4cff5746,Tangible,41:41.9
+795,PNC ATM,Local business and economy,,"601 McKean Ave, Donora",40.17792379999999,-79.8563747,https://apps.pnc.com/locator/location-details/pennsylvania/donora/15033/PX1974/donora?lnksrc=atm-listing-google,Google API,4250408,fe6a0334-8872-4b9e-81a0-2906c859e1c8,Tangible,41:41.9
+796,First National Bank ATM,Local business and economy,,"1163 Country Club Rd, Monongahela",40.182074,-79.911035,,Google API,4250408,61f4e104-57de-41ac-bdab-aba53a51c091,Tangible,41:41.9
+797,Valley 1st Community FCU,Local business and economy,,"815 Schoonmaker Ave # 819, Monessen",40.1616596,-79.8902281,http://valley1st.org/,Google API,4250408,57235a48-fb25-40d2-af19-c6fe58439009,Tangible,41:41.9
+798,Citizens ATM,Local business and economy,,"2 Eastgate Ave, Monessen",40.1599508,-79.8708767,https://www.citizensbank.com/search/answers.aspx?query=ATM&referrerPageUrl=https%3A%2F%2Flocations.citizensbank.com%2F&tabOrder=.%2Findex.html%2Clocations%2CFAQ%2Chelp_articles%2Cinvestors_bank_resources%2Chsbc_resources%2Cproducts&facetFilters=%7B%7D&filters=%7B%7D&verticalUrl=locations.html,Google API,4250408,4ed6f144-a60a-4542-93a2-f17bb66ebfe3,Tangible,41:41.9
+799,Valley First Credit Union,Local business and economy,,"819 Schoonmaker Ave, Monessen",40.1616624,-79.8900563,,Google API,4250408,8bb0acd2-338c-49de-937c-e11f62d2168a,Tangible,41:41.9
+800,First National Bank ATM,Local business and economy,,"300 Chamber Plaza, Charleroi",40.139855,-79.8967,,Google API,4250408,df0863ea-077a-4320-ada2-a2fb95f2256f,Tangible,41:41.9
+801,ATM (Pennz Mart),Local business and economy,,"200 Dry Run Rd, Monongahela",40.2065489,-79.9399857,,Google API,4250408,f34c271b-939a-4503-a03b-2cb6c906b4a1,Tangible,41:41.9
+802,ATM,Local business and economy,,"1109 PA-837, Monongahela",40.1715147,-79.8893827,,Google API,4250408,d99f4a55-9baf-4164-abde-6b9e1ef26541,Tangible,41:41.9
+2595,The Washington Hospital,Healthcare,Hospital,"155 Wilson Avenue, Washington, PA",40.1831171,-80.246246,,Community Benefit Hospitals API,4250408,b2e36863-0244-4fa0-9dbf-efb75e7b10c5,Tangible,41:41.9
+2659,Monongahela Valley Hospital  Inc,Healthcare,Hospital,"1163 Country Club Rd  Route 88, Monongahela, PA",40.1819746,-79.9111408,,Community Benefit Hospitals API,4250408,e70bef36-99b5-4066-9198-2a4e9cbbb8b9,Tangible,41:41.9
+2666,Canonsburg General Hospital,Healthcare,Hospital,"100 Medical Blvd, Canonsburg, PA",40.2460974,-80.1901219,,Community Benefit Hospitals API,4250408,393421ee-9340-425b-99fd-d1735e630531,Tangible,41:41.9
