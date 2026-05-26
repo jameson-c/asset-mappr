@@ -1,5 +1,8 @@
 # AssetMappr
 
+## Current status
+AssetMappr was discontinued after graduations among the core team + a loss in funding caused us to wrap up shop. Thank you to our collaborators and the communities we worked with along the way! 
+
 ## About this app
 This is a web application developed by Carnegie Mellon University students, for use in community asset mapping. Asset mapping is a systematic process of cataloging key services, benefits, and resources within the community. This includes institutions such as schools/hospitals, physical space, key local businesses, and anything else the community might consider an "asset". Communities need asset mapping in order to plan smartly for their future sustainability and growth. 
 
